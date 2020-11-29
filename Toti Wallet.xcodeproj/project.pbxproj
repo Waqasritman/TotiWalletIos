@@ -3,25 +3,131 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71CBD7E10021E48861BD0415 /* Pods_Toti_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */; };
 		9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CB256E46D700952AF4 /* AppDelegate.swift */; };
 		9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CD256E46D700952AF4 /* ViewController.swift */; };
 		9116F9D1256E46D700952AF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9CF256E46D700952AF4 /* Main.storyboard */; };
 		9116F9D3256E46D900952AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9D2256E46D900952AF4 /* Assets.xcassets */; };
-		9116F9D6256E46D900952AF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9D4256E46D900952AF4 /* LaunchScreen.storyboard */; };
+		9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9DD256E483100952AF4 /* GetStarted.storyboard */; };
+		9116F9F3256E4DCC00952AF4 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */; };
+		9116F9F4256E4DCC00952AF4 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */; };
+		9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E3256E4DC900952AF4 /* Lato-Italic.ttf */; };
+		9116F9F6256E4DCC00952AF4 /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E4256E4DC900952AF4 /* Lato-Heavy.ttf */; };
+		9116F9F7256E4DCC00952AF4 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E5256E4DC900952AF4 /* Lato-BlackItalic.ttf */; };
+		9116F9F8256E4DCC00952AF4 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E6256E4DC900952AF4 /* Lato-HairlineItalic.ttf */; };
+		9116F9F9256E4DCC00952AF4 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E7256E4DCA00952AF4 /* Lato-Hairline.ttf */; };
+		9116F9FA256E4DCC00952AF4 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E8256E4DCA00952AF4 /* Lato-Light.ttf */; };
+		9116F9FB256E4DCC00952AF4 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E9256E4DCA00952AF4 /* Lato-MediumItalic.ttf */; };
+		9116F9FC256E4DCC00952AF4 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9EA256E4DCA00952AF4 /* Lato-BoldItalic.ttf */; };
+		9116F9FD256E4DCC00952AF4 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9EB256E4DCA00952AF4 /* Lato-Thin.ttf */; };
+		9116F9FE256E4DCC00952AF4 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9EC256E4DCA00952AF4 /* Lato-ThinItalic.ttf */; };
+		9116F9FF256E4DCC00952AF4 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9ED256E4DCB00952AF4 /* Lato-Regular.ttf */; };
+		9116FA00256E4DCC00952AF4 /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9EE256E4DCB00952AF4 /* Lato-SemiboldItalic.ttf */; };
+		9116FA01256E4DCC00952AF4 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9EF256E4DCB00952AF4 /* Lato-HeavyItalic.ttf */; };
+		9116FA02256E4DCC00952AF4 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9F0256E4DCB00952AF4 /* Lato-LightItalic.ttf */; };
+		9116FA03256E4DCC00952AF4 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9F1256E4DCB00952AF4 /* Lato-Semibold.ttf */; };
+		9116FA04256E4DCC00952AF4 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */; };
+		9116FA06256E581200952AF4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9116FA05256E581200952AF4 /* Colors.xcassets */; };
+		911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AE5232571909B006898D6 /* CustomTabBarController.swift */; };
+		9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149CA2A2571556D00CD8A34 /* AlertView.swift */; };
+		9149CA2D2571556D00CD8A34 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2B2571556D00CD8A34 /* AlertView.xib */; };
+		9149CA2F25715A3500CD8A34 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2E25715A3500CD8A34 /* Profile.storyboard */; };
+		915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */; };
+		915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */; };
+		915EBDA6257292A50072427D /* ForgotPassGetDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */; };
+		915EBDA825729AEB0072427D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA725729AEB0072427D /* UIView+Extension.swift */; };
+		916A28DC25739E2A00A73313 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A28DB25739E2A00A73313 /* SideMenuVC.swift */; };
+		916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A28DE25739F3900A73313 /* HeaderTableCell.swift */; };
+		918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918024B8257108DF00EB0806 /* UIButton+Extension.swift */; };
+		9180253C257122A500EB0806 /* KWTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918024FC257122A400EB0806 /* KWTextFieldView.swift */; };
+		9180253D257122A500EB0806 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918024FE257122A400EB0806 /* UIViewExtension.swift */; };
+		9180253E257122A500EB0806 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918024FF257122A400EB0806 /* StringExtension.swift */; };
+		9180253F257122A500EB0806 /* KWTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91802500257122A400EB0806 /* KWTextFieldView.xib */; };
+		91802540257122A500EB0806 /* KWVerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91802501257122A400EB0806 /* KWVerificationCodeView.swift */; };
+		91802541257122A500EB0806 /* KWVerificationCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91802502257122A400EB0806 /* KWVerificationCodeView.xib */; };
+		9180254725713A5F00EB0806 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9180254625713A5F00EB0806 /* DropDown.swift */; };
+		91AC2AA825716C27006A6E72 /* ProfileBasicDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC2AA725716C27006A6E72 /* ProfileBasicDetailVC.swift */; };
+		91AC2AAA25716C3A006A6E72 /* ProfileAddressDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC2AA925716C3A006A6E72 /* ProfileAddressDetailVC.swift */; };
+		91AC2AAC25717AD0006A6E72 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC2AAB25717AD0006A6E72 /* UITextField+Extension.swift */; };
+		91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155C2256ECE4C001468FB /* SplashVC.swift */; };
+		91C155C5256ECE7B001468FB /* LoginOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155C4256ECE7B001468FB /* LoginOptionVC.swift */; };
+		91C155C7256ECEA9001468FB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155C6256ECEA9001468FB /* LoginVC.swift */; };
+		91C155C9256ECF31001468FB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155C8256ECF31001468FB /* SignUpVC.swift */; };
+		91C155CB256ECF60001468FB /* VerifyOptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155CA256ECF60001468FB /* VerifyOptVC.swift */; };
+		91C155CD256ED007001468FB /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155CC256ED007001468FB /* Storyboard.swift */; };
+		91C155CF256ED1FC001468FB /* LoginSignUpOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155CE256ED1FC001468FB /* LoginSignUpOptionVC.swift */; };
+		91C155D2256ED370001468FB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155D1256ED370001468FB /* UIViewController+Extension.swift */; };
+		91D622D42573AC220003E509 /* HistoryOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D622D32573AC220003E509 /* HistoryOptionVC.swift */; };
+		91E59EEC2571868D00FEB6A7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E59EEB2571868D00FEB6A7 /* HomeVC.swift */; };
+		91E59EF125718D1100FEB6A7 /* RateCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E59EF025718D1100FEB6A7 /* RateCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E29AF0A1F6417228F4059BD /* Pods-Toti Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toti Wallet.debug.xcconfig"; path = "Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		8A477179D3EFAC7915BC1791 /* Pods-Toti Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toti Wallet.release.xcconfig"; path = "Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet.release.xcconfig"; sourceTree = "<group>"; };
+		8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toti_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9116F9C8256E46D700952AF4 /* Toti Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toti Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9116F9CB256E46D700952AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9116F9CD256E46D700952AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9116F9D0256E46D700952AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9116F9D2256E46D900952AF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9116F9D5256E46D900952AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9116F9D7256E46D900952AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9116F9DD256E483100952AF4 /* GetStarted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
+		9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		9116F9E3256E4DC900952AF4 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		9116F9E4256E4DC900952AF4 /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
+		9116F9E5256E4DC900952AF4 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		9116F9E6256E4DC900952AF4 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
+		9116F9E7256E4DCA00952AF4 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		9116F9E8256E4DCA00952AF4 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		9116F9E9256E4DCA00952AF4 /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
+		9116F9EA256E4DCA00952AF4 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		9116F9EB256E4DCA00952AF4 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		9116F9EC256E4DCA00952AF4 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		9116F9ED256E4DCB00952AF4 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		9116F9EE256E4DCB00952AF4 /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		9116F9EF256E4DCB00952AF4 /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
+		9116F9F0256E4DCB00952AF4 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		9116F9F1256E4DCB00952AF4 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		9116FA05256E581200952AF4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		911AE5232571909B006898D6 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		9149CA2A2571556D00CD8A34 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		9149CA2B2571556D00CD8A34 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		9149CA2E25715A3500CD8A34 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetEmailVC.swift; sourceTree = "<group>"; };
+		915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetPinVC.swift; sourceTree = "<group>"; };
+		915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetDataVC.swift; sourceTree = "<group>"; };
+		915EBDA725729AEB0072427D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		916A28DB25739E2A00A73313 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
+		916A28DE25739F3900A73313 /* HeaderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableCell.swift; sourceTree = "<group>"; };
+		918024B8257108DF00EB0806 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		918024FC257122A400EB0806 /* KWTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KWTextFieldView.swift; sourceTree = "<group>"; };
+		918024FE257122A400EB0806 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		918024FF257122A400EB0806 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		91802500257122A400EB0806 /* KWTextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KWTextFieldView.xib; sourceTree = "<group>"; };
+		91802501257122A400EB0806 /* KWVerificationCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KWVerificationCodeView.swift; sourceTree = "<group>"; };
+		91802502257122A400EB0806 /* KWVerificationCodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KWVerificationCodeView.xib; sourceTree = "<group>"; };
+		9180254625713A5F00EB0806 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		91AC2AA725716C27006A6E72 /* ProfileBasicDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBasicDetailVC.swift; sourceTree = "<group>"; };
+		91AC2AA925716C3A006A6E72 /* ProfileAddressDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddressDetailVC.swift; sourceTree = "<group>"; };
+		91AC2AAB25717AD0006A6E72 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		91C155C2256ECE4C001468FB /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		91C155C4256ECE7B001468FB /* LoginOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionVC.swift; sourceTree = "<group>"; };
+		91C155C6256ECEA9001468FB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		91C155C8256ECF31001468FB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		91C155CA256ECF60001468FB /* VerifyOptVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOptVC.swift; sourceTree = "<group>"; };
+		91C155CC256ED007001468FB /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		91C155CE256ED1FC001468FB /* LoginSignUpOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpOptionVC.swift; sourceTree = "<group>"; };
+		91C155D1256ED370001468FB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		91D622D32573AC220003E509 /* HistoryOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOptionVC.swift; sourceTree = "<group>"; };
+		91E59EEB2571868D00FEB6A7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		91E59EF025718D1100FEB6A7 /* RateCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +135,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CBD7E10021E48861BD0415 /* Pods_Toti_Wallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C36E288F0F292D8BA7F7235 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BF4FBD0A82A9248F3474037 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E29AF0A1F6417228F4059BD /* Pods-Toti Wallet.debug.xcconfig */,
+				8A477179D3EFAC7915BC1791 /* Pods-Toti Wallet.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		9116F9BF256E46D700952AF4 = {
 			isa = PBXGroup;
 			children = (
 				9116F9CA256E46D700952AF4 /* Toti Wallet */,
 				9116F9C9256E46D700952AF4 /* Products */,
+				6BF4FBD0A82A9248F3474037 /* Pods */,
+				5C36E288F0F292D8BA7F7235 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +182,215 @@
 			children = (
 				9116F9CB256E46D700952AF4 /* AppDelegate.swift */,
 				9116F9CD256E46D700952AF4 /* ViewController.swift */,
-				9116F9CF256E46D700952AF4 /* Main.storyboard */,
-				9116F9D2256E46D900952AF4 /* Assets.xcassets */,
-				9116F9D4256E46D900952AF4 /* LaunchScreen.storyboard */,
+				9116FA07256E5AC700952AF4 /* StoryBoard */,
+				91C155C0256ECE03001468FB /* ViewControllers */,
+				916A28DD25739F1900A73313 /* TableView Cells */,
+				91E59EED25718C9B00FEB6A7 /* Collection Cells */,
+				9116F9DF256E4D9300952AF4 /* Resources */,
+				91C155D0256ED352001468FB /* Extensions */,
+				918024B72571081D00EB0806 /* Helper */,
 				9116F9D7256E46D900952AF4 /* Info.plist */,
 			);
 			path = "Toti Wallet";
+			sourceTree = "<group>";
+		};
+		9116F9DF256E4D9300952AF4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9116F9D2256E46D900952AF4 /* Assets.xcassets */,
+				9116FA05256E581200952AF4 /* Colors.xcassets */,
+				9116F9E0256E4DA700952AF4 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9116F9E0256E4DA700952AF4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */,
+				9116F9E5256E4DC900952AF4 /* Lato-BlackItalic.ttf */,
+				9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */,
+				9116F9EA256E4DCA00952AF4 /* Lato-BoldItalic.ttf */,
+				9116F9E7256E4DCA00952AF4 /* Lato-Hairline.ttf */,
+				9116F9E6256E4DC900952AF4 /* Lato-HairlineItalic.ttf */,
+				9116F9E4256E4DC900952AF4 /* Lato-Heavy.ttf */,
+				9116F9EF256E4DCB00952AF4 /* Lato-HeavyItalic.ttf */,
+				9116F9E3256E4DC900952AF4 /* Lato-Italic.ttf */,
+				9116F9E8256E4DCA00952AF4 /* Lato-Light.ttf */,
+				9116F9F0256E4DCB00952AF4 /* Lato-LightItalic.ttf */,
+				9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */,
+				9116F9E9256E4DCA00952AF4 /* Lato-MediumItalic.ttf */,
+				9116F9ED256E4DCB00952AF4 /* Lato-Regular.ttf */,
+				9116F9F1256E4DCB00952AF4 /* Lato-Semibold.ttf */,
+				9116F9EE256E4DCB00952AF4 /* Lato-SemiboldItalic.ttf */,
+				9116F9EB256E4DCA00952AF4 /* Lato-Thin.ttf */,
+				9116F9EC256E4DCA00952AF4 /* Lato-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9116FA07256E5AC700952AF4 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				9116F9DD256E483100952AF4 /* GetStarted.storyboard */,
+				9116F9CF256E46D700952AF4 /* Main.storyboard */,
+				9149CA2E25715A3500CD8A34 /* Profile.storyboard */,
+				91C155CC256ED007001468FB /* Storyboard.swift */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		915EBDA0257292140072427D /* Forgot Password */ = {
+			isa = PBXGroup;
+			children = (
+				915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */,
+				915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */,
+				915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */,
+			);
+			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
+		916A28DA25739E0C00A73313 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				916A28DB25739E2A00A73313 /* SideMenuVC.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		916A28DD25739F1900A73313 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				916A28DE25739F3900A73313 /* HeaderTableCell.swift */,
+			);
+			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		918024B72571081D00EB0806 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				91ED83D1257141BA00B5ABF1 /* DialogBox */,
+				9180254525713A3D00EB0806 /* Drop Down */,
+				918024BA257122A300EB0806 /* KWVerificationCodeView-master */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		918024BA257122A300EB0806 /* KWVerificationCodeView-master */ = {
+			isa = PBXGroup;
+			children = (
+				918024F9257122A400EB0806 /* KWVerificationCodeView */,
+			);
+			path = "KWVerificationCodeView-master";
+			sourceTree = "<group>";
+		};
+		918024F9257122A400EB0806 /* KWVerificationCodeView */ = {
+			isa = PBXGroup;
+			children = (
+				918024FA257122A400EB0806 /* Classes */,
+			);
+			path = KWVerificationCodeView;
+			sourceTree = "<group>";
+		};
+		918024FA257122A400EB0806 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				918024FD257122A400EB0806 /* Extensions */,
+				918024FC257122A400EB0806 /* KWTextFieldView.swift */,
+				91802500257122A400EB0806 /* KWTextFieldView.xib */,
+				91802501257122A400EB0806 /* KWVerificationCodeView.swift */,
+				91802502257122A400EB0806 /* KWVerificationCodeView.xib */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		918024FD257122A400EB0806 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				918024FE257122A400EB0806 /* UIViewExtension.swift */,
+				918024FF257122A400EB0806 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9180254525713A3D00EB0806 /* Drop Down */ = {
+			isa = PBXGroup;
+			children = (
+				9180254625713A5F00EB0806 /* DropDown.swift */,
+			);
+			path = "Drop Down";
+			sourceTree = "<group>";
+		};
+		91AC2AA625716BDD006A6E72 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				91AC2AA725716C27006A6E72 /* ProfileBasicDetailVC.swift */,
+				91AC2AA925716C3A006A6E72 /* ProfileAddressDetailVC.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		91C155C0256ECE03001468FB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				91C155C1256ECE33001468FB /* Get Started */,
+				915EBDA0257292140072427D /* Forgot Password */,
+				91E59EEA2571867300FEB6A7 /* Home */,
+				916A28DA25739E0C00A73313 /* SideMenu */,
+				91AC2AA625716BDD006A6E72 /* Profile */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		91C155C1256ECE33001468FB /* Get Started */ = {
+			isa = PBXGroup;
+			children = (
+				91C155C2256ECE4C001468FB /* SplashVC.swift */,
+				91C155C4256ECE7B001468FB /* LoginOptionVC.swift */,
+				91C155CE256ED1FC001468FB /* LoginSignUpOptionVC.swift */,
+				91C155C6256ECEA9001468FB /* LoginVC.swift */,
+				91C155C8256ECF31001468FB /* SignUpVC.swift */,
+				91C155CA256ECF60001468FB /* VerifyOptVC.swift */,
+			);
+			path = "Get Started";
+			sourceTree = "<group>";
+		};
+		91C155D0256ED352001468FB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				91C155D1256ED370001468FB /* UIViewController+Extension.swift */,
+				915EBDA725729AEB0072427D /* UIView+Extension.swift */,
+				918024B8257108DF00EB0806 /* UIButton+Extension.swift */,
+				91AC2AAB25717AD0006A6E72 /* UITextField+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		91E59EEA2571867300FEB6A7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				91E59EEB2571868D00FEB6A7 /* HomeVC.swift */,
+				911AE5232571909B006898D6 /* CustomTabBarController.swift */,
+				91D622D32573AC220003E509 /* HistoryOptionVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		91E59EED25718C9B00FEB6A7 /* Collection Cells */ = {
+			isa = PBXGroup;
+			children = (
+				91E59EF025718D1100FEB6A7 /* RateCollectionCell.swift */,
+			);
+			path = "Collection Cells";
+			sourceTree = "<group>";
+		};
+		91ED83D1257141BA00B5ABF1 /* DialogBox */ = {
+			isa = PBXGroup;
+			children = (
+				9149CA2A2571556D00CD8A34 /* AlertView.swift */,
+				9149CA2B2571556D00CD8A34 /* AlertView.xib */,
+			);
+			path = DialogBox;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +400,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9116F9DA256E46D900952AF4 /* Build configuration list for PBXNativeTarget "Toti Wallet" */;
 			buildPhases = (
+				5876B2CD11278B90192BC1F0 /* [CP] Check Pods Manifest.lock */,
 				9116F9C4256E46D700952AF4 /* Sources */,
 				9116F9C5256E46D700952AF4 /* Frameworks */,
 				9116F9C6256E46D700952AF4 /* Resources */,
+				9C1552B773CB8D253AC8E6C7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,21 +453,114 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9116F9D6256E46D900952AF4 /* LaunchScreen.storyboard in Resources */,
+				9116F9F7256E4DCC00952AF4 /* Lato-BlackItalic.ttf in Resources */,
+				9116F9F6256E4DCC00952AF4 /* Lato-Heavy.ttf in Resources */,
+				9116FA00256E4DCC00952AF4 /* Lato-SemiboldItalic.ttf in Resources */,
 				9116F9D3256E46D900952AF4 /* Assets.xcassets in Resources */,
+				9116F9FA256E4DCC00952AF4 /* Lato-Light.ttf in Resources */,
+				9116FA03256E4DCC00952AF4 /* Lato-Semibold.ttf in Resources */,
+				9116F9F4256E4DCC00952AF4 /* Lato-Bold.ttf in Resources */,
+				9116FA04256E4DCC00952AF4 /* Lato-Black.ttf in Resources */,
+				9116F9F3256E4DCC00952AF4 /* Lato-Medium.ttf in Resources */,
+				9149CA2D2571556D00CD8A34 /* AlertView.xib in Resources */,
+				9116F9F8256E4DCC00952AF4 /* Lato-HairlineItalic.ttf in Resources */,
+				9116F9FE256E4DCC00952AF4 /* Lato-ThinItalic.ttf in Resources */,
+				9116F9F9256E4DCC00952AF4 /* Lato-Hairline.ttf in Resources */,
+				9116FA01256E4DCC00952AF4 /* Lato-HeavyItalic.ttf in Resources */,
+				9116FA06256E581200952AF4 /* Colors.xcassets in Resources */,
 				9116F9D1256E46D700952AF4 /* Main.storyboard in Resources */,
+				9180253F257122A500EB0806 /* KWTextFieldView.xib in Resources */,
+				9116F9FD256E4DCC00952AF4 /* Lato-Thin.ttf in Resources */,
+				9149CA2F25715A3500CD8A34 /* Profile.storyboard in Resources */,
+				9116F9FF256E4DCC00952AF4 /* Lato-Regular.ttf in Resources */,
+				91802541257122A500EB0806 /* KWVerificationCodeView.xib in Resources */,
+				9116F9FB256E4DCC00952AF4 /* Lato-MediumItalic.ttf in Resources */,
+				9116FA02256E4DCC00952AF4 /* Lato-LightItalic.ttf in Resources */,
+				9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */,
+				9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */,
+				9116F9FC256E4DCC00952AF4 /* Lato-BoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5876B2CD11278B90192BC1F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Toti Wallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C1552B773CB8D253AC8E6C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9116F9C4256E46D700952AF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91AC2AA825716C27006A6E72 /* ProfileBasicDetailVC.swift in Sources */,
+				91802540257122A500EB0806 /* KWVerificationCodeView.swift in Sources */,
+				91D622D42573AC220003E509 /* HistoryOptionVC.swift in Sources */,
+				916A28DC25739E2A00A73313 /* SideMenuVC.swift in Sources */,
+				916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */,
 				9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */,
+				91C155C5256ECE7B001468FB /* LoginOptionVC.swift in Sources */,
 				9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */,
+				91AC2AAC25717AD0006A6E72 /* UITextField+Extension.swift in Sources */,
+				915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */,
+				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
+				91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */,
+				9180254725713A5F00EB0806 /* DropDown.swift in Sources */,
+				9180253E257122A500EB0806 /* StringExtension.swift in Sources */,
+				915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */,
+				915EBDA825729AEB0072427D /* UIView+Extension.swift in Sources */,
+				91C155CF256ED1FC001468FB /* LoginSignUpOptionVC.swift in Sources */,
+				911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */,
+				9180253D257122A500EB0806 /* UIViewExtension.swift in Sources */,
+				9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */,
+				91AC2AAA25716C3A006A6E72 /* ProfileAddressDetailVC.swift in Sources */,
+				91C155CD256ED007001468FB /* Storyboard.swift in Sources */,
+				91E59EEC2571868D00FEB6A7 /* HomeVC.swift in Sources */,
+				9180253C257122A500EB0806 /* KWTextFieldView.swift in Sources */,
+				91C155C9256ECF31001468FB /* SignUpVC.swift in Sources */,
+				91C155C7256ECEA9001468FB /* LoginVC.swift in Sources */,
+				91E59EF125718D1100FEB6A7 /* RateCollectionCell.swift in Sources */,
+				91C155D2256ED370001468FB /* UIViewController+Extension.swift in Sources */,
+				91C155CB256ECF60001468FB /* VerifyOptVC.swift in Sources */,
+				915EBDA6257292A50072427D /* ForgotPassGetDataVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,14 +573,6 @@
 				9116F9D0256E46D700952AF4 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9116F9D4256E46D900952AF4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9116F9D5256E46D900952AF4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -280,6 +696,7 @@
 		};
 		9116F9DB256E46D900952AF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E29AF0A1F6417228F4059BD /* Pods-Toti Wallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +715,7 @@
 		};
 		9116F9DC256E46D900952AF4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A477179D3EFAC7915BC1791 /* Pods-Toti Wallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
