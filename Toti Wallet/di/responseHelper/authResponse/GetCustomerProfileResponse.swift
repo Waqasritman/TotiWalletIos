@@ -15,9 +15,11 @@ class GetCustomerProfileResponse:XMLMappable  {
     }
     
     var nodeName: String!
-    
+    var responseCode:Int?
+    var description:String?
     func mapping(map: XMLMap) {
-        
+        responseCode <- map["s:Body.LoginResponse.LoginResult.ResponseCode"]
+        description <- map["s:Body.LoginResponse.LoginResult.Description"]
     }
     
     
