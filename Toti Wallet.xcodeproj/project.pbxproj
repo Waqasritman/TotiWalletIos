@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */; };
 		71CBD7E10021E48861BD0415 /* Pods_Toti_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */; };
 		9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CB256E46D700952AF4 /* AppDelegate.swift */; };
 		9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CD256E46D700952AF4 /* ViewController.swift */; };
@@ -108,6 +109,7 @@
 
 /* Begin PBXFileReference section */
 		0E29AF0A1F6417228F4059BD /* Pods-Toti Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toti Wallet.debug.xcconfig"; path = "Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerProfileResponse.swift; sourceTree = "<group>"; };
 		8A477179D3EFAC7915BC1791 /* Pods-Toti Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toti Wallet.release.xcconfig"; path = "Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toti_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9116F9C8256E46D700952AF4 /* Toti Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toti Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,6 +387,7 @@
 				914F52B12574C2020020C44A /* CountryListResponse.swift */,
 				914F52B22574C2020020C44A /* LoginResponse.swift */,
 				914F52B32574C2020020C44A /* VerifyOTPResponse.swift */,
+				66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */,
 			);
 			path = authResponse;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				91E6773B2574D0D300C2E9D0 /* UIButton+Direction.swift in Sources */,
 				914F52D42574C2020020C44A /* SoapActionHelper.swift in Sources */,
 				914F52CB2574C2020020C44A /* GetCustomerProfileRequest.swift in Sources */,
+				66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */,
 				914F52A32574C1EE0020C44A /* UrlToBase64.swift in Sources */,
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
 				91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */,
