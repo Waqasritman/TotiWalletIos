@@ -36,6 +36,34 @@
 		9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149CA2A2571556D00CD8A34 /* AlertView.swift */; };
 		9149CA2D2571556D00CD8A34 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2B2571556D00CD8A34 /* AlertView.xib */; };
 		9149CA2F25715A3500CD8A34 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2E25715A3500CD8A34 /* Profile.storyboard */; };
+		914F52A02574C1EE0020C44A /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52992574C1EE0020C44A /* Array.swift */; };
+		914F52A12574C1EE0020C44A /* KeyBoardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F529A2574C1EE0020C44A /* KeyBoardExtension.swift */; };
+		914F52A22574C1EE0020C44A /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F529B2574C1EE0020C44A /* ExtensionString.swift */; };
+		914F52A32574C1EE0020C44A /* UrlToBase64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F529C2574C1EE0020C44A /* UrlToBase64.swift */; };
+		914F52A42574C1EE0020C44A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F529D2574C1EE0020C44A /* Network.swift */; };
+		914F52A52574C1EE0020C44A /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F529E2574C1EE0020C44A /* ProgressBar.swift */; };
+		914F52A62574C1EE0020C44A /* GetDateAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F529F2574C1EE0020C44A /* GetDateAndTime.swift */; };
+		914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52A82574C1FA0020C44A /* AuthRepository.swift */; };
+		914F52C42574C2020020C44A /* SetNewPinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52AD2574C2020020C44A /* SetNewPinResponse.swift */; };
+		914F52C52574C2020020C44A /* ForgotPinApprovedUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52AE2574C2020020C44A /* ForgotPinApprovedUserResponse.swift */; };
+		914F52C62574C2020020C44A /* AuthenticationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52AF2574C2020020C44A /* AuthenticationResponse.swift */; };
+		914F52C72574C2020020C44A /* CustomerRegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B02574C2020020C44A /* CustomerRegistrationResponse.swift */; };
+		914F52C82574C2020020C44A /* CountryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B12574C2020020C44A /* CountryListResponse.swift */; };
+		914F52C92574C2020020C44A /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B22574C2020020C44A /* LoginResponse.swift */; };
+		914F52CA2574C2020020C44A /* VerifyOTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B32574C2020020C44A /* VerifyOTPResponse.swift */; };
+		914F52CB2574C2020020C44A /* GetCustomerProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B62574C2020020C44A /* GetCustomerProfileRequest.swift */; };
+		914F52CC2574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B72574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift */; };
+		914F52CD2574C2020020C44A /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B82574C2020020C44A /* LoginRequest.swift */; };
+		914F52CE2574C2020020C44A /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52B92574C2020020C44A /* RegisterUserRequest.swift */; };
+		914F52CF2574C2020020C44A /* MatchPinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52BA2574C2020020C44A /* MatchPinRequest.swift */; };
+		914F52D02574C2020020C44A /* VerifyOTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52BB2574C2020020C44A /* VerifyOTPRequest.swift */; };
+		914F52D12574C2020020C44A /* GetCountryListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52BC2574C2020020C44A /* GetCountryListRequest.swift */; };
+		914F52D22574C2020020C44A /* ForgotPinSetNewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52BD2574C2020020C44A /* ForgotPinSetNewRequest.swift */; };
+		914F52D32574C2020020C44A /* AuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52BE2574C2020020C44A /* AuthenticationRequest.swift */; };
+		914F52D42574C2020020C44A /* SoapActionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52C02574C2020020C44A /* SoapActionHelper.swift */; };
+		914F52D52574C2020020C44A /* StaticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52C22574C2020020C44A /* StaticHelper.swift */; };
+		914F52D62574C2020020C44A /* HTTPConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52C32574C2020020C44A /* HTTPConnection.swift */; };
+		914F52D82574C2C50020C44A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F52D72574C2C40020C44A /* BaseVC.swift */; };
 		915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */; };
 		915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */; };
 		915EBDA6257292A50072427D /* ForgotPassGetDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */; };
@@ -100,6 +128,34 @@
 		9149CA2A2571556D00CD8A34 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		9149CA2B2571556D00CD8A34 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		9149CA2E25715A3500CD8A34 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		914F52992574C1EE0020C44A /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		914F529A2574C1EE0020C44A /* KeyBoardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBoardExtension.swift; sourceTree = "<group>"; };
+		914F529B2574C1EE0020C44A /* ExtensionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
+		914F529C2574C1EE0020C44A /* UrlToBase64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlToBase64.swift; sourceTree = "<group>"; };
+		914F529D2574C1EE0020C44A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		914F529E2574C1EE0020C44A /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		914F529F2574C1EE0020C44A /* GetDateAndTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDateAndTime.swift; sourceTree = "<group>"; };
+		914F52A82574C1FA0020C44A /* AuthRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		914F52AD2574C2020020C44A /* SetNewPinResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNewPinResponse.swift; sourceTree = "<group>"; };
+		914F52AE2574C2020020C44A /* ForgotPinApprovedUserResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPinApprovedUserResponse.swift; sourceTree = "<group>"; };
+		914F52AF2574C2020020C44A /* AuthenticationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationResponse.swift; sourceTree = "<group>"; };
+		914F52B02574C2020020C44A /* CustomerRegistrationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRegistrationResponse.swift; sourceTree = "<group>"; };
+		914F52B12574C2020020C44A /* CountryListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryListResponse.swift; sourceTree = "<group>"; };
+		914F52B22574C2020020C44A /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		914F52B32574C2020020C44A /* VerifyOTPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyOTPResponse.swift; sourceTree = "<group>"; };
+		914F52B62574C2020020C44A /* GetCustomerProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCustomerProfileRequest.swift; sourceTree = "<group>"; };
+		914F52B72574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPinRequestApprovedUserRequest.swift; sourceTree = "<group>"; };
+		914F52B82574C2020020C44A /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		914F52B92574C2020020C44A /* RegisterUserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
+		914F52BA2574C2020020C44A /* MatchPinRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchPinRequest.swift; sourceTree = "<group>"; };
+		914F52BB2574C2020020C44A /* VerifyOTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyOTPRequest.swift; sourceTree = "<group>"; };
+		914F52BC2574C2020020C44A /* GetCountryListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCountryListRequest.swift; sourceTree = "<group>"; };
+		914F52BD2574C2020020C44A /* ForgotPinSetNewRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPinSetNewRequest.swift; sourceTree = "<group>"; };
+		914F52BE2574C2020020C44A /* AuthenticationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationRequest.swift; sourceTree = "<group>"; };
+		914F52C02574C2020020C44A /* SoapActionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoapActionHelper.swift; sourceTree = "<group>"; };
+		914F52C22574C2020020C44A /* StaticHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticHelper.swift; sourceTree = "<group>"; };
+		914F52C32574C2020020C44A /* HTTPConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPConnection.swift; sourceTree = "<group>"; };
+		914F52D72574C2C40020C44A /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetEmailVC.swift; sourceTree = "<group>"; };
 		915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetPinVC.swift; sourceTree = "<group>"; };
 		915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetDataVC.swift; sourceTree = "<group>"; };
@@ -182,8 +238,12 @@
 			children = (
 				9116F9CB256E46D700952AF4 /* AppDelegate.swift */,
 				9116F9CD256E46D700952AF4 /* ViewController.swift */,
+				914F52972574C1EE0020C44A /* utils */,
+				914F52A72574C1FA0020C44A /* repositries */,
+				914F52AA2574C2020020C44A /* di */,
 				9116FA07256E5AC700952AF4 /* StoryBoard */,
 				91C155C0256ECE03001468FB /* ViewControllers */,
+				914F52D72574C2C40020C44A /* BaseVC.swift */,
 				916A28DD25739F1900A73313 /* TableView Cells */,
 				91E59EED25718C9B00FEB6A7 /* Collection Cells */,
 				9116F9DF256E4D9300952AF4 /* Resources */,
@@ -238,6 +298,110 @@
 				91C155CC256ED007001468FB /* Storyboard.swift */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		914F52972574C1EE0020C44A /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				914F52982574C1EE0020C44A /* extension */,
+				914F529C2574C1EE0020C44A /* UrlToBase64.swift */,
+				914F529D2574C1EE0020C44A /* Network.swift */,
+				914F529E2574C1EE0020C44A /* ProgressBar.swift */,
+				914F529F2574C1EE0020C44A /* GetDateAndTime.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		914F52982574C1EE0020C44A /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				914F52992574C1EE0020C44A /* Array.swift */,
+				914F529A2574C1EE0020C44A /* KeyBoardExtension.swift */,
+				914F529B2574C1EE0020C44A /* ExtensionString.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		914F52A72574C1FA0020C44A /* repositries */ = {
+			isa = PBXGroup;
+			children = (
+				914F52A82574C1FA0020C44A /* AuthRepository.swift */,
+			);
+			path = repositries;
+			sourceTree = "<group>";
+		};
+		914F52AA2574C2020020C44A /* di */ = {
+			isa = PBXGroup;
+			children = (
+				914F52AB2574C2020020C44A /* responseHelper */,
+				914F52B42574C2020020C44A /* requestHelper */,
+				914F52BF2574C2020020C44A /* actionHelper */,
+				914F52C12574C2020020C44A /* diHelper */,
+				914F52C32574C2020020C44A /* HTTPConnection.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		914F52AB2574C2020020C44A /* responseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				914F52AC2574C2020020C44A /* authResponse */,
+			);
+			path = responseHelper;
+			sourceTree = "<group>";
+		};
+		914F52AC2574C2020020C44A /* authResponse */ = {
+			isa = PBXGroup;
+			children = (
+				914F52AD2574C2020020C44A /* SetNewPinResponse.swift */,
+				914F52AE2574C2020020C44A /* ForgotPinApprovedUserResponse.swift */,
+				914F52AF2574C2020020C44A /* AuthenticationResponse.swift */,
+				914F52B02574C2020020C44A /* CustomerRegistrationResponse.swift */,
+				914F52B12574C2020020C44A /* CountryListResponse.swift */,
+				914F52B22574C2020020C44A /* LoginResponse.swift */,
+				914F52B32574C2020020C44A /* VerifyOTPResponse.swift */,
+			);
+			path = authResponse;
+			sourceTree = "<group>";
+		};
+		914F52B42574C2020020C44A /* requestHelper */ = {
+			isa = PBXGroup;
+			children = (
+				914F52B52574C2020020C44A /* authRequests */,
+			);
+			path = requestHelper;
+			sourceTree = "<group>";
+		};
+		914F52B52574C2020020C44A /* authRequests */ = {
+			isa = PBXGroup;
+			children = (
+				914F52B62574C2020020C44A /* GetCustomerProfileRequest.swift */,
+				914F52B72574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift */,
+				914F52B82574C2020020C44A /* LoginRequest.swift */,
+				914F52B92574C2020020C44A /* RegisterUserRequest.swift */,
+				914F52BA2574C2020020C44A /* MatchPinRequest.swift */,
+				914F52BB2574C2020020C44A /* VerifyOTPRequest.swift */,
+				914F52BC2574C2020020C44A /* GetCountryListRequest.swift */,
+				914F52BD2574C2020020C44A /* ForgotPinSetNewRequest.swift */,
+				914F52BE2574C2020020C44A /* AuthenticationRequest.swift */,
+			);
+			path = authRequests;
+			sourceTree = "<group>";
+		};
+		914F52BF2574C2020020C44A /* actionHelper */ = {
+			isa = PBXGroup;
+			children = (
+				914F52C02574C2020020C44A /* SoapActionHelper.swift */,
+			);
+			path = actionHelper;
+			sourceTree = "<group>";
+		};
+		914F52C12574C2020020C44A /* diHelper */ = {
+			isa = PBXGroup;
+			children = (
+				914F52C22574C2020020C44A /* StaticHelper.swift */,
+			);
+			path = diHelper;
 			sourceTree = "<group>";
 		};
 		915EBDA0257292140072427D /* Forgot Password */ = {
@@ -531,36 +695,64 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				914F52A12574C1EE0020C44A /* KeyBoardExtension.swift in Sources */,
 				91AC2AA825716C27006A6E72 /* ProfileBasicDetailVC.swift in Sources */,
 				91802540257122A500EB0806 /* KWVerificationCodeView.swift in Sources */,
 				91D622D42573AC220003E509 /* HistoryOptionVC.swift in Sources */,
 				916A28DC25739E2A00A73313 /* SideMenuVC.swift in Sources */,
+				914F52D82574C2C50020C44A /* BaseVC.swift in Sources */,
+				914F52A42574C1EE0020C44A /* Network.swift in Sources */,
 				916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */,
 				9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */,
+				914F52C62574C2020020C44A /* AuthenticationResponse.swift in Sources */,
+				914F52C42574C2020020C44A /* SetNewPinResponse.swift in Sources */,
 				91C155C5256ECE7B001468FB /* LoginOptionVC.swift in Sources */,
 				9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */,
 				91AC2AAC25717AD0006A6E72 /* UITextField+Extension.swift in Sources */,
 				915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */,
+				914F52C52574C2020020C44A /* ForgotPinApprovedUserResponse.swift in Sources */,
+				914F52CD2574C2020020C44A /* LoginRequest.swift in Sources */,
+				914F52C72574C2020020C44A /* CustomerRegistrationResponse.swift in Sources */,
+				914F52D42574C2020020C44A /* SoapActionHelper.swift in Sources */,
+				914F52CB2574C2020020C44A /* GetCustomerProfileRequest.swift in Sources */,
+				914F52A32574C1EE0020C44A /* UrlToBase64.swift in Sources */,
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
 				91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */,
+				914F52D62574C2020020C44A /* HTTPConnection.swift in Sources */,
 				9180254725713A5F00EB0806 /* DropDown.swift in Sources */,
 				9180253E257122A500EB0806 /* StringExtension.swift in Sources */,
+				914F52D22574C2020020C44A /* ForgotPinSetNewRequest.swift in Sources */,
 				915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */,
 				915EBDA825729AEB0072427D /* UIView+Extension.swift in Sources */,
 				91C155CF256ED1FC001468FB /* LoginSignUpOptionVC.swift in Sources */,
 				911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */,
+				914F52D52574C2020020C44A /* StaticHelper.swift in Sources */,
+				914F52CE2574C2020020C44A /* RegisterUserRequest.swift in Sources */,
+				914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */,
 				9180253D257122A500EB0806 /* UIViewExtension.swift in Sources */,
+				914F52D02574C2020020C44A /* VerifyOTPRequest.swift in Sources */,
+				914F52D12574C2020020C44A /* GetCountryListRequest.swift in Sources */,
+				914F52C82574C2020020C44A /* CountryListResponse.swift in Sources */,
+				914F52A52574C1EE0020C44A /* ProgressBar.swift in Sources */,
 				9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */,
 				91AC2AAA25716C3A006A6E72 /* ProfileAddressDetailVC.swift in Sources */,
 				91C155CD256ED007001468FB /* Storyboard.swift in Sources */,
+				914F52A62574C1EE0020C44A /* GetDateAndTime.swift in Sources */,
 				91E59EEC2571868D00FEB6A7 /* HomeVC.swift in Sources */,
 				9180253C257122A500EB0806 /* KWTextFieldView.swift in Sources */,
 				91C155C9256ECF31001468FB /* SignUpVC.swift in Sources */,
+				914F52CF2574C2020020C44A /* MatchPinRequest.swift in Sources */,
+				914F52D32574C2020020C44A /* AuthenticationRequest.swift in Sources */,
 				91C155C7256ECEA9001468FB /* LoginVC.swift in Sources */,
 				91E59EF125718D1100FEB6A7 /* RateCollectionCell.swift in Sources */,
+				914F52CA2574C2020020C44A /* VerifyOTPResponse.swift in Sources */,
+				914F52CC2574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift in Sources */,
 				91C155D2256ED370001468FB /* UIViewController+Extension.swift in Sources */,
+				914F52A22574C1EE0020C44A /* ExtensionString.swift in Sources */,
 				91C155CB256ECF60001468FB /* VerifyOptVC.swift in Sources */,
 				915EBDA6257292A50072427D /* ForgotPassGetDataVC.swift in Sources */,
+				914F52C92574C2020020C44A /* LoginResponse.swift in Sources */,
+				914F52A02574C1EE0020C44A /* Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

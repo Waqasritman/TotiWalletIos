@@ -8,8 +8,9 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
-
+class LoginVC: BaseVC {
+    let authRepository:AuthRepository = AuthRepository()
+    //MARK - variables
     @IBOutlet weak var phoneNumberView: UIView!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var btnLogin: UIButton!
@@ -26,9 +27,26 @@ class LoginVC: UIViewController {
     @IBOutlet weak var viewVerificationCode: KWVerificationCodeView!
     var isByPhoneNumber = false
     
+    
+    override func isValidate() -> Bool {
+        
+        if isByPhoneNumber {
+            
+        } else  {
+            if txtEmail.text!.isEmpty {
+                showError(message: "Enter email address")
+                return false
+            } else if getCode().count < 4 {
+                showError(message: "Enter correct pin")
+                return false
+            }
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         viewVerificationCode.textFieldViews.forEach({ (KWTextFieldView) in
             KWTextFieldView.clipsToBounds = true
             KWTextFieldView.layer.cornerRadius = 8
@@ -61,13 +79,49 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func btnLogin(_ sender: UIButton) {
-        let nextVC = ControllerID.tabbar.instance
-        self.pushWithFullScreen(nextVC)
+        
+        if isValidate() {
+            hideKeyboard()
+            if Network.isConnectedToNetwork() {
+                showProgress()
+                let request = LoginRequest()
+                if isByPhoneNumber {
+                    request.mobileNumber = txtPhoneNumber.text!
+                    request.email = ""
+                } else {
+                    request.email = txtEmail.text!
+                    request.mobileNumber = ""
+                }
+                request.password = getCode()
+                
+                authRepository.loginRequest(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_LOGIN),completion: { (response, error) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else if response?.responseCode == 101 {
+                        let nextVC = ControllerID.tabbar.instance
+                        self.pushWithFullScreen(nextVC)
+                    }
+                })
+            } else {
+                self.noInternet()
+            }
+        }
+        
+        
+        
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-
+    
+    
+    //MARK - functions
+    
+    func getCode() -> String {
+        return viewVerificationCode.getVerificationCode()
+    }
+    
 }

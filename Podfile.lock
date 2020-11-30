@@ -1,20 +1,37 @@
 PODS:
+  - Alamofire (4.9.1)
   - IQKeyboardManagerSwift (6.5.4)
   - SideMenu (4.0.0)
+  - SVProgressHUD (2.2.5)
+  - XMLMapper (1.6.1):
+    - XMLMapper/Core (= 1.6.1)
+  - XMLMapper/Core (1.6.1)
+  - XMLMapper/Requests (1.6.1):
+    - Alamofire (~> 4.9)
+    - XMLMapper/Core
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - SideMenu (~> 4.0.0)
+  - SVProgressHUD
+  - XMLMapper
+  - XMLMapper/Requests
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - IQKeyboardManagerSwift
     - SideMenu
+    - SVProgressHUD
+    - XMLMapper
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  XMLMapper: 758f91d48600afe51e1e9a973cbe779df7a20d99
 
-PODFILE CHECKSUM: 4e6cc82ef2abe1990f5b24dacc9bf50eba115470
+PODFILE CHECKSUM: 5996ebceba436afdc06885eca444ee18106c72a5
 
 COCOAPODS: 1.8.3

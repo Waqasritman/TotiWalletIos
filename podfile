@@ -8,5 +8,7 @@ target 'Toti Wallet' do
   # Pods for Toti Wallet
 pod 'IQKeyboardManagerSwift'
 pod 'SideMenu', '~> 4.0.0'
-
+pod 'XMLMapper'
+pod 'XMLMapper/Requests'
+pod 'SVProgressHUD'
 end
