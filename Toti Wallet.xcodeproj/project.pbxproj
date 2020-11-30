@@ -34,6 +34,7 @@
 		9116FA04256E4DCC00952AF4 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */; };
 		9116FA06256E581200952AF4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9116FA05256E581200952AF4 /* Colors.xcassets */; };
 		911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AE5232571909B006898D6 /* CustomTabBarController.swift */; };
+		91211D202574E69800B9A627 /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91211D1F2574E69800B9A627 /* TestClass.swift */; };
 		9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149CA2A2571556D00CD8A34 /* AlertView.swift */; };
 		9149CA2D2571556D00CD8A34 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2B2571556D00CD8A34 /* AlertView.xib */; };
 		9149CA2F25715A3500CD8A34 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2E25715A3500CD8A34 /* Profile.storyboard */; };
@@ -139,6 +140,7 @@
 		9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		9116FA05256E581200952AF4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		911AE5232571909B006898D6 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		91211D1F2574E69800B9A627 /* TestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
 		9149CA2A2571556D00CD8A34 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		9149CA2B2571556D00CD8A34 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		9149CA2E25715A3500CD8A34 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				9116FA07256E5AC700952AF4 /* StoryBoard */,
 				91C155C0256ECE03001468FB /* ViewControllers */,
 				914F52D72574C2C40020C44A /* BaseVC.swift */,
+				91211D1F2574E69800B9A627 /* TestClass.swift */,
 				916A28DD25739F1900A73313 /* TableView Cells */,
 				91E59EED25718C9B00FEB6A7 /* Collection Cells */,
 				9116F9DF256E4D9300952AF4 /* Resources */,
@@ -834,6 +837,7 @@
 				9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */,
 				91AC2AAA25716C3A006A6E72 /* ProfileAddressDetailVC.swift in Sources */,
 				91C155CD256ED007001468FB /* Storyboard.swift in Sources */,
+				91211D202574E69800B9A627 /* TestClass.swift in Sources */,
 				914F52A62574C1EE0020C44A /* GetDateAndTime.swift in Sources */,
 				91E59EEC2571868D00FEB6A7 /* HomeVC.swift in Sources */,
 				9180253C257122A500EB0806 /* KWTextFieldView.swift in Sources */,
