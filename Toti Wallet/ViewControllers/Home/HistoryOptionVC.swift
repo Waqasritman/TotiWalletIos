@@ -20,7 +20,9 @@ class HistoryOptionVC: UIViewController {
         viewWallet.layer.cornerRadius = 8
     }
     
-
+    @IBAction func btnBackFunc(_ sender: UIButton) {
+        
+    }
     
 
 }
