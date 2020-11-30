@@ -69,7 +69,8 @@ class LoginVC: BaseVC {
     
     
     @IBAction func btnShowCountriesFunc(_ sender: UIButton) {
-        //show countries here
+        let nextVC = ControllerID.selectCountryVC.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     @IBAction func checkbox(_ sender: UIButton){
