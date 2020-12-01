@@ -8,6 +8,9 @@
 
 import Foundation
 public class ForgotPinRequestApprovedUserRequest {
+    static let shared = ForgotPinRequestApprovedUserRequest()
+    
+    
     var emailAddress = ""
     var mobileNumber = ""
     var idNumber = ""

@@ -8,12 +8,34 @@
 
 import UIKit
 
-class ForgotPassGetEmailVC: UIViewController {
+class ForgotPassGetEmailVC: BaseVC {
 
+    let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var btnContinue: UIButton!
     @IBOutlet weak var txtNumber: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var phoneNumberView: UIView!
+    @IBOutlet weak var emailView: UIView!
+    
+    var isByNumber:Bool = false;
+    
+    override func isValidate() -> Bool {
+        if isByNumber {
+            if txtNumber.text!.isEmpty {
+                return false
+            }
+        } else {
+            if txtEmail.text!.isEmpty {
+                showError(message: "Enter email address")
+                return false
+            } else if !String().isValidEmailAddress(emailAddressString: txtEmail.text!) {
+                showError(message: "Enter correct email address")
+                return false
+            }
+        }
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +44,72 @@ class ForgotPassGetEmailVC: UIViewController {
         viewMain.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         btnContinue.layer.cornerRadius = 8
+        
+        
+        if isByNumber {
+            phoneNumberView.isHidden = false
+            emailView.isHidden = true
+        }
+        else{
+            phoneNumberView.isHidden = true
+            emailView.isHidden = false
+        }
     }
     
+    
+    @IBAction func btnConfirm(_ sender:Any) {
+        if isValidate() {
+            if Network.isConnectedToNetwork() {
+                showProgress()
+                let request = GetCustomerProfileRequest()
+                if isByNumber {
+                    
+                } else {
+                    request.emailAddress = txtEmail.text!
+                    request.mobileNo = ""
+                }
+                request.languageId = "1"
+                
+                authRepo.getCustomerProfile(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER), completion: {(response , error) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else {
+                     
+                        if self.isByNumber {
+                            ForgotPinRequestApprovedUserRequest.shared.mobileNumber = self.txtNumber.text!
+                            ForgotPinRequestApprovedUserRequest.shared.emailAddress = ""
+                            ForgotPinRequestApprovedUserRequest.shared.languageId = "1"
+                        } else {
+                            ForgotPinRequestApprovedUserRequest.shared.mobileNumber = ""
+                            ForgotPinRequestApprovedUserRequest.shared.emailAddress = self.txtEmail.text!
+                            ForgotPinRequestApprovedUserRequest.shared.languageId = "1"
+                        }
+                        
+                        
+                        if response!.isApprovedKYC {
+                            // then get the id details
+                            print(response!.firstName)
+                            ForgotPinRequestApprovedUserRequest.shared.idNumber = response!.idNumber
+                            ForgotPinRequestApprovedUserRequest.shared.idExpireDate = response!.idExpireDate
+                            
+                            let nextVc = ControllerID.forgotData.instance
+                            self.pushWithFullScreen(nextVc)
+                        } else {
+                            // then send to otp
+                            print(response!.firstName)
+                            let nextVc = ControllerID.forgotPassOTP.instance
+                            self.pushWithFullScreen(nextVc)
+                        }
+                    }
+                })
+                
+                
+            } else {
+                self.noInternet()
+            }
+        }
+    }
 
     @IBAction func btnShowCountriesFunc(_ sender: UIButton) {
         //show countries here

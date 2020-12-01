@@ -8,6 +8,7 @@
 
 import Foundation
 class GetCountryListRequest {
+    static let shared = GetCountryListRequest()
     var languageId:String = "1"
     
     public func getXML() -> String {

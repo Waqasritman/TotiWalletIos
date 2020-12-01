@@ -405,6 +405,9 @@
                                                         <state key="normal" title="FORGOT PIN?">
                                                             <color key="titleColor" name="931D55"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="btnForgotPin:" destination="TB2-al-bau" eventType="touchUpInside" id="gxB-YW-l1N"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITr-ze-2ax" customClass="KWVerificationCodeView" customModule="Toti_Wallet" customModuleProvider="target">
                                                         <rect key="frame" x="46.5" y="50" width="250" height="60"/>
@@ -567,6 +570,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCode" destination="7N5-cT-lJU" id="TqT-9r-L2i"/>
+                        <outlet property="btnFlag" destination="woB-Ma-4bp" id="DPn-Zb-gqV"/>
                         <outlet property="btnLogin" destination="o23-Jd-lPc" id="RwK-t8-eWz"/>
                         <outlet property="checkBoxOutlet" destination="mNa-Fw-ovJ" id="JvB-mt-ZAc"/>
                         <outlet property="emailView" destination="STT-Je-zj9" id="6Ul-5M-7eD"/>
@@ -787,6 +792,7 @@
                     </view>
                     <connections>
                         <outlet property="btnAccept" destination="oYn-Gv-MpK" id="fD9-Sw-1Yh"/>
+                        <outlet property="btnCode" destination="brE-Ns-52y" id="68g-Fu-Pbj"/>
                         <outlet property="btnSendOTP" destination="Cd7-SQ-Y6o" id="PYa-FZ-ADW"/>
                         <outlet property="lblHeading" destination="c2s-6R-KTe" id="AZ3-ma-U2Q"/>
                         <outlet property="mainView" destination="dzs-n7-CIl" id="F20-yK-3Of"/>
@@ -947,13 +953,14 @@
                     </view>
                     <connections>
                         <outlet property="btnConfirm" destination="qwc-jW-tez" id="rge-dg-odp"/>
+                        <outlet property="timerLabel" destination="ada-Wx-7mg" id="RaY-7v-aN5"/>
                         <outlet property="viewMain" destination="uEb-bj-WKH" id="s4M-Jm-SeT"/>
                         <outlet property="viewVerificationCode" destination="o38-Mk-h1g" id="45X-aK-9AJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPN-S3-eF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4666" y="-243"/>
+            <point key="canvasLocation" x="4678" y="-243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kfs-3f-MdP">
@@ -1084,6 +1091,9 @@
                                                 <state key="normal" title=" Continue">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnConfirm:" destination="iWV-m6-3eV" eventType="touchUpInside" id="TLK-sZ-efY"/>
+                                                </connections>
                                             </button>
                                             <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KzW-2v-SaB">
                                                 <rect key="frame" x="16" y="70" width="343" height="48"/>
@@ -1142,6 +1152,8 @@
                     </view>
                     <connections>
                         <outlet property="btnContinue" destination="Hud-r4-Cqp" id="ptl-iC-DwU"/>
+                        <outlet property="emailView" destination="KzW-2v-SaB" id="cm1-Ef-8vd"/>
+                        <outlet property="phoneNumberView" destination="dQC-Xh-PsH" id="DVv-Uv-6R9"/>
                         <outlet property="txtEmail" destination="x2D-16-tsY" id="KnQ-jY-JES"/>
                         <outlet property="txtNumber" destination="ugS-l4-828" id="FBO-Yp-5Md"/>
                         <outlet property="viewMain" destination="euC-KG-Gaa" id="vPp-Ya-i3o"/>
@@ -1456,7 +1468,7 @@
         <!--Select CountryVC-->
         <scene sceneID="aVp-kX-tRJ">
             <objects>
-                <viewController storyboardIdentifier="SelectCountryVC" id="FDu-aA-0bM" customClass="SelectCountryVC" customModule="Toti_Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectCountryVC" modalPresentationStyle="currentContext" id="FDu-aA-0bM" customClass="SelectCountryVC" customModule="Toti_Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZKQ-Kl-ncB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1570,12 +1582,167 @@
                     <connections>
                         <outlet property="searchTableView" destination="0kU-3c-wbH" id="Xt9-bf-4lU"/>
                         <outlet property="txtSearch" destination="bkU-Kn-E7X" id="gLx-E0-nAV"/>
-                        <outlet property="viewMain" destination="hBX-gw-DLb" id="gAC-Nf-5WP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="npB-Ju-rvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2310" y="635"/>
+            <point key="canvasLocation" x="2309.5999999999999" y="634.632683658171"/>
+        </scene>
+        <!--Forgot PassotpVC-->
+        <scene sceneID="KWM-Sg-CzU">
+            <objects>
+                <viewController storyboardIdentifier="ForgotPassOTPVC" id="XdU-IP-E9I" customClass="ForgotPassotpVC" customModule="Toti_Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lFL-x0-GWR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKl-ZC-MWh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buS-1j-6Aj">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTr-rC-f54">
+                                                <rect key="frame" x="16" y="17" width="24.5" height="22"/>
+                                                <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                                <state key="normal" image="backIconWhite"/>
+                                                <connections>
+                                                    <action selector="btnBackFunc:" destination="XdU-IP-E9I" eventType="touchUpInside" id="oHf-5M-4Tz"/>
+                                                </connections>
+                                            </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="2V9-Mc-RJG">
+                                                <rect key="frame" x="56.5" y="16" width="102.5" height="24.5"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="931D55"/>
+                                        <constraints>
+                                            <constraint firstItem="2V9-Mc-RJG" firstAttribute="centerY" secondItem="TTr-rC-f54" secondAttribute="centerY" id="BnQ-eP-TR2"/>
+                                            <constraint firstItem="2V9-Mc-RJG" firstAttribute="leading" secondItem="TTr-rC-f54" secondAttribute="trailing" constant="16" id="Sur-10-O90"/>
+                                            <constraint firstItem="TTr-rC-f54" firstAttribute="centerY" secondItem="buS-1j-6Aj" secondAttribute="centerY" id="sZf-Rw-1eZ"/>
+                                            <constraint firstAttribute="height" constant="56" id="vY2-tm-aMM"/>
+                                            <constraint firstItem="TTr-rC-f54" firstAttribute="leading" secondItem="buS-1j-6Aj" secondAttribute="leading" constant="16" id="vlQ-u7-sMK"/>
+                                        </constraints>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYm-Tw-f9W">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="611"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify OTP that you have received" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv7-SB-x1o">
+                                                <rect key="frame" x="16" y="30" width="343" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="20"/>
+                                                <color key="textColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TA9-Zf-U2b">
+                                                <rect key="frame" x="16" y="61.5" width="343" height="130"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H2q-Yo-Wec">
+                                                        <rect key="frame" x="74" y="101" width="195" height="29"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wah-zG-BKe">
+                                                                <rect key="frame" x="0.0" y="0.0" width="131" height="29"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="12"/>
+                                                                <state key="normal" title="Didn't receive the OTP? ">
+                                                                    <color key="titleColor" name="931D55"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxr-RR-W8f">
+                                                                <rect key="frame" x="139" y="0.0" width="56" height="29"/>
+                                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                                                <state key="normal" title="RESEND">
+                                                                    <color key="titleColor" name="931D55"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpl-e2-jzW" customClass="KWVerificationCodeView" customModule="Toti_Wallet" customModuleProvider="target">
+                                                        <rect key="frame" x="46.5" y="35" width="250" height="60"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="43g-l9-HnF"/>
+                                                            <constraint firstAttribute="width" constant="250" id="ysp-ub-Gi1"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="underlineColor">
+                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="underlineSelectedColor">
+                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="textFieldBackgroundColor">
+                                                                <color key="value" name="F7F7F7"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="H2q-Yo-Wec" secondAttribute="bottom" id="0Wj-7E-Rky"/>
+                                                    <constraint firstItem="H2q-Yo-Wec" firstAttribute="centerX" secondItem="TA9-Zf-U2b" secondAttribute="centerX" id="Tq9-dX-6Hz"/>
+                                                    <constraint firstItem="kpl-e2-jzW" firstAttribute="centerY" secondItem="TA9-Zf-U2b" secondAttribute="centerY" id="YBs-za-cG2"/>
+                                                    <constraint firstAttribute="height" constant="130" id="dgJ-0K-w8b"/>
+                                                    <constraint firstItem="kpl-e2-jzW" firstAttribute="centerX" secondItem="TA9-Zf-U2b" secondAttribute="centerX" id="nP5-n2-g8r"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7JE-6d-mZ4">
+                                                <rect key="frame" x="16" y="211.5" width="343" height="42"/>
+                                                <color key="backgroundColor" name="931D55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="U65-48-tce"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="18"/>
+                                                <state key="normal" title="Confirm">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnConfimFunc:" destination="XdU-IP-E9I" eventType="touchUpInside" id="rCs-iK-bDt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="7JE-6d-mZ4" secondAttribute="trailing" constant="16" id="Iz2-to-0jZ"/>
+                                            <constraint firstItem="7JE-6d-mZ4" firstAttribute="top" secondItem="TA9-Zf-U2b" secondAttribute="bottom" constant="20" id="Rts-28-Zzm"/>
+                                            <constraint firstItem="rv7-SB-x1o" firstAttribute="leading" secondItem="aYm-Tw-f9W" secondAttribute="leading" constant="16" id="W1s-4r-nDz"/>
+                                            <constraint firstAttribute="trailing" secondItem="TA9-Zf-U2b" secondAttribute="trailing" constant="16" id="YCr-sa-AfF"/>
+                                            <constraint firstItem="rv7-SB-x1o" firstAttribute="top" secondItem="aYm-Tw-f9W" secondAttribute="top" constant="30" id="c5L-qX-eG7"/>
+                                            <constraint firstAttribute="trailing" secondItem="rv7-SB-x1o" secondAttribute="trailing" constant="16" id="fbt-so-x1V"/>
+                                            <constraint firstItem="TA9-Zf-U2b" firstAttribute="leading" secondItem="aYm-Tw-f9W" secondAttribute="leading" constant="16" id="gXF-KH-BIs"/>
+                                            <constraint firstItem="7JE-6d-mZ4" firstAttribute="leading" secondItem="aYm-Tw-f9W" secondAttribute="leading" constant="16" id="xze-nI-euQ"/>
+                                            <constraint firstItem="TA9-Zf-U2b" firstAttribute="top" secondItem="rv7-SB-x1o" secondAttribute="bottom" constant="8" id="yVg-MB-RE6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="931D55"/>
+                                <constraints>
+                                    <constraint firstItem="buS-1j-6Aj" firstAttribute="leading" secondItem="TKl-ZC-MWh" secondAttribute="leading" id="3Fx-a8-dbt"/>
+                                    <constraint firstItem="buS-1j-6Aj" firstAttribute="top" secondItem="TKl-ZC-MWh" secondAttribute="top" id="44Z-Jz-ORs"/>
+                                    <constraint firstAttribute="trailing" secondItem="buS-1j-6Aj" secondAttribute="trailing" id="B5Q-q0-YqD"/>
+                                    <constraint firstItem="aYm-Tw-f9W" firstAttribute="top" secondItem="buS-1j-6Aj" secondAttribute="bottom" id="Chq-0d-6HB"/>
+                                    <constraint firstAttribute="trailing" secondItem="aYm-Tw-f9W" secondAttribute="trailing" id="RMN-D2-Bbe"/>
+                                    <constraint firstItem="aYm-Tw-f9W" firstAttribute="leading" secondItem="TKl-ZC-MWh" secondAttribute="leading" id="jRe-v9-hLY"/>
+                                    <constraint firstAttribute="bottom" secondItem="aYm-Tw-f9W" secondAttribute="bottom" id="k8c-hv-ngN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JA2-wm-uh9"/>
+                        <color key="backgroundColor" name="650C39"/>
+                        <constraints>
+                            <constraint firstItem="TKl-ZC-MWh" firstAttribute="leading" secondItem="lFL-x0-GWR" secondAttribute="leading" id="EB9-9i-Jnc"/>
+                            <constraint firstAttribute="bottom" secondItem="TKl-ZC-MWh" secondAttribute="bottom" id="iE4-8d-bA8"/>
+                            <constraint firstItem="TKl-ZC-MWh" firstAttribute="top" secondItem="JA2-wm-uh9" secondAttribute="top" id="lqd-yC-JVd"/>
+                            <constraint firstAttribute="trailing" secondItem="TKl-ZC-MWh" secondAttribute="trailing" id="oj5-uV-ndw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnConfirm" destination="7JE-6d-mZ4" id="GVG-KR-zxr"/>
+                        <outlet property="timerLabel" destination="Jxr-RR-W8f" id="Nv8-HM-Ddq"/>
+                        <outlet property="viewMain" destination="aYm-Tw-f9W" id="rDK-gI-kJG"/>
+                        <outlet property="viewVerificationCode" destination="kpl-e2-jzW" id="1Ea-gh-BgR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CU4-Y1-5HO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5406" y="635"/>
         </scene>
     </scenes>
     <resources>

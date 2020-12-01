@@ -18,6 +18,11 @@ enum ControllerID<T: UIViewController> : String {
     case verifyOptVC = "VerifyOptVC"
     case selectCountryVC = "SelectCountryVC"
     
+    case forgotEmail = "ForgotPassGetEmailVC"
+    case forgotPin = "ForgotPassGetPinVC"
+    case forgotData = "ForgotPassGetDataVC"
+    case forgotPassOTP = "ForgotPassOTPVC"
+    
     case profileBasicDetailVC = "ProfileBasicDetailVC"
     case profileAddressDetailVC = "ProfileAddressDetailVC"
     case tabbar = "tabbar"
@@ -29,7 +34,7 @@ enum ControllerID<T: UIViewController> : String {
     var storyboard: Storyboard {
         
         switch self {
-        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC :
+        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC , .forgotPin , .forgotEmail , .forgotPassOTP , .forgotData:
             return .GetStarted
         case .profileBasicDetailVC, .profileAddressDetailVC:
             return .Profile

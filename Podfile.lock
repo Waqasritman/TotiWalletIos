@@ -1,6 +1,15 @@
 PODS:
   - Alamofire (4.9.1)
   - IQKeyboardManagerSwift (6.5.4)
+  - PhoneNumberKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
+    - PhoneNumberKit/UIKit (= 3.3.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
+  - PhoneNumberKit/UIKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - SDWebImage (5.10.0):
+    - SDWebImage/Core (= 5.10.0)
+  - SDWebImage/Core (5.10.0)
   - SideMenu (4.0.0)
   - SVProgressHUD (2.2.5)
   - XMLMapper (1.6.1):
@@ -12,6 +21,8 @@ PODS:
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
+  - PhoneNumberKit (~> 3.3)
+  - SDWebImage (~> 5.0)
   - SideMenu (~> 4.0.0)
   - SVProgressHUD
   - XMLMapper
@@ -21,6 +32,8 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - IQKeyboardManagerSwift
+    - PhoneNumberKit
+    - SDWebImage
     - SideMenu
     - SVProgressHUD
     - XMLMapper
@@ -28,10 +41,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
+  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
+  SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   XMLMapper: 758f91d48600afe51e1e9a973cbe779df7a20d99
 
-PODFILE CHECKSUM: 5996ebceba436afdc06885eca444ee18106c72a5
+PODFILE CHECKSUM: 3fdbc22b4b724fc6d569a45bec02e2f5925e873d
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.9.3

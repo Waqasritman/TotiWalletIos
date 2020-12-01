@@ -7,13 +7,16 @@
 //
 
 import UIKit
-
+import SDWebImage
+import PhoneNumberKit
 
 class BaseVC: UIViewController , PopUpProtocol {
    
     
 
-    
+    /**check the phonenumber format*/
+    let phoneNumberkit = PhoneNumberKit()
+   // let preferenceHelper = PreferenceHelper.preferenceHelper
     func isValidate() -> Bool {return true}
     
     
@@ -21,6 +24,11 @@ class BaseVC: UIViewController , PopUpProtocol {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
     }
+    
+    
+//    public func getPreference() -> PreferenceHelper {
+//        return self.preferenceHelper
+//    }
     
     
     public func showSuccess(message:String)  {
@@ -31,6 +39,17 @@ class BaseVC: UIViewController , PopUpProtocol {
         ProgressBar.showError(error: message)
     }
     
+    
+    public func verifyNumber(number:String) -> Bool {
+        /**Verify the number international correction*/
+        do {
+            let userNumberIs = number
+            _ = try phoneNumberkit.parse(userNumberIs)
+            return true
+        }catch {
+            return false
+        }
+    }
     
     public func showProgress() {
         ProgressBar.showProgress()
