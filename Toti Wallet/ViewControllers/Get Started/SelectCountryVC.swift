@@ -91,15 +91,15 @@ extension SelectCountryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell")
-        cell?.textLabel?.text = filteredList[indexPath.row].countryName
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! CountryTableCell
+        cell.lblTitle.text = filteredList[indexPath.row].countryName
         if codeShown {
-            cell?.detailTextLabel?.text = filteredList[indexPath.row].countryCode
+            cell.lblDetail.text.text = filteredList[indexPath.row].countryCode
         } else {
-            cell?.detailTextLabel?.text = ""
+            cell.lblDetail.text = ""
         }
        
-        cell?.imageView?.image = nil
+        cell.imageOutlet.image = nil
 //
 //        if let url = URL(string: filteredList[indexPath.row].url) {
 //                    do{

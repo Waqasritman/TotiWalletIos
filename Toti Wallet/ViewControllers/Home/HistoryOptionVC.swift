@@ -18,10 +18,13 @@ class HistoryOptionVC: UIViewController {
 
         viewTransction.layer.cornerRadius = 8
         viewWallet.layer.cornerRadius = 8
+        
+        viewTransction.imageEdgeInsets.left = self.view.frame.width - 50
+        viewWallet.imageEdgeInsets.left = self.view.frame.width - 50
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
-        
+        (tabBarController as! CustomTabBarController).selectedIndex = 0
     }
     
 

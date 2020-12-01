@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+//import BarcodeScanner
 
 class SideMenuVC: UIViewController {
     
@@ -56,16 +57,22 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if sideTableData[indexPath.row] == "Business Transaction" {
-            
+            let nextVC = ControllerID.businessTranscationVC.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Change PIN"{
-            
+            let nextVC = ControllerID.forgotPassGetPinVC.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "My Beneficiary List"{
             
         }
         else if sideTableData[indexPath.row] == "Pay via QR Code"{
-            
+//            let viewController = BarcodeScannerViewController()
+//            viewController.codeDelegate = self
+//            viewController.errorDelegate = self
+//            viewController.dismissalDelegate = self
+//            self.presentWithFullScreen(viewController)
         }
         else if sideTableData[indexPath.row] == "My QR Code"{
             
@@ -80,10 +87,27 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             
         }
         else if sideTableData[indexPath.row] == "Settings"{
-           
+            let nextVC = ControllerID.settingsVC.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Logout"{
             
         }
     }
 }
+
+//extension SideMenuVC: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
+//
+//    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+//
+//    }
+//
+//    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+//
+//    }
+//
+//    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+//        controller.dismiss(animated: true, completion: nil)
+//    }
+//}
+

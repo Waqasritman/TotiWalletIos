@@ -17,15 +17,19 @@ enum ControllerID<T: UIViewController> : String {
     case signUpVC = "SignUpVC"
     case verifyOptVC = "VerifyOptVC"
     case selectCountryVC = "SelectCountryVC"
-    
-    case forgotEmail = "ForgotPassGetEmailVC"
-    case forgotPin = "ForgotPassGetPinVC"
-    case forgotData = "ForgotPassGetDataVC"
-    case forgotPassOTP = "ForgotPassOTPVC"
+    case forgotPassGetEmailVC = "ForgotPassGetEmailVC"
+    case forgotPassGetPinVC = "ForgotPassGetPinVC"
+    case forgotPassGetDataVC = "ForgotPassGetDataVC"
     
     case profileBasicDetailVC = "ProfileBasicDetailVC"
     case profileAddressDetailVC = "ProfileAddressDetailVC"
     case tabbar = "tabbar"
+    
+    case quickPayVC = "QuickPayVC"
+    case businessTranscationVC = "BusinessTranscationVC"
+    case myQRCode = "MyQRCode"
+    case settingsVC = "SettingsVC"
+    case billPaymentVC = "BillPayment"
     
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
@@ -34,12 +38,14 @@ enum ControllerID<T: UIViewController> : String {
     var storyboard: Storyboard {
         
         switch self {
-        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC , .forgotPin , .forgotEmail , .forgotPassOTP , .forgotData:
+        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC, .forgotPassGetEmailVC, .forgotPassGetPinVC, .forgotPassGetDataVC :
             return .GetStarted
         case .profileBasicDetailVC, .profileAddressDetailVC:
             return .Profile
-        case .tabbar:
+        case .tabbar, .quickPayVC:
             return .Main
+        case .businessTranscationVC, .myQRCode, .settingsVC, .billPaymentVC:
+            return .SideMenu
         }
     }
     
@@ -49,6 +55,7 @@ enum Storyboard: String {
     case GetStarted
     case Profile
     case Main
+    case SideMenu
     
     func instance<T>(viewController: String) -> T {
         return self.refrence.instantiateViewController(withIdentifier: viewController) as! T

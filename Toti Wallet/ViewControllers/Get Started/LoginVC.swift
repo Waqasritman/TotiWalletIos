@@ -19,8 +19,9 @@ class LoginVC: BaseVC {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var viewCode: UIView!
     
-    @IBOutlet weak var btnCode:UIButton!
+    @IBOutlet weak var lblCode: UILabel!
     @IBOutlet weak var btnFlag:UIButton!
     
     var countryCode:String = ""
@@ -79,6 +80,8 @@ class LoginVC: BaseVC {
         mainView.layer.cornerRadius = 16
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
+        let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
+        viewCode.addGestureRecognizer(viewCodeGesture)
         
         if isByPhoneNumber {
             phoneNumberView.isHidden = false
@@ -90,8 +93,7 @@ class LoginVC: BaseVC {
         }
     }
     
-    
-    @IBAction func btnShowCountriesFunc(_ sender: UIButton) {
+    @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.selectCountryVC.instance
         (nextVC as! SelectCountryVC).countryProtocol = self
         self.pushWithFullScreen(nextVC)
@@ -185,8 +187,8 @@ class LoginVC: BaseVC {
 extension LoginVC : CountryListProtocol {
     
     func onSelectCountry(country: WRCountryList) {
-        if btnCode != nil {
-            btnCode.setTitle(country.countryCode, for: .normal)
+        if lblCode != nil {
+            lblCode.text = country.countryCode
             countryCode = country.countryCode
         }
       

@@ -17,6 +17,7 @@ class ForgotPassGetEmailVC: BaseVC {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var phoneNumberView: UIView!
     @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var viewCode: UIView!
     
     var isByNumber:Bool = false;
     
@@ -44,6 +45,9 @@ class ForgotPassGetEmailVC: BaseVC {
         viewMain.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         btnContinue.layer.cornerRadius = 8
+        
+        let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
+        viewCode.addGestureRecognizer(viewCodeGesture)
         
         
         if isByNumber {
@@ -111,9 +115,12 @@ class ForgotPassGetEmailVC: BaseVC {
         }
     }
 
-    @IBAction func btnShowCountriesFunc(_ sender: UIButton) {
-        //show countries here
+    @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
+        let nextVC = ControllerID.selectCountryVC.instance
+        (nextVC as! SelectCountryVC).countryProtocol = self
+        self.pushWithFullScreen(nextVC)
     }
+    
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
