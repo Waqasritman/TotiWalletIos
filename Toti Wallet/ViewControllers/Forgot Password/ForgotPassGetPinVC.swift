@@ -30,6 +30,10 @@ class ForgotPassGetPinVC: UIViewController {
         
     }
     
+    @IBAction func btnContinueFunc(_ sender: UIButton) {
+        let nextVC = ControllerID.forgotPassGetDataVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
 
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
