@@ -16,11 +16,11 @@ class CustomTabBarController: UITabBarController {
         self.insertEmptyTabItem("Quick Pay", atIndex: 2)
         
         let img = #imageLiteral(resourceName: "QuickPayIcon")
-        self.addRaisedButton(img, highlightImage: nil, offset: -25.0)
+        self.addRaisedButton(img, highlightImage: nil, offset: -15.0)
     }
     
     open func insertEmptyTabItem(_ title: String, atIndex: Int) {
-        let vc = UIViewController()
+        let vc = ControllerID.quickPayVC.instance
         vc.tabBarItem = UITabBarItem(title: title, image: nil, tag: 0)
         vc.tabBarItem.isEnabled = false
         
@@ -69,6 +69,6 @@ class CustomTabBarController: UITabBarController {
     }
     
     @objc func onRaisedButton(_ sender: UIButton!) {
-        
+        self.selectedIndex = 2
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+//import BarcodeScanner
 
 class HomeVC: UIViewController {
 
@@ -40,16 +41,17 @@ class HomeVC: UIViewController {
         btnRegistration.layer.cornerRadius = 8
         btnRegistration.layer.borderWidth = 1
         btnRegistration.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
+        btnRegistration.imageEdgeInsets.left = self.view.frame.width - 50
         
         viewBottom.layer.cornerRadius = 16
         viewBottom.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        viewAddMoney.addCornerRadius(value: 8)
-        viewMoneyTransfer.addCornerRadius(value: 8)
-        viewConvertyCurrency.addCornerRadius(value: 8)
-        viewMobileTopUp.addCornerRadius(value: 8)
-        viewBillPayments.addCornerRadius(value: 8)
-        viewPrepaidCards.addCornerRadius(value: 8)
+        viewAddMoney.layer.cornerRadius = 8
+        viewMoneyTransfer.layer.cornerRadius = 8
+        viewConvertyCurrency.layer.cornerRadius = 8
+        viewMobileTopUp.layer.cornerRadius = 8
+        viewBillPayments.layer.cornerRadius = 8
+        viewPrepaidCards.layer.cornerRadius = 8
         
         viewAddMoney.dropShadow()
         viewMoneyTransfer.dropShadow()
@@ -76,6 +78,14 @@ class HomeVC: UIViewController {
         let viewPrepaidCardsGesture = UITapGestureRecognizer(target: self, action: #selector(prepaidCardFunc(_:)))
         viewPrepaidCards.addGestureRecognizer(viewPrepaidCardsGesture)
         
+    }
+    
+    @IBAction func btnBarCodeFunc(_ sender: UIButton) {
+//        let viewController = BarcodeScannerViewController()
+//        viewController.codeDelegate = self
+//        viewController.errorDelegate = self
+//        viewController.dismissalDelegate = self
+//        self.presentWithFullScreen(viewController)
     }
 
     @objc private func addMoneyFunc(_ sender: UIGestureRecognizer) {
@@ -140,3 +150,18 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
     }
 }
+
+//extension HomeVC: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
+//
+//    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+//
+//    }
+//
+//    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+//
+//    }
+//
+//    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+//        controller.dismiss(animated: true, completion: nil)
+//    }
+//}

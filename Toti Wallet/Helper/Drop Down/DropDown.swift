@@ -519,15 +519,12 @@ class Arrow: UIView {
 
 extension UIView {
     
-    func dropShadow(scale: Bool = true) {
-        layer.masksToBounds = false
+    func dropShadow() {
+        //layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 1, height: 1)
-        layer.shadowRadius = 2
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 3
     }
     
     func viewBorder(borderColor : UIColor, borderWidth : CGFloat?) {

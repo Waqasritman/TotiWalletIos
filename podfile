@@ -13,4 +13,7 @@ pod 'XMLMapper/Requests'
 pod 'SVProgressHUD'
 pod 'SDWebImage', '~> 5.0'
 pod 'PhoneNumberKit', '~> 3.3'
+pod 'BarcodeScanner'
+
+
 end

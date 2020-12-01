@@ -23,6 +23,7 @@ class ForgotPassGetDataVC: UIViewController {
         
         txtIDNumber.layer.cornerRadius = 8
         txtExpireDate.layer.cornerRadius = 8
+        txtExpireDate.setLeftPaddingPoints(5)
         
         btnConfirm.layer.cornerRadius = 8
         

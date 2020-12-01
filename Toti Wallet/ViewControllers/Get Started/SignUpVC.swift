@@ -11,8 +11,8 @@ import UIKit
 class SignUpVC: BaseVC , CountryListProtocol {
     
     func onSelectCountry(country: WRCountryList) {
-        if btnCode != nil {
-            btnCode.setTitle(country.countryCode, for: .normal)
+        if lblCode != nil {
+            lblCode.text = country.countryCode
             countryCode = country.countryCode
         }
     }
@@ -25,8 +25,9 @@ class SignUpVC: BaseVC , CountryListProtocol {
     @IBOutlet weak var btnAccept: UIButton!
     @IBOutlet weak var btnSendOTP: UIButton!
     @IBOutlet weak var txtEmail: UITextField!
-    @IBOutlet weak var btnCode:UIButton!
     @IBOutlet weak var txtPhoneNumber: UITextField!
+    @IBOutlet weak var viewCode: UIView!
+    @IBOutlet weak var lblCode: UILabel!
     
     var countryCode:String = ""
     var isSignUpViaNumber = true
@@ -67,9 +68,12 @@ class SignUpVC: BaseVC , CountryListProtocol {
         
         btnSendOTP.layer.borderWidth = 1
         btnSendOTP.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
+        
+        let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
+        viewCode.addGestureRecognizer(viewCodeGesture)
     }
     
-    @IBAction func btnShowCountriesFunc(_ sender: UIButton) {
+    @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.selectCountryVC.instance
         (nextVC as! SelectCountryVC).countryProtocol = self
         self.pushWithFullScreen(nextVC)
