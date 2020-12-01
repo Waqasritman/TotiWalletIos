@@ -23,13 +23,13 @@ class RegisterUserRequest {
     var city:String = ""
     var address:String = ""
     var nationality:String = ""
-    var languageID:String = ""
+    var languageID:String = "1"
     
     
     public func getXML() -> String {
-        let stringParams : String = StaticHelper.ENVELOP_OPENER
-            + StaticHelper.HEADER_EMPTY +
-            StaticHelper.BODY_OPEN +
+        let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
+            + "<soapenv:Header/>" +
+            "<soapenv:Body>" +
             "<tpay:CustomerRegistration>" +
             "<tpay:Req>" +
             "<tpay:Credentials>" +
@@ -49,8 +49,8 @@ class RegisterUserRequest {
             "<tpay:ResidenceCountry>" + country + "</tpay:ResidenceCountry>" +
             "</tpay:Req>" +
             "</tpay:CustomerRegistration>" +
-            StaticHelper.BODY_CLOSE +
-            StaticHelper.ENVELOP_CLOSER
+            "</soapenv:Body>" +
+            "</soapenv:Envelope>"
         
         return stringParams
     }

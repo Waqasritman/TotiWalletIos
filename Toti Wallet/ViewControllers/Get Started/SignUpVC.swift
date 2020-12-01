@@ -8,7 +8,15 @@
 
 import UIKit
 
-class SignUpVC: BaseVC {
+class SignUpVC: BaseVC , CountryListProtocol {
+    
+    func onSelectCountry(country: WRCountryList) {
+        if btnCode != nil {
+            btnCode.setTitle(country.countryCode, for: .normal)
+            countryCode = country.countryCode
+        }
+    }
+    
     let authRepository:AuthRepository = AuthRepository()
     @IBOutlet weak var lblHeading: UILabel!
     @IBOutlet weak var mainView: UIView!
@@ -17,20 +25,31 @@ class SignUpVC: BaseVC {
     @IBOutlet weak var btnAccept: UIButton!
     @IBOutlet weak var btnSendOTP: UIButton!
     @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var btnCode:UIButton!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     
-    
+    var countryCode:String = ""
     var isSignUpViaNumber = true
     
     
     override func isValidate() -> Bool {
         if isSignUpViaNumber {
-            if txtPhoneNumber.text!.isEmpty {
+            if countryCode.isEmpty {
+                showError(message: "Select country")
+                return false
+            } else if txtPhoneNumber.text!.isEmpty {
                 showError(message: "Enter phone number")
+                return false
+            } else if !verifyNumber(number: countryCode + txtPhoneNumber.text!) {
+                showError(message: "Enter Number Is Invalid")
+                return false
             }
         } else {
             if txtEmail.text!.isEmpty {
                 showError(message: "Enter email address")
+                return false
+            } else if !String().isValidEmailAddress(emailAddressString: txtEmail.text!) {
+                showError(message: "Invalid email address")
                 return false
             }
         }
@@ -48,11 +67,11 @@ class SignUpVC: BaseVC {
         
         btnSendOTP.layer.borderWidth = 1
         btnSendOTP.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
-        
     }
     
     @IBAction func btnShowCountriesFunc(_ sender: UIButton) {
         let nextVC = ControllerID.selectCountryVC.instance
+        (nextVC as! SelectCountryVC).countryProtocol = self
         self.pushWithFullScreen(nextVC)
     }
     
@@ -91,10 +110,6 @@ class SignUpVC: BaseVC {
             } else {
                 self.noInternet()
             }
-            
-            
-            
-            
         }
         
     }

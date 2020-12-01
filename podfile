@@ -11,4 +11,6 @@ pod 'SideMenu', '~> 4.0.0'
 pod 'XMLMapper'
 pod 'XMLMapper/Requests'
 pod 'SVProgressHUD'
+pod 'SDWebImage', '~> 5.0'
+pod 'PhoneNumberKit', '~> 3.3'
 end

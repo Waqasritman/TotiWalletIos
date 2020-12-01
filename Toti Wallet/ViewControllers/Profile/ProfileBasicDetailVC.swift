@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileBasicDetailVC: UIViewController {
+class ProfileBasicDetailVC: BaseVC {
 
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var txtFirstName: UITextField!
@@ -26,6 +26,37 @@ class ProfileBasicDetailVC: UIViewController {
         }
     }
     
+    var gender:String = ""
+    
+    
+    
+    override func isValidate() -> Bool {
+        if txtFirstName.text!.isEmpty {
+            
+            return false
+        } else if txtMiddleName.text!.isEmpty {
+            return false
+        } else if txtLastName.text!.isEmpty {
+            return false
+        } else if txtFirstName.text!.count < 3 {
+            return false
+        } else if txtMiddleName.text!.count < 2 {
+            return false
+        } else if txtLastName.text!.count < 3 {
+            return false
+        } else if txtEmailAddress.text!.isEmpty {
+            return false
+        } else if !String().isValidEmailAddress(emailAddressString: txtEmailAddress.text!) {
+            self.showError(message: "Invalid email address")
+            return false
+        }
+        
+        else if gender.isEmpty {
+            return false
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +72,17 @@ class ProfileBasicDetailVC: UIViewController {
         txtLastName.setLeftPaddingPoints(8)
         txtMiddleName.setLeftPaddingPoints(8)
         txtEmailAddress.setLeftPaddingPoints(8)
+        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if !RegisterUserRequest.shared.email.isEmpty && RegisterUserRequest.shared.phoneNumber.isEmpty {
+            txtEmailAddress.text = RegisterUserRequest.shared.email
+            txtEmailAddress.isEnabled = false
+        }
+        
     }
     
     @IBAction private func maleFemaleAction(_ sender: UIButton){
@@ -50,7 +92,8 @@ class ProfileBasicDetailVC: UIViewController {
             print(sender.isSelected)
         }
         
-        print(sender.tag)
+        gender = String((sender.titleLabel!.text!.prefix(1)))
+        print(gender)
     }
     
     func uncheck(){
@@ -62,8 +105,16 @@ class ProfileBasicDetailVC: UIViewController {
     
 
     @IBAction func btnNextFunc(_ sender: UIButton) {
-        let nextVC = ControllerID.profileAddressDetailVC.instance
-        self.pushWithFullScreen(nextVC)
+        
+        if isValidate() {
+            RegisterUserRequest.shared.firstName = txtFirstName.text!
+            RegisterUserRequest.shared.middleName = txtMiddleName.text!
+            RegisterUserRequest.shared.lastName = txtLastName.text!
+            RegisterUserRequest.shared.gender = gender
+            RegisterUserRequest.shared.email = txtEmailAddress.text!
+            let nextVC = ControllerID.profileAddressDetailVC.instance
+            self.pushWithFullScreen(nextVC)
+        }
     }
     
 

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class LoginVC: BaseVC {
     let authRepository:AuthRepository = AuthRepository()
@@ -17,6 +19,12 @@ class LoginVC: BaseVC {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
+    
+    @IBOutlet weak var btnCode:UIButton!
+    @IBOutlet weak var btnFlag:UIButton!
+    
+    var countryCode:String = ""
+    
     @IBOutlet weak var checkBoxOutlet:UIButton!{
         didSet{
             checkBoxOutlet.setImage(UIImage(named:"unchecked"), for: .normal)
@@ -31,7 +39,19 @@ class LoginVC: BaseVC {
     override func isValidate() -> Bool {
         
         if isByPhoneNumber {
-            
+            if countryCode.isEmpty {
+                showError(message: "Select country")
+                return false
+            } else if txtPhoneNumber.text!.isEmpty {
+                showError(message: "Enter Number")
+                return false
+            } else if !verifyNumber(number: countryCode + txtPhoneNumber.text!) {
+                showError(message: "Enter Number Is Invalid")
+                return false
+            } else if getCode().count < 4 {
+                showError(message: "Enter correct pin")
+                return false
+            }
         } else  {
             if txtEmail.text!.isEmpty {
                 showError(message: "Enter email address")
@@ -43,6 +63,9 @@ class LoginVC: BaseVC {
         }
         return true
     }
+    
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +93,14 @@ class LoginVC: BaseVC {
     
     @IBAction func btnShowCountriesFunc(_ sender: UIButton) {
         let nextVC = ControllerID.selectCountryVC.instance
+        (nextVC as! SelectCountryVC).countryProtocol = self
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    
+    @IBAction func btnForgotPin(_ sender:Any) {
+        let nextVC = ControllerID.forgotEmail.instance
+        (nextVC as! ForgotPassGetEmailVC).isByNumber = isByPhoneNumber
         self.pushWithFullScreen(nextVC)
     }
     
@@ -96,33 +127,72 @@ class LoginVC: BaseVC {
                 request.password = getCode()
                 
                 authRepository.loginRequest(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_LOGIN),completion: { (response, error) in
-                    self.hideProgress()
+                   
                     if let error = error {
+                        self.hideProgress()
                         self.showError(message: error)
                     } else if response?.responseCode == 101 {
-                        let nextVC = ControllerID.tabbar.instance
-                        self.pushWithFullScreen(nextVC)
+                        self.getCustomerProfile(customerNo: response!.CustomerNumber!)
                     }
                 })
             } else {
                 self.noInternet()
             }
         }
-        
-        
-        
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
     //MARK - functions
-    
     func getCode() -> String {
         return viewVerificationCode.getVerificationCode()
     }
     
+    
+    func getCustomerProfile(customerNo:String) {
+        if Network.isConnectedToNetwork() {
+            let request = GetCustomerProfileRequest()
+            request.customerNo = customerNo
+            request.emailAddress = ""
+            request.mobileNo = ""
+            request.languageId = "1"
+            
+            
+            authRepository.getCustomerProfile(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER), completion: {(response , error) in
+                if let error = error {
+                    self.hideProgress()
+                    self.showError(message: error)
+                } else {
+                    if response!.responseCode == 101 {
+                        self.hideProgress()
+                      //  self.preferenceHelper.filCustomerData(userRequest: response!)
+                        let nextVC = ControllerID.tabbar.instance
+                        self.pushWithFullScreen(nextVC)
+                    }
+                }
+            })
+            
+            
+        } else {
+            self.noInternet()
+        }
+    }
+    
+    
+}
+extension LoginVC : CountryListProtocol {
+    
+    func onSelectCountry(country: WRCountryList) {
+        if btnCode != nil {
+            btnCode.setTitle(country.countryCode, for: .normal)
+            countryCode = country.countryCode
+        }
+      
+//        let image:UIImage = Ui
+//        
+//       // btnFlag.setBackgroundImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+//        btnFlag.setImage(UIImage(named: "play.png"), forState: UIControlState.Normal)
+    }
 }

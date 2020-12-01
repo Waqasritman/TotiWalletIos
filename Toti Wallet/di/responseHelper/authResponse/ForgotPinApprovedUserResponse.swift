@@ -14,7 +14,6 @@ class ForgotPinApprovedUserResponse :XMLMappable{
     var nodeName: String!
     var responseCode:Int?
     var description:String?
-    var CustomerNumber:String?
     func mapping(map: XMLMap) {
         responseCode <- map["s:Body.ForgetPINResponse.ForgetPINResult.ResponseCode"]
         description <- map["s:Body.ForgetPINResponse.ForgetPINResult.Description"]
