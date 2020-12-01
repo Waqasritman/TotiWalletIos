@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.9.1)
+  - BarcodeScanner (5.0.0)
   - IQKeyboardManagerSwift (6.5.4)
   - PhoneNumberKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
@@ -20,6 +21,7 @@ PODS:
     - XMLMapper/Core
 
 DEPENDENCIES:
+  - BarcodeScanner
   - IQKeyboardManagerSwift
   - PhoneNumberKit (~> 3.3)
   - SDWebImage (~> 5.0)
@@ -31,6 +33,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BarcodeScanner
     - IQKeyboardManagerSwift
     - PhoneNumberKit
     - SDWebImage
@@ -40,6 +43,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  BarcodeScanner: 2f5a53198eae49dc39bf61f2c1f05c04e01ff72d
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
@@ -47,6 +51,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   XMLMapper: 758f91d48600afe51e1e9a973cbe779df7a20d99
 
-PODFILE CHECKSUM: 3fdbc22b4b724fc6d569a45bec02e2f5925e873d
+PODFILE CHECKSUM: 9e8df6622b63cd2be4f6e91cdd9f44be099f2af9
 
 COCOAPODS: 1.9.3

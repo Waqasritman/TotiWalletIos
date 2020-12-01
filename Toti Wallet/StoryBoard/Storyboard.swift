@@ -20,6 +20,7 @@ enum ControllerID<T: UIViewController> : String {
     case forgotPassGetEmailVC = "ForgotPassGetEmailVC"
     case forgotPassGetPinVC = "ForgotPassGetPinVC"
     case forgotPassGetDataVC = "ForgotPassGetDataVC"
+    case forgotPassPinCV = "ForgotPassOTPVC"
     
     case profileBasicDetailVC = "ProfileBasicDetailVC"
     case profileAddressDetailVC = "ProfileAddressDetailVC"
@@ -30,6 +31,7 @@ enum ControllerID<T: UIViewController> : String {
     case myQRCode = "MyQRCode"
     case settingsVC = "SettingsVC"
     case billPaymentVC = "BillPayment"
+    case changePinVC = "ChangePinVC"
     
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
@@ -38,13 +40,13 @@ enum ControllerID<T: UIViewController> : String {
     var storyboard: Storyboard {
         
         switch self {
-        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC, .forgotPassGetEmailVC, .forgotPassGetPinVC, .forgotPassGetDataVC :
+        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC, .forgotPassGetEmailVC, .forgotPassGetPinVC, .forgotPassGetDataVC , .forgotPassPinCV :
             return .GetStarted
         case .profileBasicDetailVC, .profileAddressDetailVC:
             return .Profile
         case .tabbar, .quickPayVC:
             return .Main
-        case .businessTranscationVC, .myQRCode, .settingsVC, .billPaymentVC:
+        case .businessTranscationVC, .myQRCode, .settingsVC, .billPaymentVC ,.changePinVC:
             return .SideMenu
         }
     }

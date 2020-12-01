@@ -67,6 +67,7 @@ class ForgotPassotpVC: BaseVC {
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = ForgotPinRequestApprovedUserRequest.shared.getXML()
+            print(request)
             authRepository.forgotPinApprovedUserRequest(request: HTTPConnection.openConnection(stringParams: request, action: SoapActionHelper.shared.ACTION_FORGOT_REQUEST_APPROVED_USER), completion: {(response , error) in
                 self.hideProgress()
                 if let error = error {

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ForgotPassGetEmailVC: BaseVC {
+class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
+   
+    
 
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var viewMain: UIView!
@@ -97,12 +99,14 @@ class ForgotPassGetEmailVC: BaseVC {
                             ForgotPinRequestApprovedUserRequest.shared.idNumber = response!.idNumber
                             ForgotPinRequestApprovedUserRequest.shared.idExpireDate = response!.idExpireDate
                             
-                            let nextVc = ControllerID.forgotData.instance
+                            let nextVc = ControllerID.forgotPassGetDataVC.instance
                             self.pushWithFullScreen(nextVc)
                         } else {
                             // then send to otp
                             print(response!.firstName)
-                            let nextVc = ControllerID.forgotPassOTP.instance
+                            ForgotPinRequestApprovedUserRequest.shared.idNumber = ""
+                            ForgotPinRequestApprovedUserRequest.shared.idExpireDate = ""
+                            let nextVc = ControllerID.forgotPassPinCV.instance
                             self.pushWithFullScreen(nextVc)
                         }
                     }
@@ -124,6 +128,11 @@ class ForgotPassGetEmailVC: BaseVC {
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    func onSelectCountry(country: WRCountryList) {
+        
     }
 
 }

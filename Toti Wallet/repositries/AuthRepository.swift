@@ -25,7 +25,7 @@ class AuthRepository {
                                 DispatchQueue.main.async {
                                     completion(data , nil)
                                 }
-                            } catch {
+                            } catch  {
                                 print(error)
                             }
                         }
@@ -219,6 +219,87 @@ class AuthRepository {
                     } else {
                         DispatchQueue.main.async {
                             completion(nil, response.value?.description)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
+    
+    
+    
+    func getCustomerWalletDetails(request:URLRequest ,completion: @escaping (GetCustomerWalletDetailsResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<GetCustomerWalletDetailsResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                let response = GetCustomerWalletDetailsResponse()
+                                response.description = "some thing went wrong"
+                                response.responseCode = 500
+                                completion(response, nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = GetCustomerWalletDetailsResponse()
+                            response.description = "some thing went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
+    
+    
+    func changePin(request:URLRequest ,completion: @escaping (ChangePinResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<ChangePinResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                let changePinResponse = ChangePinResponse()
+                                changePinResponse.description = "some thing went wrong"
+                                changePinResponse.responseCode = 500
+                                completion(changePinResponse, nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let changePinResponse = ChangePinResponse()
+                            changePinResponse.description = "some thing went wrong"
+                            changePinResponse.responseCode = 500
+                            completion(changePinResponse, nil)
                         }
                     }
 

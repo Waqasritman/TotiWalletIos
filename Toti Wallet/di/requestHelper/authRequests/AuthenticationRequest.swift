@@ -14,7 +14,7 @@ public class AuthenticationRequest {
     
     
     public func getXML() -> String {
-         let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
+         return  "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
              + "<soapenv:Header/>" +
              "<soapenv:Body>" +
              "<tpay:Authentication>" +
@@ -32,6 +32,5 @@ public class AuthenticationRequest {
              "</soapenv:Body>" +
              "</soapenv:Envelope>"
          
-         return stringParams
      }
 }

@@ -23,6 +23,16 @@ extension String {
     }
     
     
+    func removePlus(number:String) -> String {
+        if !number.isEmpty {
+            if number.prefix(1) == "+" {
+                return String(number.dropFirst())
+            } 
+        }
+        return ""
+    }
+    
+    
     func isValidEmailAddress(emailAddressString: String) -> Bool {
         
         var returnValue = true

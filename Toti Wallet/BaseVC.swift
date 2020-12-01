@@ -16,19 +16,19 @@ class BaseVC: UIViewController , PopUpProtocol {
 
     /**check the phonenumber format*/
     let phoneNumberkit = PhoneNumberKit()
-   // let preferenceHelper = PreferenceHelper.preferenceHelper
+    let preferenceHelper = PreferenceHelper.preferenceHelper
     func isValidate() -> Bool {return true}
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+       // self.hideKeyboardWhenTappedAround()
     }
     
     
-//    public func getPreference() -> PreferenceHelper {
-//        return self.preferenceHelper
-//    }
+    public func getPreference() -> PreferenceHelper {
+        return self.preferenceHelper
+    }
     
     
     public func showSuccess(message:String)  {

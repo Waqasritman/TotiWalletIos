@@ -94,12 +94,13 @@ extension SelectCountryVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! CountryTableCell
         cell.lblTitle.text = filteredList[indexPath.row].countryName
         if codeShown {
-            cell.lblDetail.text.text = filteredList[indexPath.row].countryCode
+            cell.lblDetail.text = filteredList[indexPath.row].countryCode
         } else {
             cell.lblDetail.text = ""
         }
        
-        cell.imageOutlet.image = nil
+        cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].url), placeholderImage: UIImage(named: "flag"))
+        cell.imageOutlet.makeImageCircle()
 //
 //        if let url = URL(string: filteredList[indexPath.row].url) {
 //                    do{
@@ -115,7 +116,7 @@ extension SelectCountryVC: UITableViewDelegate, UITableViewDataSource {
 //                }
 //        cell?.imageView?.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
        
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
