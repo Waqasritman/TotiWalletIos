@@ -8,14 +8,21 @@
 
 import UIKit
 
-class OurRatesVC: UIViewController {
+class OurRatesVC: BaseVC {
 
+    let moneyTransferRepo:MoneyTransferRepository = MoneyTransferRepository()
     @IBOutlet weak var btnConvert: UIButton!
     @IBOutlet weak var btnTransferNow: UIButton!
     @IBOutlet weak var firstDropDown: DropDown!
     @IBOutlet weak var secondDropDown: DropDown!
     @IBOutlet weak var txtFirst: UITextField!
     @IBOutlet weak var txtSecond: UITextField!
+    
+    
+    
+    override func isValidate() -> Bool {
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

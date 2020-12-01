@@ -89,7 +89,7 @@ class SignUpVC: BaseVC , CountryListProtocol {
                 if isSignUpViaNumber {
                     authRequest.email = ""
                     authRequest.languageID = "1"
-                    authRequest.mobileNumber = txtPhoneNumber.text!
+                    authRequest.mobileNumber = String().removePlus(number: txtPhoneNumber.text!)
                 } else {
                     authRequest.email = txtEmail.text!
                     authRequest.languageID = "1"

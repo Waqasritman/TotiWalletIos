@@ -61,7 +61,7 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Change PIN"{
-            let nextVC = ControllerID.forgotPassGetPinVC.instance
+            let nextVC = ControllerID.changePinVC.instance
             self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "My Beneficiary List"{

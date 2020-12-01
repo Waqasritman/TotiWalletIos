@@ -10,7 +10,6 @@ import Foundation
 public class ForgotPinRequestApprovedUserRequest {
     static let shared = ForgotPinRequestApprovedUserRequest()
     
-    
     var emailAddress = ""
     var mobileNumber = ""
     var idNumber = ""
@@ -19,9 +18,9 @@ public class ForgotPinRequestApprovedUserRequest {
     
     
     public func getXML() -> String {
-        let stringParams : String = StaticHelper.ENVELOP_OPENER
-            + StaticHelper.HEADER_EMPTY +
-            StaticHelper.BODY_OPEN +
+        let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
+            + "<soapenv:Header/>" +
+            "<soapenv:Body>" +
             "<tpay:ForgetPIN>" +
             "<tpay:Req>" +
             "<tpay:Credentials>" +
@@ -36,8 +35,8 @@ public class ForgotPinRequestApprovedUserRequest {
             "<tpay:IDExpiry_Date>" + idExpireDate + "</tpay:IDExpiry_Date>" +
             "</tpay:Req>" +
             "</tpay:ForgetPIN>" +
-            StaticHelper.BODY_CLOSE +
-            StaticHelper.ENVELOP_CLOSER
+            "</soapenv:Body>" +
+            "</soapenv:Envelope>"
         
         return stringParams
     }

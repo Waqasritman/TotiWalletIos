@@ -10,8 +10,8 @@ import UIKit
 import SideMenu
 //import BarcodeScanner
 
-class HomeVC: UIViewController {
-
+class HomeVC: BaseVC {
+    let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var btnProfileImage: UIButton!
     @IBOutlet weak var rateCollectionView: UICollectionView!
     @IBOutlet weak var offerCollectionView: UICollectionView!
@@ -25,12 +25,15 @@ class HomeVC: UIViewController {
     @IBOutlet weak var viewBillPayments: UIView!
     @IBOutlet weak var viewPrepaidCards: UIView!
     
+    
+    var walletList:[CustomerWalletDetails] = Array()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         SideMenuManager.default.menuWidth = self.view.frame.width/2 + 100
         SideMenuManager.default.menuDismissOnPush = true
-
+        
         btnProfileImage.layer.cornerRadius = btnProfileImage.frame.height/2
         rateCollectionView.delegate = self
         rateCollectionView.dataSource = self
@@ -78,38 +81,67 @@ class HomeVC: UIViewController {
         let viewPrepaidCardsGesture = UITapGestureRecognizer(target: self, action: #selector(prepaidCardFunc(_:)))
         viewPrepaidCards.addGestureRecognizer(viewPrepaidCardsGesture)
         
+        
+        if self.preferenceHelper.getIsWalletNeedToUpdate() {
+            getCustomerWallets()
+        }
+        
+    }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        
+        if preferenceHelper.getIsDocumentUploaded() {
+            btnRegistration.isHidden = true
+        } else {
+            btnRegistration.isHidden = false
+        }
+        
+        if preferenceHelper.getISKYCApproved() {
+            btnRegistration.isHidden = true
+        } else {
+            if !preferenceHelper.getIsDocumentUploaded() {
+                btnRegistration.isHidden = false
+            } else {
+                btnRegistration.isHidden = true
+            }
+            
+        }
     }
     
     @IBAction func btnBarCodeFunc(_ sender: UIButton) {
-//        let viewController = BarcodeScannerViewController()
-//        viewController.codeDelegate = self
-//        viewController.errorDelegate = self
-//        viewController.dismissalDelegate = self
-//        self.presentWithFullScreen(viewController)
+        //        let viewController = BarcodeScannerViewController()
+        //        viewController.codeDelegate = self
+        //        viewController.errorDelegate = self
+        //        viewController.dismissalDelegate = self
+        //        self.presentWithFullScreen(viewController)
     }
-
-    @objc private func addMoneyFunc(_ sender: UIGestureRecognizer) {
     
+    @objc private func addMoneyFunc(_ sender: UIGestureRecognizer) {
+        
     }
     
     @objc private func moneyTransferFunc(_ sender: UIGestureRecognizer) {
-    
+        
     }
     
     @objc private func currencyConverterFunc(_ sender: UIGestureRecognizer) {
-    
+        
     }
     
     @objc private func mobileTopUpFunc(_ sender: UIGestureRecognizer) {
-    
+        
     }
     
     @objc private func billPaymentsFunc(_ sender: UIGestureRecognizer) {
-    
+        
     }
     
     @objc private func prepaidCardFunc(_ sender: UIGestureRecognizer) {
-    
+        
     }
     
     
@@ -118,8 +150,43 @@ class HomeVC: UIViewController {
 // MARK: CollectionView Functions
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    
+    func getCustomerWallets() {
+        
+        if Network.isConnectedToNetwork() {
+            showProgress()
+            let request = GetCustomerWalletDetailsRequest()
+            request.languageId = "1"
+            request.customerNo = preferenceHelper.getCustomerNo()
+            request.mobileNumber  = ""
+            
+            authRepo.getCustomerWalletDetails(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER_WALLET), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.walletList.removeAll()
+                    self.walletList.append(contentsOf: response!.walletList)
+                    self.rateCollectionView.reloadData()
+                    self.preferenceHelper.isWalletNeedToUpdate(isNeed: false);
+                } else {
+                    self.showError(message: response!.description)
+                }
+            })
+        } else {
+            self.noInternet()
+        }
+        
+        
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        if collectionView.tag == 1 {
+            return walletList.count
+        } else {
+            return 5
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -138,7 +205,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
     }
     
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView.tag == 1 {

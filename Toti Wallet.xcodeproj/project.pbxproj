@@ -10,6 +10,38 @@
 		6648E27D2574F89D003F697F /* ForgotPassotpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E27C2574F89D003F697F /* ForgotPassotpVC.swift */; };
 		6648E29A2575120C003F697F /* CountryListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E2992575120C003F697F /* CountryListProtocol.swift */; };
 		6648E2AE257515C2003F697F /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E2AD257515C2003F697F /* ImageView.swift */; };
+		6649B0BE25764E5F003846A2 /* PreferenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0BD25764E5F003846A2 /* PreferenceHelper.swift */; };
+		6649B0C12576541E003846A2 /* ChangePinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0C02576541E003846A2 /* ChangePinRequest.swift */; };
+		6649B0C4257654DE003846A2 /* ChangePinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0C3257654DE003846A2 /* ChangePinResponse.swift */; };
+		6649B0C7257655E0003846A2 /* ChangePinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0C6257655E0003846A2 /* ChangePinVC.swift */; };
+		6649B0E625766858003846A2 /* BeneficiaryListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0E525766858003846A2 /* BeneficiaryListRequest.swift */; };
+		6649B0EB257668D9003846A2 /* GetBeneficiaryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0EA257668D9003846A2 /* GetBeneficiaryListResponse.swift */; };
+		6649B0EF25766AB8003846A2 /* BeneficiaryAddRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0EE25766AB8003846A2 /* BeneficiaryAddRequest.swift */; };
+		6649B0F225766BF9003846A2 /* AddBeneficiaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0F125766BF9003846A2 /* AddBeneficiaryResponse.swift */; };
+		6649B0F525766EC7003846A2 /* DeleteBeneficiaryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0F425766EC7003846A2 /* DeleteBeneficiaryRequest.swift */; };
+		6649B0F825766F83003846A2 /* DeleteBeneficiaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0F725766F83003846A2 /* DeleteBeneficiaryResponse.swift */; };
+		6649B0FB25767044003846A2 /* TotiPaySend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0FA25767044003846A2 /* TotiPaySend.swift */; };
+		6649B0FF2576721F003846A2 /* TotiPaySendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B0FE2576721F003846A2 /* TotiPaySendResponse.swift */; };
+		6649B10325767B2E003846A2 /* WalletToWalletTransferRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B10225767B2E003846A2 /* WalletToWalletTransferRequest.swift */; };
+		6649B10625767C3B003846A2 /* WalletToWalletTransferResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B10525767C3B003846A2 /* WalletToWalletTransferResponse.swift */; };
+		6649B10925767CD8003846A2 /* RequestMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B10825767CD8003846A2 /* RequestMoney.swift */; };
+		6649B10C25767D97003846A2 /* RequestMoneyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B10B25767D97003846A2 /* RequestMoneyResponse.swift */; };
+		6649B10F25767E0B003846A2 /* LoadWalletResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B10E25767E0B003846A2 /* LoadWalletResponse.swift */; };
+		6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B11125767E71003846A2 /* LoadWalletRequest.swift */; };
+		6649B11525767F7E003846A2 /* GetCustomerWalletDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B11425767F7E003846A2 /* GetCustomerWalletDetailsRequest.swift */; };
+		6649B118257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B117257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift */; };
+		6649B11B25768424003846A2 /* CalTransferRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B11A25768424003846A2 /* CalTransferRequest.swift */; };
+		6649B12A257685CB003846A2 /* CalTransferResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B129257685CB003846A2 /* CalTransferResponse.swift */; };
+		6649B12D2576876C003846A2 /* GetSendRecCurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B12C2576876C003846A2 /* GetSendRecCurrencyResponse.swift */; };
+		6649B13025768911003846A2 /* GetSendRecCurrencyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B12F25768911003846A2 /* GetSendRecCurrencyRequest.swift */; };
+		6649B13425768A88003846A2 /* EditCustomerProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B13325768A88003846A2 /* EditCustomerProfileRequest.swift */; };
+		6649B144257693B3003846A2 /* GetBankNetworkListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B143257693B3003846A2 /* GetBankNetworkListRequest.swift */; };
+		6649B1472576940C003846A2 /* GetBankNetworkListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B1462576940C003846A2 /* GetBankNetworkListResponse.swift */; };
+		6649B14B25769581003846A2 /* GetCardDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B14A25769581003846A2 /* GetCardDetailsRequest.swift */; };
+		6649B14F257695EC003846A2 /* GetCardDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B14E257695EC003846A2 /* GetCardDetailsResponse.swift */; };
+		6649B15325769790003846A2 /* GetCashNetworkListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B1522576978F003846A2 /* GetCashNetworkListRequest.swift */; };
+		6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B155257698C2003846A2 /* GetCashNetworkListResponse.swift */; };
+		6649B1592576AE2C003846A2 /* MoneyTransferRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B1582576AE2C003846A2 /* MoneyTransferRepository.swift */; };
 		66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */; };
 		71CBD7E10021E48861BD0415 /* Pods_Toti_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */; };
 		91076B3D25762D1500D4E3C8 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */; };
@@ -123,6 +155,38 @@
 		6648E27C2574F89D003F697F /* ForgotPassotpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassotpVC.swift; sourceTree = "<group>"; };
 		6648E2992575120C003F697F /* CountryListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListProtocol.swift; sourceTree = "<group>"; };
 		6648E2AD257515C2003F697F /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		6649B0BD25764E5F003846A2 /* PreferenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceHelper.swift; sourceTree = "<group>"; };
+		6649B0C02576541E003846A2 /* ChangePinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinRequest.swift; sourceTree = "<group>"; };
+		6649B0C3257654DE003846A2 /* ChangePinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinResponse.swift; sourceTree = "<group>"; };
+		6649B0C6257655E0003846A2 /* ChangePinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinVC.swift; sourceTree = "<group>"; };
+		6649B0E525766858003846A2 /* BeneficiaryListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryListRequest.swift; sourceTree = "<group>"; };
+		6649B0EA257668D9003846A2 /* GetBeneficiaryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBeneficiaryListResponse.swift; sourceTree = "<group>"; };
+		6649B0EE25766AB8003846A2 /* BeneficiaryAddRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryAddRequest.swift; sourceTree = "<group>"; };
+		6649B0F125766BF9003846A2 /* AddBeneficiaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBeneficiaryResponse.swift; sourceTree = "<group>"; };
+		6649B0F425766EC7003846A2 /* DeleteBeneficiaryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBeneficiaryRequest.swift; sourceTree = "<group>"; };
+		6649B0F725766F83003846A2 /* DeleteBeneficiaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBeneficiaryResponse.swift; sourceTree = "<group>"; };
+		6649B0FA25767044003846A2 /* TotiPaySend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotiPaySend.swift; sourceTree = "<group>"; };
+		6649B0FE2576721F003846A2 /* TotiPaySendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotiPaySendResponse.swift; sourceTree = "<group>"; };
+		6649B10225767B2E003846A2 /* WalletToWalletTransferRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletToWalletTransferRequest.swift; sourceTree = "<group>"; };
+		6649B10525767C3B003846A2 /* WalletToWalletTransferResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletToWalletTransferResponse.swift; sourceTree = "<group>"; };
+		6649B10825767CD8003846A2 /* RequestMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMoney.swift; sourceTree = "<group>"; };
+		6649B10B25767D97003846A2 /* RequestMoneyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMoneyResponse.swift; sourceTree = "<group>"; };
+		6649B10E25767E0B003846A2 /* LoadWalletResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWalletResponse.swift; sourceTree = "<group>"; };
+		6649B11125767E71003846A2 /* LoadWalletRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadWalletRequest.swift; sourceTree = "<group>"; };
+		6649B11425767F7E003846A2 /* GetCustomerWalletDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerWalletDetailsRequest.swift; sourceTree = "<group>"; };
+		6649B117257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerWalletDetailsResponse.swift; sourceTree = "<group>"; };
+		6649B11A25768424003846A2 /* CalTransferRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalTransferRequest.swift; sourceTree = "<group>"; };
+		6649B129257685CB003846A2 /* CalTransferResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalTransferResponse.swift; sourceTree = "<group>"; };
+		6649B12C2576876C003846A2 /* GetSendRecCurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSendRecCurrencyResponse.swift; sourceTree = "<group>"; };
+		6649B12F25768911003846A2 /* GetSendRecCurrencyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSendRecCurrencyRequest.swift; sourceTree = "<group>"; };
+		6649B13325768A88003846A2 /* EditCustomerProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomerProfileRequest.swift; sourceTree = "<group>"; };
+		6649B143257693B3003846A2 /* GetBankNetworkListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBankNetworkListRequest.swift; sourceTree = "<group>"; };
+		6649B1462576940C003846A2 /* GetBankNetworkListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBankNetworkListResponse.swift; sourceTree = "<group>"; };
+		6649B14A25769581003846A2 /* GetCardDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardDetailsRequest.swift; sourceTree = "<group>"; };
+		6649B14E257695EC003846A2 /* GetCardDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardDetailsResponse.swift; sourceTree = "<group>"; };
+		6649B1522576978F003846A2 /* GetCashNetworkListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCashNetworkListRequest.swift; sourceTree = "<group>"; };
+		6649B155257698C2003846A2 /* GetCashNetworkListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCashNetworkListResponse.swift; sourceTree = "<group>"; };
+		6649B1582576AE2C003846A2 /* MoneyTransferRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTransferRepository.swift; sourceTree = "<group>"; };
 		66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerProfileResponse.swift; sourceTree = "<group>"; };
 		8A477179D3EFAC7915BC1791 /* Pods-Toti Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toti Wallet.release.xcconfig"; path = "Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toti_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +327,70 @@
 			path = protocols;
 			sourceTree = "<group>";
 		};
+		6649B0E3257667F1003846A2 /* moneyTransferRequests */ = {
+			isa = PBXGroup;
+			children = (
+				6649B0FA25767044003846A2 /* TotiPaySend.swift */,
+				6649B10225767B2E003846A2 /* WalletToWalletTransferRequest.swift */,
+				6649B10825767CD8003846A2 /* RequestMoney.swift */,
+				6649B11125767E71003846A2 /* LoadWalletRequest.swift */,
+				6649B11A25768424003846A2 /* CalTransferRequest.swift */,
+				6649B143257693B3003846A2 /* GetBankNetworkListRequest.swift */,
+			);
+			path = moneyTransferRequests;
+			sourceTree = "<group>";
+		};
+		6649B0E425766808003846A2 /* beneficiaryRequests */ = {
+			isa = PBXGroup;
+			children = (
+				6649B0E525766858003846A2 /* BeneficiaryListRequest.swift */,
+				6649B0EE25766AB8003846A2 /* BeneficiaryAddRequest.swift */,
+				6649B0F425766EC7003846A2 /* DeleteBeneficiaryRequest.swift */,
+				6649B1522576978F003846A2 /* GetCashNetworkListRequest.swift */,
+			);
+			path = beneficiaryRequests;
+			sourceTree = "<group>";
+		};
+		6649B0E9257668B7003846A2 /* beneficiaryResponses */ = {
+			isa = PBXGroup;
+			children = (
+				6649B0EA257668D9003846A2 /* GetBeneficiaryListResponse.swift */,
+				6649B0F125766BF9003846A2 /* AddBeneficiaryResponse.swift */,
+				6649B0F725766F83003846A2 /* DeleteBeneficiaryResponse.swift */,
+				6649B155257698C2003846A2 /* GetCashNetworkListResponse.swift */,
+			);
+			path = beneficiaryResponses;
+			sourceTree = "<group>";
+		};
+		6649B0FD257671FA003846A2 /* moneyTransferResponse */ = {
+			isa = PBXGroup;
+			children = (
+				6649B0FE2576721F003846A2 /* TotiPaySendResponse.swift */,
+				6649B10525767C3B003846A2 /* WalletToWalletTransferResponse.swift */,
+				6649B10B25767D97003846A2 /* RequestMoneyResponse.swift */,
+				6649B10E25767E0B003846A2 /* LoadWalletResponse.swift */,
+				6649B129257685CB003846A2 /* CalTransferResponse.swift */,
+				6649B1462576940C003846A2 /* GetBankNetworkListResponse.swift */,
+			);
+			path = moneyTransferResponse;
+			sourceTree = "<group>";
+		};
+		6649B14925769573003846A2 /* requests */ = {
+			isa = PBXGroup;
+			children = (
+				6649B14A25769581003846A2 /* GetCardDetailsRequest.swift */,
+			);
+			path = requests;
+			sourceTree = "<group>";
+		};
+		6649B14D257695DF003846A2 /* responses */ = {
+			isa = PBXGroup;
+			children = (
+				6649B14E257695EC003846A2 /* GetCardDetailsResponse.swift */,
+			);
+			path = responses;
+			sourceTree = "<group>";
+		};
 		6BF4FBD0A82A9248F3474037 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +495,7 @@
 				914F529D2574C1EE0020C44A /* Network.swift */,
 				914F529E2574C1EE0020C44A /* ProgressBar.swift */,
 				914F529F2574C1EE0020C44A /* GetDateAndTime.swift */,
+				6649B0BD25764E5F003846A2 /* PreferenceHelper.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -386,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				914F52A82574C1FA0020C44A /* AuthRepository.swift */,
+				6649B1582576AE2C003846A2 /* MoneyTransferRepository.swift */,
 			);
 			path = repositries;
 			sourceTree = "<group>";
@@ -405,6 +535,9 @@
 		914F52AB2574C2020020C44A /* responseHelper */ = {
 			isa = PBXGroup;
 			children = (
+				6649B14D257695DF003846A2 /* responses */,
+				6649B0FD257671FA003846A2 /* moneyTransferResponse */,
+				6649B0E9257668B7003846A2 /* beneficiaryResponses */,
 				914F52AC2574C2020020C44A /* authResponse */,
 			);
 			path = responseHelper;
@@ -421,6 +554,9 @@
 				914F52B22574C2020020C44A /* LoginResponse.swift */,
 				914F52B32574C2020020C44A /* VerifyOTPResponse.swift */,
 				66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */,
+				6649B0C3257654DE003846A2 /* ChangePinResponse.swift */,
+				6649B117257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift */,
+				6649B12C2576876C003846A2 /* GetSendRecCurrencyResponse.swift */,
 			);
 			path = authResponse;
 			sourceTree = "<group>";
@@ -428,6 +564,9 @@
 		914F52B42574C2020020C44A /* requestHelper */ = {
 			isa = PBXGroup;
 			children = (
+				6649B14925769573003846A2 /* requests */,
+				6649B0E425766808003846A2 /* beneficiaryRequests */,
+				6649B0E3257667F1003846A2 /* moneyTransferRequests */,
 				914F52B52574C2020020C44A /* authRequests */,
 			);
 			path = requestHelper;
@@ -436,6 +575,8 @@
 		914F52B52574C2020020C44A /* authRequests */ = {
 			isa = PBXGroup;
 			children = (
+				6649B12F25768911003846A2 /* GetSendRecCurrencyRequest.swift */,
+				6649B11425767F7E003846A2 /* GetCustomerWalletDetailsRequest.swift */,
 				914F52B62574C2020020C44A /* GetCustomerProfileRequest.swift */,
 				914F52B72574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift */,
 				914F52B82574C2020020C44A /* LoginRequest.swift */,
@@ -445,6 +586,8 @@
 				914F52BC2574C2020020C44A /* GetCountryListRequest.swift */,
 				914F52BD2574C2020020C44A /* ForgotPinSetNewRequest.swift */,
 				914F52BE2574C2020020C44A /* AuthenticationRequest.swift */,
+				6649B0C02576541E003846A2 /* ChangePinRequest.swift */,
+				6649B13325768A88003846A2 /* EditCustomerProfileRequest.swift */,
 			);
 			path = authRequests;
 			sourceTree = "<group>";
@@ -484,6 +627,7 @@
 				91788B0D25763835001615F6 /* MyQRCode.swift */,
 				91788B0F25763A50001615F6 /* SettingsVC.swift */,
 				91788B1525763FA0001615F6 /* BillPayment.swift */,
+				6649B0C6257655E0003846A2 /* ChangePinVC.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -831,14 +975,21 @@
 				91AC2AA825716C27006A6E72 /* ProfileBasicDetailVC.swift in Sources */,
 				91802540257122A500EB0806 /* KWVerificationCodeView.swift in Sources */,
 				91788B1025763A50001615F6 /* SettingsVC.swift in Sources */,
+				6649B12D2576876C003846A2 /* GetSendRecCurrencyResponse.swift in Sources */,
+				6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */,
+				6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */,
 				6648E27D2574F89D003F697F /* ForgotPassotpVC.swift in Sources */,
 				91D622D42573AC220003E509 /* HistoryOptionVC.swift in Sources */,
+				6649B10325767B2E003846A2 /* WalletToWalletTransferRequest.swift in Sources */,
 				91E6773E2574D0D300C2E9D0 /* String+Helpers.swift in Sources */,
 				916A28DC25739E2A00A73313 /* SideMenuVC.swift in Sources */,
+				6649B11B25768424003846A2 /* CalTransferRequest.swift in Sources */,
 				914F52D82574C2C50020C44A /* BaseVC.swift in Sources */,
+				6649B10F25767E0B003846A2 /* LoadWalletResponse.swift in Sources */,
 				914F52A42574C1EE0020C44A /* Network.swift in Sources */,
 				916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */,
 				9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */,
+				6649B14F257695EC003846A2 /* GetCardDetailsResponse.swift in Sources */,
 				914F52C62574C2020020C44A /* AuthenticationResponse.swift in Sources */,
 				914F52C42574C2020020C44A /* SetNewPinResponse.swift in Sources */,
 				91C155C5256ECE7B001468FB /* LoginOptionVC.swift in Sources */,
@@ -852,19 +1003,28 @@
 				91E6773B2574D0D300C2E9D0 /* UIButton+Direction.swift in Sources */,
 				914F52D42574C2020020C44A /* SoapActionHelper.swift in Sources */,
 				914F52CB2574C2020020C44A /* GetCustomerProfileRequest.swift in Sources */,
+				6649B10925767CD8003846A2 /* RequestMoney.swift in Sources */,
 				66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */,
 				914F52A32574C1EE0020C44A /* UrlToBase64.swift in Sources */,
+				6649B10625767C3B003846A2 /* WalletToWalletTransferResponse.swift in Sources */,
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
 				91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */,
+				6649B0F825766F83003846A2 /* DeleteBeneficiaryResponse.swift in Sources */,
+				6649B1472576940C003846A2 /* GetBankNetworkListResponse.swift in Sources */,
 				91788B1625763FA0001615F6 /* BillPayment.swift in Sources */,
+				6649B0FF2576721F003846A2 /* TotiPaySendResponse.swift in Sources */,
+				6649B144257693B3003846A2 /* GetBankNetworkListRequest.swift in Sources */,
 				914F52D62574C2020020C44A /* HTTPConnection.swift in Sources */,
 				6648E2AE257515C2003F697F /* ImageView.swift in Sources */,
 				91076B4125762E8C00D4E3C8 /* CountryTableCell.swift in Sources */,
+				6649B13025768911003846A2 /* GetSendRecCurrencyRequest.swift in Sources */,
 				9180254725713A5F00EB0806 /* DropDown.swift in Sources */,
 				91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */,
 				9180253E257122A500EB0806 /* StringExtension.swift in Sources */,
+				6649B0EB257668D9003846A2 /* GetBeneficiaryListResponse.swift in Sources */,
 				914F52D22574C2020020C44A /* ForgotPinSetNewRequest.swift in Sources */,
 				915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */,
+				6649B0E625766858003846A2 /* BeneficiaryListRequest.swift in Sources */,
 				91E677352574D0D300C2E9D0 /* Languages.swift in Sources */,
 				91C155CF256ED1FC001468FB /* LoginSignUpOptionVC.swift in Sources */,
 				911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */,
@@ -873,11 +1033,14 @@
 				914F52CE2574C2020020C44A /* RegisterUserRequest.swift in Sources */,
 				91E677362574D0D300C2E9D0 /* ViewDirection.swift in Sources */,
 				91788B0E25763835001615F6 /* MyQRCode.swift in Sources */,
+				6649B10C25767D97003846A2 /* RequestMoneyResponse.swift in Sources */,
 				914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */,
 				9180253D257122A500EB0806 /* UIViewExtension.swift in Sources */,
 				91E677382574D0D300C2E9D0 /* LanguageManager.swift in Sources */,
 				91076B4525762FB600D4E3C8 /* MyCardsVC.swift in Sources */,
 				91E6773D2574D0D300C2E9D0 /* UIView+Swizzling.swift in Sources */,
+				6649B118257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift in Sources */,
+				6649B1592576AE2C003846A2 /* MoneyTransferRepository.swift in Sources */,
 				914F52D02574C2020020C44A /* VerifyOTPRequest.swift in Sources */,
 				914F52D12574C2020020C44A /* GetCountryListRequest.swift in Sources */,
 				914F52C82574C2020020C44A /* CountryListResponse.swift in Sources */,
@@ -885,18 +1048,28 @@
 				9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */,
 				91AC2AAA25716C3A006A6E72 /* ProfileAddressDetailVC.swift in Sources */,
 				91C155CD256ED007001468FB /* Storyboard.swift in Sources */,
+				6649B0FB25767044003846A2 /* TotiPaySend.swift in Sources */,
+				6649B0BE25764E5F003846A2 /* PreferenceHelper.swift in Sources */,
 				914F52A62574C1EE0020C44A /* GetDateAndTime.swift in Sources */,
+				6649B15325769790003846A2 /* GetCashNetworkListRequest.swift in Sources */,
 				91E59EEC2571868D00FEB6A7 /* HomeVC.swift in Sources */,
+				6649B12A257685CB003846A2 /* CalTransferResponse.swift in Sources */,
 				9180253C257122A500EB0806 /* KWTextFieldView.swift in Sources */,
+				6649B11525767F7E003846A2 /* GetCustomerWalletDetailsRequest.swift in Sources */,
+				6649B0F225766BF9003846A2 /* AddBeneficiaryResponse.swift in Sources */,
+				6649B0C7257655E0003846A2 /* ChangePinVC.swift in Sources */,
 				91C155C9256ECF31001468FB /* SignUpVC.swift in Sources */,
 				91E677342574D0D300C2E9D0 /* DefaultsKeys.swift in Sources */,
+				6649B13425768A88003846A2 /* EditCustomerProfileRequest.swift in Sources */,
 				91E677392574D0D300C2E9D0 /* Storage.swift in Sources */,
 				914F52CF2574C2020020C44A /* MatchPinRequest.swift in Sources */,
 				914F52D32574C2020020C44A /* AuthenticationRequest.swift in Sources */,
+				6649B0C4257654DE003846A2 /* ChangePinResponse.swift in Sources */,
 				91C155C7256ECEA9001468FB /* LoginVC.swift in Sources */,
 				91E6773A2574D0D300C2E9D0 /* UIView+Direction.swift in Sources */,
 				91E6773C2574D0D300C2E9D0 /* UIImageView+Direction.swift in Sources */,
 				91E59EF125718D1100FEB6A7 /* RateCollectionCell.swift in Sources */,
+				6649B0EF25766AB8003846A2 /* BeneficiaryAddRequest.swift in Sources */,
 				914F52CA2574C2020020C44A /* VerifyOTPResponse.swift in Sources */,
 				91076B4725762FF200D4E3C8 /* QuickPayVC.swift in Sources */,
 				91E677482574D6D900C2E9D0 /* SelectCountryVC.swift in Sources */,
@@ -905,8 +1078,11 @@
 				914F52A22574C1EE0020C44A /* ExtensionString.swift in Sources */,
 				91C155CB256ECF60001468FB /* VerifyOptVC.swift in Sources */,
 				915EBDA6257292A50072427D /* ForgotPassGetDataVC.swift in Sources */,
+				6649B0C12576541E003846A2 /* ChangePinRequest.swift in Sources */,
+				6649B0F525766EC7003846A2 /* DeleteBeneficiaryRequest.swift in Sources */,
 				914F52C92574C2020020C44A /* LoginResponse.swift in Sources */,
 				914F52A02574C1EE0020C44A /* Array.swift in Sources */,
+				6649B14B25769581003846A2 /* GetCardDetailsRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

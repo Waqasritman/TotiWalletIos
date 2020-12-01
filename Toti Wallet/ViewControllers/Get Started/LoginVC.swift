@@ -24,7 +24,9 @@ class LoginVC: BaseVC {
     @IBOutlet weak var lblCode: UILabel!
     @IBOutlet weak var btnFlag:UIButton!
     
+    
     var countryCode:String = ""
+    var flagURL:String = ""
     
     @IBOutlet weak var checkBoxOutlet:UIButton!{
         didSet{
@@ -93,6 +95,23 @@ class LoginVC: BaseVC {
         }
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if isByPhoneNumber {
+            txtPhoneNumber.text = preferenceHelper.getNumber()
+            lblCode.text = preferenceHelper.getCountryCode()
+        } else if !preferenceHelper.getEmail().isEmpty{
+            txtEmail.text = preferenceHelper.getEmail()
+            
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+      
+    }
+    
     @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.selectCountryVC.instance
         (nextVC as! SelectCountryVC).countryProtocol = self
@@ -101,7 +120,7 @@ class LoginVC: BaseVC {
     
     
     @IBAction func btnForgotPin(_ sender:Any) {
-        let nextVC = ControllerID.forgotEmail.instance
+        let nextVC = ControllerID.forgotPassGetEmailVC.instance
         (nextVC as! ForgotPassGetEmailVC).isByNumber = isByPhoneNumber
         self.pushWithFullScreen(nextVC)
     }
@@ -109,6 +128,11 @@ class LoginVC: BaseVC {
     @IBAction func checkbox(_ sender: UIButton){
         sender.checkboxAnimation {
             print(sender.isSelected)
+        }
+        if !sender.isSelected {
+            saveUserDetails()
+        } else  {
+            preferenceHelper.removeLoginDetails()
         }
     }
     
@@ -120,7 +144,7 @@ class LoginVC: BaseVC {
                 showProgress()
                 let request = LoginRequest()
                 if isByPhoneNumber {
-                    request.mobileNumber = txtPhoneNumber.text!
+                    request.mobileNumber =  String().removePlus(number: txtPhoneNumber.text!)
                     request.email = ""
                 } else {
                     request.email = txtEmail.text!
@@ -169,7 +193,9 @@ class LoginVC: BaseVC {
                 } else {
                     if response!.responseCode == 101 {
                         self.hideProgress()
-                      //  self.preferenceHelper.filCustomerData(userRequest: response!)
+                        self.preferenceHelper.isWalletNeedToUpdate(isNeed: true);
+                        self.preferenceHelper.setCustomerNo(customerNo: customerNo)
+                        self.preferenceHelper.filCustomerData(userRequest: response!)
                         let nextVC = ControllerID.tabbar.instance
                         self.pushWithFullScreen(nextVC)
                     }
@@ -191,10 +217,21 @@ extension LoginVC : CountryListProtocol {
             lblCode.text = country.countryCode
             countryCode = country.countryCode
         }
-      
+        flagURL = country.url
 //        let image:UIImage = Ui
 //        
 //       // btnFlag.setBackgroundImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
 //        btnFlag.setImage(UIImage(named: "play.png"), forState: UIControlState.Normal)
+    }
+    
+    
+    func saveUserDetails() {
+        if isByPhoneNumber {
+            preferenceHelper.setCountryCode(code: countryCode)
+            preferenceHelper.setNumber(number: txtPhoneNumber.text!)
+            preferenceHelper.setURL(url: flagURL)
+        } else {
+            preferenceHelper.setEmail(txtEmail.text!)
+        }
     }
 }
