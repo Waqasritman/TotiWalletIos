@@ -48,8 +48,11 @@ class ProfileAddressDetailVC: BaseVC , CountryListProtocol {
         txtAddress.layer.cornerRadius = 8
         btnNext.layer.cornerRadius = 8
         
-        btnCountryName.imageEdgeInsets.left = self.view.frame.width - 60
-        btnNationality.imageEdgeInsets.left = self.view.frame.width - 60
+        txtCity.setLeftPaddingPoints(5)
+        txtAddress.setLeftPaddingPoints(5)
+        
+        btnCountryName.imageEdgeInsets.left = self.view.frame.width - 50
+        btnNationality.imageEdgeInsets.left = self.view.frame.width - 50
     }
     
     @IBAction func btnShowCountriesFunc(_ sender: UIButton) {

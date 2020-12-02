@@ -45,6 +45,8 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let nextVC = ControllerID.businessTextVC.instance
+        (nextVC as! BusinessTextVC).heading = tableData[indexPath.row]
+        self.pushWithFullScreen(nextVC)
     }
 }

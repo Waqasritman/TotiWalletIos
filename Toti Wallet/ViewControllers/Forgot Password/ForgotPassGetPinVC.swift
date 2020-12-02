@@ -28,6 +28,10 @@ class ForgotPassGetPinVC: UIViewController {
         
         btnChangePin.layer.cornerRadius = 8
         
+        txtOldPin.setLeftPaddingPoints(5)
+        txtNewPin.setLeftPaddingPoints(5)
+        txtReEnterNewPin.setLeftPaddingPoints(5)
+        
     }
     
     @IBAction func btnContinueFunc(_ sender: UIButton) {
