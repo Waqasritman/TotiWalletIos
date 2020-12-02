@@ -61,30 +61,35 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Change PIN"{
-            let nextVC = ControllerID.changePinVC.instance
+            let nextVC = ControllerID.forgotPassGetPinVC.instance
             self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "My Beneficiary List"{
-            
+            let nextVC = ControllerID.beneficiaryListVC.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Pay via QR Code"{
-//            let viewController = BarcodeScannerViewController()
-//            viewController.codeDelegate = self
-//            viewController.errorDelegate = self
-//            viewController.dismissalDelegate = self
-//            self.presentWithFullScreen(viewController)
+            let viewController = BarcodeScannerViewController()
+            viewController.codeDelegate = self
+            viewController.errorDelegate = self
+            viewController.dismissalDelegate = self
+            self.presentWithFullScreen(viewController)
         }
         else if sideTableData[indexPath.row] == "My QR Code"{
-            
+            let nextVC = ControllerID.myQRCode.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Bill Payment"{
-            
+            let nextVC = ControllerID.billPaymentVC.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Loyalty Points"{
-            
+            let nextVC = ControllerID.loyaltyPointsVC.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Refer to Friends"{
-            
+            let nextVC = ControllerID.shareWthFriendVC.instance
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Settings"{
             let nextVC = ControllerID.settingsVC.instance

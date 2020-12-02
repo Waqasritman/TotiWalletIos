@@ -45,7 +45,6 @@
 		66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */; };
 		71CBD7E10021E48861BD0415 /* Pods_Toti_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */; };
 		91076B3D25762D1500D4E3C8 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */; };
-		91076B3F25762E7C00D4E3C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91076B3E25762E7C00D4E3C8 /* Assets.xcassets */; };
 		91076B4125762E8C00D4E3C8 /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */; };
 		91076B4325762EAC00D4E3C8 /* BusinessTranscationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */; };
 		91076B4525762FB600D4E3C8 /* MyCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4425762FB500D4E3C8 /* MyCardsVC.swift */; };
@@ -75,6 +74,15 @@
 		9116FA04256E4DCC00952AF4 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */; };
 		9116FA06256E581200952AF4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9116FA05256E581200952AF4 /* Colors.xcassets */; };
 		911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AE5232571909B006898D6 /* CustomTabBarController.swift */; };
+		913B41FC2577AE99001C9F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913B41FB2577AE98001C9F3F /* Assets.xcassets */; };
+		913B41FE2577AEAF001C9F3F /* BeneficaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B41FD2577AEAF001C9F3F /* BeneficaryTableCell.swift */; };
+		913B42002577AF83001C9F3F /* BusinessTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B41FF2577AF83001C9F3F /* BusinessTextVC.swift */; };
+		913B42022577AF8C001C9F3F /* BeneficiaryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B42012577AF8C001C9F3F /* BeneficiaryListVC.swift */; };
+		913B42042577AF95001C9F3F /* ShareWthFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B42032577AF94001C9F3F /* ShareWthFriendVC.swift */; };
+		913B42062577AFEA001C9F3F /* LoyaltyPointsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B42052577AFEA001C9F3F /* LoyaltyPointsVC.swift */; };
+		913B42082577B056001C9F3F /* NotificationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B42072577B056001C9F3F /* NotificationListVC.swift */; };
+		913B420B2577B08C001C9F3F /* MobileTopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B420A2577B08C001C9F3F /* MobileTopUpVC.swift */; };
+		913B420E2577B091001C9F3F /* SelectWalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B420D2577B090001C9F3F /* SelectWalletVC.swift */; };
 		9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149CA2A2571556D00CD8A34 /* AlertView.swift */; };
 		9149CA2D2571556D00CD8A34 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2B2571556D00CD8A34 /* AlertView.xib */; };
 		9149CA2F25715A3500CD8A34 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9149CA2E25715A3500CD8A34 /* Profile.storyboard */; };
@@ -191,7 +199,6 @@
 		8A477179D3EFAC7915BC1791 /* Pods-Toti Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toti Wallet.release.xcconfig"; path = "Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toti_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
-		91076B3E25762E7C00D4E3C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableCell.swift; sourceTree = "<group>"; };
 		91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTranscationVC.swift; sourceTree = "<group>"; };
 		91076B4425762FB500D4E3C8 /* MyCardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardsVC.swift; sourceTree = "<group>"; };
@@ -223,6 +230,15 @@
 		9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		9116FA05256E581200952AF4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		911AE5232571909B006898D6 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		913B41FB2577AE98001C9F3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		913B41FD2577AEAF001C9F3F /* BeneficaryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeneficaryTableCell.swift; sourceTree = "<group>"; };
+		913B41FF2577AF83001C9F3F /* BusinessTextVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTextVC.swift; sourceTree = "<group>"; };
+		913B42012577AF8C001C9F3F /* BeneficiaryListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeneficiaryListVC.swift; sourceTree = "<group>"; };
+		913B42032577AF94001C9F3F /* ShareWthFriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareWthFriendVC.swift; sourceTree = "<group>"; };
+		913B42052577AFEA001C9F3F /* LoyaltyPointsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoyaltyPointsVC.swift; sourceTree = "<group>"; };
+		913B42072577B056001C9F3F /* NotificationListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListVC.swift; sourceTree = "<group>"; };
+		913B420A2577B08C001C9F3F /* MobileTopUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileTopUpVC.swift; sourceTree = "<group>"; };
+		913B420D2577B090001C9F3F /* SelectWalletVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWalletVC.swift; sourceTree = "<group>"; };
 		9149CA2A2571556D00CD8A34 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		9149CA2B2571556D00CD8A34 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		9149CA2E25715A3500CD8A34 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -443,7 +459,7 @@
 		9116F9DF256E4D9300952AF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				91076B3E25762E7C00D4E3C8 /* Assets.xcassets */,
+				913B41FB2577AE98001C9F3F /* Assets.xcassets */,
 				9116FA05256E581200952AF4 /* Colors.xcassets */,
 				9116F9E0256E4DA700952AF4 /* Fonts */,
 			);
@@ -485,6 +501,23 @@
 				91C155CC256ED007001468FB /* Storyboard.swift */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		913B42092577B08C001C9F3F /* MobileTopUp */ = {
+			isa = PBXGroup;
+			children = (
+				913B420A2577B08C001C9F3F /* MobileTopUpVC.swift */,
+			);
+			name = MobileTopUp;
+			path = "../../../../Toti Wallet Working/Toti Wallet/ViewControllers/Home/MobileTopUp";
+			sourceTree = "<group>";
+		};
+		913B420C2577B090001C9F3F /* Add Money */ = {
+			isa = PBXGroup;
+			children = (
+				913B420D2577B090001C9F3F /* SelectWalletVC.swift */,
+			);
+			path = "Add Money";
 			sourceTree = "<group>";
 		};
 		914F52972574C1EE0020C44A /* utils */ = {
@@ -623,10 +656,14 @@
 			isa = PBXGroup;
 			children = (
 				916A28DB25739E2A00A73313 /* SideMenuVC.swift */,
+				913B41FF2577AF83001C9F3F /* BusinessTextVC.swift */,
+				913B42012577AF8C001C9F3F /* BeneficiaryListVC.swift */,
 				91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */,
+				913B42032577AF94001C9F3F /* ShareWthFriendVC.swift */,
 				91788B0D25763835001615F6 /* MyQRCode.swift */,
 				91788B0F25763A50001615F6 /* SettingsVC.swift */,
 				91788B1525763FA0001615F6 /* BillPayment.swift */,
+				913B42052577AFEA001C9F3F /* LoyaltyPointsVC.swift */,
 				6649B0C6257655E0003846A2 /* ChangePinVC.swift */,
 			);
 			path = SideMenu;
@@ -637,6 +674,7 @@
 			children = (
 				916A28DE25739F3900A73313 /* HeaderTableCell.swift */,
 				91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */,
+				913B41FD2577AEAF001C9F3F /* BeneficaryTableCell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -745,9 +783,12 @@
 		91E59EEA2571867300FEB6A7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				913B420C2577B090001C9F3F /* Add Money */,
+				913B42092577B08C001C9F3F /* MobileTopUp */,
 				91E59EEB2571868D00FEB6A7 /* HomeVC.swift */,
 				91076B4425762FB500D4E3C8 /* MyCardsVC.swift */,
 				911AE5232571909B006898D6 /* CustomTabBarController.swift */,
+				913B42072577B056001C9F3F /* NotificationListVC.swift */,
 				91076B4625762FF200D4E3C8 /* QuickPayVC.swift */,
 				91D622D32573AC220003E509 /* HistoryOptionVC.swift */,
 				91076B482576301D00D4E3C8 /* OurRatesVC.swift */,
@@ -909,7 +950,7 @@
 				9116F9D1256E46D700952AF4 /* Main.storyboard in Resources */,
 				9180253F257122A500EB0806 /* KWTextFieldView.xib in Resources */,
 				9116F9FD256E4DCC00952AF4 /* Lato-Thin.ttf in Resources */,
-				91076B3F25762E7C00D4E3C8 /* Assets.xcassets in Resources */,
+				913B41FC2577AE99001C9F3F /* Assets.xcassets in Resources */,
 				9149CA2F25715A3500CD8A34 /* Profile.storyboard in Resources */,
 				91076B3D25762D1500D4E3C8 /* SideMenu.storyboard in Resources */,
 				9116F9FF256E4DCC00952AF4 /* Lato-Regular.ttf in Resources */,
@@ -972,9 +1013,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				914F52A12574C1EE0020C44A /* KeyBoardExtension.swift in Sources */,
+				913B42082577B056001C9F3F /* NotificationListVC.swift in Sources */,
 				91AC2AA825716C27006A6E72 /* ProfileBasicDetailVC.swift in Sources */,
 				91802540257122A500EB0806 /* KWVerificationCodeView.swift in Sources */,
 				91788B1025763A50001615F6 /* SettingsVC.swift in Sources */,
+				913B42042577AF95001C9F3F /* ShareWthFriendVC.swift in Sources */,
 				6649B12D2576876C003846A2 /* GetSendRecCurrencyResponse.swift in Sources */,
 				6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */,
 				6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */,
@@ -986,6 +1029,7 @@
 				6649B11B25768424003846A2 /* CalTransferRequest.swift in Sources */,
 				914F52D82574C2C50020C44A /* BaseVC.swift in Sources */,
 				6649B10F25767E0B003846A2 /* LoadWalletResponse.swift in Sources */,
+				913B41FE2577AEAF001C9F3F /* BeneficaryTableCell.swift in Sources */,
 				914F52A42574C1EE0020C44A /* Network.swift in Sources */,
 				916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */,
 				9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */,
@@ -1005,6 +1049,7 @@
 				914F52CB2574C2020020C44A /* GetCustomerProfileRequest.swift in Sources */,
 				6649B10925767CD8003846A2 /* RequestMoney.swift in Sources */,
 				66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */,
+				913B42002577AF83001C9F3F /* BusinessTextVC.swift in Sources */,
 				914F52A32574C1EE0020C44A /* UrlToBase64.swift in Sources */,
 				6649B10625767C3B003846A2 /* WalletToWalletTransferResponse.swift in Sources */,
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
@@ -1036,9 +1081,11 @@
 				6649B10C25767D97003846A2 /* RequestMoneyResponse.swift in Sources */,
 				914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */,
 				9180253D257122A500EB0806 /* UIViewExtension.swift in Sources */,
+				913B420B2577B08C001C9F3F /* MobileTopUpVC.swift in Sources */,
 				91E677382574D0D300C2E9D0 /* LanguageManager.swift in Sources */,
 				91076B4525762FB600D4E3C8 /* MyCardsVC.swift in Sources */,
 				91E6773D2574D0D300C2E9D0 /* UIView+Swizzling.swift in Sources */,
+				913B420E2577B091001C9F3F /* SelectWalletVC.swift in Sources */,
 				6649B118257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift in Sources */,
 				6649B1592576AE2C003846A2 /* MoneyTransferRepository.swift in Sources */,
 				914F52D02574C2020020C44A /* VerifyOTPRequest.swift in Sources */,
@@ -1051,6 +1098,7 @@
 				6649B0FB25767044003846A2 /* TotiPaySend.swift in Sources */,
 				6649B0BE25764E5F003846A2 /* PreferenceHelper.swift in Sources */,
 				914F52A62574C1EE0020C44A /* GetDateAndTime.swift in Sources */,
+				913B42022577AF8C001C9F3F /* BeneficiaryListVC.swift in Sources */,
 				6649B15325769790003846A2 /* GetCashNetworkListRequest.swift in Sources */,
 				91E59EEC2571868D00FEB6A7 /* HomeVC.swift in Sources */,
 				6649B12A257685CB003846A2 /* CalTransferResponse.swift in Sources */,
@@ -1069,6 +1117,7 @@
 				91E6773A2574D0D300C2E9D0 /* UIView+Direction.swift in Sources */,
 				91E6773C2574D0D300C2E9D0 /* UIImageView+Direction.swift in Sources */,
 				91E59EF125718D1100FEB6A7 /* RateCollectionCell.swift in Sources */,
+				913B42062577AFEA001C9F3F /* LoyaltyPointsVC.swift in Sources */,
 				6649B0EF25766AB8003846A2 /* BeneficiaryAddRequest.swift in Sources */,
 				914F52CA2574C2020020C44A /* VerifyOTPResponse.swift in Sources */,
 				91076B4725762FF200D4E3C8 /* QuickPayVC.swift in Sources */,

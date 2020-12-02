@@ -13,8 +13,8 @@ class OurRatesVC: BaseVC {
     let moneyTransferRepo:MoneyTransferRepository = MoneyTransferRepository()
     @IBOutlet weak var btnConvert: UIButton!
     @IBOutlet weak var btnTransferNow: UIButton!
-    @IBOutlet weak var firstDropDown: DropDown!
-    @IBOutlet weak var secondDropDown: DropDown!
+    @IBOutlet weak var firstDropDown: UIButton!
+    @IBOutlet weak var secondDropDown: UIButton!
     @IBOutlet weak var txtFirst: UITextField!
     @IBOutlet weak var txtSecond: UITextField!
     
@@ -37,13 +37,22 @@ class OurRatesVC: BaseVC {
         txtFirst.layer.cornerRadius = 8
         txtSecond.layer.cornerRadius = 8
         
+        firstDropDown.imageEdgeInsets.left = self.firstDropDown.frame.width - 25
+        secondDropDown.imageEdgeInsets.left = self.secondDropDown.frame.width - 25
+        
         txtFirst.setLeftPaddingPoints(5)
         txtSecond.setLeftPaddingPoints(5)
     }
     
 
     @IBAction func btnBackFunc(_ sender: UIButton) {
-        (tabBarController as! CustomTabBarController).selectedIndex = 0
+        if let tabbar = tabBarController as? CustomTabBarController {
+            tabbar.selectedIndex = 0
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
 
 }

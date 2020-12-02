@@ -120,24 +120,34 @@ class HomeVC: BaseVC {
         //        self.presentWithFullScreen(viewController)
     }
     
+    @IBAction func btnNotificationFunc(_ sender: UIButton) {
+        let nextVC = ControllerID.notificationListVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
     @objc private func addMoneyFunc(_ sender: UIGestureRecognizer) {
-        
+        let nextVC = ControllerID.selectWalletVC.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     @objc private func moneyTransferFunc(_ sender: UIGestureRecognizer) {
-        
+        let nextVC = ControllerID.quickPayVC.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     @objc private func currencyConverterFunc(_ sender: UIGestureRecognizer) {
-        
+        let nextVC = ControllerID.ourRatesVC.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     @objc private func mobileTopUpFunc(_ sender: UIGestureRecognizer) {
-        
+        let nextVC = ControllerID.mobileTopUpVC.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     @objc private func billPaymentsFunc(_ sender: UIGestureRecognizer) {
-        
+        let nextVC = ControllerID.billPaymentVC.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     @objc private func prepaidCardFunc(_ sender: UIGestureRecognizer) {

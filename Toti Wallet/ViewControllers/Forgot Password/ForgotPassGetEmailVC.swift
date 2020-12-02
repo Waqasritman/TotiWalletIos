@@ -51,6 +51,8 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
         viewCode.addGestureRecognizer(viewCodeGesture)
         
+        txtEmail.setLeftPaddingPoints(5)
+        txtNumber.setLeftPaddingPoints(5)
         
         if isByNumber {
             phoneNumberView.isHidden = false

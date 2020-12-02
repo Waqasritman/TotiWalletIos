@@ -44,7 +44,13 @@ class QuickPayVC: UIViewController {
     }
 
     @IBAction func btnBackFunc(_ sender: UIButton) {
-        (tabBarController as! CustomTabBarController).selectedIndex = 0
+        if let check = tabBarController as? CustomTabBarController {
+            check.selectedIndex = 0
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
   
 
