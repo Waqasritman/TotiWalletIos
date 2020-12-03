@@ -8,7 +8,7 @@
 
 import UIKit
 import SideMenu
-//import BarcodeScanner
+import BarcodeScanner
 
 class SideMenuVC: UIViewController {
     
@@ -61,7 +61,7 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Change PIN"{
-            let nextVC = ControllerID.forgotPassGetPinVC.instance
+            let nextVC = ControllerID.changePinVC.instance
             self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "My Beneficiary List"{
@@ -101,18 +101,18 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
     }
 }
 
-//extension SideMenuVC: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
-//
-//    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-//
-//    }
-//
-//    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
-//
-//    }
-//
-//    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
-//        controller.dismiss(animated: true, completion: nil)
-//    }
-//}
+extension SideMenuVC: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
+
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+
+    }
+
+    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+
+    }
+
+    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
 

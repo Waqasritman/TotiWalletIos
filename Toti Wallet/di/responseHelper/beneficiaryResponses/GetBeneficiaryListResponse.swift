@@ -13,14 +13,19 @@ class GetBeneficiaryListResponse: XMLMappable {
         
     }
     
+    
+    init() {
+        
+    }
+    
     var nodeName: String!
     var beneficiaryList:[BeneficiaryList]?
     var responseCode:Int?
     var description:String?
     func mapping(map: XMLMap) {
-        responseCode <- map["s:Body.GetBeneficiaryList.GetBeneficiaryListResult.ResponseCode"]
-        description <- map["s:Body.GetBeneficiaryList.GetBeneficiaryListResult.Description"]
-        beneficiaryList <- map["s:Body.GetBeneficiaryListGetBeneficiaryListResult.obj.diffgr:diffgram.BeneficiaryList.tblBeneficiaryList"]
+        responseCode <- map["s:Body.GetBeneficiaryListResponse.GetBeneficiaryListResult.ResponseCode"]
+        description <- map["s:Body.GetBeneficiaryListResponse.GetBeneficiaryListResult.Description"]
+        beneficiaryList <- map["s:Body.GetBeneficiaryListResponse.GetBeneficiaryListResult.obj.diffgr:diffgram.BeneficiaryList.tblBeneficiaryList"]
     }
     
     

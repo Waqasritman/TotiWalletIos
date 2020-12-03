@@ -28,10 +28,7 @@ class MoneyTransferRepository {
                             }
                         } else {
                             DispatchQueue.main.async {
-                                let response = CalTransferResponse()
-                                response.description = "Something went wrong"
-                                response.responseCode = 500
-                                completion(response, nil)
+                                completion(data , nil)
                             }
                         }
                     } else {

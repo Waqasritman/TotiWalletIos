@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MyCardsVC: UIViewController {
+class MyCardsVC: BaseVC {
 
-    
+    let repo:Repository = Repository()
     @IBOutlet weak var viewGooglePay: UIView!
     @IBOutlet weak var viewPaytm: UIView!
     
@@ -19,12 +19,37 @@ class MyCardsVC: UIViewController {
 
         viewGooglePay.layer.cornerRadius = 8
         viewPaytm.layer.cornerRadius = 8
+        getCustomerCards()
+    }
+    
+    
+    @IBAction func btnLoadCard(_ sender:Any) {
         
     }
     
 
     @IBAction func btnBackFunc(_ sender: UIButton) {
         (tabBarController as! CustomTabBarController).selectedIndex = 0
+    }
+    
+    
+    func getCustomerCards() {
+        if Network.isConnectedToNetwork() {
+            self.showProgress()
+            let request = GetCardDetailsRequest()
+            request.customerNo = preferenceHelper.getCustomerNo()
+            request.languageID = preferenceHelper.getLanguage()
+            repo.loadCustomerCards(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CARD_DETAILS), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.showSuccess(message: response!.description!)
+                } else {
+                    self.showError(message: response!.description!)
+                }
+            })
+        }
     }
 
 }
