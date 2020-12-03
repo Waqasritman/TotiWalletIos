@@ -71,7 +71,6 @@
 		91076B4125762E8C00D4E3C8 /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */; };
 		91076B4325762EAC00D4E3C8 /* BusinessTranscationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */; };
 		91076B4525762FB600D4E3C8 /* MyCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4425762FB500D4E3C8 /* MyCardsVC.swift */; };
-		91076B4725762FF200D4E3C8 /* QuickPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4625762FF200D4E3C8 /* QuickPayVC.swift */; };
 		91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B482576301D00D4E3C8 /* OurRatesVC.swift */; };
 		9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CB256E46D700952AF4 /* AppDelegate.swift */; };
 		9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CD256E46D700952AF4 /* ViewController.swift */; };
@@ -254,7 +253,6 @@
 		91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableCell.swift; sourceTree = "<group>"; };
 		91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTranscationVC.swift; sourceTree = "<group>"; };
 		91076B4425762FB500D4E3C8 /* MyCardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardsVC.swift; sourceTree = "<group>"; };
-		91076B4625762FF200D4E3C8 /* QuickPayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickPayVC.swift; sourceTree = "<group>"; };
 		91076B482576301D00D4E3C8 /* OurRatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurRatesVC.swift; sourceTree = "<group>"; };
 		9116F9C8256E46D700952AF4 /* Toti Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toti Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9116F9CB256E46D700952AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -887,7 +885,6 @@
 				91076B4425762FB500D4E3C8 /* MyCardsVC.swift */,
 				911AE5232571909B006898D6 /* CustomTabBarController.swift */,
 				913B42072577B056001C9F3F /* NotificationListVC.swift */,
-				91076B4625762FF200D4E3C8 /* QuickPayVC.swift */,
 				91D622D32573AC220003E509 /* HistoryOptionVC.swift */,
 				91076B482576301D00D4E3C8 /* OurRatesVC.swift */,
 			);
@@ -1265,7 +1262,6 @@
 				6649B0EF25766AB8003846A2 /* BeneficiaryAddRequest.swift in Sources */,
 				914F52CA2574C2020020C44A /* VerifyOTPResponse.swift in Sources */,
 				6649B1C72577C43A003846A2 /* BeneficiaryRespository.swift in Sources */,
-				91076B4725762FF200D4E3C8 /* QuickPayVC.swift in Sources */,
 				91F22E442578E7DA00943E25 /* MobileTopUpVC.swift in Sources */,
 				91E677482574D6D900C2E9D0 /* SelectCountryVC.swift in Sources */,
 				914F52CC2574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift in Sources */,
@@ -1429,7 +1425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KZK2JVLCF3;
+				DEVELOPMENT_TEAM = W49WZ9B2KK;
 				INFOPLIST_FILE = "Toti Wallet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1448,7 +1444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KZK2JVLCF3;
+				DEVELOPMENT_TEAM = W49WZ9B2KK;
 				INFOPLIST_FILE = "Toti Wallet/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - BarcodeScanner (5.0.0)
-  - IQKeyboardManagerSwift (6.5.4)
+  - IQKeyboardManagerSwift (6.5.6)
   - PhoneNumberKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
     - PhoneNumberKit/UIKit (= 3.3.1)
@@ -44,7 +44,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BarcodeScanner: 2f5a53198eae49dc39bf61f2c1f05c04e01ff72d
-  IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
