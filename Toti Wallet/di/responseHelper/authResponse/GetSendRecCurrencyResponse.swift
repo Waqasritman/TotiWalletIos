@@ -16,7 +16,7 @@ class GetSendRecCurrencyResponse: XMLMappable {
     
     var nodeName: String!
     var currencyList:[RecCurrency]!
-    var responseCode:String!
+    var responseCode:Int!
     var description:String!
     func mapping(map: XMLMap) {
         responseCode <- map["s:Body.GetSendRecCurrencyResponse.GetSendRecCurrencyResult.ResponseCode"]

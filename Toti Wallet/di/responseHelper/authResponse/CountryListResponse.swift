@@ -33,7 +33,7 @@ class WRCountryList: XMLMappable {
     var nodeName: String!
     var countryId:String = ""
     var countryCode:String = ""
-    var countryType:String = ""
+    var countryType:Int = 0
     var countryName:String = ""
     var countryCurrency:String = ""
     var currencyShortName:String = ""

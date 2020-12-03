@@ -8,8 +8,19 @@
 
 import UIKit
 
-class WalletTransferVC: UIViewController {
+class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
+                        , OnConfirmSummaryProtocol {
 
+    
+    
+    var isSendingSelect = false
+    let calRequest:CalTransferRequest = CalTransferRequest()
+    let moneyTransferRepo:MoneyTransferRepository = MoneyTransferRepository()
+    let authRepo:AuthRepository = AuthRepository()
+    
+    
+    
+    let walletTransferRequest:WalletToWalletTransferRequest = WalletToWalletTransferRequest()
     @IBOutlet weak var btnConvert: UIButton!
     @IBOutlet weak var btnSendNow: UIButton!
     @IBOutlet weak var firstDropDown: UIButton!
@@ -22,11 +33,35 @@ class WalletTransferVC: UIViewController {
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtDescription: UITextField!
     @IBOutlet weak var lblCommision: UILabel!
+    @IBOutlet weak var lblCode:UILabel!
+    
+    
+    override func isValidate() -> Bool {
+        if lblCode.text!.isEmpty {
+            showError(message: "Select Country")
+            return false
+        } else if txtPhoneNumber.text!.isEmpty {
+            showError(message: "Enter number")
+            return false
+        } else if !verifyNumber(number: lblCode.text! + txtPhoneNumber.text!) {
+            showError(message: "Enter Number Is Invalid")
+            return false
+        } else if txtName.text!.isEmpty {
+            showError(message: "Enter Wallet name")
+            return false
+        }
+        return true
+    }
+    
+    
+    func isRateValidate() -> Bool {
+        return true
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         btnConvert.layer.cornerRadius = 8
         btnConvert.layer.borderWidth = 1
         btnConvert.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
@@ -54,30 +89,168 @@ class WalletTransferVC: UIViewController {
         
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
         viewCode.addGestureRecognizer(viewCodeGesture)
-        
     }
     
+    
+    @IBAction func btnSendingCurrency(_ sender:Any) {
+        isSendingSelect = true
+        getWalletCurrencies()
+    }
+    
+    
+    @IBAction func btnReceivingCurrency(_ sender:Any) {
+        isSendingSelect = false
+        getWalletCurrencies()
+    }
+    
+    
     @IBAction func btnConvertFunc(_ sender: UIButton) {
-        viewBottom.isHidden = false
-        btnConvert.isHidden = true
+        self.getRates()
     }
     
     @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.selectCountryVC.instance
+        (nextVC as! SelectCountryVC).countryProtocol = self
         self.pushWithFullScreen(nextVC)
     }
     
     @IBAction func btnSendNowFunc(_ sender: UIButton) {
-        let nextVC = ControllerID.verifyTransferDetailVC.instance
-        self.pushWithFullScreen(nextVC)
+        if isValidate() {
+            walletTransferRequest.customerNo = preferenceHelper.getCustomerNo()
+            walletTransferRequest.description = txtDescription.text!
+            walletTransferRequest.payInCurrency = calRequest.payInCurrency
+            walletTransferRequest.receiptCurrency = calRequest.payoutCurrency
+            walletTransferRequest.receiptMobileNo = String().removePlus(number: self.lblCode.text!
+                                                                            + self.txtPhoneNumber.text!)
+            walletTransferRequest.transferAmount = calRequest.transferAmount
+            walletTransferRequest.languageId = preferenceHelper.getLanguage()
+            let nextVC = ControllerID.verifyTransferDetailVC.instance
+            (nextVC  as! VerifyTransferDetailVC).walletRequest = walletTransferRequest
+            (nextVC as! VerifyTransferDetailVC).protocolConfirm = self
+            self.pushWithFullScreen(nextVC)
+        }
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        
+       
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
+    
+    func getWalletCurrencies() {
+        if Network.isConnectedToNetwork() {
+            let walletCurrencyRequest = GetWalletCurrencyListRequest()
+            walletCurrencyRequest.languageId = preferenceHelper.getLanguage()
+            showProgress()
+            moneyTransferRepo.getWalletCurrency(request: HTTPConnection.openConnection(stringParams: walletCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_WALLET_CURRENCY), completion: {(response , error ) in
+                if let error = error {
+                    self.hideProgress()
+                    self.showError(message: error)
+                } else if response!.responseCode == 101  {
+                    self.onCurrencyList(currencyList: response!.walletCurrencyList)
+                } else {
+                    self.hideProgress()
+                    self.showError(message: response!.description)
+                }
+            })
+            
+        } else {
+            self.noInternet()
+        }
+    }
+    
+    func getRates() {
+        if isRateValidate() {
+            if Network.isConnectedToNetwork() {
+                self.showProgress()
+                calRequest.transferAmount = txtFirst.text!
+                calRequest.paymentMode = PaymentMode.wallet_mode
+                print(calRequest.getXML())
+                moneyTransferRepo.getRates(request: HTTPConnection.openConnection(stringParams: calRequest.getXML(), action: SoapActionHelper.shared.ACTION_CAL_TRANSFER), completion: {(response , error) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else if response!.responseCode == 101 {
+                        self.showRates(response: response!)
+                        //  self.showSuccess(message: response!.description!)
+                    } else {
+                        self.showError(message: response!.description!)
+                    }
+                })
+            } else {
+                self.noInternet()
+            }
+        }
+        
+    }
+    
+    func onSelectCountry(country: WRCountryList) {
+        lblCode.text = country.countryCode
+    }
+    
+    
+    func onSelectCurrency(currency: RecCurrency) {
+        if isSendingSelect {
+            self.firstDropDown.setTitle(currency.currencyShortName, for: .normal)
+            calRequest.payInCurrency = currency.currencyShortName
+            calRequest.transferCurrency = currency.currencyShortName
+        } else {
+            self.secondDropDown.setTitle(currency.currencyShortName, for: .normal)
+            calRequest.payoutCurrency = currency.currencyShortName
+        }
+        txtSecond.text = ""
+    }
+    
+    
+    func onCurrencyList(currencyList: [RecCurrency]) {
+        if currencyList.count == 1 {
+            self.hideProgress()
+            if isSendingSelect {
+                self.firstDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
+                calRequest.payInCurrency = currencyList[0].currencyShortName
+                calRequest.transferCurrency = currencyList[0].currencyShortName
+            } else {
+                self.secondDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
+                calRequest.payoutCurrency = currencyList[0].currencyShortName
+            }
+            
+        } else {
+            self.hideProgress()
+            let nextVC = ControllerID.selectCurrencyVC.instance
+            (nextVC as! SelectCurrencyVC).currencyProtocol = self
+            (nextVC as! SelectCurrencyVC).filteredList = currencyList
+            (nextVC as! SelectCurrencyVC).countriesList = currencyList
+            self.pushWithFullScreen(nextVC)
+        }
+    }
+    
+    
+    func onConfirmSummary() {
+        let nextVC = ControllerID.verifyTransferPinVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    
+    
+    func showRates(response:CalTransferResponse) {
+        txtSecond.text = String(format: "%.02f", response.payoutAmount)
+        lblCommision.text = String(format: "%.02f", response.commission)
+        showViews()
+    }
+    
+    
+    func hideViews() {
+        viewBottom.isHidden = true
+        btnConvert.isHidden = false
+    }
+    
+    
+    func showViews() {
+        viewBottom.isHidden = false
+        btnConvert.isHidden = true
+    }
+    
 }

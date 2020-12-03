@@ -66,6 +66,11 @@
 		6649B2122578DBFE003846A2 /* GetWalletCurrencyListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B2112578DBFE003846A2 /* GetWalletCurrencyListRequest.swift */; };
 		6649B2152578DC90003846A2 /* WalletCurrencyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649B2142578DC90003846A2 /* WalletCurrencyListResponse.swift */; };
 		66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */; };
+		66D65AE12578F87600898996 /* SelectCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D65AE02578F87600898996 /* SelectCurrencyVC.swift */; };
+		66D65AE42579000800898996 /* CountryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D65AE32579000800898996 /* CountryParser.swift */; };
+		66D65AEC2579046F00898996 /* CurrencyListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D65AEB2579046F00898996 /* CurrencyListProtocol.swift */; };
+		66D65AFB257929ED00898996 /* PaymentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D65AFA257929ED00898996 /* PaymentMode.swift */; };
+		66D65AFE2579351900898996 /* OnConfirmSummaryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D65AFD2579351900898996 /* OnConfirmSummaryProtocol.swift */; };
 		71CBD7E10021E48861BD0415 /* Pods_Toti_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */; };
 		91076B3D25762D1500D4E3C8 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */; };
 		91076B4125762E8C00D4E3C8 /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */; };
@@ -247,6 +252,11 @@
 		6649B2112578DBFE003846A2 /* GetWalletCurrencyListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWalletCurrencyListRequest.swift; sourceTree = "<group>"; };
 		6649B2142578DC90003846A2 /* WalletCurrencyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCurrencyListResponse.swift; sourceTree = "<group>"; };
 		66C9B9042574DE49005AAF1B /* GetCustomerProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerProfileResponse.swift; sourceTree = "<group>"; };
+		66D65AE02578F87600898996 /* SelectCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyVC.swift; sourceTree = "<group>"; };
+		66D65AE32579000800898996 /* CountryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryParser.swift; sourceTree = "<group>"; };
+		66D65AEB2579046F00898996 /* CurrencyListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListProtocol.swift; sourceTree = "<group>"; };
+		66D65AFA257929ED00898996 /* PaymentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMode.swift; sourceTree = "<group>"; };
+		66D65AFD2579351900898996 /* OnConfirmSummaryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnConfirmSummaryProtocol.swift; sourceTree = "<group>"; };
 		8A477179D3EFAC7915BC1791 /* Pods-Toti Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toti Wallet.release.xcconfig"; path = "Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toti_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
@@ -395,6 +405,8 @@
 			isa = PBXGroup;
 			children = (
 				6648E2992575120C003F697F /* CountryListProtocol.swift */,
+				66D65AEB2579046F00898996 /* CurrencyListProtocol.swift */,
+				66D65AFD2579351900898996 /* OnConfirmSummaryProtocol.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -620,6 +632,8 @@
 				914F529F2574C1EE0020C44A /* GetDateAndTime.swift */,
 				6649B0BD25764E5F003846A2 /* PreferenceHelper.swift */,
 				6649B1C92577CFD0003846A2 /* BarcodeGenerator.swift */,
+				66D65AE32579000800898996 /* CountryParser.swift */,
+				66D65AFA257929ED00898996 /* PaymentMode.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -887,6 +901,7 @@
 				913B42072577B056001C9F3F /* NotificationListVC.swift */,
 				91D622D32573AC220003E509 /* HistoryOptionVC.swift */,
 				91076B482576301D00D4E3C8 /* OurRatesVC.swift */,
+				66D65AE02578F87600898996 /* SelectCurrencyVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1159,10 +1174,12 @@
 				9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */,
 				6649B14F257695EC003846A2 /* GetCardDetailsResponse.swift in Sources */,
 				914F52C62574C2020020C44A /* AuthenticationResponse.swift in Sources */,
+				66D65AFB257929ED00898996 /* PaymentMode.swift in Sources */,
 				914F52C42574C2020020C44A /* SetNewPinResponse.swift in Sources */,
 				91C155C5256ECE7B001468FB /* LoginOptionVC.swift in Sources */,
 				9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */,
 				91AC2AAC25717AD0006A6E72 /* UITextField+Extension.swift in Sources */,
+				66D65AFE2579351900898996 /* OnConfirmSummaryProtocol.swift in Sources */,
 				915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */,
 				91F22E3D2578E7D000943E25 /* RequestMoneyVC.swift in Sources */,
 				91076B4325762EAC00D4E3C8 /* BusinessTranscationVC.swift in Sources */,
@@ -1178,6 +1195,7 @@
 				913B42002577AF83001C9F3F /* BusinessTextVC.swift in Sources */,
 				914F52A32574C1EE0020C44A /* UrlToBase64.swift in Sources */,
 				6649B10625767C3B003846A2 /* WalletToWalletTransferResponse.swift in Sources */,
+				66D65AEC2579046F00898996 /* CurrencyListProtocol.swift in Sources */,
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
 				6649B1DA2577DC13003846A2 /* GetProfileImage.swift in Sources */,
 				91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */,
@@ -1185,6 +1203,7 @@
 				6649B1472576940C003846A2 /* GetBankNetworkListResponse.swift in Sources */,
 				91788B1625763FA0001615F6 /* BillPayment.swift in Sources */,
 				6649B0FF2576721F003846A2 /* TotiPaySendResponse.swift in Sources */,
+				66D65AE12578F87600898996 /* SelectCurrencyVC.swift in Sources */,
 				6649B2092578C7A7003846A2 /* GetSourceOfIncomeListResponse.swift in Sources */,
 				6649B144257693B3003846A2 /* GetBankNetworkListRequest.swift in Sources */,
 				914F52D62574C2020020C44A /* HTTPConnection.swift in Sources */,
@@ -1264,6 +1283,7 @@
 				6649B1C72577C43A003846A2 /* BeneficiaryRespository.swift in Sources */,
 				91F22E442578E7DA00943E25 /* MobileTopUpVC.swift in Sources */,
 				91E677482574D6D900C2E9D0 /* SelectCountryVC.swift in Sources */,
+				66D65AE42579000800898996 /* CountryParser.swift in Sources */,
 				914F52CC2574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift in Sources */,
 				91C155D2256ED370001468FB /* UIViewController+Extension.swift in Sources */,
 				914F52A22574C1EE0020C44A /* ExtensionString.swift in Sources */,

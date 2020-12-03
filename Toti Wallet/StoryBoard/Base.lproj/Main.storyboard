@@ -824,6 +824,9 @@
                                                 <state key="normal" image="downArrow">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnSendingCurrency:" destination="vjq-GS-LvH" eventType="touchUpInside" id="Y4j-fe-bIu"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lV-6o-DUg">
                                                 <rect key="frame" x="179.5" y="0.0" width="163.5" height="42"/>
@@ -835,6 +838,9 @@
                                                 <state key="normal" image="downArrow">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnReceivingCurrency:" destination="vjq-GS-LvH" eventType="touchUpInside" id="usj-1z-vID"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -902,6 +908,9 @@
                                         <state key="normal" title="Convert">
                                             <color key="titleColor" name="931D55"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnConvertRates:" destination="vjq-GS-LvH" eventType="touchUpInside" id="vlJ-ar-3Ok"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMe-jL-A6U">
                                         <rect key="frame" x="16" y="250" width="343" height="42"/>

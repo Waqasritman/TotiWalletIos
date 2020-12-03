@@ -46,6 +46,8 @@ enum ControllerID<T: UIViewController> : String {
     case verifyTransferPinVC = "VerifyTransferPinVC"
     case requestMoneyVC = "RequestMoneyVC"
     
+    case selectCurrencyVC = "SelectCurrencyVC"
+    
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
     }
@@ -62,7 +64,7 @@ enum ControllerID<T: UIViewController> : String {
         case .businessTranscationVC, .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
             return .SideMenu
             
-        case .quickPayVC, .walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC:
+        case .quickPayVC, .walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC , .selectCurrencyVC:
             return .MoneyTransfer
         }
     }
