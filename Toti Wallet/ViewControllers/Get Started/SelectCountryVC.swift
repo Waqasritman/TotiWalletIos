@@ -14,7 +14,7 @@ class SelectCountryVC: BaseVC , UISearchBarDelegate {
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var searchTableView: UITableView!
-    
+
     
     var countriesList:[WRCountryList] = Array()
     var filteredList:[WRCountryList] = Array()
@@ -22,7 +22,9 @@ class SelectCountryVC: BaseVC , UISearchBarDelegate {
     
     var countryProtocol:CountryListProtocol!
     
-    var codeShown = true;
+    var codeShown = false;
+    var isShowCurrency = false
+    var countryType = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +41,20 @@ class SelectCountryVC: BaseVC , UISearchBarDelegate {
                     self.showError(message: error)
                 } else {
                     if response?.responseCode == 101 {
-                        self.filteredList.removeAll()
-                        self.filteredList.append(contentsOf: response!.wrCountryList!)
-                        
                         self.countriesList.removeAll()
-                        self.countriesList.append(contentsOf: response!.wrCountryList!)
+                        self.filteredList.removeAll()
+                        if self.countryType > 0 {
+                            if self.countryType == CountryParser.RECEIVE {
+                                self.filteredList.append(contentsOf: CountryParser.getReceivingCountry(list: response!.wrCountryList!))
+                                self.countriesList.append(contentsOf: CountryParser.getReceivingCountry(list: response!.wrCountryList!))
+                            } else if self.countryType == CountryParser.SEND {
+                                self.filteredList.append(contentsOf: CountryParser.getSendingCountry(list: response!.wrCountryList!))
+                                self.countriesList.append(contentsOf: CountryParser.getSendingCountry(list: response!.wrCountryList!))
+                            }
+                        } else {
+                            self.filteredList.append(contentsOf: response!.wrCountryList!)
+                            self.countriesList.append(contentsOf: response!.wrCountryList!)
+                        }
                         self.searchTableView.reloadData()
 
                     } else {
@@ -95,27 +106,15 @@ extension SelectCountryVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = filteredList[indexPath.row].countryName
         if codeShown {
             cell.lblDetail.text = filteredList[indexPath.row].countryCode
+        } else if isShowCurrency {
+            cell.lblDetail.text = filteredList[indexPath.row].currencyShortName
         } else {
             cell.lblDetail.text = ""
         }
        
         cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].url), placeholderImage: UIImage(named: "flag"))
         cell.imageOutlet.makeImageCircle()
-//
-//        if let url = URL(string: filteredList[indexPath.row].url) {
-//                    do{
-//                        let data = try Data(contentsOf: url)
-//                        let imageVar = UIImage(data: data)
-//                        if let myImage: UIImage = imageVar {
-//                            cell?.imageView?.image =  myImage
-//                          //  cell?.imageView?.makeImageCircle()
-//                        }
-//                    }catch {
-//                        cell?.imageView?.image = nil
-//                    }
-//                }
-//        cell?.imageView?.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-       
+
         return cell
     }
     

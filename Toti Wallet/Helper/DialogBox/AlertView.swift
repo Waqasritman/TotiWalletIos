@@ -61,6 +61,7 @@ class AlertView: UIView {
     }
     
     @IBAction func btnCancelFunc(_ sender: UIButton) {
+        self.delegate?.handleAction(action: true)
         parentView.removeFromSuperview()
     }
     

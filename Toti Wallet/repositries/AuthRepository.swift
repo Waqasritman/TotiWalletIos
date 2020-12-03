@@ -12,6 +12,38 @@ import Alamofire
 
 class AuthRepository {
     
+    
+    
+    func getReceiveCurrency(request:URLRequest ,completion: @escaping (GetSendRecCurrencyResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<GetSendRecCurrencyResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    
+                    if response.value?.responseCode == 101 {
+                        if let data = response.value {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch  {
+                                print(error)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(nil, response.value?.description)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
+    
     func registerUser(request:URLRequest ,completion: @escaping (CustomerRegistration?, String?) -> () ) {
         Alamofire.request(request)
             .responseXMLObject{(response: DataResponse<CustomerRegistration>) in

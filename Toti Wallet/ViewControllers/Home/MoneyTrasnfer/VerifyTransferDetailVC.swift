@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VerifyTransferDetailVC: UIViewController {
+class VerifyTransferDetailVC: BaseVC {
 
     
     @IBOutlet weak var txtSendingCurrency: UITextField!
@@ -19,6 +19,9 @@ class VerifyTransferDetailVC: UIViewController {
     @IBOutlet weak var txtDescription: UITextField!
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var btnConfirm: UIButton!
+    
+    var walletRequest:WalletToWalletTransferRequest!
+    var protocolConfirm:OnConfirmSummaryProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +38,14 @@ class VerifyTransferDetailVC: UIViewController {
         btnConfirm.layer.borderWidth = 1
         btnConfirm.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
         
+        
+        
+        txtSendingCurrency.text = walletRequest.payInCurrency
+        
     }
     
     @IBAction func btnConfirmFunc(_ sender: UIButton) {
-        let nextVC = ControllerID.verifyTransferPinVC.instance
-        self.pushWithFullScreen(nextVC)
+        protocolConfirm.onConfirmSummary()
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
