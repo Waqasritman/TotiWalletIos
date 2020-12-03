@@ -20,6 +20,9 @@ class BeneficiaryListVC: BaseVC {
     @IBOutlet weak var notFoundView: UIView!
     @IBOutlet weak var btnAddBeneficary: UIButton!
     
+    var isFromBackTransfer = false
+    var isFromCashTransfer = false
+    
     var beneficiaryList : [BeneficiaryList] = Array()
     
     override func viewDidLoad() {

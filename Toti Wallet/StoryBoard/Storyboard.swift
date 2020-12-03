@@ -41,6 +41,11 @@ enum ControllerID<T: UIViewController> : String {
     
     case changePinVC = "ChangePinVC"
     
+    case walletTransferVC = "WalletTransferVC"
+    case verifyTransferDetailVC = "VerifyTransferDetailVC"
+    case verifyTransferPinVC = "VerifyTransferPinVC"
+    case requestMoneyVC = "RequestMoneyVC"
+    
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
     }
@@ -52,10 +57,13 @@ enum ControllerID<T: UIViewController> : String {
             return .GetStarted
         case .profileBasicDetailVC, .profileAddressDetailVC:
             return .Profile
-        case .tabbar, .quickPayVC, .notificationListVC, .ourRatesVC, .selectWalletVC, .mobileTopUpVC:
+        case .tabbar, .notificationListVC, .ourRatesVC, .selectWalletVC, .mobileTopUpVC:
             return .Main
         case .businessTranscationVC, .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
             return .SideMenu
+            
+        case .quickPayVC, .walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC:
+            return .MoneyTransfer
         }
     }
     
@@ -66,6 +74,7 @@ enum Storyboard: String {
     case Profile
     case Main
     case SideMenu
+    case MoneyTransfer
     
     func instance<T>(viewController: String) -> T {
         return self.refrence.instantiateViewController(withIdentifier: viewController) as! T
