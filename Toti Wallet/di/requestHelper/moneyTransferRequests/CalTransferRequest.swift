@@ -11,13 +11,14 @@ class CalTransferRequest {
     var payInCurrency:String = ""
     var payoutCurrency:String = ""
     var transferCurrency:String = ""
-    var transferAmount:Double = 0.0
-    var paymentMode:Int = 1
+    var transferAmount:String = ""
+    var paymentMode:String = "!"
     var languageId = "1"
     
     
     public func getXML() -> String {
-        let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
+        let stringParams : String =
+            "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
             + "<soapenv:Header/>" +
             "<soapenv:Body>" +
             "<tpay:CalTransfer>" +
@@ -31,8 +32,8 @@ class CalTransferRequest {
             "<tpay:PayInCurrency>" + payInCurrency + "</tpay:PayInCurrency >" +
             "<tpay:PayoutCurrency>" + payoutCurrency + "</tpay:PayoutCurrency>" +
             "<tpay:TransferCurrency>" + transferCurrency + "</tpay:TransferCurrency>" +
-            "<tpay:TransferAmount>" + String(describing:transferAmount) + "</tpay:TransferAmount>" +
-            "<tpay:PaymentMode>" + String(describing:paymentMode) + "</tpay:PaymentMode>" +
+            "<tpay:TransferAmount>" + transferAmount + "</tpay:TransferAmount>" +
+            "<tpay:PaymentMode>" + paymentMode + "</tpay:PaymentMode>" +
             "</tpay:Req>" +
             "</tpay:CalTransfer>" +
             "</soapenv:Body>" +

@@ -20,7 +20,7 @@ class PreferenceHelper :NSObject{
     // MARK: User Preference Keys
     private let KEY_FIRST_NAME = "first_name";
     private let KEY_LAST_NAME = "last_name";
-
+    private let KEY_USER_IMAGE = "user_image"
     private let KEY_DOCUMENTED_UPLOADED = "is_docs_uploaded"
     private let KEY_ADDRESS = "address";
     private let KEY_PROFILE_PIC = "profile_pic";
@@ -51,6 +51,16 @@ class PreferenceHelper :NSObject{
         
           ph.synchronize()
       }
+    
+    
+    func userImage(imageData:String) {
+        ph.set(imageData, forKey: KEY_USER_IMAGE)
+        ph.synchronize()
+    }
+    
+    func getUserImage() -> String {
+        return (ph.value(forKey: KEY_USER_IMAGE) as? String) ?? ""
+    }
       
     
     func documentUploaded(value:Bool) {

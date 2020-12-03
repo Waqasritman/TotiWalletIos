@@ -108,8 +108,8 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
                             print(response!.firstName)
                             ForgotPinRequestApprovedUserRequest.shared.idNumber = ""
                             ForgotPinRequestApprovedUserRequest.shared.idExpireDate = ""
-                            let nextVc = ControllerID.forgotPassPinCV.instance
-                            self.pushWithFullScreen(nextVc)
+                          //  let nextVc = ControllerID.forgotPassPinCV.instance
+                           // self.pushWithFullScreen(nextVc)
                         }
                     }
                 })

@@ -40,8 +40,10 @@ class OurRatesVC: BaseVC {
         firstDropDown.imageEdgeInsets.left = self.firstDropDown.frame.width - 25
         secondDropDown.imageEdgeInsets.left = self.secondDropDown.frame.width - 25
         
-        txtFirst.setLeftPaddingPoints(5)
-        txtSecond.setLeftPaddingPoints(5)
+        txtFirst.setLeftPaddingPoints(10)
+        txtSecond.setLeftPaddingPoints(10)
+        
+        getRates()
     }
     
 
@@ -53,6 +55,31 @@ class OurRatesVC: BaseVC {
             self.navigationController?.popViewController(animated: true)
         }
         
+    }
+    
+    
+    func getRates() {
+        if Network.isConnectedToNetwork() {
+            self.showProgress()
+            let request:CalTransferRequest = CalTransferRequest()
+            request.languageId = "1"
+            request.payInCurrency = "GBP"
+            request.payoutCurrency = "INR"
+            request.transferCurrency = "GBP"
+            request.transferAmount = "500.0"
+            request.paymentMode = "bank"
+            print(request.getXML())
+            moneyTransferRepo.getRates(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_CAL_TRANSFER), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.showSuccess(message: response!.description!)
+                } else {
+                    self.showError(message: response!.description!)
+                }
+            })
+        }
     }
 
 }

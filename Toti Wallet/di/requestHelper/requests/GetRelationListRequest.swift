@@ -1,22 +1,20 @@
 //
-//  BeneficiaryListRequest.swift
+//  GetRelationListRequest.swift
 //  Toti Wallet
 //
-//  Created by Mohammad Waqas on 12/1/20.
+//  Created by Mohammad Waqas on 12/3/20.
 //  Copyright © 2020 iOS Technologies. All rights reserved.
 //
 
 import Foundation
-class BeneficiaryListRequest {
-    var customerNo = ""
+class GetRelationListRequest {
     var languageId = "1"
     
     public func getXML() -> String {
-        let stringParams : String =
-            "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
+        let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
             + "<soapenv:Header/>" +
             "<soapenv:Body>" +
-            "<tpay:GetBeneficiaryList>" +
+            "<tpay:GetRelationList>" +
             "<tpay:Req>" +
             "<tpay:Credentials>" +
             "<tpay:PartnerCode>" + StaticHelper.PARTNER_CODE_VALUE + "</tpay:PartnerCode>" +
@@ -24,9 +22,8 @@ class BeneficiaryListRequest {
             "<tpay:UserPassword>" + StaticHelper.USER_PASSWORD_VALUE + "</tpay:UserPassword>" +
             "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
             "</tpay:Credentials>" +
-            "<tpay:CustomerNo>" + customerNo + "</tpay:CustomerNo>" +
             "</tpay:Req>" +
-            "</tpay:GetBeneficiaryList>" +
+            "</tpay:GetRelationList>" +
             "</soapenv:Body>" +
             "</soapenv:Envelope>"
         

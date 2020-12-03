@@ -94,6 +94,9 @@ class HomeVC: BaseVC {
         super.viewDidAppear(true)
         
         
+        print(preferenceHelper.getUserImage())
+        
+        
         if preferenceHelper.getIsDocumentUploaded() {
             btnRegistration.isHidden = true
         } else {

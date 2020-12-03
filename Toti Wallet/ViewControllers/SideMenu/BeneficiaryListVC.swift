@@ -8,25 +8,60 @@
 
 import UIKit
 
-class BeneficiaryListVC: UIViewController {
-
-    @IBOutlet weak var listTableView: UITableView!
+class BeneficiaryListVC: BaseVC {
+    
+    let beneRepository:BeneficiaryRespository = BeneficiaryRespository()
+    @IBOutlet weak var listTableView: UITableView! {
+        didSet {
+            listTableView.delegate = self
+            listTableView.dataSource = self
+        }
+    }
     @IBOutlet weak var notFoundView: UIView!
     @IBOutlet weak var btnAddBeneficary: UIButton!
     
-    let tableData : [String] = []
+    var beneficiaryList : [BeneficiaryList] = Array()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        listTableView.delegate = self
-        listTableView.dataSource = self
+    
         btnAddBeneficary.layer.cornerRadius = 8
+        
+        btnAddBeneficary.isHidden = true
+        getBeneficiary()
     }
+    
+
     
 
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    func getBeneficiary() {
+        if Network.isConnectedToNetwork() {
+            self.showProgress()
+            let beneRequest = BeneficiaryListRequest()
+            beneRequest.customerNo = preferenceHelper.getCustomerNo()
+            beneRequest.languageId = preferenceHelper.getLanguage()
+        
+            beneRepository.getBeneficiaryList(request: HTTPConnection.openConnection(stringParams: beneRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_BENEFICIARY_LIST), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.beneficiaryList.removeAll()
+                    self.beneficiaryList.append(contentsOf: response!.beneficiaryList!)
+                    self.listTableView.reloadData()
+                } else {
+                    self.showError(message: response!.description!)
+                }
+            })
+            
+        } else {
+            self.noInternet()
+        }
     }
 
 }
@@ -36,7 +71,7 @@ extension BeneficiaryListVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if tableData.isEmpty {
+        if beneficiaryList.isEmpty {
             tableView.isHidden = true
             notFoundView.isHidden = false
         }
@@ -44,19 +79,23 @@ extension BeneficiaryListVC: UITableViewDataSource, UITableViewDelegate {
             tableView.isHidden = false
             notFoundView.isHidden = true
         }
-        return tableData.count
+        return beneficiaryList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "BeneficaryTableCell") as! BeneficaryTableCell
         cell.mainView.layer.cornerRadius = 8
-        cell.lblTitle.text = "Test"
-        cell.lblSubtitle.text = "Account no. 123456789"
+        cell.lblTitle.text = beneficiaryList[indexPath.row].firstName
+        cell.lblSubtitle.text = "Account no " + beneficiaryList[indexPath.row].accountNumber
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
 }

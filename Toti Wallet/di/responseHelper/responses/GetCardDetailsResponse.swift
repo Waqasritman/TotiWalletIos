@@ -14,6 +14,11 @@ class GetCardDetailsResponse: XMLMappable {
         
     }
     
+    
+    init() {
+        
+    }
+    
     var nodeName: String!
     var responseCode:Int?
     var description:String?

@@ -11,6 +11,7 @@ import SDWebImage
 
 
 class LoginVC: BaseVC {
+    let restRepo:RestRepositor = RestRepositor()
     let authRepository:AuthRepository = AuthRepository()
     //MARK - variables
     @IBOutlet weak var phoneNumberView: UIView!
@@ -192,12 +193,12 @@ class LoginVC: BaseVC {
                     self.showError(message: error)
                 } else {
                     if response!.responseCode == 101 {
-                        self.hideProgress()
+                       
                         self.preferenceHelper.isWalletNeedToUpdate(isNeed: true);
                         self.preferenceHelper.setCustomerNo(customerNo: customerNo)
                         self.preferenceHelper.filCustomerData(userRequest: response!)
-                        let nextVC = ControllerID.tabbar.instance
-                        self.pushWithFullScreen(nextVC)
+                        self.getCustomerImage(customerNo: customerNo)
+                   
                     }
                 }
             })
@@ -208,6 +209,36 @@ class LoginVC: BaseVC {
         }
     }
     
+    
+    
+    
+    func getCustomerImage(customerNo:String) {
+        let request = GetCustomerProfileImageRequest()
+        request.Customer_No = customerNo
+       // request.credentials.LanguageID = 1
+        print(request.toJSON())
+        restRepo.getCustomerImage(param: request.toJSON(), completion: {(response ,error) in
+            self.hideProgress()
+            if let error = error {
+                print(error)
+                self.toHome()
+            } else if response!.ResponseCode == 101 {
+                print(response!.Description)
+                self.preferenceHelper.userImage(imageData: response!.ImageData)
+                self.toHome()
+            } else {
+                print("error")
+                self.toHome()
+            }
+        })
+    }
+    
+    
+    
+    func toHome() {
+        let nextVC = ControllerID.tabbar.instance
+        self.pushWithFullScreen(nextVC)
+    }
     
 }
 extension LoginVC : CountryListProtocol {

@@ -39,6 +39,7 @@ class RecCurrency: XMLMappable {
     var nodeName: String!
     
     func mapping(map: XMLMap) {
+        id <- map["Currency_Id"]
         currencyName <- map["CurrencyName"]
         currencyShortName <- map["CurrencyShortName"]
         image_URL <- map["Image_URL"]
