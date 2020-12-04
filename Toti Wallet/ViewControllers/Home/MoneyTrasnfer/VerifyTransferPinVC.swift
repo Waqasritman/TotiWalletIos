@@ -8,10 +8,21 @@
 
 import UIKit
 
-class VerifyTransferPinVC: UIViewController {
+class VerifyTransferPinVC: BaseVC {
 
+    let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var viewVerificationCode: KWVerificationCodeView!
+    var delegate:PinVerifiedProtocol!
+    
+    
+    override func isValidate() -> Bool {
+        if viewVerificationCode.getVerificationCode().count < 4 {
+            showError(message: "askfordigit".localizedLowercase)
+            return false
+        }
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +37,34 @@ class VerifyTransferPinVC: UIViewController {
     }
     
 
-    @IBAction func btnBackFunc(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+    
+    @IBAction func btnConfirm(_ sender:Any) {
+        if Network.isConnectedToNetwork() {
+            if isValidate() {
+                let request = MatchPinRequest()
+                request.customerNO = preferenceHelper.getCustomerNo()
+                request.languageID = preferenceHelper.getLanguage()
+                request.customerPIN = viewVerificationCode.getVerificationCode()
+                showProgress()
+                authRepo.matchPin(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_MATCH_PIN), completion: {(response, error) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else if response?.responseCode == 101 {
+                        self.delegate.onPinVerified(action: true)
+                        self.btnBackFunc(self)
+                    } else {
+                        self.showError(message: response!.description)
+                    }
+                })
+            }
+        } else {
+            self.noInternet()
+        }
     }
     
-
+    
+    @IBAction func btnBackFunc(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

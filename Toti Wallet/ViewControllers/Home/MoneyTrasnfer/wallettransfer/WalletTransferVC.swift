@@ -9,7 +9,7 @@
 import UIKit
 
 class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
-                        , OnConfirmSummaryProtocol {
+                        , OnConfirmSummaryProtocol , PinVerifiedProtocol {
 
     
     
@@ -92,6 +92,9 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     }
     
     
+    
+    
+    
     @IBAction func btnSendingCurrency(_ sender:Any) {
         isSendingSelect = true
         getWalletCurrencies()
@@ -127,12 +130,13 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
             let nextVC = ControllerID.verifyTransferDetailVC.instance
             (nextVC  as! VerifyTransferDetailVC).walletRequest = walletTransferRequest
             (nextVC as! VerifyTransferDetailVC).protocolConfirm = self
+            (nextVC as! VerifyTransferDetailVC).walletName = txtName.text!
             self.pushWithFullScreen(nextVC)
         }
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-       
+        self.navigationController?.popToViewController(ControllerID.tabbar.instance, animated: true)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -230,7 +234,15 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     
     func onConfirmSummary() {
         let nextVC = ControllerID.verifyTransferPinVC.instance
+        (nextVC as! VerifyTransferPinVC).delegate = self
         self.pushWithFullScreen(nextVC)
+    }
+    
+    
+    func onPinVerified(action: Bool) {
+        if action {
+            walletTransfer()
+        }
     }
     
     
@@ -239,6 +251,23 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
         txtSecond.text = String(format: "%.02f", response.payoutAmount)
         lblCommision.text = String(format: "%.02f", response.commission)
         showViews()
+    }
+    
+    
+    func walletTransfer() {
+        if Network.isConnectedToNetwork() {
+            showProgress()
+            moneyTransferRepo.walletToWallet(request: HTTPConnection.openConnection(stringParams: walletTransferRequest.getXML(), action: SoapActionHelper.shared.ACTION_WALLET_TO_WALLET), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.showAlert(title: "successfully_tranfared".localizedLowercase, message: "wallet_traansaction_success".localizedLowercase)
+                } else {
+                    self.showError(message: response!.description!)
+                }
+            })
+        }
     }
     
     

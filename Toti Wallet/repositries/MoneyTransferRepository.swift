@@ -12,6 +12,42 @@ import Alamofire
 class MoneyTransferRepository {
     
     
+    func getPurposeList(request:URLRequest ,completion: @escaping (PurposeOfTransferListResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<PurposeOfTransferListResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(data , nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = PurposeOfTransferListResponse()
+                            response.description = "Something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+                
+            }
+    }
+    
     func getWalletCurrency(request:URLRequest ,completion: @escaping (WalletCurrencyListResponse?, String?) -> () ) {
         Alamofire.request(request)
             .responseXMLObject{(response: DataResponse<WalletCurrencyListResponse>) in
@@ -222,10 +258,7 @@ class MoneyTransferRepository {
                             }
                         } else {
                             DispatchQueue.main.async {
-                                let response = WalletToWalletTransferResponse()
-                                response.description = "Something went wrong"
-                                response.responseCode = 500
-                                completion(response, nil)
+                                completion(data, nil)
                             }
                         }
                     } else {

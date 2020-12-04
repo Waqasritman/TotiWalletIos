@@ -29,8 +29,12 @@ class BeneficiaryListVC: BaseVC {
         super.viewDidLoad()
     
         btnAddBeneficary.layer.cornerRadius = 8
+        if isFromBankTransfer || isFromCashTransfer {
+            btnAddBeneficary.isHidden = false
+        } else {
+            btnAddBeneficary.isHidden = true
+        }
         
-        btnAddBeneficary.isHidden = true
         getBeneficiary()
     }
     
@@ -40,6 +44,8 @@ class BeneficiaryListVC: BaseVC {
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
     
     
     func getBeneficiary() {
@@ -55,7 +61,14 @@ class BeneficiaryListVC: BaseVC {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
                     self.beneficiaryList.removeAll()
-                    self.beneficiaryList.append(contentsOf: response!.beneficiaryList!)
+                    if self.isFromCashTransfer {
+                        self.beneficiaryList.append(contentsOf: BeneficiaryParser.getCashBene(list: response!.beneficiaryList!))
+                    } else if self.isFromBankTransfer {
+                        self.beneficiaryList.append(contentsOf: BeneficiaryParser.getBankBene(list: response!.beneficiaryList!))
+                    } else {
+                        self.beneficiaryList.append(contentsOf: response!.beneficiaryList!)
+                    }
+                   
                     self.listTableView.reloadData()
                 } else {
                     self.showError(message: response!.description!)
@@ -96,7 +109,9 @@ extension BeneficiaryListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isFromBankTransfer {
             let nextVC = ControllerID.bankTransferConverterVC.instance
+            (nextVC as! BankTransferConverterVC).beneDetails = beneficiaryList[indexPath.row]
             self.pushWithFullScreen(nextVC)
+    
         }
         else if isFromCashTransfer{
             let nextVC = ControllerID.cashBeneficaryVC.instance

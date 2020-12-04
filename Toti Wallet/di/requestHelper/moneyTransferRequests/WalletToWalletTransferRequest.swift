@@ -32,9 +32,9 @@ class WalletToWalletTransferRequest {
             "<tpay:Customer_No>" + customerNo + "</tpay:Customer_No>" +
             "<tpay:PayIn_Currency>" + payInCurrency + "</tpay:PayIn_Currency>" +
             "<tpay:Recipient_Mobile_No>" + receiptMobileNo + "</tpay:Recipient_Mobile_No>" +
-            "<tpay:Recipient_Currency>" + "\(String(describing: receiptCurrency))" + "</tpay:Recipient_Currency>" +
+            "<tpay:Recipient_Currency>" + receiptCurrency + "</tpay:Recipient_Currency>" +
             "<tpay:Transfer_Amount>" + transferAmount + "</tpay:Transfer_Amount>" +
-            "<tpay:Description>" + "\(String(describing: description))" + "</tpay:Description>" +
+            "<tpay:Description>" + description + "</tpay:Description>" +
             "</tpay:Req>" +
             "</tpay:WalletToWalletTransfer>" +
             "</soapenv:Body>" +

@@ -8,6 +8,8 @@
 
 import Foundation
 class TotiPaySend {
+    static let shared = TotiPaySend()
+    
     var sendingAmounttomatch:Double = 0.0
     var languageId:String = "1"
     

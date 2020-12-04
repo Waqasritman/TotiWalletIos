@@ -22,10 +22,36 @@ class VerifyTransferDetailVC: BaseVC {
     
     var walletRequest:WalletToWalletTransferRequest!
     var protocolConfirm:OnConfirmSummaryProtocol!
+    var walletName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initDesign()
+        showSummary()
+        disableViews()
+    }
+    
+    
+    func showSummary() {
+        txtSendingCurrency.text = walletRequest.payInCurrency
+        txtReceivingCurrency.text = walletRequest.receiptCurrency
+        txtMobileNumber.text = walletRequest.receiptMobileNo
+        txtWalletName.text = walletName
+        txtDescription.text = walletRequest.description
+        txtAmount.text = walletRequest.transferAmount
+    }
+    
+    func disableViews() {
+        txtSendingCurrency.isEnabled = false
+        txtReceivingCurrency.isEnabled = false
+        txtMobileNumber.isEnabled = false
+        txtWalletName.isEnabled = false
+        txtDescription.isEnabled = false
+        txtAmount.isEnabled = false
+    }
+    
+    
+    func initDesign() {
         txtSendingCurrency.layer.cornerRadius = 8
         txtReceivingCurrency.layer.cornerRadius = 8
         txtMobileNumber.layer.cornerRadius = 8
@@ -37,18 +63,14 @@ class VerifyTransferDetailVC: BaseVC {
         
         btnConfirm.layer.borderWidth = 1
         btnConfirm.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
-        
-        
-        
-        txtSendingCurrency.text = walletRequest.payInCurrency
-        
     }
     
     @IBAction func btnConfirmFunc(_ sender: UIButton) {
+        self.btnBackFunc(self)
         protocolConfirm.onConfirmSummary()
     }
     
-    @IBAction func btnBackFunc(_ sender: UIButton) {
+    @IBAction func btnBackFunc(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
