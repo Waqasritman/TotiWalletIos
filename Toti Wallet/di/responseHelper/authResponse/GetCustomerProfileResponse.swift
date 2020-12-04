@@ -39,7 +39,7 @@ class GetCustomerProfileResponse:XMLMappable  {
     var isActive:String = ""
     var idTypeDescription:String = ""
     var sourceOfDescription:String = ""
-    
+    var kyc:String = ""
     
     func mapping(map: XMLMap) {
         responseCode <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.ResponseCode"]
@@ -55,7 +55,14 @@ class GetCustomerProfileResponse:XMLMappable  {
         email <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.EmailID"]
         residenceCountry <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.ResidenceCountry"]
         
-        isApprovedKYC <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.IsKYC_Approved"]
+        kyc <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.IsKYC_Approved"]
+        
+        if kyc.lowercased() == "true" {
+            isApprovedKYC = true
+        } else {
+            isApprovedKYC = false
+        }
+        
         dateOfBirth <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.DateOfBirth"]
         idNumber <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.IDNumber"]
         idType <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.IDType"]

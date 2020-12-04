@@ -989,26 +989,15 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="5Dl-Mh-WKl">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="370"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notFound" translatesAutoresizingMaskIntoConstraints="NO" id="Lol-xg-eKV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="252.5"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="notFound" translatesAutoresizingMaskIntoConstraints="NO" id="Lol-xg-eKV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="344" height="320.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Beneficiary Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oM-BE-GRO">
-                                                        <rect key="frame" x="0.0" y="278.5" width="344" height="23.5"/>
+                                                        <rect key="frame" x="0.0" y="346.5" width="344" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcD-Jf-VPT">
-                                                        <rect key="frame" x="0.0" y="328" width="344" height="42"/>
-                                                        <color key="backgroundColor" name="931D55"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="42" id="RQV-59-RuP"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="18"/>
-                                                        <state key="normal" title="Add Beneficiary">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -1096,13 +1085,27 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcD-Jf-VPT">
+                                        <rect key="frame" x="15" y="600" width="344" height="42"/>
+                                        <color key="backgroundColor" name="931D55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="RQV-59-RuP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="18"/>
+                                        <state key="normal" title="Add Beneficiary">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="KbE-td-HP8" firstAttribute="leading" secondItem="RMv-ix-aG6" secondAttribute="leading" constant="16" id="1KG-F4-t48"/>
+                                    <constraint firstAttribute="bottom" secondItem="jcD-Jf-VPT" secondAttribute="bottom" constant="25" id="52m-zr-j3x"/>
                                     <constraint firstItem="0O7-b3-q1B" firstAttribute="top" secondItem="KbE-td-HP8" secondAttribute="bottom" constant="16" id="9Xh-mF-LnJ"/>
                                     <constraint firstItem="0O7-b3-q1B" firstAttribute="leading" secondItem="RMv-ix-aG6" secondAttribute="leading" constant="16" id="IcY-cd-aWy"/>
                                     <constraint firstItem="W8Z-3G-F8g" firstAttribute="leading" secondItem="RMv-ix-aG6" secondAttribute="leading" constant="16" id="L7i-Yi-EEA"/>
+                                    <constraint firstAttribute="trailing" secondItem="jcD-Jf-VPT" secondAttribute="trailing" constant="16" id="NtB-oX-j7U"/>
+                                    <constraint firstItem="jcD-Jf-VPT" firstAttribute="leading" secondItem="RMv-ix-aG6" secondAttribute="leading" constant="15" id="XHE-kw-Nrh"/>
                                     <constraint firstItem="H2p-Xp-SLp" firstAttribute="centerY" secondItem="RMv-ix-aG6" secondAttribute="centerY" id="aKG-3e-eYb"/>
                                     <constraint firstAttribute="trailing" secondItem="W8Z-3G-F8g" secondAttribute="trailing" constant="16" id="eFX-tA-TZ1"/>
                                     <constraint firstItem="e5A-IF-1cA" firstAttribute="leading" secondItem="0O7-b3-q1B" secondAttribute="leading" id="ito-MM-JzP"/>

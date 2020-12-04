@@ -35,6 +35,10 @@ class BeneficiaryList: XMLMappable {
     required init?(map: XMLMap) {
         
     }
+    
+    init() {
+        
+    }
     var isHoldForOfAC:Bool = false
     var beneficiaryNumber:String = ""
     var customerNo:String = ""
