@@ -51,7 +51,7 @@ class QuickPayVC: UIViewController {
     
     @objc func viewBankFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.beneficiaryListVC.instance
-        (nextVC as! BeneficiaryListVC).isFromBackTransfer = true
+        (nextVC as! BeneficiaryListVC).isFromBankTransfer = true
         self.pushWithFullScreen(nextVC)
     }
     

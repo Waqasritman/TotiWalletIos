@@ -143,6 +143,14 @@
 		915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */; };
 		915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */; };
 		915EBDA6257292A50072427D /* ForgotPassGetDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */; };
+		91633D05257A1C2D00A8225A /* CardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D04257A1C2D00A8225A /* CardTableCell.swift */; };
+		91633D07257A1C8E00A8225A /* CashBeneficaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D06257A1C8E00A8225A /* CashBeneficaryVC.swift */; };
+		91633D09257A1C9400A8225A /* PaymentOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D08257A1C9400A8225A /* PaymentOptionVC.swift */; };
+		91633D0B257A1C9800A8225A /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D0A257A1C9800A8225A /* SummaryVC.swift */; };
+		91633D0D257A1CA200A8225A /* BankTransferConverterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D0C257A1CA200A8225A /* BankTransferConverterVC.swift */; };
+		91633D0F257A1CA800A8225A /* CardDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D0E257A1CA800A8225A /* CardDetailVC.swift */; };
+		91633D11257A1CAD00A8225A /* CashBeneficaryAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D10257A1CAD00A8225A /* CashBeneficaryAddressVC.swift */; };
+		91633D13257A1CB200A8225A /* CashBeneficiaryBranchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91633D12257A1CB200A8225A /* CashBeneficiaryBranchVC.swift */; };
 		916A28DC25739E2A00A73313 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A28DB25739E2A00A73313 /* SideMenuVC.swift */; };
 		916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916A28DE25739F3900A73313 /* HeaderTableCell.swift */; };
 		91788B0E25763835001615F6 /* MyQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91788B0D25763835001615F6 /* MyQRCode.swift */; };
@@ -332,6 +340,14 @@
 		915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetEmailVC.swift; sourceTree = "<group>"; };
 		915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetPinVC.swift; sourceTree = "<group>"; };
 		915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetDataVC.swift; sourceTree = "<group>"; };
+		91633D04257A1C2D00A8225A /* CardTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableCell.swift; sourceTree = "<group>"; };
+		91633D06257A1C8E00A8225A /* CashBeneficaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashBeneficaryVC.swift; sourceTree = "<group>"; };
+		91633D08257A1C9400A8225A /* PaymentOptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentOptionVC.swift; sourceTree = "<group>"; };
+		91633D0A257A1C9800A8225A /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
+		91633D0C257A1CA200A8225A /* BankTransferConverterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankTransferConverterVC.swift; sourceTree = "<group>"; };
+		91633D0E257A1CA800A8225A /* CardDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailVC.swift; sourceTree = "<group>"; };
+		91633D10257A1CAD00A8225A /* CashBeneficaryAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashBeneficaryAddressVC.swift; sourceTree = "<group>"; };
+		91633D12257A1CB200A8225A /* CashBeneficiaryBranchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashBeneficiaryBranchVC.swift; sourceTree = "<group>"; };
 		916A28DB25739E2A00A73313 /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		916A28DE25739F3900A73313 /* HeaderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableCell.swift; sourceTree = "<group>"; };
 		91788B0D25763835001615F6 /* MyQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyQRCode.swift; sourceTree = "<group>"; };
@@ -784,6 +800,7 @@
 				916A28DE25739F3900A73313 /* HeaderTableCell.swift */,
 				91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */,
 				913B41FD2577AEAF001C9F3F /* BeneficaryTableCell.swift */,
+				91633D04257A1C2D00A8225A /* CardTableCell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -986,8 +1003,15 @@
 			children = (
 				91F22E382578E7D000943E25 /* RequestMoneyVC.swift */,
 				91F22E392578E7D000943E25 /* WalletTransferVC.swift */,
+				91633D06257A1C8E00A8225A /* CashBeneficaryVC.swift */,
 				91F22E3A2578E7D000943E25 /* VerifyTransferDetailVC.swift */,
+				91633D08257A1C9400A8225A /* PaymentOptionVC.swift */,
+				91633D0C257A1CA200A8225A /* BankTransferConverterVC.swift */,
+				91633D0E257A1CA800A8225A /* CardDetailVC.swift */,
+				91633D12257A1CB200A8225A /* CashBeneficiaryBranchVC.swift */,
+				91633D0A257A1C9800A8225A /* SummaryVC.swift */,
 				91F22E3B2578E7D000943E25 /* VerifyTransferPinVC.swift */,
+				91633D10257A1CAD00A8225A /* CashBeneficaryAddressVC.swift */,
 				91F22E3C2578E7D000943E25 /* QuickPayVC.swift */,
 			);
 			path = MoneyTrasnfer;
@@ -1154,6 +1178,7 @@
 				6649B12D2576876C003846A2 /* GetSendRecCurrencyResponse.swift in Sources */,
 				6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */,
 				6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */,
+				91633D0F257A1CA800A8225A /* CardDetailVC.swift in Sources */,
 				6649B2032578C12E003846A2 /* GetRelationListResponse.swift in Sources */,
 				6648E27D2574F89D003F697F /* ForgotPassotpVC.swift in Sources */,
 				91D622D42573AC220003E509 /* HistoryOptionVC.swift in Sources */,
@@ -1173,6 +1198,7 @@
 				916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */,
 				9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */,
 				6649B14F257695EC003846A2 /* GetCardDetailsResponse.swift in Sources */,
+				91633D13257A1CB200A8225A /* CashBeneficiaryBranchVC.swift in Sources */,
 				914F52C62574C2020020C44A /* AuthenticationResponse.swift in Sources */,
 				66D65AFB257929ED00898996 /* PaymentMode.swift in Sources */,
 				914F52C42574C2020020C44A /* SetNewPinResponse.swift in Sources */,
@@ -1181,6 +1207,7 @@
 				91AC2AAC25717AD0006A6E72 /* UITextField+Extension.swift in Sources */,
 				66D65AFE2579351900898996 /* OnConfirmSummaryProtocol.swift in Sources */,
 				915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */,
+				91633D11257A1CAD00A8225A /* CashBeneficaryAddressVC.swift in Sources */,
 				91F22E3D2578E7D000943E25 /* RequestMoneyVC.swift in Sources */,
 				91076B4325762EAC00D4E3C8 /* BusinessTranscationVC.swift in Sources */,
 				914F52C52574C2020020C44A /* ForgotPinApprovedUserResponse.swift in Sources */,
@@ -1210,6 +1237,7 @@
 				6648E2AE257515C2003F697F /* ImageView.swift in Sources */,
 				91076B4125762E8C00D4E3C8 /* CountryTableCell.swift in Sources */,
 				6649B13025768911003846A2 /* GetSendRecCurrencyRequest.swift in Sources */,
+				91633D05257A1C2D00A8225A /* CardTableCell.swift in Sources */,
 				9180254725713A5F00EB0806 /* DropDown.swift in Sources */,
 				91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */,
 				9180253E257122A500EB0806 /* StringExtension.swift in Sources */,
@@ -1225,6 +1253,7 @@
 				91F22E412578E7D000943E25 /* QuickPayVC.swift in Sources */,
 				914F52CE2574C2020020C44A /* RegisterUserRequest.swift in Sources */,
 				91E677362574D0D300C2E9D0 /* ViewDirection.swift in Sources */,
+				91633D07257A1C8E00A8225A /* CashBeneficaryVC.swift in Sources */,
 				91788B0E25763835001615F6 /* MyQRCode.swift in Sources */,
 				6649B10C25767D97003846A2 /* RequestMoneyResponse.swift in Sources */,
 				914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */,
@@ -1236,11 +1265,13 @@
 				6649B1CD2577D730003846A2 /* Repository.swift in Sources */,
 				6649B118257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift in Sources */,
 				6649B1ED2578BB49003846A2 /* AddCustomerCardNoRequest.swift in Sources */,
+				91633D0D257A1CA200A8225A /* BankTransferConverterVC.swift in Sources */,
 				6649B1592576AE2C003846A2 /* MoneyTransferRepository.swift in Sources */,
 				914F52D02574C2020020C44A /* VerifyOTPRequest.swift in Sources */,
 				6649B1FD2578BEEB003846A2 /* GetIdTypeResponse.swift in Sources */,
 				914F52D12574C2020020C44A /* GetCountryListRequest.swift in Sources */,
 				914F52C82574C2020020C44A /* CountryListResponse.swift in Sources */,
+				91633D09257A1C9400A8225A /* PaymentOptionVC.swift in Sources */,
 				914F52A52574C1EE0020C44A /* ProgressBar.swift in Sources */,
 				6649B1FA2578BE8E003846A2 /* GetIDTypeRequest.swift in Sources */,
 				9149CA2C2571556D00CD8A34 /* AlertView.swift in Sources */,
@@ -1285,6 +1316,7 @@
 				91E677482574D6D900C2E9D0 /* SelectCountryVC.swift in Sources */,
 				66D65AE42579000800898996 /* CountryParser.swift in Sources */,
 				914F52CC2574C2020020C44A /* ForgotPinRequestApprovedUserRequest.swift in Sources */,
+				91633D0B257A1C9800A8225A /* SummaryVC.swift in Sources */,
 				91C155D2256ED370001468FB /* UIViewController+Extension.swift in Sources */,
 				914F52A22574C1EE0020C44A /* ExtensionString.swift in Sources */,
 				6649B2152578DC90003846A2 /* WalletCurrencyListResponse.swift in Sources */,

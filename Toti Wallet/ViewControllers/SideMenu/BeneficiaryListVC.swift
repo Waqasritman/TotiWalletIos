@@ -20,7 +20,7 @@ class BeneficiaryListVC: BaseVC {
     @IBOutlet weak var notFoundView: UIView!
     @IBOutlet weak var btnAddBeneficary: UIButton!
     
-    var isFromBackTransfer = false
+    var isFromBankTransfer = false
     var isFromCashTransfer = false
     
     var beneficiaryList : [BeneficiaryList] = Array()
@@ -94,7 +94,14 @@ extension BeneficiaryListVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if isFromBankTransfer {
+            let nextVC = ControllerID.bankTransferConverterVC.instance
+            self.pushWithFullScreen(nextVC)
+        }
+        else if isFromCashTransfer{
+            let nextVC = ControllerID.cashBeneficaryVC.instance
+            self.pushWithFullScreen(nextVC)
+        }
     }
     
     
