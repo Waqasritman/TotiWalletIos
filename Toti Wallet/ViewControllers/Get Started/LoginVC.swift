@@ -145,7 +145,7 @@ class LoginVC: BaseVC {
                 showProgress()
                 let request = LoginRequest()
                 if isByPhoneNumber {
-                    request.mobileNumber =  String().removePlus(number: txtPhoneNumber.text!)
+                    request.mobileNumber =  String().removePlus(number: countryCode +  txtPhoneNumber.text!)
                     request.email = ""
                 } else {
                     request.email = txtEmail.text!

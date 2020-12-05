@@ -458,7 +458,10 @@
                                                             <constraint firstItem="5nt-wN-QdH" firstAttribute="top" secondItem="cl3-o5-XfV" secondAttribute="top" constant="2" id="pSB-5r-qAa"/>
                                                         </constraints>
                                                         <connections>
+                                                            <outlet property="image" destination="pnq-Ai-cOC" id="BLh-8d-afo"/>
                                                             <outlet property="viewMain" destination="5nt-wN-QdH" id="MvS-zx-OrL"/>
+                                                            <outlet property="walletBalance" destination="9Lw-Kb-rXm" id="ffh-B0-XvC"/>
+                                                            <outlet property="walletName" destination="I60-aR-MFS" id="1TR-mf-ljy"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>

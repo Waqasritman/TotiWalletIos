@@ -56,6 +56,16 @@ enum ControllerID<T: UIViewController> : String {
     case cashBeneficaryAddressVC = "CashBeneficaryAddressVC"
     case cashBeneficiaryBranchVC = "CashBeneficiaryBranchVC"
     
+    
+    case sourceOfIncome = "SourceOfIncomeVC"
+    case purposeOfTransfer = "PurposeVC"
+    case relationVC = "RelationVC"
+    
+    
+    case ycities = "YCitiesVC"
+    case yLocations = "YLocationsVC"
+    case yBranches = "YBranchesVC"
+    
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
     }
@@ -72,7 +82,7 @@ enum ControllerID<T: UIViewController> : String {
         case .businessTranscationVC, .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
             return .SideMenu
             
-        case .quickPayVC, .walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC:
+        case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches:
             return .MoneyTransfer
         }
     }

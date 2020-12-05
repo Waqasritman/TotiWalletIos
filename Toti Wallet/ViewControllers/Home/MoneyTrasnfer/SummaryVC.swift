@@ -16,6 +16,16 @@ class SummaryVC: UIViewController {
     @IBOutlet weak var viewPayable: UIView!
     @IBOutlet weak var viewAmount: UIView!
     
+    
+    @IBOutlet weak var beneNamelbl:UILabel!
+    @IBOutlet weak var sendingCurrenyLbl:UILabel!
+    @IBOutlet weak var totalPayableLbl:UILabel!
+    @IBOutlet weak var transferAmountLbl:UILabel!
+    
+    
+    var totalPayable:String!
+    var beneName:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +34,12 @@ class SummaryVC: UIViewController {
         viewSendingCurrencey.layer.cornerRadius = 8
         viewPayable.layer.cornerRadius = 8
         viewAmount.layer.cornerRadius = 8
+        
+        beneNamelbl.text = beneName
+        sendingCurrenyLbl.text = TotiPaySend.shared.payInCurrency
+        totalPayableLbl.text = totalPayable + " " + TotiPaySend.shared.payInCurrency
+        transferAmountLbl.text = TotiPaySend.shared.transferAmount + " " + TotiPaySend.shared.payOutCurrency
+        
         
     }
     

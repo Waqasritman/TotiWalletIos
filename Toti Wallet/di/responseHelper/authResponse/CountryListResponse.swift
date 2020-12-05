@@ -31,7 +31,7 @@ class WRCountryList: XMLMappable {
     required init?(map: XMLMap) {}
     
     var nodeName: String!
-    var countryId:String = ""
+    var countryId:Int!
     var countryCode:String = ""
     var countryType:Int = 0
     var countryName:String = ""

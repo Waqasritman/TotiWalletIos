@@ -564,6 +564,7 @@
                         <outlet property="btnLogin" destination="o23-Jd-lPc" id="RwK-t8-eWz"/>
                         <outlet property="checkBoxOutlet" destination="mNa-Fw-ovJ" id="JvB-mt-ZAc"/>
                         <outlet property="emailView" destination="STT-Je-zj9" id="6Ul-5M-7eD"/>
+                        <outlet property="lblCode" destination="e1m-4i-sIF" id="iph-Ti-j9a"/>
                         <outlet property="mainView" destination="uMt-9C-Oac" id="P36-z8-OkZ"/>
                         <outlet property="phoneNumberView" destination="DZR-nC-QxM" id="cMs-0l-9q1"/>
                         <outlet property="txtEmail" destination="FbQ-KJ-Bo0" id="qQT-GN-WRt"/>
@@ -774,11 +775,12 @@
                     <connections>
                         <outlet property="btnAccept" destination="oYn-Gv-MpK" id="fD9-Sw-1Yh"/>
                         <outlet property="btnSendOTP" destination="Cd7-SQ-Y6o" id="PYa-FZ-ADW"/>
+                        <outlet property="lblCode" destination="j4K-h6-XM6" id="wZA-eU-oZT"/>
                         <outlet property="lblHeading" destination="c2s-6R-KTe" id="AZ3-ma-U2Q"/>
                         <outlet property="mainView" destination="dzs-n7-CIl" id="F20-yK-3Of"/>
                         <outlet property="txtEmail" destination="oIv-Sg-uk9" id="sMB-fE-1IJ"/>
                         <outlet property="txtPhoneNumber" destination="J27-Z4-vD2" id="rJD-GE-ISt"/>
-                        <outlet property="viewCode" destination="j4K-h6-XM6" id="Oxp-0u-eSw"/>
+                        <outlet property="viewCode" destination="Qyu-UJ-O8m" id="lEB-ng-goZ"/>
                         <outlet property="viewEmail" destination="wbS-b2-RRt" id="gI6-dl-GK1"/>
                         <outlet property="viewPhoneNumber" destination="hLL-2e-cFj" id="tNL-gD-kES"/>
                     </connections>
@@ -934,6 +936,7 @@
                     </view>
                     <connections>
                         <outlet property="btnConfirm" destination="qwc-jW-tez" id="rge-dg-odp"/>
+                        <outlet property="timerLabel" destination="ada-Wx-7mg" id="cxC-KF-5jB"/>
                         <outlet property="viewMain" destination="uEb-bj-WKH" id="s4M-Jm-SeT"/>
                         <outlet property="viewVerificationCode" destination="o38-Mk-h1g" id="45X-aK-9AJ"/>
                     </connections>
