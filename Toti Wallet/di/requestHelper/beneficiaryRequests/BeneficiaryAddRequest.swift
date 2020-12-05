@@ -8,6 +8,8 @@
 
 import Foundation
 class BeneficiaryAddRequest {
+    static let shared:BeneficiaryAddRequest = BeneficiaryAddRequest()
+    
     var countryID:Int?
     var cityID:Int =  -1
     var locationID:Int = -1
@@ -74,5 +76,37 @@ class BeneficiaryAddRequest {
             "</soapenv:Envelope>"
         
         return stringParams
+    }
+    
+    
+    func clearData() {
+         countryID = -1
+         cityID  =  -1
+         locationID  = -1
+        
+         customerNo = ""
+         FirstName = ""  //
+         MiddleName = "" //
+         LastName = "" //
+         Address = "" //
+         Telephone = ""
+         PayOutCurrency = ""
+         PaymentMode = ""
+         PayOutBranchCode = ""
+         BankName = ""
+         BankCountry = ""
+         BranchNameAndAddress = ""
+         BankCode = ""
+         AccountNumber = ""
+         PurposeCode = "1"
+         PayoutCountryCode = ""
+         CustomerRelation = ""
+         BankBranch = ""
+        
+        //extra iables
+         beneficiaryCountryId = -1
+         beneficiaryNo = ""
+         languageId = "1"
+         countryRegion = ""
     }
 }

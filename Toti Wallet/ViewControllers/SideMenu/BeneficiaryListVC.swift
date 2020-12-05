@@ -35,10 +35,14 @@ class BeneficiaryListVC: BaseVC {
             btnAddBeneficary.isHidden = true
         }
         
-        getBeneficiary()
+       // getBeneficiary()
     }
     
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        getBeneficiary()
+    }
     
 
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -46,7 +50,16 @@ class BeneficiaryListVC: BaseVC {
     }
     
     
-    
+    @IBAction func btnAddBeneficary(_ sender:Any) {
+        if isFromBankTransfer {
+            let nextVC = ControllerID.cashBeneficaryVC.instance
+            self.pushWithFullScreen(nextVC)
+        } else if isFromCashTransfer {
+            let nextVC = ControllerID.cashBeneficaryVC.instance
+            self.pushWithFullScreen(nextVC)
+        }
+     
+    }
     
     func getBeneficiary() {
         if Network.isConnectedToNetwork() {
@@ -102,7 +115,11 @@ extension BeneficiaryListVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BeneficaryTableCell") as! BeneficaryTableCell
         cell.mainView.layer.cornerRadius = 8
         cell.lblTitle.text = beneficiaryList[indexPath.row].firstName
-        cell.lblSubtitle.text = "Account no " + beneficiaryList[indexPath.row].accountNumber
+        if beneficiaryList[indexPath.row].paymentMode.lowercased() == "bank" {
+            cell.lblSubtitle.text = "Account no " + beneficiaryList[indexPath.row].accountNumber
+        } else if isFromCashTransfer {
+            cell.lblSubtitle.text = "Contact no " + beneficiaryList[indexPath.row].telephone
+        }
         return cell
     }
     
@@ -114,13 +131,15 @@ extension BeneficiaryListVC: UITableViewDataSource, UITableViewDelegate {
     
         }
         else if isFromCashTransfer{
-            let nextVC = ControllerID.cashBeneficaryVC.instance
+            let nextVC = ControllerID.bankTransferConverterVC.instance
+            (nextVC as! BankTransferConverterVC).beneDetails = beneficiaryList[indexPath.row]
             self.pushWithFullScreen(nextVC)
+      
         }
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        return 60
     }
 }

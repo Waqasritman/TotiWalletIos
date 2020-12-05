@@ -1,17 +1,17 @@
 //
-//  PurposeVC.swift
+//  RelationVC.swift
 //  Toti Wallet
 //
-//  Created by Mohammad Waqas on 12/4/20.
+//  Created by Mohammad Waqas on 12/5/20.
 //  Copyright © 2020 iOS Technologies. All rights reserved.
 //
 
 import UIKit
 
-class PurposeVC: BaseVC {
+class RelationVC: BaseVC {
 
     
-    let repository:MoneyTransferRepository = MoneyTransferRepository()
+    let repository:AuthRepository = AuthRepository()
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var searchTableView: UITableView! {
         didSet {
@@ -21,12 +21,11 @@ class PurposeVC: BaseVC {
     }
     
     
-    var list:[PurposeOfTransfer] = Array()
-    var filteredList:[PurposeOfTransfer] = Array()
+    var list:[Relation] = Array()
+    var filteredList:[Relation] = Array()
     
     
-    var purposeProtocol:TransferPurposeProtocol!
-    var shortCountryCode:String!
+    var delegate:RelationProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,18 +43,18 @@ class PurposeVC: BaseVC {
     func getPurposeList() {
         if Network.isConnectedToNetwork() {
             showProgress()
-            let request:PurposeOfTransferListRequest = PurposeOfTransferListRequest()
-            request.shortCountryName = shortCountryCode
+            let request:GetRelationListRequest = GetRelationListRequest()
             request.languageId = preferenceHelper.getLanguage()
+        
             
-            repository.getPurposeList(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GetPurposeOfTransferResult), completion: {(response , error) in
+            repository.getRealationList(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_RELATION_SHIP_LIST), completion: {(response , error) in
                 self.hideProgress()
                 if let error = error {
                     self.showError(message: error)
                     self.btnBackFunc(self)
                 } else if response!.responseCode == 101 {
-                    self.list.append(contentsOf: response!.purposeList!)
-                    self.filteredList.append(contentsOf: response!.purposeList!)
+                    self.list.append(contentsOf: response!.relationList!)
+                    self.filteredList.append(contentsOf: response!.relationList!)
                     self.searchTableView.reloadData()
                 } else {
                     self.showError(message: response!.description)
@@ -79,7 +78,7 @@ class PurposeVC: BaseVC {
         // For each item, return true if the item should be included and false if the
         // item should NOT be included
         filteredList = list.filter({ (country) -> Bool in
-            let countryText: NSString = country.purposeOfTransfer as NSString
+            let countryText: NSString = country.relationName as NSString
             
             return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
         })
@@ -89,7 +88,7 @@ class PurposeVC: BaseVC {
 }
 
 //MARK : TableView Functions
-extension PurposeVC: UITableViewDelegate, UITableViewDataSource {
+extension RelationVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredList.count
@@ -98,7 +97,7 @@ extension PurposeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! CountryTableCell
-        cell.lblTitle.text = filteredList[indexPath.row].purposeOfTransfer
+        cell.lblTitle.text = filteredList[indexPath.row].relationName
        
         cell.lblDetail.text = ""
         
@@ -109,7 +108,8 @@ extension PurposeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        purposeProtocol.onSelectTransferProtocol(purpose: filteredList[indexPath.row])
+        delegate.onSelectRelation(relation: filteredList[indexPath.row])
+       // purposeProtocol.onSelectTransferProtocol(purpose: filteredList[indexPath.row])
         self.btnBackFunc(self)
     }
 }

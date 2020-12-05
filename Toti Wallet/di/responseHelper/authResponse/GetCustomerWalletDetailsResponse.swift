@@ -48,7 +48,7 @@ class CustomerWalletDetails: XMLMappable {
     func mapping(map: XMLMap) {
         currencyId <- map["CurrencyID"]
         currencyShortName <- map["CurrencyShortName"]
-        currencyFullName <- map["CurrencyShortName"]
+        currencyFullName <- map["CurrencyName"]
         balance <- map["Balance"]
         imageURL <- map["Image_URL"]
     }

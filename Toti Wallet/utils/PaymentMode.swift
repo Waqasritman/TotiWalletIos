@@ -9,4 +9,5 @@
 import Foundation
 class PaymentMode {
     static let wallet_mode = "Wallet_Transfer"
+    static let payment_cash = "cash"
 }

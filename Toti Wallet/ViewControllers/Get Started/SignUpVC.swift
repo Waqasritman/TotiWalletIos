@@ -73,7 +73,8 @@ class SignUpVC: BaseVC , CountryListProtocol {
         viewCode.addGestureRecognizer(viewCodeGesture)
     }
     
-    @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
+    @objc
+    func showCountriesFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.selectCountryVC.instance
         (nextVC as! SelectCountryVC).countryProtocol = self
         self.pushWithFullScreen(nextVC)
@@ -89,7 +90,7 @@ class SignUpVC: BaseVC , CountryListProtocol {
                 if isSignUpViaNumber {
                     authRequest.email = ""
                     authRequest.languageID = "1"
-                    authRequest.mobileNumber = String().removePlus(number: txtPhoneNumber.text!)
+                    authRequest.mobileNumber = String().removePlus(number: countryCode + txtPhoneNumber.text!)
                 } else {
                     authRequest.email = txtEmail.text!
                     authRequest.languageID = "1"

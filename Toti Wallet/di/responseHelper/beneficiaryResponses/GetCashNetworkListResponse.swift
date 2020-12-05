@@ -13,14 +13,19 @@ class GetCashNetworkListResponse: XMLMappable {
         
     }
     
+    init() {
+        
+    }
+    
+    
     var nodeName: String!
-    var beneficiaryList:[BeneficiaryList]?
+    var list:[CashNetworks]?
     var responseCode:Int?
     var description:String?
     func mapping(map: XMLMap) {
         responseCode <- map["s:Body.GetCashNetworkListResponse.GetCashNetworkListResult.ResponseCode"]
         description <- map["s:Body.GetCashNetworkListResponse.GetCashNetworkListResult.Description"]
-        beneficiaryList <- map["s:Body.GetCashNetworkListResponse.GetCashNetworkListResult.obj.diffgr:diffgram.CashNetworkList.tblCashNetworkList"]
+        list <- map["s:Body.GetCashNetworkListResponse.GetCashNetworkListResult.obj.diffgr:diffgram.CashNetworkList.tblCashNetworkList"]
     }
     
     

@@ -11,7 +11,7 @@ import UIKit
 class SourceOfIncomeVC: BaseVC {
 
  
-    let authRepo:AuthRepository = AuthRepository()
+    let repository:MoneyTransferRepository = MoneyTransferRepository()
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var searchTableView: UITableView! {
         didSet {
@@ -21,17 +21,17 @@ class SourceOfIncomeVC: BaseVC {
     }
     
     
-    var countriesList:[RecCurrency] = Array()
-    var filteredList:[RecCurrency] = Array()
+    var list:[SourceOfIncome] = Array()
+    var filteredList:[SourceOfIncome] = Array()
     
     
-    var currencyProtocol:CurrencyListProtocol!
+    var delegate:SourceOFIncomeProtocol!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-   
+        getSourceOfIncome()
     }
     
 
@@ -40,6 +40,32 @@ class SourceOfIncomeVC: BaseVC {
     }
     
     
+    func getSourceOfIncome()  {
+        if Network.isConnectedToNetwork() {
+            showProgress()
+            let request:GetSourceIncomeListRequest = GetSourceIncomeListRequest()
+            request.languageId = preferenceHelper.getLanguage()
+            
+            repository.getSourceOfIncome(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_SOURCE_OF_INCOME), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                    self.btnBackFunc(self)
+                } else if response!.responseCode == 101 {
+                    self.list.append(contentsOf: response!.idTypeList!)
+                    self.filteredList.append(contentsOf: response!.idTypeList!)
+                    self.searchTableView.reloadData()
+                } else {
+                    self.showError(message: response!.description)
+                    self.btnBackFunc(self)
+                }
+            })
+            
+        } else {
+            self.noInternet()
+            self.btnBackFunc(self)
+        }
+    }
     
     
     
@@ -49,8 +75,8 @@ class SourceOfIncomeVC: BaseVC {
         // Use the filter method to iterate over all items in the data array
         // For each item, return true if the item should be included and false if the
         // item should NOT be included
-        filteredList = countriesList.filter({ (country) -> Bool in
-            let countryText: NSString = country.currencyName as NSString
+        filteredList = list.filter({ (country) -> Bool in
+            let countryText: NSString = country.incomeName as NSString
             
             return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
         })
@@ -69,18 +95,15 @@ extension SourceOfIncomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! CountryTableCell
-        cell.lblTitle.text = filteredList[indexPath.row].currencyShortName
+        cell.lblTitle.text = filteredList[indexPath.row].incomeName
        
-            cell.lblDetail.text = ""
-        
-       
-        cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].image_URL), placeholderImage: UIImage(named: "flag"))
-        cell.imageOutlet.makeImageCircle()
+        cell.lblDetail.text = ""
+     
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currencyProtocol.onSelectCurrency(currency: filteredList[indexPath.row])
+        delegate.onSelectSourceOfIncome(sourceOfIncome: filteredList[indexPath.row])
         self.btnBackFunc(self)
     }
 

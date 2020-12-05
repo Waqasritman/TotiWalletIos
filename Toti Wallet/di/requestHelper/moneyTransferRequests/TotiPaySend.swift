@@ -17,7 +17,7 @@ class TotiPaySend {
     var beneficiaryNo:String = ""
     var payOutCurrency:String = ""
     var payInCurrency:String = ""
-    var transferAmount:Double!
+    var transferAmount:String = ""
     var sourceOfIncome:Int!
     var paymentTypeId:Int!
     var purposeOfTransfer:Int!
@@ -42,11 +42,11 @@ class TotiPaySend {
             "<tpay:Customer_No>" + customerNo + "</tpay:Customer_No>" +
             "<tpay:Beneficiary_No>" + beneficiaryNo + "</tpay:Beneficiary_No>" +
             "<tpay:PayOutCurrency>" + payOutCurrency + "</tpay:PayOutCurrency>" +
-            "<tpay:TransferAmount>" + "\(String(describing: transferAmount))" + "</tpay:TransferAmount>" +
+            "<tpay:TransferAmount>" + transferAmount + "</tpay:TransferAmount>" +
             "<tpay:Payin_Currency>" + payInCurrency + "</tpay:Payin_Currency>" +
-            "<tpay:SourceofIncome>" + "\(String(describing: sourceOfIncome))" + "</tpay:SourceofIncome>" +
-            "<tpay:PurposeOfTransfer>" + "\(String(describing: purposeOfTransfer))" + "</tpay:PurposeOfTransfer>" +
-            "<tpay:Payment_TypeID>" + "\(String(describing: paymentTypeId))" + "</tpay:Payment_TypeID>" +
+            "<tpay:SourceofIncome>" + "\(String(describing: sourceOfIncome!))" + "</tpay:SourceofIncome>" +
+            "<tpay:PurposeOfTransfer>" + "\(String(describing: purposeOfTransfer!))" + "</tpay:PurposeOfTransfer>" +
+            "<tpay:Payment_TypeID>" + "\(String(describing: paymentTypeId!))" + "</tpay:Payment_TypeID>" +
             "<tpay:Card_Number>" + cardNumber + "</tpay:Card_Number>" +
             "<tpay:ExpiryDate>" + expireDate + "</tpay:ExpiryDate>" +
             "<tpay:SecurityCode>" + securityNumber + "</tpay:SecurityCode>" +

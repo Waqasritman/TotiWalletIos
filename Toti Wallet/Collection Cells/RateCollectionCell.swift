@@ -11,6 +11,9 @@ import UIKit
 class RateCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var viewMain: UIView!
+    @IBOutlet weak var walletName:UILabel!
+    @IBOutlet weak var walletBalance:UILabel!
+    @IBOutlet weak var image:UIImageView!
 }
 
 

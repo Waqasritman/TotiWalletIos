@@ -207,6 +207,10 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if collectionView.tag == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RateCollectionCell", for: indexPath) as! RateCollectionCell
             cell.viewMain.layer.cornerRadius = 10
+            cell.walletName.text = walletList[indexPath.row].currencyFullName + " " + "(\(String(describing: walletList[indexPath.row].currencyShortName!)))"
+            cell.walletBalance.text =  walletList[indexPath.row].balance
+            cell.image.sd_setImage(with: URL(string: walletList[indexPath.row].imageURL), placeholderImage: UIImage(named: "flag"))
+            cell.image.makeImageCircle()
             cell.shadowDecorate()
             return cell
         }

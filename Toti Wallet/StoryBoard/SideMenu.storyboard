@@ -1095,6 +1095,9 @@
                                         <state key="normal" title="Add Beneficiary">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnAddBeneficary:" destination="0Ld-80-AVr" eventType="touchUpInside" id="3aK-Zc-6yf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

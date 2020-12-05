@@ -12,6 +12,79 @@ import Alamofire
 class MoneyTransferRepository {
     
     
+    func getWalletBalance(request:URLRequest ,completion: @escaping (WalletBalanceResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<WalletBalanceResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(data , nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = WalletBalanceResponse()
+                            response.description = "Something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+                
+            }
+    }
+    
+    
+    func getSourceOfIncome(request:URLRequest ,completion: @escaping (GetSourceOfIncomeListResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<GetSourceOfIncomeListResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(data , nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = GetSourceOfIncomeListResponse()
+                            response.description = "Something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+                
+            }
+    }
+    
     func getPurposeList(request:URLRequest ,completion: @escaping (PurposeOfTransferListResponse?, String?) -> () ) {
         Alamofire.request(request)
             .responseXMLObject{(response: DataResponse<PurposeOfTransferListResponse>) in
@@ -139,11 +212,12 @@ class MoneyTransferRepository {
                                 print(error)
                             }
                         } else {
-                            DispatchQueue.main.async {
-                                let response = TotiPaySendResponse()
-                                response.description = "Something went wrong"
-                                response.responseCode = 500
-                                completion(response, nil)
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
                             }
                         }
                     } else {
