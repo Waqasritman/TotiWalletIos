@@ -175,6 +175,8 @@
 		915859D5257CB8F2006AC531 /* TransactionHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915859D2257CB8F2006AC531 /* TransactionHistoryVC.swift */; };
 		915859D6257CB8F2006AC531 /* WalletHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915859D3257CB8F2006AC531 /* WalletHistoryVC.swift */; };
 		915859D8257CB911006AC531 /* ReceiptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915859D7257CB911006AC531 /* ReceiptVC.swift */; };
+		915859DA257CBFC6006AC531 /* KVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 915859D9257CBFC5006AC531 /* KVC.storyboard */; };
+		915859DC257CBFCD006AC531 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 915859DB257CBFCC006AC531 /* History.storyboard */; };
 		915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */; };
 		915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */; };
 		915EBDA6257292A50072427D /* ForgotPassGetDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */; };
@@ -406,6 +408,8 @@
 		915859D2257CB8F2006AC531 /* TransactionHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionHistoryVC.swift; sourceTree = "<group>"; };
 		915859D3257CB8F2006AC531 /* WalletHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletHistoryVC.swift; sourceTree = "<group>"; };
 		915859D7257CB911006AC531 /* ReceiptVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptVC.swift; sourceTree = "<group>"; };
+		915859D9257CBFC5006AC531 /* KVC.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = KVC.storyboard; sourceTree = "<group>"; };
+		915859DB257CBFCC006AC531 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		915EBDA1257292460072427D /* ForgotPassGetEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetEmailVC.swift; sourceTree = "<group>"; };
 		915EBDA3257292650072427D /* ForgotPassGetPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetPinVC.swift; sourceTree = "<group>"; };
 		915EBDA5257292A50072427D /* ForgotPassGetDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassGetDataVC.swift; sourceTree = "<group>"; };
@@ -752,6 +756,8 @@
 				9149CA2E25715A3500CD8A34 /* Profile.storyboard */,
 				91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */,
 				91F22E452578E8FF00943E25 /* MoneyTransfer.storyboard */,
+				915859DB257CBFCC006AC531 /* History.storyboard */,
+				915859D9257CBFC5006AC531 /* KVC.storyboard */,
 				91C155CC256ED007001468FB /* Storyboard.swift */,
 			);
 			path = StoryBoard;
@@ -1255,6 +1261,8 @@
 				9116FA02256E4DCC00952AF4 /* Lato-LightItalic.ttf in Resources */,
 				915859CC257CB876006AC531 /* AlertViewWithTextField.xib in Resources */,
 				91F22E462578E8FF00943E25 /* MoneyTransfer.storyboard in Resources */,
+				915859DC257CBFCD006AC531 /* History.storyboard in Resources */,
+				915859DA257CBFC6006AC531 /* KVC.storyboard in Resources */,
 				9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */,
 				9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */,
 				9116F9FC256E4DCC00952AF4 /* Lato-BoldItalic.ttf in Resources */,
