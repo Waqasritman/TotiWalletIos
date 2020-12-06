@@ -23,6 +23,16 @@ class HistoryOptionVC: UIViewController {
         viewWallet.imageEdgeInsets.left = self.view.frame.width - 50
     }
     
+    @IBAction func btnTranscationHistoryFunc(_ sender: UIButton) {
+        let nextVC = ControllerID.transactionHistoryVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    @IBAction func btnWalletHistoryFunc(_ sender: UIButton) {
+        let nextVC = ControllerID.walletHistoryVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
     @IBAction func btnBackFunc(_ sender: UIButton) {
         (tabBarController as! CustomTabBarController).selectedIndex = 0
     }

@@ -211,7 +211,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             cell.walletBalance.text =  walletList[indexPath.row].balance
             cell.image.sd_setImage(with: URL(string: walletList[indexPath.row].imageURL), placeholderImage: UIImage(named: "flag"))
             cell.image.makeImageCircle()
-            cell.shadowDecorate()
+            cell.viewMain.dropShadow()
             return cell
         }
         else{
