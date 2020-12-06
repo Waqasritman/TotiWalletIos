@@ -70,6 +70,9 @@ enum ControllerID<T: UIViewController> : String {
     case walletHistoryVC = "WalletHistoryVC"
     case receiptVC = "ReceiptVC"
     
+    case completeRegistrationVC = "CompleteRegistrationVC"
+    case prepardCardVC = "PrepardCardVC"
+    
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
     }
@@ -86,11 +89,13 @@ enum ControllerID<T: UIViewController> : String {
         case .businessTranscationVC, .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
             return .SideMenu
             
-        case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches, .receiptVC:
+        case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches, .receiptVC, .prepardCardVC:
             return .MoneyTransfer
             
         case .transactionHistoryVC, .walletHistoryVC:
             return .History
+        case .completeRegistrationVC:
+            return .KVC
         }
     }
     
@@ -103,6 +108,7 @@ enum Storyboard: String {
     case SideMenu
     case MoneyTransfer
     case History
+    case KVC
     
     func instance<T>(viewController: String) -> T {
         return self.refrence.instantiateViewController(withIdentifier: viewController) as! T

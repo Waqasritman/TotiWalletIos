@@ -86,9 +86,14 @@ class HomeVC: BaseVC {
             getCustomerWallets()
         }
         
+        AlertView.instance.showAlert(title: "Compelete your profile".localiz() , message: "Please Compelte your Registration")
+        
     }
     
-    
+    @IBAction func btnRegistrationFunc(_ sender: UIButton) {
+        let nextVC = ControllerID.completeRegistrationVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

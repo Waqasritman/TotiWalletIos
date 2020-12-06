@@ -212,6 +212,9 @@
 		91C155CD256ED007001468FB /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155CC256ED007001468FB /* Storyboard.swift */; };
 		91C155CF256ED1FC001468FB /* LoginSignUpOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155CE256ED1FC001468FB /* LoginSignUpOptionVC.swift */; };
 		91C155D2256ED370001468FB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155D1256ED370001468FB /* UIViewController+Extension.swift */; };
+		91D3AA9E257D1C800069A25A /* CustomDashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AA9D257D1C800069A25A /* CustomDashedView.swift */; };
+		91D3AAA2257D1CF10069A25A /* CardPicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AAA0257D1CF10069A25A /* CardPicVC.swift */; };
+		91D3AAA3257D1CF10069A25A /* CompleteRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AAA1257D1CF10069A25A /* CompleteRegistrationVC.swift */; };
 		91E59EEC2571868D00FEB6A7 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E59EEB2571868D00FEB6A7 /* HomeVC.swift */; };
 		91E59EF125718D1100FEB6A7 /* RateCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E59EF025718D1100FEB6A7 /* RateCollectionCell.swift */; };
 		91E677342574D0D300C2E9D0 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E677262574D0D200C2E9D0 /* DefaultsKeys.swift */; };
@@ -445,6 +448,9 @@
 		91C155CC256ED007001468FB /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		91C155CE256ED1FC001468FB /* LoginSignUpOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpOptionVC.swift; sourceTree = "<group>"; };
 		91C155D1256ED370001468FB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		91D3AA9D257D1C800069A25A /* CustomDashedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDashedView.swift; sourceTree = "<group>"; };
+		91D3AAA0257D1CF10069A25A /* CardPicVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPicVC.swift; sourceTree = "<group>"; };
+		91D3AAA1257D1CF10069A25A /* CompleteRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteRegistrationVC.swift; sourceTree = "<group>"; };
 		91E59EEB2571868D00FEB6A7 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		91E59EF025718D1100FEB6A7 /* RateCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCollectionCell.swift; sourceTree = "<group>"; };
 		91E677262574D0D200C2E9D0 /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
@@ -956,6 +962,7 @@
 		918024B72571081D00EB0806 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				91D3AA9D257D1C800069A25A /* CustomDashedView.swift */,
 				91E677232574D0D200C2E9D0 /* LanguageManager-iOS */,
 				91ED83D1257141BA00B5ABF1 /* DialogBox */,
 				9180254525713A3D00EB0806 /* Drop Down */,
@@ -1054,6 +1061,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		91D3AA9F257D1CF10069A25A /* KVC */ = {
+			isa = PBXGroup;
+			children = (
+				91D3AAA0257D1CF10069A25A /* CardPicVC.swift */,
+				91D3AAA1257D1CF10069A25A /* CompleteRegistrationVC.swift */,
+			);
+			path = KVC;
+			sourceTree = "<group>";
+		};
 		91E59EEA2571867300FEB6A7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,6 +1077,7 @@
 				91F22E422578E7DA00943E25 /* MobileTopUp */,
 				91F22E372578E7D000943E25 /* MoneyTrasnfer */,
 				915859D0257CB8F2006AC531 /* History */,
+				91D3AA9F257D1CF10069A25A /* KVC */,
 				91E59EEB2571868D00FEB6A7 /* HomeVC.swift */,
 				91076B4425762FB500D4E3C8 /* MyCardsVC.swift */,
 				911AE5232571909B006898D6 /* CustomTabBarController.swift */,
@@ -1322,8 +1339,10 @@
 				6649B2122578DBFE003846A2 /* GetWalletCurrencyListRequest.swift in Sources */,
 				913B42082577B056001C9F3F /* NotificationListVC.swift in Sources */,
 				66BEEE0B257BD65700714E3B /* CardSubmitProtocol.swift in Sources */,
+				91D3AA9E257D1C800069A25A /* CustomDashedView.swift in Sources */,
 				91AC2AA825716C27006A6E72 /* ProfileBasicDetailVC.swift in Sources */,
 				91802540257122A500EB0806 /* KWVerificationCodeView.swift in Sources */,
+				91D3AAA2257D1CF10069A25A /* CardPicVC.swift in Sources */,
 				91788B1025763A50001615F6 /* SettingsVC.swift in Sources */,
 				91F22E402578E7D000943E25 /* VerifyTransferPinVC.swift in Sources */,
 				913B42042577AF95001C9F3F /* ShareWthFriendVC.swift in Sources */,
@@ -1348,6 +1367,7 @@
 				6649B10F25767E0B003846A2 /* LoadWalletResponse.swift in Sources */,
 				66BEEDB5257B776000714E3B /* TransferPurposeProtocol.swift in Sources */,
 				913B41FE2577AEAF001C9F3F /* BeneficaryTableCell.swift in Sources */,
+				91D3AAA3257D1CF10069A25A /* CompleteRegistrationVC.swift in Sources */,
 				6649B1F72578BDF2003846A2 /* CustomerCardNoResponse.swift in Sources */,
 				914F52A42574C1EE0020C44A /* Network.swift in Sources */,
 				915859D6257CB8F2006AC531 /* WalletHistoryVC.swift in Sources */,
