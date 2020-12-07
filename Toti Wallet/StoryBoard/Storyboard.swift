@@ -73,8 +73,6 @@ enum ControllerID<T: UIViewController> : String {
     case completeRegistrationVC = "CompleteRegistrationVC"
     case prepardCardVC = "PrepardCardVC"
     
-    case completeRegistrationVC = "CompleteRegistrationVC"
-    case prepardCardVC = "PrepardCardVC"
     case addMoneyVC = "AddMoneyVC"
     case addMoneyPaymentOptionVC = "AddMoneyPaymentOptionVC"
     case addBankBeneficiaryVC = "AddBankBeneficiaryVC"
