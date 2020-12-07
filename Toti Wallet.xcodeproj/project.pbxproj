@@ -236,6 +236,13 @@
 		91F22E412578E7D000943E25 /* QuickPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F22E3C2578E7D000943E25 /* QuickPayVC.swift */; };
 		91F22E442578E7DA00943E25 /* MobileTopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F22E432578E7DA00943E25 /* MobileTopUpVC.swift */; };
 		91F22E462578E8FF00943E25 /* MoneyTransfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F22E452578E8FF00943E25 /* MoneyTransfer.storyboard */; };
+		91F3069D257E387E008D2F45 /* BankDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3069B257E387E008D2F45 /* BankDetailAlert.swift */; };
+		91F3069E257E387E008D2F45 /* BankDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F3069C257E387E008D2F45 /* BankDetailAlert.xib */; };
+		91F306A0257E38F7008D2F45 /* AddMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3069F257E38F7008D2F45 /* AddMoneyVC.swift */; };
+		91F306A2257E38FC008D2F45 /* AddMoneyPaymentOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F306A1257E38FC008D2F45 /* AddMoneyPaymentOptionVC.swift */; };
+		91F306A4257E390B008D2F45 /* AddBankBeneficiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F306A3257E390B008D2F45 /* AddBankBeneficiaryVC.swift */; };
+		91F306A6257E3910008D2F45 /* AddBankBeneficiaryBankDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F306A5257E390F008D2F45 /* AddBankBeneficiaryBankDetail.swift */; };
+		91F306A8257E39EC008D2F45 /* AddMoney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F306A7257E39EC008D2F45 /* AddMoney.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -473,6 +480,13 @@
 		91F22E3C2578E7D000943E25 /* QuickPayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickPayVC.swift; sourceTree = "<group>"; };
 		91F22E432578E7DA00943E25 /* MobileTopUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileTopUpVC.swift; sourceTree = "<group>"; };
 		91F22E452578E8FF00943E25 /* MoneyTransfer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoneyTransfer.storyboard; sourceTree = "<group>"; };
+		91F3069B257E387E008D2F45 /* BankDetailAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailAlert.swift; sourceTree = "<group>"; };
+		91F3069C257E387E008D2F45 /* BankDetailAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankDetailAlert.xib; sourceTree = "<group>"; };
+		91F3069F257E38F7008D2F45 /* AddMoneyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoneyVC.swift; sourceTree = "<group>"; };
+		91F306A1257E38FC008D2F45 /* AddMoneyPaymentOptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoneyPaymentOptionVC.swift; sourceTree = "<group>"; };
+		91F306A3257E390B008D2F45 /* AddBankBeneficiaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBankBeneficiaryVC.swift; sourceTree = "<group>"; };
+		91F306A5257E390F008D2F45 /* AddBankBeneficiaryBankDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBankBeneficiaryBankDetail.swift; sourceTree = "<group>"; };
+		91F306A7257E39EC008D2F45 /* AddMoney.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddMoney.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -762,6 +776,7 @@
 				9149CA2E25715A3500CD8A34 /* Profile.storyboard */,
 				91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */,
 				91F22E452578E8FF00943E25 /* MoneyTransfer.storyboard */,
+				91F306A7257E39EC008D2F45 /* AddMoney.storyboard */,
 				915859DB257CBFCC006AC531 /* History.storyboard */,
 				915859D9257CBFC5006AC531 /* KVC.storyboard */,
 				91C155CC256ED007001468FB /* Storyboard.swift */,
@@ -773,6 +788,8 @@
 			isa = PBXGroup;
 			children = (
 				913B420D2577B090001C9F3F /* SelectWalletVC.swift */,
+				91F3069F257E38F7008D2F45 /* AddMoneyVC.swift */,
+				91F306A1257E38FC008D2F45 /* AddMoneyPaymentOptionVC.swift */,
 			);
 			path = "Add Money";
 			sourceTree = "<group>";
@@ -1161,6 +1178,8 @@
 				9149CA2B2571556D00CD8A34 /* AlertView.xib */,
 				915859CB257CB875006AC531 /* AlertViewWithTextField.swift */,
 				915859CA257CB875006AC531 /* AlertViewWithTextField.xib */,
+				91F3069B257E387E008D2F45 /* BankDetailAlert.swift */,
+				91F3069C257E387E008D2F45 /* BankDetailAlert.xib */,
 			);
 			path = DialogBox;
 			sourceTree = "<group>";
@@ -1174,7 +1193,9 @@
 				66BEED9C257A5B2000714E3B /* cashtransfer */,
 				66BEED9B257A5B0100714E3B /* wallettransfer */,
 				91633D08257A1C9400A8225A /* PaymentOptionVC.swift */,
+				91F306A3257E390B008D2F45 /* AddBankBeneficiaryVC.swift */,
 				91633D0A257A1C9800A8225A /* SummaryVC.swift */,
+				91F306A5257E390F008D2F45 /* AddBankBeneficiaryBankDetail.swift */,
 				91F22E3B2578E7D000943E25 /* VerifyTransferPinVC.swift */,
 				91F22E3C2578E7D000943E25 /* QuickPayVC.swift */,
 				915859D7257CB911006AC531 /* ReceiptVC.swift */,
@@ -1253,6 +1274,7 @@
 			files = (
 				9116F9F7256E4DCC00952AF4 /* Lato-BlackItalic.ttf in Resources */,
 				9116F9F6256E4DCC00952AF4 /* Lato-Heavy.ttf in Resources */,
+				91F3069E257E387E008D2F45 /* BankDetailAlert.xib in Resources */,
 				9116FA00256E4DCC00952AF4 /* Lato-SemiboldItalic.ttf in Resources */,
 				91E677432574D19700C2E9D0 /* Localizable.strings in Resources */,
 				9116F9FA256E4DCC00952AF4 /* Lato-Light.ttf in Resources */,
@@ -1283,6 +1305,7 @@
 				9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */,
 				9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */,
 				9116F9FC256E4DCC00952AF4 /* Lato-BoldItalic.ttf in Resources */,
+				91F306A8257E39EC008D2F45 /* AddMoney.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1347,6 +1370,7 @@
 				91F22E402578E7D000943E25 /* VerifyTransferPinVC.swift in Sources */,
 				913B42042577AF95001C9F3F /* ShareWthFriendVC.swift in Sources */,
 				6649B12D2576876C003846A2 /* GetSendRecCurrencyResponse.swift in Sources */,
+				91F306A4257E390B008D2F45 /* AddBankBeneficiaryVC.swift in Sources */,
 				6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */,
 				6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */,
 				66BEED99257A538500714E3B /* PinVerifiedProtocol.swift in Sources */,
@@ -1378,6 +1402,7 @@
 				66BEEDFF257BC11B00714E3B /* YBranchesProtocol.swift in Sources */,
 				6649B14F257695EC003846A2 /* GetCardDetailsResponse.swift in Sources */,
 				91633D13257A1CB200A8225A /* CashBeneficiaryBranchVC.swift in Sources */,
+				91F306A0257E38F7008D2F45 /* AddMoneyVC.swift in Sources */,
 				914F52C62574C2020020C44A /* AuthenticationResponse.swift in Sources */,
 				915859CF257CB899006AC531 /* HistoryTableCell.swift in Sources */,
 				66D65AFB257929ED00898996 /* PaymentMode.swift in Sources */,
@@ -1411,6 +1436,7 @@
 				915859D5257CB8F2006AC531 /* TransactionHistoryVC.swift in Sources */,
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
 				6649B1DA2577DC13003846A2 /* GetProfileImage.swift in Sources */,
+				91F3069D257E387E008D2F45 /* BankDetailAlert.swift in Sources */,
 				91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */,
 				6649B0F825766F83003846A2 /* DeleteBeneficiaryResponse.swift in Sources */,
 				6649B1472576940C003846A2 /* GetBankNetworkListResponse.swift in Sources */,
@@ -1445,6 +1471,7 @@
 				66BEEDB2257A815300714E3B /* PurposeOfTransferListResponse.swift in Sources */,
 				91E677362574D0D300C2E9D0 /* ViewDirection.swift in Sources */,
 				91633D07257A1C8E00A8225A /* CashBeneficaryVC.swift in Sources */,
+				91F306A6257E3910008D2F45 /* AddBankBeneficiaryBankDetail.swift in Sources */,
 				91788B0E25763835001615F6 /* MyQRCode.swift in Sources */,
 				6649B10C25767D97003846A2 /* RequestMoneyResponse.swift in Sources */,
 				914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */,
@@ -1495,6 +1522,7 @@
 				6649B13425768A88003846A2 /* EditCustomerProfileRequest.swift in Sources */,
 				6649B20C2578C898003846A2 /* GetTransactionReceiptRequest.swift in Sources */,
 				91E677392574D0D300C2E9D0 /* Storage.swift in Sources */,
+				91F306A2257E38FC008D2F45 /* AddMoneyPaymentOptionVC.swift in Sources */,
 				914F52CF2574C2020020C44A /* MatchPinRequest.swift in Sources */,
 				914F52D32574C2020020C44A /* AuthenticationRequest.swift in Sources */,
 				6649B0C4257654DE003846A2 /* ChangePinResponse.swift in Sources */,

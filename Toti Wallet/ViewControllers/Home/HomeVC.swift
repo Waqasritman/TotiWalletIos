@@ -159,7 +159,8 @@ class HomeVC: BaseVC {
     }
     
     @objc private func prepaidCardFunc(_ sender: UIGestureRecognizer) {
-        
+        let nextVC = ControllerID.prepardCardVC.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     

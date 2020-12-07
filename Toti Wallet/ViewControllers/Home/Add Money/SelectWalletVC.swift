@@ -47,6 +47,10 @@ extension SelectWalletVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = ControllerID.addMoneyVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
