@@ -17,7 +17,7 @@ class NotificationListVC: UIViewController {
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
-        (tabBarController as! self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 
