@@ -102,14 +102,16 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
                             ForgotPinRequestApprovedUserRequest.shared.idExpireDate = response!.idExpireDate
                             
                             let nextVc = ControllerID.forgotPassGetDataVC.instance
+                            (nextVc as! ForgotPassGetDataVC).isByNumber = self.isByNumber
                             self.pushWithFullScreen(nextVc)
                         } else {
                             // then send to otp
                             print(response!.firstName)
                             ForgotPinRequestApprovedUserRequest.shared.idNumber = ""
                             ForgotPinRequestApprovedUserRequest.shared.idExpireDate = ""
-                          //  let nextVc = ControllerID.forgotPassPinCV.instance
-                           // self.pushWithFullScreen(nextVc)
+                            let nextVc = ControllerID.forgotPassotpVC.instance
+                            (nextVc as! ForgotPassotpVC).isByNumber = self.isByNumber
+                            self.pushWithFullScreen(nextVc)
                         }
                     }
                 })

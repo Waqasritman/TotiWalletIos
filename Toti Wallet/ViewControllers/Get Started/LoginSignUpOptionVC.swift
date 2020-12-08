@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginSignUpOptionVC: UIViewController {
+class LoginSignUpOptionVC: BaseVC {
 
     @IBOutlet weak var btnCreateAccount: UIButton!
     @IBOutlet weak var btnExistingCustomer: UIButton!

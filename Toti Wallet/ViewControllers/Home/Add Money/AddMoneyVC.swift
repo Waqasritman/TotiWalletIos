@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddMoneyVC: UIViewController {
+class AddMoneyVC: BaseVC {
 
     @IBOutlet weak var btnProcced: UIButton!
     @IBOutlet weak var txtAmount: UITextField!
@@ -19,9 +19,21 @@ class AddMoneyVC: UIViewController {
         btnProcced.layer.cornerRadius = 8
     }
     
+    
+    override func isValidate() -> Bool {
+        if txtAmount.text!.isEmpty {
+            return false
+        }
+        return true
+    }
+    
     @IBAction func btnProccedFunc(_ sender: UIButton) {
-        let nextVC = ControllerID.addMoneyPaymentOptionVC.instance
-        self.pushWithFullScreen(nextVC)
+        if isValidate() {
+            LoadWalletRequest.shared.transferAmount = txtAmount.text!
+            let nextVC = ControllerID.addMoneyPaymentOptionVC.instance
+            self.pushWithFullScreen(nextVC)
+        }
+
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

@@ -53,6 +53,11 @@ class PreferenceHelper :NSObject{
       }
     
     
+    func getPhoneForKYC() -> String {
+        return (ph.value(forKey: "phone_number") as? String) ?? ""
+    }
+    
+    
     func userImage(imageData:String) {
         ph.set(imageData, forKey: KEY_USER_IMAGE)
         ph.synchronize()

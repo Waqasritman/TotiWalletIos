@@ -8,7 +8,13 @@
 
 import UIKit
 
-class CompleteRegistrationVC: UIViewController {
+class CompleteRegistrationVC: BaseVC , CountryListProtocol {
+    
+    func onSelectCountry(country: WRCountryList) {
+        btnCountry.setTitle(country.countryName, for: .normal)
+        btnCountry.setTitleColor(UIColor.black, for: .normal)
+    }
+    
 
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var viewCode: UIView!
@@ -28,10 +34,64 @@ class CompleteRegistrationVC: UIViewController {
     @IBOutlet weak var btnDOB: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var dobStackView: UIStackView!
+    @IBOutlet weak var numberStack:UIStackView!
+    
+    var isNumberEmpty = false
+    
+    
+    
+    override func isValidate() -> Bool {
+        if isNumberEmpty {
+            
+        }
+        
+        return true
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initDesign()
+      
+        setLabels()
+        setLocalizie()
+    }
+    
+    
+   
+    
+    @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
+        let nextVC = ControllerID.selectCountryVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    
+    @IBAction func btnSwitchFunc(_ sender: UISwitch) {
+        setLabels()
+    }
+    
+  
+    
+    @IBAction func btnBackFunc(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    func setLocalizie() {
+        if preferenceHelper.getPhoneForKYC().isEmpty {
+            numberStack.isHidden = false
+            isNumberEmpty = true
+        }
         
+        
+        
+    }
+
+    
+}
+extension CompleteRegistrationVC {
+    func initDesign() {
         txtPhoneNumber.setLeftPaddingPoints(5)
         txtNumber.setLeftPaddingPoints(10)
         
@@ -51,19 +111,8 @@ class CompleteRegistrationVC: UIViewController {
         
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
         viewCode.addGestureRecognizer(viewCodeGesture)
-        
-        setLabels()
     }
     
-    @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
-        let nextVC = ControllerID.selectCountryVC.instance
-        self.pushWithFullScreen(nextVC)
-    }
-    
-    
-    @IBAction func btnSwitchFunc(_ sender: UISwitch) {
-        setLabels()
-    }
     
     func setLabels() {
         if switchOutlet.isOn == false {
@@ -96,10 +145,4 @@ class CompleteRegistrationVC: UIViewController {
             dobStackView.isHidden = true
         }
     }
-    
-    @IBAction func btnBackFunc(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-
-    
 }

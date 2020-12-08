@@ -111,6 +111,9 @@
                                                                 <state key="normal" title="Complete Your Registration" image="rightArrow">
                                                                     <color key="titleColor" systemColor="darkTextColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="btnRegistrationFunc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6r3-wY-Bvn"/>
+                                                                </connections>
                                                             </button>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-4a-pXS">
                                                                 <rect key="frame" x="0.0" y="54" width="351" height="80"/>
@@ -593,6 +596,9 @@
                                                 <state key="normal" title="View transcation history" image="rightArrow">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnTranscationHistoryFunc:" destination="fBy-x9-05o" eventType="touchUpInside" id="Cmd-Z3-hvz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsq-Cn-DXO">
                                                 <rect key="frame" x="16" y="84" width="343" height="42"/>
@@ -604,6 +610,9 @@
                                                 <state key="normal" title="View wallet histroy" image="rightArrow">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnWalletHistoryFunc:" destination="fBy-x9-05o" eventType="touchUpInside" id="jAR-uY-18t"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

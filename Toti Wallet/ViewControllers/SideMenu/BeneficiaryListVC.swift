@@ -52,7 +52,7 @@ class BeneficiaryListVC: BaseVC {
     
     @IBAction func btnAddBeneficary(_ sender:Any) {
         if isFromBankTransfer {
-            let nextVC = ControllerID.cashBeneficaryVC.instance
+            let nextVC = ControllerID.addBankBeneficiaryVC.instance
             self.pushWithFullScreen(nextVC)
         } else if isFromCashTransfer {
             let nextVC = ControllerID.cashBeneficaryVC.instance

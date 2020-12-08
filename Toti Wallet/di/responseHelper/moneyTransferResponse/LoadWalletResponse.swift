@@ -19,10 +19,13 @@ class LoadWalletResponse: XMLMappable {
     }
     
     var nodeName: String!
+    var referenceNo:String!
     var responseCode:Int?
     var description:String?
     func mapping(map: XMLMap) {
         responseCode <- map["s:Body.LoadWalletResponse.LoadWalletResult.ResponseCode"]
         description <- map["s:Body.LoadWalletResponse.LoadWalletResult.Description"]
+        referenceNo <- map["s:Body.LoadWalletResponse.LoadWalletResult.Refrence_No"]
+        //
     }
 }

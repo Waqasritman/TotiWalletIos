@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ReceiptVC: UIViewController {
+class ReceiptVC: BaseVC {
 
+    
+    let repo : MoneyTransferRepository = MoneyTransferRepository()
+     
     @IBOutlet weak var lblTXNnumber: UILabel!
     @IBOutlet weak var lblDateTime: UILabel!
     @IBOutlet weak var lblSendingCurrency: UILabel!
@@ -39,6 +42,7 @@ class ReceiptVC: UIViewController {
     @IBOutlet weak var viewBeneficiary: UIView!
     @IBOutlet weak var viewLoyalty: UIView!
    
+    var tranactionNumber:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +60,55 @@ class ReceiptVC: UIViewController {
         viewLoyalty.layer.cornerRadius = 6
         
        
+        if Network.isConnectedToNetwork() {
+            showProgress()
+            let request = GetTransactionReceiptRequest()
+            request.transactionNumber = tranactionNumber
+            request.languageId = preferenceHelper.getLanguage()
+            repo.getReceipt(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_TRANSACTION_RECEIPT), completion: {(response , error ) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.showReceipt(receipt: response!)
+                } else {
+                    self.showError(message: response!.description!)
+                }
+            })
+        } else {
+            self.noInternet()
+            
+        }
+    }
+    
+    
+    
+    func showReceipt(receipt:TransactionReceipt) {
+        lblTXNnumber.text = receipt.transactionNumber
+        lblDateTime.text = receipt.transactionDateTime
+        lblSendingCurrency.text = receipt.payInCurrency
+        lblServiceFee.text = String(format: "%.02f",receipt.commissionCharge)
+        lblOtherCharge.text = String(format: "%.02f",receipt.otherCharge)
+        lblVAT.text = String(format: "%.02f", receipt.vatPercentage)
+        lblSendingAmount.text = String(format: "%.02f", receipt.sendingAmount)
+        lblTotalPayable.text = String(format: "%.02f", receipt.totalPayable)
+        lblExchangeRate.text = String(format: "%.02f", receipt.exchangeRate)
+        lblReceivingAmount.text = String(format: "%.02f", receipt.receivingAmount)
+        lblPurposeTransfer.text = receipt.purposeOfTransfer
+        lblCustomerID.text = preferenceHelper.getCustomerNo()
+        lblName.text = receipt.remitterName
+        lblMobileNumber.text =  receipt.remitterContactNo
+        lblAddress.text = receipt.remitterAddress
+        lblIDType.text = receipt.idType
+        lblRelation.text = receipt.relationWithBeneficiary
+        
+        lblBeneficaryName.text = receipt.beneficiaryName
+        lblBeneficaryNumber.text = receipt.beneficiaryContactNo
+        lblBeneficaryAddress.text =  receipt.beneficiaryAddress
+        lblAvaialblePoints.text =  receipt.availPoints
+        lblEarnedPoints.text = receipt.earnPoint
+        
+        
         
     }
     

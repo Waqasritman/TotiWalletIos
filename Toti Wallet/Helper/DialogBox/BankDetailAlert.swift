@@ -46,13 +46,13 @@ class BankDetailAlert: UIView {
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    func showAlert(title: String, message: String, referenceNumber: String, accountTitle: String, bankSort: String, accountNumber: String) {
-        self.titleLbl.text = title
-        self.messageLbl.text = message
+    func showAlert(referenceNumber: String) {
+        self.titleLbl.text = "Bank Details"
+        self.messageLbl.text = "Please transfer/deposit the amount into the below bank account"
         self.lblReferenceNumber.text = referenceNumber
-        self.lblAccountTitle.text = accountTitle
-        self.lblSortCode.text = bankSort
-        self.lblAccountNumber.text = accountNumber
+        self.lblAccountTitle.text = "TotiPay Limited"
+        self.lblSortCode.text = "60-83-71"
+        self.lblAccountNumber.text = "70767547"
         
         UIApplication.shared.keyWindow?.addSubview(parentView)
     }

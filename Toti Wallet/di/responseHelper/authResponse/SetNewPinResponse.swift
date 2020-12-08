@@ -11,7 +11,7 @@ import XMLMapper
 
 class SetNewPinResponse: XMLMappable {
     required init?(map: XMLMap) { }
-    
+    init() {}
     var nodeName: String!
     //  var wrCountryList:[WRCountryList]?
     var responseCode:Int?
