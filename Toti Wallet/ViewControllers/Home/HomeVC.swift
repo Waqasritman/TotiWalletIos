@@ -86,7 +86,7 @@ class HomeVC: BaseVC {
             getCustomerWallets()
         }
         
-        AlertView.instance.showAlert(title: "Compelete your profile".localiz() , message: "Please Compelte your Registration")
+       
         
     }
     
@@ -104,8 +104,10 @@ class HomeVC: BaseVC {
         
         if preferenceHelper.getIsDocumentUploaded() {
             btnRegistration.isHidden = true
+            
         } else {
             btnRegistration.isHidden = false
+            AlertView.instance.showAlert(title: "Compelete your profile".localiz() , message: "Please Compelte your Registration")
         }
         
         if preferenceHelper.getISKYCApproved() {
@@ -113,8 +115,10 @@ class HomeVC: BaseVC {
         } else {
             if !preferenceHelper.getIsDocumentUploaded() {
                 btnRegistration.isHidden = false
+                AlertView.instance.showAlert(title: "Compelete your profile".localiz() , message: "Please Compelte your Registration")
             } else {
                 btnRegistration.isHidden = true
+            
             }
             
         }

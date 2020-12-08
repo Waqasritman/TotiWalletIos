@@ -8,11 +8,10 @@
 
 import UIKit
 
-class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol {
- 
-   
-    
-    
+class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankDetailAlertProtocol
+                       , AlertViewWithTextProtocol {
+  
+
     let moneyRepo:MoneyTransferRepository = MoneyTransferRepository()
     let repo:Repository = Repository()
     
@@ -29,7 +28,7 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol {
     @IBOutlet weak var payThroughCard:UILabel!
     
     
-    
+    var receiptNumber:String = ""
     var isTableViewVisiable = false
 
     
@@ -55,11 +54,17 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol {
         
     }
     
-    @objc private func viewBankAccountFunc(_ sender: UIGestureRecognizer) {
-        
+    @objc
+    private func viewBankAccountFunc(_ sender: UIGestureRecognizer) {
+        TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.BANK_DEPOSIT
+        TotiPaySend.shared.cardNumber = ""
+        TotiPaySend.shared.expireDate = ""
+        TotiPaySend.shared.securityNumber = ""
+        getPin()
     }
     
-    @objc func payThroughWallet(_ sender:UIGestureRecognizer) {
+    @objc
+    func payThroughWallet(_ sender:UIGestureRecognizer) {
         TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.WALLET
         TotiPaySend.shared.cardNumber = ""
         TotiPaySend.shared.expireDate = ""
@@ -67,7 +72,8 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol {
         getPin()
     }
     
-    @objc func payThorughCard(_ sender : UIGestureRecognizer) {
+    @objc
+    func payThorughCard(_ sender : UIGestureRecognizer) {
         let nextVC = ControllerID.cardDetailVC.instance
         (nextVC as! CardDetailVC).delegate = self
         self.pushWithFullScreen(nextVC)
@@ -100,12 +106,19 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol {
     
     
     func onAddCardDetails(cardNumber: String, cardExpire: String, cardCVV: String) {
-        TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.WALLET
+        TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.CREDIT_CARD
         TotiPaySend.shared.cardNumber = cardNumber
         TotiPaySend.shared.expireDate = cardExpire
         TotiPaySend.shared.securityNumber = cardCVV
         getPin()
     }
+    
+    
+    func handleAction(txtFieldValue: String) {
+        TotiPaySend.shared.securityNumber = txtFieldValue
+        getPin()
+    }
+    
     
     
     func loadWallet() {
@@ -117,10 +130,14 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol {
                 if let error = error {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
+                    self.receiptNumber = response!.transactionNo!
                     if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.CREDIT_CARD {
-                        
+                        AlertView.instance.delegate = self
+                        AlertView.instance.showAlert(title: "in_process".localiz() , message: "in_process_msg_card".localiz())
+        
                     } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.BANK_DEPOSIT {
-                        
+                        BankDetailAlert.instance.delegate = self
+                        BankDetailAlert.instance.showAlert(referenceNumber: response!.transactionNo!)
                     } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.WALLET {
                         self.goToReceipt(number: response!.transactionNo!)
                     }
@@ -132,8 +149,21 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol {
     }
     
     
+    override func handleAction(action: Bool) {
+  
+        goToReceipt(number: receiptNumber)
+    }
+    
+    
+    func handleAction() {
+        goToReceipt(number: receiptNumber)
+    }
+    
+    
     func goToReceipt(number:String) {
-        print(number)
+        let nextVc = ControllerID.receiptVC.instance
+        (nextVc as! ReceiptVC).tranactionNumber = receiptNumber
+        self.pushWithFullScreen(nextVc)
     }
     
     
@@ -174,14 +204,16 @@ extension PaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cardCell") as! CardTableCell
         cell.viewMain.layer.cornerRadius = 8
-        
-        
         cell.lblCardNumber.text = cardsList[indexPath.row].cardNumber
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.CREDIT_CARD
+        TotiPaySend.shared.cardNumber = cardsList[indexPath.row].cardNumber
+        TotiPaySend.shared.expireDate = cardsList[indexPath.row].cardExpireDate
+        AlertViewWithTextField.instance.delegate = self
+        AlertViewWithTextField.instance.showAlert(title: "enter_cvv".localiz(), txtFieldPlaceHolder: "CVV")
     }
     
     

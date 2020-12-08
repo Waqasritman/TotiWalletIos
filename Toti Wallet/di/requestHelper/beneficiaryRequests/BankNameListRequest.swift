@@ -1,19 +1,14 @@
 //
-//  ForgotPinRequestApprovedUserRequest.swift
+//  BankNameListRequest.swift
 //  Toti Wallet
 //
-//  Created by Mohammad Waqas on 11/29/20.
+//  Created by Mohammad Waqas on 12/8/20.
 //  Copyright © 2020 iOS Technologies. All rights reserved.
 //
 
 import Foundation
-public class ForgotPinRequestApprovedUserRequest {
-    static let shared = ForgotPinRequestApprovedUserRequest()
-    
-    var emailAddress = ""
-    var mobileNumber = ""
-    var idNumber = ""
-    var idExpireDate = ""
+class BankNameListRequest {
+    var shortCountryName:String = ""
     var languageId = "1"
     
     
@@ -21,7 +16,7 @@ public class ForgotPinRequestApprovedUserRequest {
         let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
             + "<soapenv:Header/>" +
             "<soapenv:Body>" +
-            "<tpay:ForgetPIN>" +
+            "<tpay:BankNameList>" +
             "<tpay:Req>" +
             "<tpay:Credentials>" +
             "<tpay:PartnerCode>" + StaticHelper.PARTNER_CODE_VALUE + "</tpay:PartnerCode>" +
@@ -29,24 +24,12 @@ public class ForgotPinRequestApprovedUserRequest {
             "<tpay:UserPassword>" + StaticHelper.USER_PASSWORD_VALUE + "</tpay:UserPassword>" +
             "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
             "</tpay:Credentials>" +
-            "<tpay:Email_Address>" + emailAddress + "</tpay:Email_Address>" +
-            "<tpay:Mobile_Number>" + mobileNumber + "</tpay:Mobile_Number>" +
-            "<tpay:ID_Number>" + idNumber + "</tpay:ID_Number>" +
-            "<tpay:IDExpiry_Date>" + idExpireDate + "</tpay:IDExpiry_Date>" +
+            "<tpay:CountryShortName>" + shortCountryName + "</tpay:CountryShortName>" +
             "</tpay:Req>" +
-            "</tpay:ForgetPIN>" +
+            "</tpay:BankNameList>" +
             "</soapenv:Body>" +
             "</soapenv:Envelope>"
         
         return stringParams
-    }
-    
-    
-    func clearData() {
-         emailAddress = ""
-         mobileNumber = ""
-         idNumber = ""
-         idExpireDate = ""
-         languageId = "1"
     }
 }

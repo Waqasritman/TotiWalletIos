@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,7 +39,7 @@
                     <rect key="frame" x="37.5" y="269.5" width="300" height="128"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter security code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXZ-yI-HMr">
-                            <rect key="frame" x="8" y="8" width="284" height="18"/>
+                            <rect key="frame" x="8" y="8" width="284" height="17.5"/>
                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -49,13 +47,16 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="21i-mY-eZ9">
                             <rect key="frame" x="16" y="80" width="268" height="36"/>
                             <subviews>
-                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaQ-qQ-05N">
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaQ-qQ-05N">
                                     <rect key="frame" x="0.0" y="0.0" width="268" height="36"/>
                                     <color key="backgroundColor" name="650C39"/>
                                     <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
                                     <state key="normal" title="OK">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="btnOKFunc:" destination="-1" eventType="touchUpInside" id="OFE-Kl-tcX"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -63,9 +64,8 @@
                             </constraints>
                         </stackView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="cvv" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XLZ-wS-FoZ">
-                            <rect key="frame" x="16" y="34" width="268" height="38"/>
+                            <rect key="frame" x="16" y="33.5" width="268" height="38.5"/>
                             <color key="backgroundColor" name="F7F7F7"/>
-                            <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -88,6 +88,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="xBU-sJ-o7K"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Wor-M2-E17" firstAttribute="top" secondItem="9mu-j1-0Om" secondAttribute="top" id="2v1-e7-fEf"/>
@@ -97,7 +98,6 @@
                 <constraint firstItem="Wor-M2-E17" firstAttribute="leading" secondItem="9mu-j1-0Om" secondAttribute="leading" id="kch-K0-Xkd"/>
                 <constraint firstItem="Zim-37-ag3" firstAttribute="centerX" secondItem="9mu-j1-0Om" secondAttribute="centerX" id="r8y-GL-dyz"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="xBU-sJ-o7K"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>

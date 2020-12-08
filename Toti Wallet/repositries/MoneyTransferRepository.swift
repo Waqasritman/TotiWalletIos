@@ -12,6 +12,43 @@ import Alamofire
 class MoneyTransferRepository {
     
     
+    func getReceipt(request:URLRequest ,completion: @escaping (TransactionReceipt?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<TransactionReceipt>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(data , nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = TransactionReceipt()
+                            response.description = "Something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+                
+            }
+    }
+    
+    
     func getWalletBalance(request:URLRequest ,completion: @escaping (WalletBalanceResponse?, String?) -> () ) {
         Alamofire.request(request)
             .responseXMLObject{(response: DataResponse<WalletBalanceResponse>) in
@@ -253,11 +290,12 @@ class MoneyTransferRepository {
                                 print(error)
                             }
                         } else {
-                            DispatchQueue.main.async {
-                                let response = LoadWalletResponse()
-                                response.description = "Something went wrong"
-                                response.responseCode = 500
-                                completion(response, nil)
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
                             }
                         }
                     } else {
@@ -351,43 +389,7 @@ class MoneyTransferRepository {
     }
     
     
-    func getBankNetworkList(request:URLRequest ,completion: @escaping (GetBankNetworkListResponse?, String?) -> () ) {
-        Alamofire.request(request)
-            .responseXMLObject{(response: DataResponse<GetBankNetworkListResponse>) in
-                
-                switch response.result {
-                case .success( _):
-                    if let data = response.value {
-                        if data.responseCode == 101 {
-                            do {
-                                DispatchQueue.main.async {
-                                    completion(data , nil)
-                                }
-                            } catch {
-                                print(error)
-                            }
-                        } else {
-                            DispatchQueue.main.async {
-                                let response = GetBankNetworkListResponse()
-                                response.description = "Something went wrong"
-                                response.responseCode = 500
-                                completion(response, nil)
-                            }
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            let response = GetBankNetworkListResponse()
-                            response.description = "Something went wrong"
-                            response.responseCode = 500
-                            completion(response, nil)
-                        }
-                    }
-                    
-                case .failure(let error):
-                    completion(nil , error.localizedDescription)
-                }
-            }
-    }
+  
     
     
 }

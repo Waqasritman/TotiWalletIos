@@ -18,7 +18,7 @@ class GetBankNetworkListResponse: XMLMappable {
     }
     
     var nodeName: String!
-    var bankNetworkList:[BeneficiaryList]?
+    var bankNetworkList:[BankNetwork]?
     var responseCode:Int?
     var description:String?
     func mapping(map: XMLMap) {

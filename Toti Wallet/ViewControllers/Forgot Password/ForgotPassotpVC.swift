@@ -101,9 +101,9 @@ class ForgotPassotpVC: BaseVC {
                 
                 if isByNumber {
                     verifyOTPRequest.email = ""
-                    verifyOTPRequest.mobileNumber = RegisterUserRequest.shared.phoneNumber
+                    verifyOTPRequest.mobileNumber = ForgotPinRequestApprovedUserRequest.shared.mobileNumber
                 } else {
-                    verifyOTPRequest.email = RegisterUserRequest.shared.email
+                    verifyOTPRequest.email = ForgotPinRequestApprovedUserRequest.shared.emailAddress
                     verifyOTPRequest.mobileNumber = ""
                 }
                 verifyOTPRequest.languageID = "1"
@@ -113,7 +113,8 @@ class ForgotPassotpVC: BaseVC {
                     if let error = error {
                         self.showError(message: error)
                     } else {
-                        self.showAlert(title: "Important!", message: "Your Totipay Wallet password is \(verifyOTPRequest.OTP)  Please use this OTP as login PIN in future.")
+                        let nextVC = ControllerID.forgotPassGetPinVC.instance
+                        self.pushWithFullScreen(nextVC)
                     }
                 })
                 
@@ -136,7 +137,7 @@ class ForgotPassotpVC: BaseVC {
     
     
     override func handleAction(action: Bool) {
-        let nextVC = ControllerID.profileBasicDetailVC.instance
+        let nextVC = ControllerID.forgotPassGetPinVC.instance
         self.pushWithFullScreen(nextVC)
     }
     

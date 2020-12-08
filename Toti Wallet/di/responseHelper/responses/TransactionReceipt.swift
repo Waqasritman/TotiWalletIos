@@ -13,8 +13,13 @@ class TransactionReceipt: XMLMappable {
     required init?(map: XMLMap) {
         
     }
+    
+    init() {
+        
+    }
+    
     var nodeName: String!
-    var responseCode:String!
+    var responseCode:Int!
     var description:String!
     func mapping(map: XMLMap) {
         responseCode <- map["s:Body.GetTransactionReceiptResponse.GetTransactionReceiptResult.ResponseCode"]
@@ -63,16 +68,16 @@ class TransactionReceipt: XMLMappable {
     }
     var transactionNumber:String!
     var transactionDateTime:String!
-    var sendingAmount:String!
+    var sendingAmount:Double!
     var payInCurrency:String!
-    var receivingAmount:String!
+    var receivingAmount:Double!
     var payoutCurrency:String!
-    var commissionCharge:String!
-    var otherCharge:String!
-    var vatCharge:String!
-    var vatPercentage:String!
-    var totalPayable:String!
-    var exchangeRate:String!
+    var commissionCharge:Double!
+    var otherCharge:Double!
+    var vatCharge:Double!
+    var vatPercentage:Double!
+    var totalPayable:Double!
+    var exchangeRate:Double!
     var purposeOfTransfer:String!
     var remitterNo:String!
     var remitterName:String!

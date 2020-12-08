@@ -8,6 +8,7 @@
 
 import Foundation
 class LoadWalletRequest {
+    static let shared = LoadWalletRequest()
     var customerNo:String = ""
     var transferAmount:String = ""
     var cardNumber:String = ""

@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ForgotPassGetDataVC: UIViewController {
+class ForgotPassGetDataVC: BaseVC {
 
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var txtIDNumber: UITextField!
     @IBOutlet weak var txtExpireDate: UITextField!
     @IBOutlet weak var btnConfirm: UIButton!
+    
+    var isByNumber = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

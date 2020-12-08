@@ -37,7 +37,7 @@ class BeneficiaryAddRequest {
     var beneficiaryCountryId:Int?
     var beneficiaryNo:String = ""
     var languageId:String = "1"
-    var countryRegion:String = ""
+    var countryRegion:Int = 0
     
     
     public func getXML() -> String {
@@ -107,6 +107,6 @@ class BeneficiaryAddRequest {
          beneficiaryCountryId = -1
          beneficiaryNo = ""
          languageId = "1"
-         countryRegion = ""
+         countryRegion = 0
     }
 }
