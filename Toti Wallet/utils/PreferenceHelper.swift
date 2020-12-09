@@ -53,6 +53,23 @@ class PreferenceHelper :NSObject{
       }
     
     
+    
+    func getCustomerData() -> RegisterUserRequest {
+        let userRequest = RegisterUserRequest()
+        userRequest.firstName =  (ph.value(forKey:"first_name") as? String) ?? ""
+        userRequest.lastName = (ph.value(forKey:"last_name") as? String) ?? ""
+        userRequest.middleName = (ph.value(forKey: "middle_name") as? String) ?? ""
+        userRequest.address = (ph.value(forKey: "address") as? String) ?? ""
+        userRequest.dob = (ph.value(forKey:"dob") as? String) ?? ""
+        userRequest.gender = (ph.value(forKey:"gender") as? String) ?? ""
+        userRequest.phoneNumber = (ph.value(forKey:"phone_number") as? String) ?? ""
+        userRequest.nationality = (ph.value(forKey: "nationlaity") as? String) ?? ""
+        userRequest.email = (ph.value(forKey: "emailID") as? String) ?? ""
+        userRequest.country = (ph.value( forKey:"residenceCountry") as? String) ?? ""
+        return userRequest
+    }
+    
+    
     func getPhoneForKYC() -> String {
         return (ph.value(forKey: "phone_number") as? String) ?? ""
     }

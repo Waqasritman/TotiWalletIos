@@ -107,7 +107,7 @@ class HomeVC: BaseVC {
             
         } else {
             btnRegistration.isHidden = false
-            AlertView.instance.showAlert(title: "Compelete your profile".localiz() , message: "Please Compelte your Registration")
+            AlertView.instance.showAlert(title: "complete_profile".localiz() , message: "please_complete_kyc".localiz())
         }
         
         if preferenceHelper.getISKYCApproved() {
@@ -115,7 +115,7 @@ class HomeVC: BaseVC {
         } else {
             if !preferenceHelper.getIsDocumentUploaded() {
                 btnRegistration.isHidden = false
-                AlertView.instance.showAlert(title: "Compelete your profile".localiz() , message: "Please Compelte your Registration")
+                AlertView.instance.showAlert(title: "complete_profile".localiz() , message: "please_complete_kyc".localiz())
             } else {
                 btnRegistration.isHidden = true
             

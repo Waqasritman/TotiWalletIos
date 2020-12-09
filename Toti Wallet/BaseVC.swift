@@ -22,8 +22,11 @@ class BaseVC: UIViewController , PopUpProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
        // self.hideKeyboardWhenTappedAround()
     }
+    
+
     
     
     public func getPreference() -> PreferenceHelper {
@@ -74,6 +77,21 @@ class BaseVC: UIViewController , PopUpProtocol {
     public func handleAction(action: Bool) {
         
     }
+   
 
+    func getFormatedDate(date:Date) -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = DateFormatter.Style.short
+        dateformatter.dateFormat = "dd/MM/yyyy"
+        return dateformatter.string(from: date)
+    }
+    
+    
+    func getFormatedPinDate(date:Date) -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = DateFormatter.Style.short
+        dateformatter.dateFormat = "dd-MM-yyyy"
+        return dateformatter.string(from: date)
+    }
 
 }
