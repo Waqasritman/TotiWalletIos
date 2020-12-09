@@ -71,6 +71,15 @@
 		66B7C436257F70AA00D4C0C6 /* BankNameListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C435257F70AA00D4C0C6 /* BankNameListResponse.swift */; };
 		66B7C439257F7F8400D4C0C6 /* BranchNamesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C438257F7F8400D4C0C6 /* BranchNamesVC.swift */; };
 		66B7C43C257F7FE700D4C0C6 /* BankNetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C43B257F7FE700D4C0C6 /* BankNetworkProtocol.swift */; };
+		66B7C4662580A32200D4C0C6 /* WalletHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C4652580A32200D4C0C6 /* WalletHistoryRequest.swift */; };
+		66B7C4692580A37200D4C0C6 /* WalletTransferHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C4682580A37200D4C0C6 /* WalletTransferHistoryResponse.swift */; };
+		66B7C46C2580ADB400D4C0C6 /* TransactionHistoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C46B2580ADB400D4C0C6 /* TransactionHistoryRequest.swift */; };
+		66B7C46F2580AE0400D4C0C6 /* TransactionHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C46E2580AE0400D4C0C6 /* TransactionHistoryResponse.swift */; };
+		66B7C4722580BDE700D4C0C6 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7C4712580BDE700D4C0C6 /* CalendarVC.swift */; };
+		66B7CB652580F114006CE991 /* IDTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7CB642580F114006CE991 /* IDTypeVC.swift */; };
+		66B7CB682580F150006CE991 /* IdTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7CB672580F150006CE991 /* IdTypeProtocol.swift */; };
+		66B7CB6B2580FFAC006CE991 /* EditCustomerProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7CB6A2580FFAC006CE991 /* EditCustomerProfileResponse.swift */; };
+		66B7CB7F2581152A006CE991 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B7CB7E2581152A006CE991 /* Utility.swift */; };
 		66BEED96257A51A100714E3B /* MatchPINResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BEED95257A51A100714E3B /* MatchPINResponse.swift */; };
 		66BEED99257A538500714E3B /* PinVerifiedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BEED98257A538500714E3B /* PinVerifiedProtocol.swift */; };
 		66BEEDA0257A5CC600714E3B /* BeneficiaryParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BEED9F257A5CC600714E3B /* BeneficiaryParser.swift */; };
@@ -317,6 +326,15 @@
 		66B7C435257F70AA00D4C0C6 /* BankNameListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankNameListResponse.swift; sourceTree = "<group>"; };
 		66B7C438257F7F8400D4C0C6 /* BranchNamesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchNamesVC.swift; sourceTree = "<group>"; };
 		66B7C43B257F7FE700D4C0C6 /* BankNetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankNetworkProtocol.swift; sourceTree = "<group>"; };
+		66B7C4652580A32200D4C0C6 /* WalletHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHistoryRequest.swift; sourceTree = "<group>"; };
+		66B7C4682580A37200D4C0C6 /* WalletTransferHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTransferHistoryResponse.swift; sourceTree = "<group>"; };
+		66B7C46B2580ADB400D4C0C6 /* TransactionHistoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryRequest.swift; sourceTree = "<group>"; };
+		66B7C46E2580AE0400D4C0C6 /* TransactionHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryResponse.swift; sourceTree = "<group>"; };
+		66B7C4712580BDE700D4C0C6 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		66B7CB642580F114006CE991 /* IDTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTypeVC.swift; sourceTree = "<group>"; };
+		66B7CB672580F150006CE991 /* IdTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdTypeProtocol.swift; sourceTree = "<group>"; };
+		66B7CB6A2580FFAC006CE991 /* EditCustomerProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomerProfileResponse.swift; sourceTree = "<group>"; };
+		66B7CB7E2581152A006CE991 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		66BEED95257A51A100714E3B /* MatchPINResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchPINResponse.swift; sourceTree = "<group>"; };
 		66BEED98257A538500714E3B /* PinVerifiedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinVerifiedProtocol.swift; sourceTree = "<group>"; };
 		66BEED9F257A5CC600714E3B /* BeneficiaryParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeneficiaryParser.swift; sourceTree = "<group>"; };
@@ -537,6 +555,7 @@
 				66BEEE0A257BD65700714E3B /* CardSubmitProtocol.swift */,
 				66B7C42F257F6EC400D4C0C6 /* BankNameProtocol.swift */,
 				66B7C43B257F7FE700D4C0C6 /* BankNetworkProtocol.swift */,
+				66B7CB672580F150006CE991 /* IdTypeProtocol.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -612,6 +631,8 @@
 				6649B2052578C32A003846A2 /* GetSourceIncomeListRequest.swift */,
 				6649B20B2578C898003846A2 /* GetTransactionReceiptRequest.swift */,
 				6649B2112578DBFE003846A2 /* GetWalletCurrencyListRequest.swift */,
+				66B7C4652580A32200D4C0C6 /* WalletHistoryRequest.swift */,
+				66B7C46B2580ADB400D4C0C6 /* TransactionHistoryRequest.swift */,
 			);
 			path = requests;
 			sourceTree = "<group>";
@@ -627,6 +648,8 @@
 				6649B2082578C7A7003846A2 /* GetSourceOfIncomeListResponse.swift */,
 				6649B20E2578C933003846A2 /* TransactionReceipt.swift */,
 				6649B2142578DC90003846A2 /* WalletCurrencyListResponse.swift */,
+				66B7C4682580A37200D4C0C6 /* WalletTransferHistoryResponse.swift */,
+				66B7C46E2580AE0400D4C0C6 /* TransactionHistoryResponse.swift */,
 			);
 			path = responses;
 			sourceTree = "<group>";
@@ -829,6 +852,7 @@
 				66BEED9F257A5CC600714E3B /* BeneficiaryParser.swift */,
 				66BEEDC0257B990200714E3B /* PaymentTypes.swift */,
 				66BEEDE2257BABDC00714E3B /* CountryTypeHelper.swift */,
+				66B7CB7E2581152A006CE991 /* Utility.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -895,6 +919,7 @@
 				6649B117257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift */,
 				6649B12C2576876C003846A2 /* GetSendRecCurrencyResponse.swift */,
 				66BEED95257A51A100714E3B /* MatchPINResponse.swift */,
+				66B7CB6A2580FFAC006CE991 /* EditCustomerProfileResponse.swift */,
 			);
 			path = authResponse;
 			sourceTree = "<group>";
@@ -1004,6 +1029,7 @@
 				91ED83D1257141BA00B5ABF1 /* DialogBox */,
 				9180254525713A3D00EB0806 /* Drop Down */,
 				918024BA257122A300EB0806 /* KWVerificationCodeView-master */,
+				66B7C4712580BDE700D4C0C6 /* CalendarVC.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1103,6 +1129,7 @@
 			children = (
 				91D3AAA0257D1CF10069A25A /* CardPicVC.swift */,
 				91D3AAA1257D1CF10069A25A /* CompleteRegistrationVC.swift */,
+				66B7CB642580F114006CE991 /* IDTypeVC.swift */,
 			);
 			path = KVC;
 			sourceTree = "<group>";
@@ -1393,8 +1420,10 @@
 				6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */,
 				6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */,
 				66BEED99257A538500714E3B /* PinVerifiedProtocol.swift in Sources */,
+				66B7C46C2580ADB400D4C0C6 /* TransactionHistoryRequest.swift in Sources */,
 				91633D0F257A1CA800A8225A /* CardDetailVC.swift in Sources */,
 				66BEEDA8257A7F6000714E3B /* PurposeVC.swift in Sources */,
+				66B7CB7F2581152A006CE991 /* Utility.swift in Sources */,
 				6649B2032578C12E003846A2 /* GetRelationListResponse.swift in Sources */,
 				6648E27D2574F89D003F697F /* ForgotPassotpVC.swift in Sources */,
 				91F22E3F2578E7D000943E25 /* VerifyTransferDetailVC.swift in Sources */,
@@ -1417,9 +1446,11 @@
 				66BEEE02257BC18800714E3B /* YCitiesVC.swift in Sources */,
 				916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */,
 				66BEEDEF257BBD1E00714E3B /* YCityResponse.swift in Sources */,
+				66B7C4662580A32200D4C0C6 /* WalletHistoryRequest.swift in Sources */,
 				9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */,
 				66BEEDFF257BC11B00714E3B /* YBranchesProtocol.swift in Sources */,
 				6649B14F257695EC003846A2 /* GetCardDetailsResponse.swift in Sources */,
+				66B7C4722580BDE700D4C0C6 /* CalendarVC.swift in Sources */,
 				91633D13257A1CB200A8225A /* CashBeneficiaryBranchVC.swift in Sources */,
 				91F306A0257E38F7008D2F45 /* AddMoneyVC.swift in Sources */,
 				914F52C62574C2020020C44A /* AuthenticationResponse.swift in Sources */,
@@ -1473,13 +1504,16 @@
 				6649B13025768911003846A2 /* GetSendRecCurrencyRequest.swift in Sources */,
 				91633D05257A1C2D00A8225A /* CardTableCell.swift in Sources */,
 				9180254725713A5F00EB0806 /* DropDown.swift in Sources */,
+				66B7CB682580F150006CE991 /* IdTypeProtocol.swift in Sources */,
 				91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */,
+				66B7C4692580A37200D4C0C6 /* WalletTransferHistoryResponse.swift in Sources */,
 				9180253E257122A500EB0806 /* StringExtension.swift in Sources */,
 				6649B0EB257668D9003846A2 /* GetBeneficiaryListResponse.swift in Sources */,
 				914F52D22574C2020020C44A /* ForgotPinSetNewRequest.swift in Sources */,
 				915EBDA4257292650072427D /* ForgotPassGetPinVC.swift in Sources */,
 				6649B0E625766858003846A2 /* BeneficiaryListRequest.swift in Sources */,
 				91E677352574D0D300C2E9D0 /* Languages.swift in Sources */,
+				66B7CB6B2580FFAC006CE991 /* EditCustomerProfileResponse.swift in Sources */,
 				66BEEDE9257BBC7E00714E3B /* GetYLocationRequest.swift in Sources */,
 				91C155CF256ED1FC001468FB /* LoginSignUpOptionVC.swift in Sources */,
 				911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */,
@@ -1495,6 +1529,7 @@
 				91788B0E25763835001615F6 /* MyQRCode.swift in Sources */,
 				66B7C42D257F6E1400D4C0C6 /* BankNamesVC.swift in Sources */,
 				6649B10C25767D97003846A2 /* RequestMoneyResponse.swift in Sources */,
+				66B7CB652580F114006CE991 /* IDTypeVC.swift in Sources */,
 				914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */,
 				9180253D257122A500EB0806 /* UIViewExtension.swift in Sources */,
 				91E677382574D0D300C2E9D0 /* LanguageManager.swift in Sources */,
@@ -1504,6 +1539,7 @@
 				6649B1CD2577D730003846A2 /* Repository.swift in Sources */,
 				6649B118257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift in Sources */,
 				6649B1ED2578BB49003846A2 /* AddCustomerCardNoRequest.swift in Sources */,
+				66B7C46F2580AE0400D4C0C6 /* TransactionHistoryResponse.swift in Sources */,
 				91633D0D257A1CA200A8225A /* BankTransferConverterVC.swift in Sources */,
 				66BEEDDD257BA83600714E3B /* RelationProtocol.swift in Sources */,
 				6649B1592576AE2C003846A2 /* MoneyTransferRepository.swift in Sources */,
@@ -1742,7 +1778,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iOS-Technologies.Toti-Wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1761,7 +1797,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iOS-Technologies.Toti-Wallet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

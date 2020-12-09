@@ -77,10 +77,13 @@ enum ControllerID<T: UIViewController> : String {
     case addMoneyPaymentOptionVC = "AddMoneyPaymentOptionVC"
     case addBankBeneficiaryVC = "AddBankBeneficiaryVC"
     case addBankBeneficiaryBankDetail = "AddBankBeneficiaryBankDetail"
-    
+    case idTypesVC = "IDTypeVC"
     
     case bankNamesVC = "BankNamesVC"
     case branchNamesVC = "BranchNamesVC"
+    
+    
+    case cardKyc = "CardPicVC"
     
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
@@ -103,7 +106,7 @@ enum ControllerID<T: UIViewController> : String {
             
         case .transactionHistoryVC, .walletHistoryVC:
             return .History
-        case .completeRegistrationVC:
+        case .completeRegistrationVC , .idTypesVC , .cardKyc:
             return .KVC
         case .addMoneyVC, .selectWalletVC, .addMoneyPaymentOptionVC:
             return .AddMoney

@@ -8,6 +8,14 @@
 
 import UIKit
 
+protocol ReceiptDelegate {
+    func onClickReceipt(history:TransactionHistory)
+}
+
+protocol RepeatDelegate {
+    func onClickRepeat(history:WalletHistory)
+}
+
 class HistoryTableCell: UITableViewCell {
 
     
@@ -18,6 +26,61 @@ class HistoryTableCell: UITableViewCell {
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
+    @IBOutlet weak var lblTransferType: UILabel!
+    
+    var history:TransactionHistory!
+    var walletHistory:WalletHistory!
+    
+    var receiptDelegate:ReceiptDelegate!
+    var walletDelegate:RepeatDelegate!
+    
+    @IBAction func onClickReceipt(_ sender:Any) {
+        if receiptDelegate != nil {
+            receiptDelegate.onClickReceipt(history: history)
+        } else if walletDelegate != nil {
+            walletDelegate.onClickRepeat(history: walletHistory)
+        }
+    }
+    
+    
+    func setTransactionHistoryData(history:TransactionHistory) {
+        self.history = history
+      
+        lblName.text = history.receiverName
+        lblType.text = history.paymentType
+        lblDate.text = history.transactionDate
+        lblAmount.text = history.sendingAmount + " " + history.currency
+        lblStatus.text = history.status
+        if history.paymentTypeID == 1 || history.paymentTypeID == 2 {
+            btnReceipt.isHidden = false
+        } else {
+            btnReceipt.isHidden = true
+        }
+    }
+    
+    
+    func setWalletHistoryData(history:WalletHistory) {
+        self.walletHistory = history
+        lblDate.text = walletHistory.transactionDate
+        lblType.text = walletHistory.paymentType
+        lblAmount.text = walletHistory.sendingAmount + " " + walletHistory.sendingCurrency
+        lblStatus.text = walletHistory.status
+        
+        if walletHistory.status.lowercased().elementsEqual("received") {
+            lblTransferType.text = "Received from"
+            lblName.text = walletHistory.senderName
+            btnReceipt.isHidden = true
+        } else {
+            lblTransferType.text = "Transfer to"
+            lblName.text = walletHistory.receiverName
+            btnReceipt.isHidden = false
+        }
+        
+        //means its load wallet
+        if walletHistory.paymentTypeID == 66 {
+            btnReceipt.isHidden = true
+        }
+    }
     
     
 }

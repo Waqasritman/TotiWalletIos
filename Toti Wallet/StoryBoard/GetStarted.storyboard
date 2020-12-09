@@ -1346,15 +1346,6 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mm/dd/yyyy" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Un4-Af-wac">
-                                                <rect key="frame" x="16" y="172" width="343" height="42"/>
-                                                <color key="backgroundColor" name="F7F7F7"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="42" id="9Ou-0Q-Khf"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cha-rc-gtx">
                                                 <rect key="frame" x="16" y="234" width="343" height="42"/>
                                                 <color key="backgroundColor" name="931D55"/>
@@ -1365,27 +1356,44 @@
                                                 <state key="normal" title="Confirm">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnNext:" destination="1kW-9f-9MS" eventType="touchUpInside" id="fOA-o7-mrC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUH-2k-gae">
+                                                <rect key="frame" x="16" y="171" width="343" height="42"/>
+                                                <color key="backgroundColor" name="F7F7F7"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="H4F-hk-Llt"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <state key="normal" title="Select Date" image="downArrow">
+                                                    <color key="titleColor" white="0.66666666669999997" alpha="0.59551583900000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnExpireDateClick:" destination="1kW-9f-9MS" eventType="touchUpInside" id="5vd-gm-iYI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="5sM-A7-Ppw" secondAttribute="trailing" constant="16" id="3vJ-fv-0a2"/>
                                             <constraint firstItem="5sM-A7-Ppw" firstAttribute="top" secondItem="qei-lg-4KA" secondAttribute="bottom" constant="6" id="67I-Eh-Jpx"/>
+                                            <constraint firstItem="cha-rc-gtx" firstAttribute="top" secondItem="lUH-2k-gae" secondAttribute="bottom" constant="21" id="8Im-eH-Uwy"/>
                                             <constraint firstItem="e27-Yw-Emd" firstAttribute="leading" secondItem="vPh-Xv-V1A" secondAttribute="leading" constant="16" id="9dZ-CL-tYJ"/>
                                             <constraint firstItem="e27-Yw-Emd" firstAttribute="top" secondItem="5sM-A7-Ppw" secondAttribute="bottom" constant="14" id="CT4-M0-8il"/>
                                             <constraint firstItem="6cu-3F-Ym9" firstAttribute="leading" secondItem="vPh-Xv-V1A" secondAttribute="leading" constant="16" id="DTk-ob-4Ik"/>
-                                            <constraint firstAttribute="trailing" secondItem="Un4-Af-wac" secondAttribute="trailing" constant="16" id="HPf-70-Bcd"/>
                                             <constraint firstItem="6cu-3F-Ym9" firstAttribute="top" secondItem="vPh-Xv-V1A" secondAttribute="top" constant="30" id="LFi-Jd-vmD"/>
-                                            <constraint firstItem="Un4-Af-wac" firstAttribute="leading" secondItem="vPh-Xv-V1A" secondAttribute="leading" constant="16" id="PUL-YR-n5v"/>
+                                            <constraint firstItem="lUH-2k-gae" firstAttribute="top" secondItem="e27-Yw-Emd" secondAttribute="bottom" constant="5" id="NMX-G6-Vch"/>
+                                            <constraint firstItem="lUH-2k-gae" firstAttribute="leading" secondItem="vPh-Xv-V1A" secondAttribute="leading" constant="16" id="S9n-ti-qVV"/>
                                             <constraint firstItem="5sM-A7-Ppw" firstAttribute="leading" secondItem="vPh-Xv-V1A" secondAttribute="leading" constant="16" id="U3v-ZB-SyK"/>
-                                            <constraint firstItem="Un4-Af-wac" firstAttribute="top" secondItem="e27-Yw-Emd" secondAttribute="bottom" constant="6" id="VP1-6a-qcb"/>
                                             <constraint firstAttribute="trailing" secondItem="cha-rc-gtx" secondAttribute="trailing" constant="16" id="ZG8-VF-1uD"/>
+                                            <constraint firstAttribute="trailing" secondItem="lUH-2k-gae" secondAttribute="trailing" constant="16" id="d8D-n4-KuM"/>
                                             <constraint firstItem="qei-lg-4KA" firstAttribute="leading" secondItem="vPh-Xv-V1A" secondAttribute="leading" constant="16" id="i1O-gC-vPa"/>
                                             <constraint firstItem="qei-lg-4KA" firstAttribute="top" secondItem="6cu-3F-Ym9" secondAttribute="bottom" constant="16" id="q9Y-Iq-7Nb"/>
                                             <constraint firstAttribute="trailing" secondItem="qei-lg-4KA" secondAttribute="trailing" constant="16" id="rGs-7W-mfS"/>
                                             <constraint firstAttribute="trailing" secondItem="e27-Yw-Emd" secondAttribute="trailing" constant="16" id="v21-VA-xjI"/>
                                             <constraint firstItem="cha-rc-gtx" firstAttribute="leading" secondItem="vPh-Xv-V1A" secondAttribute="leading" constant="16" id="vYi-B1-Udx"/>
-                                            <constraint firstItem="cha-rc-gtx" firstAttribute="top" secondItem="Un4-Af-wac" secondAttribute="bottom" constant="20" id="zRp-4t-CW1"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1412,7 +1420,7 @@
                     </view>
                     <connections>
                         <outlet property="btnConfirm" destination="cha-rc-gtx" id="IR3-ED-fnD"/>
-                        <outlet property="txtExpireDate" destination="Un4-Af-wac" id="hN1-IM-dsk"/>
+                        <outlet property="txtExpireDate" destination="lUH-2k-gae" id="bpS-BK-Ojv"/>
                         <outlet property="txtIDNumber" destination="5sM-A7-Ppw" id="8S1-ol-HKz"/>
                         <outlet property="viewMain" destination="vPh-Xv-V1A" id="tWH-3o-HBd"/>
                     </connections>
@@ -1740,6 +1748,7 @@
         <image name="backIcon" width="24.5" height="19.5"/>
         <image name="backIconWhite" width="24.5" height="19.5"/>
         <image name="checked" width="32" height="32"/>
+        <image name="downArrow" width="13" height="8"/>
         <image name="flag" width="37" height="19"/>
         <image name="logoWhite" width="102.5" height="24.5"/>
         <image name="rightArrow" width="8" height="13"/>

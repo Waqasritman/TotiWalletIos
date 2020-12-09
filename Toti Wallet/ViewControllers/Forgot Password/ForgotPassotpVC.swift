@@ -81,6 +81,7 @@ class ForgotPassotpVC: BaseVC {
                         self.startTimer()
                     } else {
                         self.showError(message: response!.description!)
+                        self.btnBackFunc(self)
                     }
                 }
             })

@@ -8,7 +8,7 @@
 
 import Foundation
 class EditCustomerProfileRequest {
-    let customer =  RegisterUserRequest();
+    var customer =  RegisterUserRequest();
     var customerNo:String = ""
     var idNumber:String = ""
     var idType:Int!

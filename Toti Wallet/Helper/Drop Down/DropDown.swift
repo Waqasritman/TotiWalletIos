@@ -522,9 +522,9 @@ extension UIView {
     func dropShadow() {
         //layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.4
+        layer.shadowOpacity = 0.2
         layer.shadowOffset = .zero
-        layer.shadowRadius = 3
+        layer.shadowRadius = 2
     }
     
     func viewBorder(borderColor : UIColor, borderWidth : CGFloat?) {

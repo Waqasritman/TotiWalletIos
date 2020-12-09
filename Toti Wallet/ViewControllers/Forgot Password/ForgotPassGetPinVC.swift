@@ -62,6 +62,7 @@ class ForgotPassGetPinVC: BaseVC {
                     self.hideProgress()
                     if let error = error {
                         self.showError(message: error)
+                       
                     } else if response!.responseCode == 101 {
                         self.showSuccess(message: response!.description!)
                         ForgotPinRequestApprovedUserRequest.shared.clearData()
@@ -80,7 +81,7 @@ class ForgotPassGetPinVC: BaseVC {
         }
     }
 
-    @IBAction func btnBackFunc(_ sender: UIButton) {
+    @IBAction func btnBackFunc(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
