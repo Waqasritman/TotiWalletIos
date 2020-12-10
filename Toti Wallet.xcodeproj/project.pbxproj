@@ -122,7 +122,6 @@
 		9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CB256E46D700952AF4 /* AppDelegate.swift */; };
 		9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CD256E46D700952AF4 /* ViewController.swift */; };
 		9116F9D1256E46D700952AF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9CF256E46D700952AF4 /* Main.storyboard */; };
-		9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9DD256E483100952AF4 /* GetStarted.storyboard */; };
 		9116F9F3256E4DCC00952AF4 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */; };
 		9116F9F4256E4DCC00952AF4 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */; };
 		9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E3256E4DC900952AF4 /* Lato-Italic.ttf */; };
@@ -248,6 +247,7 @@
 		91C155CD256ED007001468FB /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155CC256ED007001468FB /* Storyboard.swift */; };
 		91C155CF256ED1FC001468FB /* LoginSignUpOptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155CE256ED1FC001468FB /* LoginSignUpOptionVC.swift */; };
 		91C155D2256ED370001468FB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C155D1256ED370001468FB /* UIViewController+Extension.swift */; };
+		91C45C1825820F660067CA41 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C45C1725820F650067CA41 /* GetStarted.storyboard */; };
 		91D3AA9E257D1C800069A25A /* CustomDashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AA9D257D1C800069A25A /* CustomDashedView.swift */; };
 		91D3AAA2257D1CF10069A25A /* CardPicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AAA0257D1CF10069A25A /* CardPicVC.swift */; };
 		91D3AAA3257D1CF10069A25A /* CompleteRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3AAA1257D1CF10069A25A /* CompleteRegistrationVC.swift */; };
@@ -401,7 +401,6 @@
 		9116F9CD256E46D700952AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9116F9D0256E46D700952AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9116F9D7256E46D900952AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9116F9DD256E483100952AF4 /* GetStarted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		9116F9E3256E4DC900952AF4 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
@@ -528,6 +527,7 @@
 		91C155CC256ED007001468FB /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		91C155CE256ED1FC001468FB /* LoginSignUpOptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpOptionVC.swift; sourceTree = "<group>"; };
 		91C155D1256ED370001468FB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		91C45C1725820F650067CA41 /* GetStarted.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		91D3AA9D257D1C800069A25A /* CustomDashedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDashedView.swift; sourceTree = "<group>"; };
 		91D3AAA0257D1CF10069A25A /* CardPicVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPicVC.swift; sourceTree = "<group>"; };
 		91D3AAA1257D1CF10069A25A /* CompleteRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteRegistrationVC.swift; sourceTree = "<group>"; };
@@ -857,7 +857,7 @@
 		9116FA07256E5AC700952AF4 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				9116F9DD256E483100952AF4 /* GetStarted.storyboard */,
+				91C45C1725820F650067CA41 /* GetStarted.storyboard */,
 				9116F9CF256E46D700952AF4 /* Main.storyboard */,
 				9149CA2E25715A3500CD8A34 /* Profile.storyboard */,
 				91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */,
@@ -1399,6 +1399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9116F9F7256E4DCC00952AF4 /* Lato-BlackItalic.ttf in Resources */,
+				91C45C1825820F660067CA41 /* GetStarted.storyboard in Resources */,
 				9116F9F6256E4DCC00952AF4 /* Lato-Heavy.ttf in Resources */,
 				91F3069E257E387E008D2F45 /* BankDetailAlert.xib in Resources */,
 				9116FA00256E4DCC00952AF4 /* Lato-SemiboldItalic.ttf in Resources */,
@@ -1432,7 +1433,6 @@
 				91F22E462578E8FF00943E25 /* MoneyTransfer.storyboard in Resources */,
 				915859DC257CBFCD006AC531 /* History.storyboard in Resources */,
 				9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */,
-				9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */,
 				9116F9FC256E4DCC00952AF4 /* Lato-BoldItalic.ttf in Resources */,
 				91F306A8257E39EC008D2F45 /* AddMoney.storyboard in Resources */,
 			);
