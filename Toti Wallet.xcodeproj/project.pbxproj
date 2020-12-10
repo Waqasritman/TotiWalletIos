@@ -121,7 +121,6 @@
 		91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B482576301D00D4E3C8 /* OurRatesVC.swift */; };
 		9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CB256E46D700952AF4 /* AppDelegate.swift */; };
 		9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CD256E46D700952AF4 /* ViewController.swift */; };
-		9116F9D1256E46D700952AF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9CF256E46D700952AF4 /* Main.storyboard */; };
 		9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9DD256E483100952AF4 /* GetStarted.storyboard */; };
 		9116F9F3256E4DCC00952AF4 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */; };
 		9116F9F4256E4DCC00952AF4 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */; };
@@ -232,7 +231,7 @@
 		91AC2AAA25716C3A006A6E72 /* ProfileAddressDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC2AA925716C3A006A6E72 /* ProfileAddressDetailVC.swift */; };
 		91AC2AAC25717AD0006A6E72 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC2AAB25717AD0006A6E72 /* UITextField+Extension.swift */; };
 		91B062992580CD8900ED1B73 /* KVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91B062982580CD8900ED1B73 /* KVC.storyboard */; };
-		91B0629B2580CFD400ED1B73 /* MainCopy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91B0629A2580CFD400ED1B73 /* MainCopy.storyboard */; };
+		91B0629B2580CFD400ED1B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91B0629A2580CFD400ED1B73 /* Main.storyboard */; };
 		91B062A52580DE1600ED1B73 /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0629E2580DE1500ED1B73 /* FloatyWindow.swift */; };
 		91B062A62580DE1600ED1B73 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0629F2580DE1500ED1B73 /* FloatyManager.swift */; };
 		91B062A72580DE1600ED1B73 /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B062A02580DE1500ED1B73 /* FloatyItem.swift */; };
@@ -399,7 +398,6 @@
 		9116F9C8256E46D700952AF4 /* Toti Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toti Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9116F9CB256E46D700952AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9116F9CD256E46D700952AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9116F9D0256E46D700952AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9116F9D7256E46D900952AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9116F9DD256E483100952AF4 /* GetStarted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
@@ -511,7 +509,7 @@
 		91AC2AA925716C3A006A6E72 /* ProfileAddressDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAddressDetailVC.swift; sourceTree = "<group>"; };
 		91AC2AAB25717AD0006A6E72 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		91B062982580CD8900ED1B73 /* KVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KVC.storyboard; sourceTree = "<group>"; };
-		91B0629A2580CFD400ED1B73 /* MainCopy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainCopy.storyboard; sourceTree = "<group>"; };
+		91B0629A2580CFD400ED1B73 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		91B0629D2580DE1500ED1B73 /* Floaty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floaty.h; sourceTree = "<group>"; };
 		91B0629E2580DE1500ED1B73 /* FloatyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
 		91B0629F2580DE1500ED1B73 /* FloatyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyManager.swift; sourceTree = "<group>"; };
@@ -858,7 +856,6 @@
 			isa = PBXGroup;
 			children = (
 				9116F9DD256E483100952AF4 /* GetStarted.storyboard */,
-				9116F9CF256E46D700952AF4 /* Main.storyboard */,
 				9149CA2E25715A3500CD8A34 /* Profile.storyboard */,
 				91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */,
 				91F22E452578E8FF00943E25 /* MoneyTransfer.storyboard */,
@@ -867,7 +864,7 @@
 				915859DB257CBFCC006AC531 /* History.storyboard */,
 				91B062982580CD8900ED1B73 /* KVC.storyboard */,
 				919D57112582083A009923A8 /* MobileTopUp.storyboard */,
-				91B0629A2580CFD400ED1B73 /* MainCopy.storyboard */,
+				91B0629A2580CFD400ED1B73 /* Main.storyboard */,
 				91C155CC256ED007001468FB /* Storyboard.swift */,
 			);
 			path = StoryBoard;
@@ -1405,7 +1402,7 @@
 				91E677432574D19700C2E9D0 /* Localizable.strings in Resources */,
 				9116F9FA256E4DCC00952AF4 /* Lato-Light.ttf in Resources */,
 				9116FA03256E4DCC00952AF4 /* Lato-Semibold.ttf in Resources */,
-				91B0629B2580CFD400ED1B73 /* MainCopy.storyboard in Resources */,
+				91B0629B2580CFD400ED1B73 /* Main.storyboard in Resources */,
 				9116F9F4256E4DCC00952AF4 /* Lato-Bold.ttf in Resources */,
 				9116FA04256E4DCC00952AF4 /* Lato-Black.ttf in Resources */,
 				9116F9F3256E4DCC00952AF4 /* Lato-Medium.ttf in Resources */,
@@ -1417,7 +1414,6 @@
 				9116FA01256E4DCC00952AF4 /* Lato-HeavyItalic.ttf in Resources */,
 				919D57122582083A009923A8 /* MobileTopUp.storyboard in Resources */,
 				9116FA06256E581200952AF4 /* Colors.xcassets in Resources */,
-				9116F9D1256E46D700952AF4 /* Main.storyboard in Resources */,
 				9180253F257122A500EB0806 /* KWTextFieldView.xib in Resources */,
 				9116F9FD256E4DCC00952AF4 /* Lato-Thin.ttf in Resources */,
 				913B41FC2577AE99001C9F3F /* Assets.xcassets in Resources */,
@@ -1727,14 +1723,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9116F9CF256E46D700952AF4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9116F9D0256E46D700952AF4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		91E677452574D19700C2E9D0 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
