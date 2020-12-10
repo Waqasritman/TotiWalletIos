@@ -29,7 +29,11 @@ class BusinessTranscationVC: UIViewController {
         
     }
     
-
+    @IBAction func btnNextFunc(_ sender: UIButton) {
+        let nextVC = ControllerID.businessTransactionPaymentDetail.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

@@ -46,6 +46,10 @@ class ReceiptVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let floaty = Floaty()
+        floaty.addItem(title: "Hello, World!")
+        self.view.addSubview(floaty)
 
         viewTranscation.dropShadow()
         viewPayment.dropShadow()
