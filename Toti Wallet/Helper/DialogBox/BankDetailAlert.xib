@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,24 +45,24 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdM-L5-ij2">
-                    <rect key="frame" x="37.5" y="173.5" width="300" height="320"/>
+                    <rect key="frame" x="45" y="166" width="285" height="335"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLp-nM-ef8">
-                            <rect key="frame" x="8" y="8" width="284" height="16.5"/>
+                            <rect key="frame" x="8" y="16" width="269" height="17"/>
                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pelase transfer/deposit the amount into the below bank account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1l-An-AaA">
-                            <rect key="frame" x="8" y="32.5" width="284" height="28"/>
+                            <rect key="frame" x="16" y="41" width="253" height="29"/>
                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LhC-95-9jy">
-                            <rect key="frame" x="16" y="272" width="268" height="36"/>
+                            <rect key="frame" x="16" y="287" width="253" height="36"/>
                             <subviews>
-                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyf-8x-vUf">
-                                    <rect key="frame" x="0.0" y="0.0" width="268" height="36"/>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyf-8x-vUf">
+                                    <rect key="frame" x="0.0" y="0.0" width="253" height="36"/>
                                     <color key="backgroundColor" name="650C39"/>
                                     <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
                                     <state key="normal" title="OK">
@@ -76,48 +78,48 @@
                             </constraints>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ajt-1j-WXp" customClass="CustomDashedView" customModule="Toti_Wallet" customModuleProvider="target">
-                            <rect key="frame" x="16" y="72.5" width="268" height="186"/>
+                            <rect key="frame" x="16" y="82" width="253" height="190"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="F13-03-05q">
-                                    <rect key="frame" x="8" y="16" width="252" height="154"/>
+                                    <rect key="frame" x="16" y="16" width="229" height="158"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference no" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FN5-bo-alb">
-                                            <rect key="frame" x="0.0" y="0.0" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TPAY1234567890" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fp3-Gf-8uB">
-                                            <rect key="frame" x="0.0" y="20" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="20.5" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-QQ-5Wk">
-                                            <rect key="frame" x="0.0" y="40" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="41" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TotiPay Limited" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9m-AE-sm0">
-                                            <rect key="frame" x="0.0" y="60" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="61.5" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank sort code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTg-ch-pyw">
-                                            <rect key="frame" x="0.0" y="80" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="82" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60-83-71" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COq-uL-nt1">
-                                            <rect key="frame" x="0.0" y="100" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="102.5" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exQ-ND-Rhg">
-                                            <rect key="frame" x="0.0" y="120" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="123" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234567890" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLw-ga-ghV">
-                                            <rect key="frame" x="0.0" y="140" width="252" height="14"/>
+                                            <rect key="frame" x="0.0" y="143.5" width="229" height="14.5"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -129,14 +131,14 @@
                                 <constraint firstItem="F13-03-05q" firstAttribute="top" secondItem="Ajt-1j-WXp" secondAttribute="top" constant="16" id="K1U-2X-m82"/>
                                 <constraint firstAttribute="trailing" secondItem="F13-03-05q" secondAttribute="trailing" constant="8" id="NW0-hP-ZrM"/>
                                 <constraint firstAttribute="bottom" secondItem="F13-03-05q" secondAttribute="bottom" constant="16" id="XHG-vM-6yb"/>
-                                <constraint firstItem="F13-03-05q" firstAttribute="leading" secondItem="Ajt-1j-WXp" secondAttribute="leading" constant="8" id="yrR-Hb-fRm"/>
+                                <constraint firstItem="F13-03-05q" firstAttribute="leading" secondItem="Ajt-1j-WXp" secondAttribute="leading" constant="16" id="yrR-Hb-fRm"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="0.0"/>
+                                    <real key="value" value="8"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="dashWidth">
-                                    <real key="value" value="2"/>
+                                    <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="dashColor">
                                     <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,25 +154,24 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="K1l-An-AaA" secondAttribute="trailing" constant="8" id="Cvm-eF-87n"/>
-                        <constraint firstAttribute="height" constant="320" id="Ddm-ql-GzK"/>
+                        <constraint firstAttribute="trailing" secondItem="K1l-An-AaA" secondAttribute="trailing" constant="16" id="Cvm-eF-87n"/>
+                        <constraint firstAttribute="height" constant="335" id="Ddm-ql-GzK"/>
                         <constraint firstItem="LhC-95-9jy" firstAttribute="leading" secondItem="WdM-L5-ij2" secondAttribute="leading" constant="16" id="GnI-uH-L3N"/>
                         <constraint firstItem="aLp-nM-ef8" firstAttribute="leading" secondItem="WdM-L5-ij2" secondAttribute="leading" constant="8" id="OLa-ze-gbd"/>
                         <constraint firstItem="aLp-nM-ef8" firstAttribute="centerX" secondItem="WdM-L5-ij2" secondAttribute="centerX" id="QH5-8q-KWz"/>
-                        <constraint firstItem="K1l-An-AaA" firstAttribute="leading" secondItem="WdM-L5-ij2" secondAttribute="leading" constant="8" id="RKQ-ZW-bTm"/>
+                        <constraint firstItem="K1l-An-AaA" firstAttribute="leading" secondItem="WdM-L5-ij2" secondAttribute="leading" constant="16" id="RKQ-ZW-bTm"/>
                         <constraint firstItem="K1l-An-AaA" firstAttribute="top" secondItem="aLp-nM-ef8" secondAttribute="bottom" constant="8" id="UDv-kA-SeB"/>
-                        <constraint firstAttribute="width" constant="300" id="UL2-cS-vdL"/>
+                        <constraint firstAttribute="width" constant="285" id="UL2-cS-vdL"/>
                         <constraint firstAttribute="trailing" secondItem="Ajt-1j-WXp" secondAttribute="trailing" constant="16" id="WlQ-wb-q1r"/>
                         <constraint firstAttribute="trailing" secondItem="LhC-95-9jy" secondAttribute="trailing" constant="16" id="ZDZ-vs-Wkv"/>
                         <constraint firstItem="Ajt-1j-WXp" firstAttribute="leading" secondItem="WdM-L5-ij2" secondAttribute="leading" constant="16" id="eyx-Bc-MI6"/>
                         <constraint firstAttribute="trailing" secondItem="aLp-nM-ef8" secondAttribute="trailing" constant="8" id="h0t-o4-Nfa"/>
-                        <constraint firstItem="aLp-nM-ef8" firstAttribute="top" secondItem="WdM-L5-ij2" secondAttribute="top" constant="8" id="jxu-wc-nOJ"/>
+                        <constraint firstItem="aLp-nM-ef8" firstAttribute="top" secondItem="WdM-L5-ij2" secondAttribute="top" constant="16" id="jxu-wc-nOJ"/>
                         <constraint firstItem="Ajt-1j-WXp" firstAttribute="top" secondItem="K1l-An-AaA" secondAttribute="bottom" constant="12" id="txE-aq-pGB"/>
                         <constraint firstAttribute="bottom" secondItem="LhC-95-9jy" secondAttribute="bottom" constant="12" id="uZq-VO-btb"/>
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="yq2-Gq-bOw"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="YOm-9z-6to" firstAttribute="top" secondItem="Fk7-tX-PoY" secondAttribute="top" id="4ed-in-dsy"/>
@@ -180,6 +181,7 @@
                 <constraint firstAttribute="bottom" secondItem="YOm-9z-6to" secondAttribute="bottom" id="Wd4-ij-iTs"/>
                 <constraint firstItem="YOm-9z-6to" firstAttribute="leading" secondItem="Fk7-tX-PoY" secondAttribute="leading" id="xqK-iF-0Mq"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="yq2-Gq-bOw"/>
             <point key="canvasLocation" x="16.800000000000001" y="46.326836581709152"/>
         </view>
     </objects>

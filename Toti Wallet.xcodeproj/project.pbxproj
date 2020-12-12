@@ -144,6 +144,26 @@
 		9116FA04256E4DCC00952AF4 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */; };
 		9116FA06256E581200952AF4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9116FA05256E581200952AF4 /* Colors.xcassets */; };
 		911AE5242571909B006898D6 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AE5232571909B006898D6 /* CustomTabBarController.swift */; };
+		912117262583B288003FF146 /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9121171F2583B288003FF146 /* FloatyWindow.swift */; };
+		912117272583B288003FF146 /* FloatyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117202583B288003FF146 /* FloatyManager.swift */; };
+		912117282583B288003FF146 /* FloatyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117212583B288003FF146 /* FloatyItem.swift */; };
+		912117292583B288003FF146 /* UIView+Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117222583B288003FF146 /* UIView+Draggable.swift */; };
+		9121172A2583B288003FF146 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117232583B288003FF146 /* FloatyViewController.swift */; };
+		9121172B2583B288003FF146 /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117242583B288003FF146 /* Floaty.swift */; };
+		9121172C2583B288003FF146 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117252583B288003FF146 /* FloatyDelegate.swift */; };
+		9121172E2583B404003FF146 /* PlanTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9121172D2583B404003FF146 /* PlanTableCell.swift */; };
+		912117302583B442003FF146 /* InactiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9121172F2583B441003FF146 /* InactiveVC.swift */; };
+		912117322583B446003FF146 /* BeneficiaryDeleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117312583B446003FF146 /* BeneficiaryDeleteVC.swift */; };
+		912117382583B44D003FF146 /* BusinessTransactionCorrespondent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117342583B44D003FF146 /* BusinessTransactionCorrespondent.swift */; };
+		912117392583B44D003FF146 /* BusinessTransctionBankDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117352583B44D003FF146 /* BusinessTransctionBankDetail.swift */; };
+		9121173A2583B44D003FF146 /* BusinessTranscationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117362583B44D003FF146 /* BusinessTranscationVC.swift */; };
+		9121173B2583B44D003FF146 /* BusinessTransactionPaymentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117372583B44D003FF146 /* BusinessTransactionPaymentDetail.swift */; };
+		9121173D2583B486003FF146 /* SimTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9121173C2583B486003FF146 /* SimTypeVC.swift */; };
+		9121173F2583B48B003FF146 /* MobileTopUpPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9121173E2583B48B003FF146 /* MobileTopUpPaymentVC.swift */; };
+		912117412583B48F003FF146 /* SelectPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117402583B48E003FF146 /* SelectPlanVC.swift */; };
+		912117432583B492003FF146 /* MobileTopUpSuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912117422583B492003FF146 /* MobileTopUpSuccessVC.swift */; };
+		912117452583B8D4003FF146 /* MobileTopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912117442583B8D4003FF146 /* MobileTopUp.storyboard */; };
+		912117472583B8E7003FF146 /* BusinessTransction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 912117462583B8E7003FF146 /* BusinessTransction.storyboard */; };
 		913B41FC2577AE99001C9F3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913B41FB2577AE98001C9F3F /* Assets.xcassets */; };
 		913B41FE2577AEAF001C9F3F /* BeneficaryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B41FD2577AEAF001C9F3F /* BeneficaryTableCell.swift */; };
 		913B42002577AF83001C9F3F /* BusinessTextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913B41FF2577AF83001C9F3F /* BusinessTextVC.swift */; };
@@ -402,6 +422,27 @@
 		9116F9F2256E4DCC00952AF4 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		9116FA05256E581200952AF4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		911AE5232571909B006898D6 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		9121171E2583B288003FF146 /* Floaty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Floaty.h; sourceTree = "<group>"; };
+		9121171F2583B288003FF146 /* FloatyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
+		912117202583B288003FF146 /* FloatyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyManager.swift; sourceTree = "<group>"; };
+		912117212583B288003FF146 /* FloatyItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyItem.swift; sourceTree = "<group>"; };
+		912117222583B288003FF146 /* UIView+Draggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Draggable.swift"; sourceTree = "<group>"; };
+		912117232583B288003FF146 /* FloatyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
+		912117242583B288003FF146 /* Floaty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floaty.swift; sourceTree = "<group>"; };
+		912117252583B288003FF146 /* FloatyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatyDelegate.swift; sourceTree = "<group>"; };
+		9121172D2583B404003FF146 /* PlanTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableCell.swift; sourceTree = "<group>"; };
+		9121172F2583B441003FF146 /* InactiveVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InactiveVC.swift; sourceTree = "<group>"; };
+		912117312583B446003FF146 /* BeneficiaryDeleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeneficiaryDeleteVC.swift; sourceTree = "<group>"; };
+		912117342583B44D003FF146 /* BusinessTransactionCorrespondent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTransactionCorrespondent.swift; sourceTree = "<group>"; };
+		912117352583B44D003FF146 /* BusinessTransctionBankDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTransctionBankDetail.swift; sourceTree = "<group>"; };
+		912117362583B44D003FF146 /* BusinessTranscationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTranscationVC.swift; sourceTree = "<group>"; };
+		912117372583B44D003FF146 /* BusinessTransactionPaymentDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTransactionPaymentDetail.swift; sourceTree = "<group>"; };
+		9121173C2583B486003FF146 /* SimTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimTypeVC.swift; sourceTree = "<group>"; };
+		9121173E2583B48B003FF146 /* MobileTopUpPaymentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileTopUpPaymentVC.swift; sourceTree = "<group>"; };
+		912117402583B48E003FF146 /* SelectPlanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlanVC.swift; sourceTree = "<group>"; };
+		912117422583B492003FF146 /* MobileTopUpSuccessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileTopUpSuccessVC.swift; sourceTree = "<group>"; };
+		912117442583B8D4003FF146 /* MobileTopUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MobileTopUp.storyboard; sourceTree = "<group>"; };
+		912117462583B8E7003FF146 /* BusinessTransction.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BusinessTransction.storyboard; sourceTree = "<group>"; };
 		913B41FB2577AE98001C9F3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913B41FD2577AEAF001C9F3F /* BeneficaryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeneficaryTableCell.swift; sourceTree = "<group>"; };
 		913B41FF2577AF83001C9F3F /* BusinessTextVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTextVC.swift; sourceTree = "<group>"; };
@@ -821,10 +862,38 @@
 				91F22E452578E8FF00943E25 /* MoneyTransfer.storyboard */,
 				91F306A7257E39EC008D2F45 /* AddMoney.storyboard */,
 				915859DB257CBFCC006AC531 /* History.storyboard */,
+				912117462583B8E7003FF146 /* BusinessTransction.storyboard */,
+				912117442583B8D4003FF146 /* MobileTopUp.storyboard */,
 				915859D9257CBFC5006AC531 /* KVC.storyboard */,
 				91C155CC256ED007001468FB /* Storyboard.swift */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		9121171D2583B288003FF146 /* Floating Button */ = {
+			isa = PBXGroup;
+			children = (
+				9121171E2583B288003FF146 /* Floaty.h */,
+				9121171F2583B288003FF146 /* FloatyWindow.swift */,
+				912117202583B288003FF146 /* FloatyManager.swift */,
+				912117212583B288003FF146 /* FloatyItem.swift */,
+				912117222583B288003FF146 /* UIView+Draggable.swift */,
+				912117232583B288003FF146 /* FloatyViewController.swift */,
+				912117242583B288003FF146 /* Floaty.swift */,
+				912117252583B288003FF146 /* FloatyDelegate.swift */,
+			);
+			path = "Floating Button";
+			sourceTree = "<group>";
+		};
+		912117332583B44D003FF146 /* Business Tanscation */ = {
+			isa = PBXGroup;
+			children = (
+				912117342583B44D003FF146 /* BusinessTransactionCorrespondent.swift */,
+				912117352583B44D003FF146 /* BusinessTransctionBankDetail.swift */,
+				912117362583B44D003FF146 /* BusinessTranscationVC.swift */,
+				912117372583B44D003FF146 /* BusinessTransactionPaymentDetail.swift */,
+			);
+			path = "Business Tanscation";
 			sourceTree = "<group>";
 		};
 		913B420C2577B090001C9F3F /* Add Money */ = {
@@ -1017,6 +1086,7 @@
 				915859CE257CB899006AC531 /* HistoryTableCell.swift */,
 				913B41FD2577AEAF001C9F3F /* BeneficaryTableCell.swift */,
 				91633D04257A1C2D00A8225A /* CardTableCell.swift */,
+				9121172D2583B404003FF146 /* PlanTableCell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -1025,6 +1095,7 @@
 			isa = PBXGroup;
 			children = (
 				91D3AA9D257D1C800069A25A /* CustomDashedView.swift */,
+				9121171D2583B288003FF146 /* Floating Button */,
 				91E677232574D0D200C2E9D0 /* LanguageManager-iOS */,
 				91ED83D1257141BA00B5ABF1 /* DialogBox */,
 				9180254525713A3D00EB0806 /* Drop Down */,
@@ -1142,10 +1213,13 @@
 				91F22E372578E7D000943E25 /* MoneyTrasnfer */,
 				915859D0257CB8F2006AC531 /* History */,
 				91D3AA9F257D1CF10069A25A /* KVC */,
+				912117332583B44D003FF146 /* Business Tanscation */,
 				91E59EEB2571868D00FEB6A7 /* HomeVC.swift */,
 				91076B4425762FB500D4E3C8 /* MyCardsVC.swift */,
 				911AE5232571909B006898D6 /* CustomTabBarController.swift */,
 				913B42072577B056001C9F3F /* NotificationListVC.swift */,
+				912117312583B446003FF146 /* BeneficiaryDeleteVC.swift */,
+				9121172F2583B441003FF146 /* InactiveVC.swift */,
 				91076B482576301D00D4E3C8 /* OurRatesVC.swift */,
 				66D65AE02578F87600898996 /* SelectCurrencyVC.swift */,
 			);
@@ -1252,6 +1326,10 @@
 			isa = PBXGroup;
 			children = (
 				91F22E432578E7DA00943E25 /* MobileTopUpVC.swift */,
+				9121173C2583B486003FF146 /* SimTypeVC.swift */,
+				9121173E2583B48B003FF146 /* MobileTopUpPaymentVC.swift */,
+				912117402583B48E003FF146 /* SelectPlanVC.swift */,
+				912117422583B492003FF146 /* MobileTopUpSuccessVC.swift */,
 			);
 			path = MobileTopUp;
 			sourceTree = "<group>";
@@ -1321,6 +1399,7 @@
 				9116F9F6256E4DCC00952AF4 /* Lato-Heavy.ttf in Resources */,
 				91F3069E257E387E008D2F45 /* BankDetailAlert.xib in Resources */,
 				9116FA00256E4DCC00952AF4 /* Lato-SemiboldItalic.ttf in Resources */,
+				912117452583B8D4003FF146 /* MobileTopUp.storyboard in Resources */,
 				91E677432574D19700C2E9D0 /* Localizable.strings in Resources */,
 				9116F9FA256E4DCC00952AF4 /* Lato-Light.ttf in Resources */,
 				9116FA03256E4DCC00952AF4 /* Lato-Semibold.ttf in Resources */,
@@ -1341,6 +1420,7 @@
 				91076B3D25762D1500D4E3C8 /* SideMenu.storyboard in Resources */,
 				9116F9FF256E4DCC00952AF4 /* Lato-Regular.ttf in Resources */,
 				91802541257122A500EB0806 /* KWVerificationCodeView.xib in Resources */,
+				912117472583B8E7003FF146 /* BusinessTransction.storyboard in Resources */,
 				9116F9FB256E4DCC00952AF4 /* Lato-MediumItalic.ttf in Resources */,
 				9116FA02256E4DCC00952AF4 /* Lato-LightItalic.ttf in Resources */,
 				915859CC257CB876006AC531 /* AlertViewWithTextField.xib in Resources */,
@@ -1412,12 +1492,16 @@
 				91802540257122A500EB0806 /* KWVerificationCodeView.swift in Sources */,
 				91D3AAA2257D1CF10069A25A /* CardPicVC.swift in Sources */,
 				91788B1025763A50001615F6 /* SettingsVC.swift in Sources */,
+				9121172C2583B288003FF146 /* FloatyDelegate.swift in Sources */,
 				91F22E402578E7D000943E25 /* VerifyTransferPinVC.swift in Sources */,
+				912117292583B288003FF146 /* UIView+Draggable.swift in Sources */,
+				9121173F2583B48B003FF146 /* MobileTopUpPaymentVC.swift in Sources */,
 				913B42042577AF95001C9F3F /* ShareWthFriendVC.swift in Sources */,
 				6649B12D2576876C003846A2 /* GetSendRecCurrencyResponse.swift in Sources */,
 				91F306A4257E390B008D2F45 /* AddBankBeneficiaryVC.swift in Sources */,
 				66B7C439257F7F8400D4C0C6 /* BranchNamesVC.swift in Sources */,
 				6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */,
+				9121173A2583B44D003FF146 /* BusinessTranscationVC.swift in Sources */,
 				6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */,
 				66BEED99257A538500714E3B /* PinVerifiedProtocol.swift in Sources */,
 				66B7C46C2580ADB400D4C0C6 /* TransactionHistoryRequest.swift in Sources */,
@@ -1426,6 +1510,7 @@
 				66B7CB7F2581152A006CE991 /* Utility.swift in Sources */,
 				6649B2032578C12E003846A2 /* GetRelationListResponse.swift in Sources */,
 				6648E27D2574F89D003F697F /* ForgotPassotpVC.swift in Sources */,
+				9121173D2583B486003FF146 /* SimTypeVC.swift in Sources */,
 				91F22E3F2578E7D000943E25 /* VerifyTransferDetailVC.swift in Sources */,
 				6649B10325767B2E003846A2 /* WalletToWalletTransferRequest.swift in Sources */,
 				6649B20F2578C933003846A2 /* TransactionReceipt.swift in Sources */,
@@ -1465,6 +1550,7 @@
 				915EBDA2257292460072427D /* ForgotPassGetEmailVC.swift in Sources */,
 				91633D11257A1CAD00A8225A /* CashBeneficaryAddressVC.swift in Sources */,
 				66BEEDBE257B947000714E3B /* WalletBalanceResponse.swift in Sources */,
+				912117302583B442003FF146 /* InactiveVC.swift in Sources */,
 				91F22E3D2578E7D000943E25 /* RequestMoneyVC.swift in Sources */,
 				91076B4325762EAC00D4E3C8 /* BusinessTranscationVC.swift in Sources */,
 				66BEEDC1257B990200714E3B /* PaymentTypes.swift in Sources */,
@@ -1473,10 +1559,13 @@
 				914F52C72574C2020020C44A /* CustomerRegistrationResponse.swift in Sources */,
 				91E6773B2574D0D300C2E9D0 /* UIButton+Direction.swift in Sources */,
 				6649B1E22577DD52003846A2 /* RestRepository.swift in Sources */,
+				912117412583B48F003FF146 /* SelectPlanVC.swift in Sources */,
 				914F52D42574C2020020C44A /* SoapActionHelper.swift in Sources */,
 				914F52CB2574C2020020C44A /* GetCustomerProfileRequest.swift in Sources */,
 				6649B10925767CD8003846A2 /* RequestMoney.swift in Sources */,
 				66C9B9052574DE49005AAF1B /* GetCustomerProfileResponse.swift in Sources */,
+				912117272583B288003FF146 /* FloatyManager.swift in Sources */,
+				9121172A2583B288003FF146 /* FloatyViewController.swift in Sources */,
 				66BEEDE0257BA91500714E3B /* RelationVC.swift in Sources */,
 				913B42002577AF83001C9F3F /* BusinessTextVC.swift in Sources */,
 				914F52A32574C1EE0020C44A /* UrlToBase64.swift in Sources */,
@@ -1487,10 +1576,12 @@
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
 				6649B1DA2577DC13003846A2 /* GetProfileImage.swift in Sources */,
 				91F3069D257E387E008D2F45 /* BankDetailAlert.swift in Sources */,
+				9121173B2583B44D003FF146 /* BusinessTransactionPaymentDetail.swift in Sources */,
 				91C155C3256ECE4C001468FB /* SplashVC.swift in Sources */,
 				6649B0F825766F83003846A2 /* DeleteBeneficiaryResponse.swift in Sources */,
 				6649B1472576940C003846A2 /* GetBankNetworkListResponse.swift in Sources */,
 				91788B1625763FA0001615F6 /* BillPayment.swift in Sources */,
+				912117262583B288003FF146 /* FloatyWindow.swift in Sources */,
 				6649B0FF2576721F003846A2 /* TotiPaySendResponse.swift in Sources */,
 				66D65AE12578F87600898996 /* SelectCurrencyVC.swift in Sources */,
 				6649B2092578C7A7003846A2 /* GetSourceOfIncomeListResponse.swift in Sources */,
@@ -1523,11 +1614,15 @@
 				91F22E412578E7D000943E25 /* QuickPayVC.swift in Sources */,
 				914F52CE2574C2020020C44A /* RegisterUserRequest.swift in Sources */,
 				66BEEDB2257A815300714E3B /* PurposeOfTransferListResponse.swift in Sources */,
+				912117382583B44D003FF146 /* BusinessTransactionCorrespondent.swift in Sources */,
 				91E677362574D0D300C2E9D0 /* ViewDirection.swift in Sources */,
 				91633D07257A1C8E00A8225A /* CashBeneficaryVC.swift in Sources */,
+				9121172B2583B288003FF146 /* Floaty.swift in Sources */,
+				912117432583B492003FF146 /* MobileTopUpSuccessVC.swift in Sources */,
 				91F306A6257E3910008D2F45 /* AddBankBeneficiaryBankDetail.swift in Sources */,
 				91788B0E25763835001615F6 /* MyQRCode.swift in Sources */,
 				66B7C42D257F6E1400D4C0C6 /* BankNamesVC.swift in Sources */,
+				912117392583B44D003FF146 /* BusinessTransctionBankDetail.swift in Sources */,
 				6649B10C25767D97003846A2 /* RequestMoneyResponse.swift in Sources */,
 				66B7CB652580F114006CE991 /* IDTypeVC.swift in Sources */,
 				914F52A92574C1FA0020C44A /* AuthRepository.swift in Sources */,
@@ -1558,6 +1653,7 @@
 				91C155CD256ED007001468FB /* Storyboard.swift in Sources */,
 				66BEEDBB257B93DC00714E3B /* WalletBalanceRequest.swift in Sources */,
 				66BEEDEC257BBCD500714E3B /* GetYBranchRequest.swift in Sources */,
+				9121172E2583B404003FF146 /* PlanTableCell.swift in Sources */,
 				6649B1E62577DDFA003846A2 /* Credentials.swift in Sources */,
 				66BEEDF5257BBED600714E3B /* YBranchResponse.swift in Sources */,
 				6649B0FB25767044003846A2 /* TotiPaySend.swift in Sources */,
@@ -1584,6 +1680,7 @@
 				914F52CF2574C2020020C44A /* MatchPinRequest.swift in Sources */,
 				914F52D32574C2020020C44A /* AuthenticationRequest.swift in Sources */,
 				6649B0C4257654DE003846A2 /* ChangePinResponse.swift in Sources */,
+				912117322583B446003FF146 /* BeneficiaryDeleteVC.swift in Sources */,
 				6649B2002578C0E2003846A2 /* GetRelationListRequest.swift in Sources */,
 				91C155C7256ECEA9001468FB /* LoginVC.swift in Sources */,
 				91E6773A2574D0D300C2E9D0 /* UIView+Direction.swift in Sources */,
@@ -1598,6 +1695,7 @@
 				6649B1D12577D94F003846A2 /* RestApiManager.swift in Sources */,
 				66B7C433257F6FE900D4C0C6 /* BankNameListRequest.swift in Sources */,
 				6649B0EF25766AB8003846A2 /* BeneficiaryAddRequest.swift in Sources */,
+				912117282583B288003FF146 /* FloatyItem.swift in Sources */,
 				914F52CA2574C2020020C44A /* VerifyOTPResponse.swift in Sources */,
 				6649B1C72577C43A003846A2 /* BeneficiaryRespository.swift in Sources */,
 				91F22E442578E7DA00943E25 /* MobileTopUpVC.swift in Sources */,
