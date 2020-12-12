@@ -117,7 +117,6 @@
 		71CBD7E10021E48861BD0415 /* Pods_Toti_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */; };
 		91076B3D25762D1500D4E3C8 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */; };
 		91076B4125762E8C00D4E3C8 /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */; };
-		91076B4325762EAC00D4E3C8 /* BusinessTranscationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */; };
 		91076B4525762FB600D4E3C8 /* MyCardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B4425762FB500D4E3C8 /* MyCardsVC.swift */; };
 		91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B482576301D00D4E3C8 /* OurRatesVC.swift */; };
 		9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CB256E46D700952AF4 /* AppDelegate.swift */; };
@@ -393,7 +392,6 @@
 		8B69F8A31B70B1978F5E520A /* Pods_Toti_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toti_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
 		91076B4025762E8C00D4E3C8 /* CountryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryTableCell.swift; sourceTree = "<group>"; };
-		91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTranscationVC.swift; sourceTree = "<group>"; };
 		91076B4425762FB500D4E3C8 /* MyCardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardsVC.swift; sourceTree = "<group>"; };
 		91076B482576301D00D4E3C8 /* OurRatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurRatesVC.swift; sourceTree = "<group>"; };
 		9116F9C8256E46D700952AF4 /* Toti Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toti Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1067,7 +1065,6 @@
 				916A28DB25739E2A00A73313 /* SideMenuVC.swift */,
 				913B41FF2577AF83001C9F3F /* BusinessTextVC.swift */,
 				913B42012577AF8C001C9F3F /* BeneficiaryListVC.swift */,
-				91076B4225762EAC00D4E3C8 /* BusinessTranscationVC.swift */,
 				913B42032577AF94001C9F3F /* ShareWthFriendVC.swift */,
 				91788B0D25763835001615F6 /* MyQRCode.swift */,
 				91788B0F25763A50001615F6 /* SettingsVC.swift */,
@@ -1552,7 +1549,6 @@
 				66BEEDBE257B947000714E3B /* WalletBalanceResponse.swift in Sources */,
 				912117302583B442003FF146 /* InactiveVC.swift in Sources */,
 				91F22E3D2578E7D000943E25 /* RequestMoneyVC.swift in Sources */,
-				91076B4325762EAC00D4E3C8 /* BusinessTranscationVC.swift in Sources */,
 				66BEEDC1257B990200714E3B /* PaymentTypes.swift in Sources */,
 				914F52C52574C2020020C44A /* ForgotPinApprovedUserResponse.swift in Sources */,
 				914F52CD2574C2020020C44A /* LoginRequest.swift in Sources */,
