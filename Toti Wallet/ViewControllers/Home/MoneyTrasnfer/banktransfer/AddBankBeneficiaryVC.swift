@@ -75,8 +75,19 @@ class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , Cu
             BeneficiaryAddRequest.shared.FirstName = txtName.text!
             BeneficiaryAddRequest.shared.MiddleName = ""
             BeneficiaryAddRequest.shared.LastName = txtLastName.text!
-            let nextVc = ControllerID.addBankBeneficiaryBankDetail.instance
-            self.pushWithFullScreen(nextVc)
+            
+            if BeneficiaryAddRequest.shared.countryID == 2 {
+                let nextVc = ControllerID.indiaBankBeneVC.instance
+                self.pushWithFullScreen(nextVc)
+            } else if BeneficiaryAddRequest.shared.countryRegion == 1 {
+                self.showError(message: "Sepa country")
+            }
+            else {
+                let nextVc = ControllerID.addBankBeneficiaryBankDetail.instance
+                self.pushWithFullScreen(nextVc)
+            }
+ 
+            
         }
     }
 

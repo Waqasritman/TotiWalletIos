@@ -82,7 +82,7 @@ class BaseVC: UIViewController , PopUpProtocol {
     func getFormatedDate(date:Date) -> String {
         let dateformatter = DateFormatter()
         dateformatter.dateStyle = DateFormatter.Style.short
-        dateformatter.dateFormat = "dd/MM/yyyy"
+        dateformatter.dateFormat = "MM/dd/yyyy"
         return dateformatter.string(from: date)
     }
     
@@ -90,7 +90,7 @@ class BaseVC: UIViewController , PopUpProtocol {
     func getFormatedPinDate(date:Date) -> String {
         let dateformatter = DateFormatter()
         dateformatter.dateStyle = DateFormatter.Style.short
-        dateformatter.dateFormat = "dd-MM-yyyy"
+        dateformatter.dateFormat = "MM-dd-yyyy"
         return dateformatter.string(from: date)
     }
 

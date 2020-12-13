@@ -104,7 +104,6 @@ class HomeVC: BaseVC {
         
         if preferenceHelper.getIsDocumentUploaded() {
             btnRegistration.isHidden = true
-            
         } else {
             btnRegistration.isHidden = false
             AlertView.instance.showAlert(title: "complete_profile".localiz() , message: "please_complete_kyc".localiz())

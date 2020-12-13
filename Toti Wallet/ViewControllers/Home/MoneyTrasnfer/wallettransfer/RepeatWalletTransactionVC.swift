@@ -1,23 +1,22 @@
 //
-//  WalletTransferVC.swift
+//  RepeatWalletTransactionVC.swift
 //  Toti Wallet
 //
-//  Created by Adnan Yousaf on 03/12/2020.
+//  Created by Mohammad Waqas on 12/13/20.
 //  Copyright © 2020 iOS Technologies. All rights reserved.
 //
 
 import UIKit
 
-class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
-                        , OnConfirmSummaryProtocol , PinVerifiedProtocol {
-    
-    
+class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListProtocol
+                                  , OnConfirmSummaryProtocol , PinVerifiedProtocol {
+
     
     var isSendingSelect = false
     let calRequest:CalTransferRequest = CalTransferRequest()
     let moneyTransferRepo:MoneyTransferRepository = MoneyTransferRepository()
     let authRepo:AuthRepository = AuthRepository()
-    
+    var history:WalletHistory!
     
     
     let walletTransferRequest:WalletToWalletTransferRequest = WalletToWalletTransferRequest()
@@ -29,24 +28,18 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     @IBOutlet weak var txtSecond: UITextField!
     @IBOutlet weak var viewBottom: UIView!
     @IBOutlet weak var txtPhoneNumber: UITextField!
-    @IBOutlet weak var viewCode: UIView!
+  
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtDescription: UITextField!
     @IBOutlet weak var lblCommision: UILabel!
-    @IBOutlet weak var lblCode:UILabel!
+  
     
     
     override func isValidate() -> Bool {
-        if lblCode.text!.isEmpty {
-            showError(message: "Select Country")
-            return false
-        } else if txtPhoneNumber.text!.isEmpty {
+        if txtPhoneNumber.text!.isEmpty {
             showError(message: "Enter number")
             return false
-        } else if !verifyNumber(number: lblCode.text! + txtPhoneNumber.text!) {
-            showError(message: "Enter Number Is Invalid")
-            return false
-        } else if txtName.text!.isEmpty {
+        }  else if txtName.text!.isEmpty {
             showError(message: "Enter Wallet name")
             return false
         }
@@ -86,9 +79,10 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
         txtSecond.setLeftPaddingPoints(10)
         
         txtPhoneNumber.setLeftPaddingPoints(5)
-        
-        let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
-        viewCode.addGestureRecognizer(viewCodeGesture)
+
+        txtPhoneNumber.text = history.receiverNumber
+        txtPhoneNumber.isEnabled = false
+
     }
     
     
@@ -123,8 +117,7 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
             walletTransferRequest.description = txtDescription.text!
             walletTransferRequest.payInCurrency = calRequest.payInCurrency
             walletTransferRequest.receiptCurrency = calRequest.payoutCurrency
-            walletTransferRequest.receiptMobileNo = String().removePlus(number: self.lblCode.text!
-                                                                            + self.txtPhoneNumber.text!)
+            walletTransferRequest.receiptMobileNo = self.txtPhoneNumber.text!
             walletTransferRequest.transferAmount = calRequest.transferAmount
             walletTransferRequest.languageId = preferenceHelper.getLanguage()
             let nextVC = ControllerID.verifyTransferDetailVC.instance
@@ -192,7 +185,7 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     }
     
     func onSelectCountry(country: WRCountryList) {
-        lblCode.text = country.countryCode
+       
     }
     
     

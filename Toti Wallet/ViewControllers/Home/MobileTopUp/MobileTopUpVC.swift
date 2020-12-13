@@ -11,7 +11,7 @@ import UIKit
 class MobileTopUpVC: UIViewController {
 
     @IBOutlet weak var btnType: UIButton!
-    @IBOutlet weak var btnCategory: UIButton!
+ 
     @IBOutlet weak var btnOperator: UIButton!
     @IBOutlet weak var btnChoosePlan: UIButton!
     @IBOutlet weak var txtPhoneNumber: UITextField!
@@ -20,13 +20,13 @@ class MobileTopUpVC: UIViewController {
         super.viewDidLoad()
 
         btnType.layer.cornerRadius = 8
-        btnCategory.layer.cornerRadius = 8
+     
         btnOperator.layer.cornerRadius = 8
         btnChoosePlan.layer.cornerRadius = 8
         txtPhoneNumber.setLeftPaddingPoints(5)
         
         btnType.imageEdgeInsets.left = self.view.frame.width - 50
-        btnCategory.imageEdgeInsets.left = self.view.frame.width - 50
+     
         btnOperator.imageEdgeInsets.left = self.view.frame.width - 50
         
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))

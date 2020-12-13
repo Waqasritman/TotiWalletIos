@@ -69,7 +69,7 @@ enum ControllerID<T: UIViewController> : String {
     case transactionHistoryVC = "TransactionHistoryVC"
     case walletHistoryVC = "WalletHistoryVC"
     case receiptVC = "ReceiptVC"
-    
+    case repeatWalletVC = "RepeatWalletTransactionVC"
     case completeRegistrationVC = "CompleteRegistrationVC"
     case prepardCardVC = "PrepardCardVC"
     
@@ -81,7 +81,7 @@ enum ControllerID<T: UIViewController> : String {
     
     case bankNamesVC = "BankNamesVC"
     case branchNamesVC = "BranchNamesVC"
-    
+    case indiaBankBeneVC = "BankBeneficiaryIndiaVC"
     
     case cardKyc = "CardPicVC"
     
@@ -110,7 +110,7 @@ enum ControllerID<T: UIViewController> : String {
         case .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
             return .SideMenu
             
-        case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches, .receiptVC, .prepardCardVC, .addBankBeneficiaryVC, .addBankBeneficiaryBankDetail ,.branchNamesVC , .bankNamesVC, .beneficiaryDeleteVC:
+        case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches, .receiptVC, .prepardCardVC, .addBankBeneficiaryVC, .addBankBeneficiaryBankDetail ,.branchNamesVC , .bankNamesVC, .beneficiaryDeleteVC , .indiaBankBeneVC , .repeatWalletVC:
             return .MoneyTransfer
             
         case .transactionHistoryVC, .walletHistoryVC:

@@ -122,29 +122,33 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
     
     
     func loadWallet() {
-        if Network.isConnectedToNetwork() {
-            self.showProgress()
-            print(TotiPaySend.shared.getXML())
-            moneyRepo.sendTotiPay(request: HTTPConnection.openConnection(stringParams: TotiPaySend.shared.getXML(), action: SoapActionHelper.shared.ACTION_SEND_TRANSFER), completion: {(response , error)  in
-                self.hideProgress()
-                if let error = error {
-                    self.showError(message: error)
-                } else if response!.responseCode == 101 {
-                    self.receiptNumber = response!.transactionNo!
-                    if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.CREDIT_CARD {
-                        AlertView.instance.delegate = self
-                        AlertView.instance.showAlert(title: "in_process".localiz() , message: "in_process_msg_card".localiz())
-        
-                    } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.BANK_DEPOSIT {
-                        BankDetailAlert.instance.delegate = self
-                        BankDetailAlert.instance.showAlert(referenceNumber: response!.transactionNo!)
-                    } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.WALLET {
-                        self.goToReceipt(number: response!.transactionNo!)
+        if preferenceHelper.getISKYCApproved() {
+            if Network.isConnectedToNetwork() {
+                self.showProgress()
+                print(TotiPaySend.shared.getXML())
+                moneyRepo.sendTotiPay(request: HTTPConnection.openConnection(stringParams: TotiPaySend.shared.getXML(), action: SoapActionHelper.shared.ACTION_SEND_TRANSFER), completion: {(response , error)  in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else if response!.responseCode == 101 {
+                        self.receiptNumber = response!.transactionNo!
+                        if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.CREDIT_CARD {
+                            AlertView.instance.delegate = self
+                            AlertView.instance.showAlert(title: "in_process".localiz() , message: "in_process_msg_card".localiz())
+            
+                        } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.BANK_DEPOSIT {
+                            BankDetailAlert.instance.delegate = self
+                            BankDetailAlert.instance.showAlert(referenceNumber: response!.transactionNo!)
+                        } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.WALLET {
+                            self.goToReceipt(number: response!.transactionNo!)
+                        }
+                    } else {
+                        self.showError(message: response!.description!)
                     }
-                } else {
-                    self.showError(message: response!.description!)
-                }
-            })
+                })
+            }
+        } else {
+            self.showError(message: "Kyc not approved")
         }
     }
     

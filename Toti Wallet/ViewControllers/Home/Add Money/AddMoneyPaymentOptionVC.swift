@@ -86,32 +86,34 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
     
 
     func loadWallet() {
-        if Network.isConnectedToNetwork() {
-            showProgress()
-            LoadWalletRequest.shared.languageId = preferenceHelper.getLanguage()
-            LoadWalletRequest.shared.customerNo = preferenceHelper.getCustomerNo()
+        if preferenceHelper.getISKYCApproved() {
+            if Network.isConnectedToNetwork() {
+                showProgress()
+                LoadWalletRequest.shared.languageId = preferenceHelper.getLanguage()
+                LoadWalletRequest.shared.customerNo = preferenceHelper.getCustomerNo()
+                
+                moneyRepo.loadWallet(request: HTTPConnection.openConnection(stringParams: LoadWalletRequest.shared.getXML(), action: SoapActionHelper.shared.ACTION_LOAD_WALLET), completion: {(response , error) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else if response!.responseCode == 101 {
+                        if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.CREDIT_CARD {
+                            AlertView.instance.delegate = self
+                            AlertView.instance.showAlert(title: "in_process".localiz() , message: "in_process_msg_card".localiz())
             
-            moneyRepo.loadWallet(request: HTTPConnection.openConnection(stringParams: LoadWalletRequest.shared.getXML(), action: SoapActionHelper.shared.ACTION_LOAD_WALLET), completion: {(response , error) in
-                self.hideProgress()
-                if let error = error {
-                    self.showError(message: error)
-                } else if response!.responseCode == 101 {
-                    if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.CREDIT_CARD {
-                        AlertView.instance.delegate = self
-                        AlertView.instance.showAlert(title: "in_process".localiz() , message: "in_process_msg_card".localiz())
-        
-                    } else if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.BANK_DEPOSIT {
-                        BankDetailAlert.instance.delegate = self
-                        BankDetailAlert.instance.showAlert(referenceNumber: response!.referenceNo)
+                        } else if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.BANK_DEPOSIT {
+                            BankDetailAlert.instance.delegate = self
+                            BankDetailAlert.instance.showAlert(referenceNumber: response!.referenceNo)
+                        }
+                    } else {
+                        self.showError(message: response!.description!)
                     }
-                } else {
-                    self.showError(message: response!.description!)
-                }
-            })
-        } else {
-            
-            self.noInternet()
+                })
+            } else {
+                self.noInternet()
+            }
         }
+      
     }
    
     

@@ -44,11 +44,15 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         txtFirst.layer.cornerRadius = 8
         txtSecond.layer.cornerRadius = 8
         
-        firstDropDown.imageEdgeInsets.left = self.firstDropDown.frame.width - 15
-        secondDropDown.imageEdgeInsets.left = self.secondDropDown.frame.width - 15
+        firstDropDown.imageEdgeInsets.left = self.firstDropDown.frame.width - 25
+        secondDropDown.imageEdgeInsets.left = self.secondDropDown.frame.width - 25
         
         txtFirst.setLeftPaddingPoints(10)
         txtSecond.setLeftPaddingPoints(10)
+        
+        
+        firstDropDown.setTitle("GBP", for: .normal)
+        secondDropDown.setTitle("YER", for: .normal)
         
     }
     
@@ -129,29 +133,9 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     
     
     func onSelectCountry(country: WRCountryList) {
-        
-        let recCurrencyRequest = GetSendRecCurrencyRequest()
-        recCurrencyRequest.countryType = country.countryType
-        recCurrencyRequest.countryShortName = country.countryShortName
-        recCurrencyRequest.languageId = preferenceHelper.getLanguage()
-        
-        if Network.isConnectedToNetwork() {
-            showProgress()
-            self.authRepo.getReceiveCurrency(request: HTTPConnection.openConnection(stringParams: recCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_REC_CURRENCY), completion: {(response , error ) in
-                if let error = error {
-                    self.hideProgress()
-                    self.showError(message: error)
-                } else if response!.responseCode == 101 {
-                    self.onCurrencyList(currencyList: response!.currencyList)
-                } else {
-                    self.hideProgress()
-                    self.showError(message: response!.description)
-                }
-            })
-        } else {
-            
-        }
-        
+        self.secondDropDown.setTitle(country.currencyShortName, for: .normal)
+        calRequest.payoutCurrency = country.currencyShortName
+
         txtSecond.text = ""
     }
     
@@ -161,9 +145,6 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
             self.firstDropDown.setTitle(currency.currencyShortName, for: .normal)
             calRequest.payInCurrency = currency.currencyShortName
             calRequest.transferCurrency = currency.currencyShortName
-        } else {
-            self.secondDropDown.setTitle(currency.currencyShortName, for: .normal)
-            calRequest.payoutCurrency = currency.currencyShortName
         }
         txtSecond.text = ""
     }
@@ -176,9 +157,6 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
                 self.firstDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
                 calRequest.payInCurrency = currencyList[0].currencyShortName
                 calRequest.transferCurrency = currencyList[0].currencyShortName
-            } else {
-                self.secondDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
-                calRequest.payoutCurrency = currencyList[0].currencyShortName
             }
             
         } else {

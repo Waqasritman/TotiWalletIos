@@ -132,7 +132,9 @@ extension WalletHistoryVC: UITableViewDataSource, UITableViewDelegate , RepeatDe
     
     
     func onClickRepeat(history: WalletHistory) {
-        print("Repeat")
+        let nextVC = ControllerID.repeatWalletVC.instance
+        (nextVC as! RepeatWalletTransactionVC).history = history
+        self.pushWithFullScreen(nextVC)
     }
 }
 

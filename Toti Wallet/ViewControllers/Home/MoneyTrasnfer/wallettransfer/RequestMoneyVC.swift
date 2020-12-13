@@ -9,7 +9,7 @@
 import UIKit
 
 class RequestMoneyVC: BaseVC  , CountryListProtocol {
-  
+    
     let moneyRepo:MoneyTransferRepository = MoneyTransferRepository()
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var viewCode: UIView!
@@ -41,7 +41,6 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         txtAmount.layer.cornerRadius = 8
         txtDescription.layer.cornerRadius = 8
@@ -54,7 +53,6 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
         
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
         viewCode.addGestureRecognizer(viewCodeGesture)
-        
     }
     
     @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
@@ -63,32 +61,32 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
         (nextVC as! SelectCountryVC).countryProtocol = self
         self.pushWithFullScreen(nextVC)
     }
-   
-
+    
+    
     @IBAction func btnRequestFunc(_ sender: UIButton) {
-        
-        if isValidate() {
-            
-            if Network.isConnectedToNetwork() {
-                self.showProgress()
-                let request = RequestMoney()
-                request.amount = Double(txtAmount.text!)!
-                request.customerNo = preferenceHelper.getCustomerNo()
-                request.description = txtDescription.text!
-                request.mobileNo = String().removePlus(number: codeLbl.text!+txtPhoneNumber.text!)
-                moneyRepo.requestMoney(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_REQUEST_MONEY), completion: {(response , error) in
-                    self.hideProgress()
-                    if let error = error {
-                        self.showError(message: error)
-                    } else if response!.responseCode == 101 {
-                        self.showAlert(title: "Request money", message: "Request sent successfully")
-                    } else {
-                        self.showError(message: response!.description!)
-                    }
-                })
+        if preferenceHelper.getISKYCApproved() {
+            if isValidate() {
+                if Network.isConnectedToNetwork() {
+                    self.showProgress()
+                    let request = RequestMoney()
+                    request.amount = Double(txtAmount.text!)!
+                    request.customerNo = preferenceHelper.getCustomerNo()
+                    request.description = txtDescription.text!
+                    request.mobileNo = String().removePlus(number: codeLbl.text!+txtPhoneNumber.text!)
+                    moneyRepo.requestMoney(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_REQUEST_MONEY), completion: {(response , error) in
+                        self.hideProgress()
+                        if let error = error {
+                            self.showError(message: error)
+                        } else if response!.responseCode == 101 {
+                            self.showAlert(title: "Request money", message: "Request sent successfully")
+                        } else {
+                            self.showError(message: response!.description!)
+                        }
+                    })
+                }
             }
-
         }
+        
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
@@ -108,8 +106,8 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     override func handleAction(action: Bool) {
         if action {
             self.navigationController?.popToViewController(ControllerID.tabbar.instance, animated: true)
-           // let nextVC = ControllerID.tabbar.instance
-           // self.pushWithFullScreen(nextVC)
+            // let nextVC = ControllerID.tabbar.instance
+            // self.pushWithFullScreen(nextVC)
         }
     }
 }

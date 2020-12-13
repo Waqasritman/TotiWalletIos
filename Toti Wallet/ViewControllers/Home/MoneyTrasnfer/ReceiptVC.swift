@@ -41,6 +41,7 @@ class ReceiptVC: BaseVC {
     @IBOutlet weak var viewCustomer: UIView!
     @IBOutlet weak var viewBeneficiary: UIView!
     @IBOutlet weak var viewLoyalty: UIView!
+    @IBOutlet weak var viewBank:UIView!
    
     var tranactionNumber:String!
     
@@ -52,13 +53,15 @@ class ReceiptVC: BaseVC {
         viewCustomer.dropShadow()
         viewBeneficiary.dropShadow()
         viewLoyalty.dropShadow()
+        viewBank.dropShadow()
+        
         
         viewTranscation.layer.cornerRadius = 6
         viewPayment.layer.cornerRadius = 6
         viewCustomer.layer.cornerRadius = 6
         viewBeneficiary.layer.cornerRadius = 6
         viewLoyalty.layer.cornerRadius = 6
-        
+        viewBank.layer.cornerRadius = 6
        
         if Network.isConnectedToNetwork() {
             showProgress()

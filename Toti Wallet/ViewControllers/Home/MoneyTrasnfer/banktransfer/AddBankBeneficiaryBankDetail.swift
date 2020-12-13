@@ -10,10 +10,7 @@ import UIKit
 
 class AddBankBeneficiaryBankDetail: BaseVC , BankNameProtocol , BankNetworkProtocol {
     
-   
-    
 
-    
     let repo :BeneficiaryRespository = BeneficiaryRespository()
     let bankNetworkListRequest = GetBankNetworkListRequest()
     @IBOutlet weak var btnBankName: UIButton!
