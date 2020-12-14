@@ -55,6 +55,11 @@ class ReceiptVC: BaseVC {
         viewLoyalty.dropShadow()
         viewBank.dropShadow()
         
+        let floaty = Floaty()
+        floaty.buttonImage = #imageLiteral(resourceName: "share")
+        floaty.size = 45
+        floaty.buttonColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
+        self.view.addSubview(floaty)
         
         viewTranscation.layer.cornerRadius = 6
         viewPayment.layer.cornerRadius = 6

@@ -148,7 +148,12 @@ class AddBankBeneficiaryBankDetail: BaseVC , BankNameProtocol , BankNetworkProto
     }
 
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        
+        if let destinationViewController = navigationController?.viewControllers
+            .filter(
+                {$0 is CustomTabBarController})
+            .first {
+            navigationController?.popToViewController(destinationViewController, animated: true)
+        }
     }
     
     

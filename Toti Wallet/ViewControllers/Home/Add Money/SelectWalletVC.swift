@@ -26,7 +26,12 @@ class SelectWalletVC: BaseVC {
     }
    
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if let destinationViewController = navigationController?.viewControllers
+            .filter(
+                {$0 is CustomTabBarController})
+            .first {
+            navigationController?.popToViewController(destinationViewController, animated: true)
+        }
     }
     
     

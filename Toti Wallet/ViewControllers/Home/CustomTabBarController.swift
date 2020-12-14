@@ -15,8 +15,7 @@ class CustomTabBarController: UITabBarController {
         
         self.insertEmptyTabItem("Quick Pay", atIndex: 2)
         
-        let img = #imageLiteral(resourceName: "QuickPayIcon")
-        self.addRaisedButton(img, highlightImage: nil, offset: -15.0)
+        self.addRaisedButton()
     }
     
     open func insertEmptyTabItem(_ title: String, atIndex: Int) {
@@ -28,44 +27,20 @@ class CustomTabBarController: UITabBarController {
     }
     
     open func addRaisedButton(_ buttonImage: UIImage?, highlightImage: UIImage?, offset:CGFloat? = nil) {
-        if let buttonImage = buttonImage {
-            
-            let button = UIButton(type: .custom)
-            button.autoresizingMask = [UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleLeftMargin, UIView.AutoresizingMask.flexibleBottomMargin, UIView.AutoresizingMask.flexibleTopMargin]
-            
-            button.frame = CGRect(x: 0.0, y: 0.0, width: buttonImage.size.width, height: buttonImage.size.height)
-
-            
-            button.backgroundColor = UIColor.white
-            button.layer.cornerRadius = button.frame.height/2
-            button.layer.borderColor = UIColor.black.cgColor
-            button.layer.borderWidth = 1
-
-            button.setBackgroundImage(buttonImage, for: UIControl.State())
-            button.setBackgroundImage(highlightImage, for: UIControl.State.highlighted)
-            
-            let heightDifference = buttonImage.size.height - self.tabBar.frame.size.height
-            
-            if (heightDifference < 0) {
-                button.center = self.tabBar.center
-            }
-            else {
-                var center = self.tabBar.center
-                center.y -= heightDifference / 2.0
-                
-                button.center = center
-            }
-            
-            if offset != nil {
-                //Add offset
-                var center = button.center
-                center.y = center.y + offset!
-                button.center = center
-            }
-            
-            button.addTarget(self, action: #selector(CustomTabBarController.onRaisedButton(_:)), for: UIControl.Event.touchUpInside)
-            self.view.addSubview(button)
-        }
+        let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+        var menuButtonFrame = menuButton.frame
+        menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height - 50
+        menuButtonFrame.origin.x = view.bounds.width/2 - menuButtonFrame.size.width/2
+        menuButton.frame = menuButtonFrame
+        
+        menuButton.backgroundColor = UIColor.white
+        menuButton.layer.cornerRadius = menuButtonFrame.height/2
+        view.addSubview(menuButton)
+        
+        menuButton.setImage(#imageLiteral(resourceName: "QuickPayIcon") , for: .normal)
+        menuButton.addTarget(self, action: #selector(onRaisedButton(_:)), for: .touchUpInside)
+        
+        view.layoutIfNeeded()
     }
     
     @objc func onRaisedButton(_ sender: UIButton!) {

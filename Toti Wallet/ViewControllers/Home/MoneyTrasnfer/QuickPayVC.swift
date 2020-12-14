@@ -72,7 +72,12 @@ class QuickPayVC: UIViewController {
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        
+        if let destinationViewController = navigationController?.viewControllers
+            .filter(
+                {$0 is CustomTabBarController})
+            .first {
+            navigationController?.popToViewController(destinationViewController, animated: true)
+        }
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

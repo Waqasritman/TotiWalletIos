@@ -129,7 +129,12 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        self.navigationController?.popToViewController(ControllerID.tabbar.instance, animated: true)
+        if let destinationViewController = navigationController?.viewControllers
+            .filter(
+                {$0 is CustomTabBarController})
+            .first {
+            navigationController?.popToViewController(destinationViewController, animated: true)
+        }
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
