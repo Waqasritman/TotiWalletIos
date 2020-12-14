@@ -10,6 +10,7 @@ import UIKit
 
 class PrepardCardVC: UIViewController {
 
+  
     @IBOutlet weak var cardTableView: UITableView!
     @IBOutlet weak var viewBar: UIView!
     @IBOutlet weak var btnMyCards: UIButton!

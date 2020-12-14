@@ -2,7 +2,7 @@
 //  InactiveVC.swift
 //  Toti Wallet
 //
-//  Created by Adnan Yousaf on 10/12/2020.
+//  Created by Mohammad Waqas on 12/14/20.
 //  Copyright © 2020 iOS Technologies. All rights reserved.
 //
 

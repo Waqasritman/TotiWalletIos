@@ -15,4 +15,7 @@ class PlanTableCell: UITableViewCell {
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     
+
+    
+    
 }

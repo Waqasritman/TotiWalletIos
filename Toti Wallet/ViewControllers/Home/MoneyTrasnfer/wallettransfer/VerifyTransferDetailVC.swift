@@ -39,6 +39,11 @@ class VerifyTransferDetailVC: BaseVC {
         txtWalletName.text = walletName
         txtDescription.text = walletRequest.description
         txtAmount.text = walletRequest.transferAmount
+        
+        
+        if walletRequest.description.isEmpty {
+            txtDescription.isHidden = true
+        }
     }
     
     func disableViews() {

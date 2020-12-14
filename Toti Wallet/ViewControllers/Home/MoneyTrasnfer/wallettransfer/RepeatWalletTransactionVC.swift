@@ -33,6 +33,8 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     @IBOutlet weak var txtDescription: UITextField!
     @IBOutlet weak var lblCommision: UILabel!
   
+    @IBOutlet weak var commissionView: UIStackView!
+    @IBOutlet weak var dataViewStack: UIStackView!
     
     
     override func isValidate() -> Bool {

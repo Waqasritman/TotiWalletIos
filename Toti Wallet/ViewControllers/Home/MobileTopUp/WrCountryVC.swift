@@ -1,23 +1,21 @@
 //
-//  SimTypeVC.swift
+//  WrCountryVC.swift
 //  Toti Wallet
 //
-//  Created by Adnan Yousaf on 10/12/2020.
+//  Created by Mohammad Waqas on 12/14/20.
 //  Copyright © 2020 iOS Technologies. All rights reserved.
 //
 
 import UIKit
 
-class SimTypeVC: BaseVC {
+class WrCountryVC: BaseVC {
 
     let repo:UtilityRepository = UtilityRepository()
     
     @IBOutlet weak var searchTableView: UITableView!
     
-    var list:[WRBillerType] = []
-    var delegate:WRBillerNameProtocol!
-    var countryCode:String = ""
-    
+    var countriesList:[WRCountry] = []
+    var delegate:WRCountryListProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,16 +25,16 @@ class SimTypeVC: BaseVC {
         
         if Network.isConnectedToNetwork() {
             showProgress()
-            let request = GetWRMobileTopupTypesRequest()
+            let request = GetWRCountryListRequest()
             request.languageId = preferenceHelper.getLanguage()
-            request.countryCode = countryCode
-            repo.getMobileTopUpTypes(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_WR_BILLER_TYPE_MOBILE), completion: {(response ,error) in
+            
+            repo.getWRCountries(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_WR_COUNTRY), completion: {(response ,error) in
                 self.hideProgress()
                 if let error = error {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
-                    self.list.removeAll()
-                    self.list.append(contentsOf: response!.countriesList)
+                    self.countriesList.removeAll()
+                    self.countriesList.append(contentsOf: response!.countriesList)
                     
                     self.searchTableView.reloadData()
                 } else {
@@ -58,25 +56,26 @@ class SimTypeVC: BaseVC {
 }
 
 //MARK : TableView Functions
-extension SimTypeVC: UITableViewDelegate, UITableViewDataSource {
+extension WrCountryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return countriesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! CountryTableCell
         
-        cell.lblTitle.text = list[indexPath.row].billerName
+        cell.lblTitle.text = countriesList[indexPath.row].countryName
         cell.lblDetail.isHidden = true
         
-        cell.imageOutlet.image = nil
+        cell.imageOutlet.sd_setImage(with: URL(string: countriesList[indexPath.row].image_URL), placeholderImage: UIImage(named: "flag"))
+        cell.imageOutlet.makeImageCircle()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate.onSelectBillerType(biller: list[indexPath.row])
+        delegate.onSelectCountry(country: countriesList[indexPath.row])
         self.btnBackFunc(self)
     }
 }

@@ -38,7 +38,7 @@ enum ControllerID<T: UIViewController> : String {
     case ourRatesVC = "OurRatesVC"
     case selectWalletVC = "SelectWalletVC"
     case mobileTopUpVC = "MobileTopUpVC"
-    
+    case wrCountryVC = "WrCountryVC"
     case changePinVC = "ChangePinVC"
     
     case walletTransferVC = "WalletTransferVC"
@@ -119,7 +119,7 @@ enum ControllerID<T: UIViewController> : String {
             return .KVC
         case .addMoneyVC, .selectWalletVC, .addMoneyPaymentOptionVC:
             return .AddMoney
-        case .mobileTopUpVC, .simTypeVC, .selectPlanVC, .mobileTopUpPaymentVC, .mobileTopUpSuccessVC:
+        case .mobileTopUpVC, .simTypeVC, .selectPlanVC, .mobileTopUpPaymentVC, .mobileTopUpSuccessVC , .wrCountryVC:
             return .MobileTopUp
         case .businessTranscationVC, .businessTransactionPaymentDetail, .businessTransctionBankDetail, .businessTransactionCorrespondent:
             return .BusinessTransction

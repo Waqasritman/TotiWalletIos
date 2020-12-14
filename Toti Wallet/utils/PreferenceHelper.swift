@@ -52,6 +52,9 @@ class PreferenceHelper :NSObject{
           ph.synchronize()
       }
     
+    func getCustomerName() -> String {
+        return (ph.value(forKey: "first_name") as? String) ?? "" + ((ph.value(forKey: "last_name") as? String)!)
+    }
     
     
     func getCustomerData() -> RegisterUserRequest {

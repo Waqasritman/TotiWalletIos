@@ -147,7 +147,8 @@ class HomeVC: BaseVC {
     }
     
     @objc private func currencyConverterFunc(_ sender: UIGestureRecognizer) {
-        let nextVC = ControllerID.ourRatesVC.instance
+        let nextVC = ControllerID.walletTransferVC.instance
+        (nextVC as! WalletTransferVC).isOwnWallet = true
         self.pushWithFullScreen(nextVC)
     }
     

@@ -12,6 +12,6 @@ class CardTableCell: UITableViewCell {
 
     @IBOutlet weak var lblCardNumber: UILabel!
     @IBOutlet weak var viewMain: UIView!
-    
+    @IBOutlet weak var lblCardTitle:UILabel!
 
 }

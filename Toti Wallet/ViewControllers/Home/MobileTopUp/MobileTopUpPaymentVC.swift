@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MobileTopUpPaymentVC: UIViewController {
-
+class MobileTopUpPaymentVC: BaseVC {
+    
+    let repo:UtilityRepository = UtilityRepository()
     @IBOutlet weak var btnWallet: UIButton!
     @IBOutlet weak var btnLoad: UIButton!
     @IBOutlet weak var cardTableView: UITableView!
@@ -27,7 +28,7 @@ class MobileTopUpPaymentVC: UIViewController {
         btnLoad.layer.cornerRadius = 8
         btnWallet.layer.cornerRadius = 8
         
-        btnWallet.imageEdgeInsets.left = self.view.frame.width - 50
+        btnWallet.imageEdgeInsets.left = self.view.frame.width - 80
         
         btnProcced.layer.cornerRadius = 8
     }

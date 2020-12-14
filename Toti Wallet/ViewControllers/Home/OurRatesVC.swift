@@ -16,15 +16,23 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var btnConvert: UIButton!
     @IBOutlet weak var btnTransferNow: UIButton!
-    @IBOutlet weak var firstDropDown: UIButton!
-    @IBOutlet weak var secondDropDown: UIButton!
+    @IBOutlet weak var firstDropDown: UILabel!
+    @IBOutlet weak var secondDropDown: UILabel!
     @IBOutlet weak var txtFirst: UITextField!
     @IBOutlet weak var txtSecond: UITextField!
+    @IBOutlet weak var sendingIcon:UIImageView!
+    @IBOutlet weak var receivingIcon:UIImageView!
     
+    @IBOutlet weak var sendingView:UIView!
+    @IBOutlet weak var receivingView:UIView!
     
     
     override func isValidate() -> Bool {
-        if txtFirst.text!.isEmpty {
+        if calRequest.payInCurrency.isEmpty {
+            return false
+        } else if calRequest.payoutCurrency.isEmpty {
+            return false
+        }else if txtFirst.text!.isEmpty {
             self.showError(message: "Enter sending amount")
             return false
         }
@@ -39,24 +47,29 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         btnConvert.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
         btnTransferNow.layer.cornerRadius = 8
         
-        firstDropDown.layer.cornerRadius = 8
-        secondDropDown.layer.cornerRadius = 8
+        sendingView.layer.cornerRadius = 8
+        sendingView.layer.cornerRadius = 8
         txtFirst.layer.cornerRadius = 8
         txtSecond.layer.cornerRadius = 8
-        
-        firstDropDown.imageEdgeInsets.left = self.firstDropDown.frame.width - 25
-        secondDropDown.imageEdgeInsets.left = self.secondDropDown.frame.width - 25
+     
         
         txtFirst.setLeftPaddingPoints(10)
         txtSecond.setLeftPaddingPoints(10)
+            
+        
+        let sendingGes = UITapGestureRecognizer.init(target: self, action: #selector(btnSendingCurrency(_:)))
+        sendingView.addGestureRecognizer(sendingGes)
         
         
-        firstDropDown.setTitle("GBP", for: .normal)
-        secondDropDown.setTitle("YER", for: .normal)
+        let receivingGes = UITapGestureRecognizer.init(target: self, action: #selector(btnReceivingCurrency(_:)))
+        receivingView.addGestureRecognizer(receivingGes)
         
+        sendingIcon.makeImageCircle()
+        receivingIcon.makeImageCircle()
+
     }
     
-    @IBAction func btnSendingCurrency(_ sender:Any) {
+    @objc func btnSendingCurrency(_ sender:UITapGestureRecognizer) {
         isSendingSelect = true
         if Network.isConnectedToNetwork() {
             let walletCurrencyRequest = GetWalletCurrencyListRequest()
@@ -80,7 +93,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     }
     
     
-    @IBAction func btnReceivingCurrency(_ sender:Any) {
+    @objc func btnReceivingCurrency(_ sender:UITapGestureRecognizer) {
         isSendingSelect = false
         let nextVC = ControllerID.selectCountryVC.instance
         (nextVC as! SelectCountryVC).countryProtocol = self
@@ -133,7 +146,8 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     
     
     func onSelectCountry(country: WRCountryList) {
-        self.secondDropDown.setTitle(country.currencyShortName, for: .normal)
+        self.secondDropDown.text =  country.currencyShortName
+        self.secondDropDown.textColor = .black
         calRequest.payoutCurrency = country.currencyShortName
 
         txtSecond.text = ""
@@ -142,7 +156,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     
     func onSelectCurrency(currency: RecCurrency) {
         if isSendingSelect {
-            self.firstDropDown.setTitle(currency.currencyShortName, for: .normal)
+            self.firstDropDown.text = currency.currencyShortName
             calRequest.payInCurrency = currency.currencyShortName
             calRequest.transferCurrency = currency.currencyShortName
         }
@@ -154,7 +168,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         if currencyList.count == 1 {
             self.hideProgress()
             if isSendingSelect {
-                self.firstDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
+                self.firstDropDown.text = currencyList[0].currencyShortName
                 calRequest.payInCurrency = currencyList[0].currencyShortName
                 calRequest.transferCurrency = currencyList[0].currencyShortName
             }

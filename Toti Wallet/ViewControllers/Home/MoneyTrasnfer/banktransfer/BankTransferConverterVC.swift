@@ -10,8 +10,7 @@ import UIKit
 
 class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomeProtocol , TransferPurposeProtocol {
     
-    
-    
+
     var beneDetails:BeneficiaryList!
     
     let calRequest:CalTransferRequest = CalTransferRequest()
@@ -36,6 +35,7 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     @IBOutlet weak var lblPayInCurrency:UILabel!
     @IBOutlet weak var lblPayOutCurrency:UILabel!
     @IBOutlet weak var payInFlag:UIImageView!
+    @IBOutlet weak var payOutFlag: UIImageView!
     
     
     var isPriceViewVisible = false
@@ -71,6 +71,8 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     override func viewDidLoad() {
         super.viewDidLoad()
         initDesign()
+        payInFlag.makeImageCircle()
+        payOutFlag.makeImageCircle()
     }
     
     

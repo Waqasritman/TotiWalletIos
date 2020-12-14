@@ -8,15 +8,32 @@
 
 import UIKit
 
-class SelectPlanVC: UIViewController {
+class SelectPlanVC: BaseVC {
 
+    let repo:UtilityRepository = UtilityRepository()
     @IBOutlet weak var planTableView: UITableView!
-    
+    var plansData:[GetPrepaidPlan] = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         planTableView.delegate = self
         planTableView.dataSource = self
+        showProgress()
+        
+        repo.getPrepaidPlans(request: HTTPConnection.openConnection(stringParams: GetWRPrepaidPlansRequest.shared.getXML(), action: SoapActionHelper.shared.ACTION_GET_PREPAID_PLAN), completion: {(response , error) in
+            self.hideProgress()
+            if let error = error {
+                self.showError(message: error)
+            } else if response!.responseCode == 101 {
+              //  self.showSuccess(message: String(response!.plansData.count))
+                self.plansData.removeAll()
+                self.plansData.append(contentsOf: response!.plansData)
+                
+                self.planTableView.reloadData()
+            } else {
+                self.showError(message: response!.description!)
+            }
+        })
     }
 
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -38,13 +55,16 @@ class SelectPlanVC: UIViewController {
 extension SelectPlanVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return plansData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlanTableCell") as! PlanTableCell
         cell.viewMain.layer.cornerRadius = 8
+        cell.lblAmount.text = plansData[indexPath.row].rechargeAmount
+        cell.lblBillerName.text = plansData[indexPath.row].rechargeSubType
+        cell.lblDescription.text = plansData[indexPath.row].benefits
         cell.dropShadow()
         return cell
     }
@@ -52,5 +72,10 @@ extension SelectPlanVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = ControllerID.mobileTopUpPaymentVC.instance
         self.pushWithFullScreen(nextVC)
+        
+        
+        WRPrepaidRechargeRequest.shared.planId = plansData[indexPath.row].planId
+        WRPrepaidRechargeRequest.shared.customerNo = preferenceHelper.getCustomerNo()
+        WRPrepaidRechargeRequest.shared.payOutAmount = plansData[indexPath.row].rechargeAmount
     }
 }

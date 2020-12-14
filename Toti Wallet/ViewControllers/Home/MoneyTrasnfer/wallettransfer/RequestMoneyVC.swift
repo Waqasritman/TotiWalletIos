@@ -18,6 +18,7 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     @IBOutlet weak var btnRequestMoney: UIButton!
     @IBOutlet weak var codeLbl:UILabel!
     
+    @IBOutlet weak var flagIcon: UIImageView!
     
     
     override func isValidate() -> Bool {
@@ -48,7 +49,7 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
         txtPhoneNumber.setLeftPaddingPoints(5)
         txtAmount.setLeftPaddingPoints(10)
         txtDescription.setLeftPaddingPoints(10)
-        
+        flagIcon.makeImageCircle()
         btnRequestMoney.layer.cornerRadius = 8
         
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))

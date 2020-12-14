@@ -11,23 +11,21 @@ import UIKit
 class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
                         , OnConfirmSummaryProtocol , PinVerifiedProtocol {
     
-    
-    
     var isSendingSelect = false
     let calRequest:CalTransferRequest = CalTransferRequest()
     let moneyTransferRepo:MoneyTransferRepository = MoneyTransferRepository()
     let authRepo:AuthRepository = AuthRepository()
     
-    
-    
+    var isOwnWallet:Bool = false
     let walletTransferRequest:WalletToWalletTransferRequest = WalletToWalletTransferRequest()
+    
     @IBOutlet weak var btnConvert: UIButton!
     @IBOutlet weak var btnSendNow: UIButton!
-    @IBOutlet weak var firstDropDown: UIButton!
-    @IBOutlet weak var secondDropDown: UIButton!
+    @IBOutlet weak var firstDropDown: UILabel!
+    @IBOutlet weak var secondDropDown: UILabel!
     @IBOutlet weak var txtFirst: UITextField!
     @IBOutlet weak var txtSecond: UITextField!
-    @IBOutlet weak var viewBottom: UIView!
+    @IBOutlet weak var viewBottom: UIStackView!
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var viewCode: UIView!
     @IBOutlet weak var txtName: UITextField!
@@ -35,8 +33,21 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     @IBOutlet weak var lblCommision: UILabel!
     @IBOutlet weak var lblCode:UILabel!
     
+    @IBOutlet weak var countryFlag: UIImageView!
+    @IBOutlet weak var commissionStack: UIStackView!
+    
+    @IBOutlet weak var dataStack: UIStackView!
+
+    @IBOutlet weak var receivingView: UIView!
+    @IBOutlet weak var sendingView: UIView!
+    @IBOutlet weak var receivingIcon: UIImageView!
+    @IBOutlet weak var sendingIcon: UIImageView!
+    @IBOutlet weak var countryVIew: UIView!
     
     override func isValidate() -> Bool {
+        if isOwnWallet {
+            return true
+        }
         if lblCode.text!.isEmpty {
             showError(message: "Select Country")
             return false
@@ -55,6 +66,13 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     
     
     func isRateValidate() -> Bool {
+        if calRequest.payInCurrency.isEmpty {
+            return false
+        } else if calRequest.payoutCurrency.isEmpty {
+            return false
+        } else if txtFirst.text!.isEmpty {
+            return false
+        }
         return true
     }
     
@@ -67,12 +85,12 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
         btnConvert.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
         btnSendNow.layer.cornerRadius = 8
         
-        firstDropDown.layer.cornerRadius = 8
-        secondDropDown.layer.cornerRadius = 8
-        
-        firstDropDown.imageEdgeInsets.left = self.firstDropDown.frame.width - 25
-        secondDropDown.imageEdgeInsets.left = self.secondDropDown.frame.width - 25
-        
+        sendingView.layer.cornerRadius = 8
+        receivingView.layer.cornerRadius = 8
+        sendingIcon.makeImageCircle()
+        receivingIcon.makeImageCircle()
+      
+        countryVIew.layer.cornerRadius = 8
         txtFirst.layer.cornerRadius = 8
         txtSecond.layer.cornerRadius = 8
         
@@ -86,22 +104,25 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
         txtSecond.setLeftPaddingPoints(10)
         
         txtPhoneNumber.setLeftPaddingPoints(5)
-        
+        countryFlag.makeImageCircle()
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
         viewCode.addGestureRecognizer(viewCodeGesture)
+        
+        let sendingGes = UITapGestureRecognizer(target: self, action: #selector(btnSendingCurrency(_:)))
+        sendingView.addGestureRecognizer(sendingGes)
+        
+        let receivingGes = UITapGestureRecognizer(target: self, action: #selector(btnReceivingCurrency(_:)))
+        receivingView.addGestureRecognizer(receivingGes)
     }
     
-    
-    
-    
-    
-    @IBAction func btnSendingCurrency(_ sender:Any) {
+
+    @objc func btnSendingCurrency(_ sender:Any) {
         isSendingSelect = true
         getWalletCurrencies()
     }
     
     
-    @IBAction func btnReceivingCurrency(_ sender:Any) {
+    @objc func btnReceivingCurrency(_ sender:Any) {
         isSendingSelect = false
         getWalletCurrencies()
     }
@@ -119,19 +140,35 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     
     @IBAction func btnSendNowFunc(_ sender: UIButton) {
         if isValidate() {
-            walletTransferRequest.customerNo = preferenceHelper.getCustomerNo()
-            walletTransferRequest.description = txtDescription.text!
-            walletTransferRequest.payInCurrency = calRequest.payInCurrency
-            walletTransferRequest.receiptCurrency = calRequest.payoutCurrency
-            walletTransferRequest.receiptMobileNo = String().removePlus(number: self.lblCode.text!
-                                                                            + self.txtPhoneNumber.text!)
-            walletTransferRequest.transferAmount = calRequest.transferAmount
-            walletTransferRequest.languageId = preferenceHelper.getLanguage()
-            let nextVC = ControllerID.verifyTransferDetailVC.instance
-            (nextVC  as! VerifyTransferDetailVC).walletRequest = walletTransferRequest
-            (nextVC as! VerifyTransferDetailVC).protocolConfirm = self
-            (nextVC as! VerifyTransferDetailVC).walletName = txtName.text!
-            self.pushWithFullScreen(nextVC)
+            if preferenceHelper.getISKYCApproved() {
+                print(preferenceHelper.getPhoneForKYC())
+                if !isOwnWallet {
+                    walletTransferRequest.receiptMobileNo = String().removePlus(number: self.lblCode.text!
+                                                                                    + self.txtPhoneNumber.text!)
+                } else {
+                    walletTransferRequest.receiptMobileNo = String().removePlus(number: preferenceHelper.getPhoneForKYC())
+                }
+                
+                
+                walletTransferRequest.customerNo = preferenceHelper.getCustomerNo()
+                walletTransferRequest.description = txtDescription.text!
+                walletTransferRequest.payInCurrency = calRequest.payInCurrency
+                walletTransferRequest.receiptCurrency = calRequest.payoutCurrency
+                
+                walletTransferRequest.transferAmount = calRequest.transferAmount
+                walletTransferRequest.languageId = preferenceHelper.getLanguage()
+                let nextVC = ControllerID.verifyTransferDetailVC.instance
+                (nextVC  as! VerifyTransferDetailVC).walletRequest = walletTransferRequest
+                (nextVC as! VerifyTransferDetailVC).protocolConfirm = self
+                if !isOwnWallet {
+                    (nextVC as! VerifyTransferDetailVC).walletName = txtName.text!
+                }else{
+                    (nextVC as! VerifyTransferDetailVC).walletName = preferenceHelper.getCustomerName()
+                }
+                self.pushWithFullScreen(nextVC)
+            } else {
+                self.showError(message: "KYC Issue")
+            }
         }
     }
     
@@ -198,16 +235,23 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     
     func onSelectCountry(country: WRCountryList) {
         lblCode.text = country.countryCode
+        countryFlag.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
+        countryFlag.makeImageCircle()
     }
     
     
     func onSelectCurrency(currency: RecCurrency) {
         if isSendingSelect {
-            self.firstDropDown.setTitle(currency.currencyShortName, for: .normal)
+            self.firstDropDown.text = currency.currencyShortName
             calRequest.payInCurrency = currency.currencyShortName
             calRequest.transferCurrency = currency.currencyShortName
+            sendingIcon.sd_setImage(with: URL(string: currency.image_URL), placeholderImage: UIImage(named: "flag"))
+            sendingIcon.makeImageCircle()
         } else {
-            self.secondDropDown.setTitle(currency.currencyShortName, for: .normal)
+            self.secondDropDown.text = currency.currencyShortName
+            self.secondDropDown.textColor = .black
+            receivingIcon.sd_setImage(with: URL(string: currency.image_URL), placeholderImage: UIImage(named: "flag"))
+            receivingIcon.makeImageCircle()
             calRequest.payoutCurrency = currency.currencyShortName
         }
         txtSecond.text = ""
@@ -218,12 +262,17 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
         if currencyList.count == 1 {
             self.hideProgress()
             if isSendingSelect {
-                self.firstDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
+                self.firstDropDown.text =  currencyList[0].currencyShortName
                 calRequest.payInCurrency = currencyList[0].currencyShortName
                 calRequest.transferCurrency = currencyList[0].currencyShortName
+                sendingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
+                sendingIcon.makeImageCircle()
             } else {
-                self.secondDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
+                self.secondDropDown.text = currencyList[0].currencyShortName
+                self.secondDropDown.textColor = .black
                 calRequest.payoutCurrency = currencyList[0].currencyShortName
+                receivingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
+                receivingIcon.makeImageCircle()
             }
             
         } else {
@@ -255,7 +304,14 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     func showRates(response:CalTransferResponse) {
         txtSecond.text = String(format: "%.02f", response.payoutAmount)
         lblCommision.text = String(format: "%.02f", response.commission)
-        showViews()
+        if !isOwnWallet {
+            showViews()
+        } else {
+            showViews()
+            commissionStack.isHidden = false
+            dataStack.isHidden = true
+        }
+        
     }
     
     
