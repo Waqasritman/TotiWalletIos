@@ -26,7 +26,7 @@ class CustomTabBarController: UITabBarController {
         self.viewControllers?.insert(vc, at: atIndex)
     }
     
-    open func addRaisedButton(_ buttonImage: UIImage?, highlightImage: UIImage?, offset:CGFloat? = nil) {
+    open func addRaisedButton() {
         let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
         var menuButtonFrame = menuButton.frame
         menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height - 50
