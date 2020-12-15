@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class SelectCountryVC: BaseVC , UISearchBarDelegate {
+class SelectCountryVC: BaseVC {
 
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var txtSearch: UITextField!
@@ -77,19 +77,19 @@ class SelectCountryVC: BaseVC , UISearchBarDelegate {
     
     
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        filteredList = countriesList.filter({ (country) -> Bool in
-            let countryText: NSString = country.countryName as NSString
-            
-            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        searchTableView.reloadData()
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        // When there is no text, filteredData is the same as the original data
+//        // When user has entered text into the search box
+//        // Use the filter method to iterate over all items in the data array
+//        // For each item, return true if the item should be included and false if the
+//        // item should NOT be included
+//        filteredList = countriesList.filter({ (country) -> Bool in
+//            let countryText: NSString = country.countryName as NSString
+//
+//            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+//        })
+//        searchTableView.reloadData()
+//    }
 
 }
 
@@ -122,4 +122,28 @@ extension SelectCountryVC: UITableViewDelegate, UITableViewDataSource {
         countryProtocol.onSelectCountry(country: filteredList[indexPath.row])
         self.btnBackFunc(self)
     }
+}
+
+extension SelectCountryVC {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let string1 = string
+        let string2 = txtSearch.text!
+        var finalString = ""
+        
+        if string.count > 0 { // if it was not delete character
+            finalString = string2 + string1
+        }
+        else if string2.count > 0{ // if it was a delete character
+            
+            finalString = String(string2.dropLast())
+        }
+        
+        filteredList.removeAll()
+        filteredList = countriesList.filter { $0.countryName.lowercased().hasPrefix(finalString.lowercased())}
+        
+        searchTableView.reloadData()
+        return true
+    }
+    
 }

@@ -33,6 +33,7 @@ class HomeVC: BaseVC {
         
         SideMenuManager.default.menuWidth = self.view.frame.width/2 + 100
         SideMenuManager.default.menuDismissOnPush = true
+        SideMenuManager.default.menuFadeStatusBar = false
         
         btnProfileImage.layer.cornerRadius = btnProfileImage.frame.height/2
         rateCollectionView.delegate = self
