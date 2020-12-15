@@ -109,7 +109,7 @@ enum ControllerID<T: UIViewController> : String {
             return .GetStarted
         case .profileBasicDetailVC, .profileAddressDetailVC:
             return .Profile
-        case .tabbar, .notificationListVC, .ourRatesVC, .addCreditCardVC :
+        case .tabbar, .notificationListVC, .ourRatesVC, .addCreditCardVC, .InactiveVC, .editProfileVC :
             return .Main
         case .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
             return .SideMenu

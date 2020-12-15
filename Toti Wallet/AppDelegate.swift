@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         LanguageManager.shared.defaultLanguage = .en
+        LanguageManager.shared.setLanguage(language: .en)
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(red: 147.0/255.0, green: 30.0/255.0, blue: 85.0/255.0, alpha: 1.0)], for: .selected)
         
