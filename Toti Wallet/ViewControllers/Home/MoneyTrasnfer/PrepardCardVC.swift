@@ -51,6 +51,18 @@ class PrepardCardVC: UIViewController {
         btn500.layer.borderColor = UIColor.black.cgColor
     }
     
+    @IBAction func btnQuickAmountFunc(_ sender: UIButton) {
+        btn100.layer.borderColor = UIColor.black.cgColor
+        btn200.layer.borderColor = UIColor.black.cgColor
+        btn300.layer.borderColor = UIColor.black.cgColor
+        btn400.layer.borderColor = UIColor.black.cgColor
+        btn500.layer.borderColor = UIColor.black.cgColor
+        
+        sender.layer.borderColor = UIColor.red.cgColor
+        txtAmount.text = sender.titleLabel?.text
+        
+    }
+    
     @IBAction func btnMyCards(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
             self.viewBar.frame = CGRect(x: self.btnMyCards.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)

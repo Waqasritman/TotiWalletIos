@@ -94,6 +94,10 @@ enum ControllerID<T: UIViewController> : String {
     case businessTransctionBankDetail = "BusinessTransctionBankDetail"
     case businessTransactionCorrespondent = "BusinessTransactionCorrespondent"
     
+    case addCreditCardVC = "AddCreditCardVC"
+    case InactiveVC = "inactiveVC"
+    case editProfileVC = "EditProfileVC"
+    
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
     }
@@ -105,7 +109,7 @@ enum ControllerID<T: UIViewController> : String {
             return .GetStarted
         case .profileBasicDetailVC, .profileAddressDetailVC:
             return .Profile
-        case .tabbar, .notificationListVC, .ourRatesVC :
+        case .tabbar, .notificationListVC, .ourRatesVC, .addCreditCardVC :
             return .Main
         case .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
             return .SideMenu
