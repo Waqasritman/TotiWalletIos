@@ -10,7 +10,7 @@ import UIKit
 import SideMenu
 import BarcodeScanner
 
-class SideMenuVC: UIViewController {
+class SideMenuVC: BaseVC {
     
     @IBOutlet weak var sideTableView: UITableView!
     
@@ -39,6 +39,7 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell2")
         cell?.textLabel?.text = sideTableData[indexPath.row]
         cell?.imageView?.image = sideTableImages[indexPath.row]
+        
         return cell!
     }
     
@@ -46,8 +47,12 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
         
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell") as! HeaderTableCell
         headerCell.btnImage.layer.cornerRadius = headerCell.btnImage.frame.height/2
+        headerCell.lblImage.text = preferenceHelper.getCustomerName()
+        headerCell.initView(sideMenu: self)
         return headerCell
     }
+    
+
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 120
@@ -56,11 +61,11 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if sideTableData[indexPath.row] == "Business Transaction" {
+        if indexPath.row == 0 {
             let nextVC = ControllerID.businessTranscationVC.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Change PIN"{
+        else if indexPath.row == 1 {
             let nextVC = ControllerID.changePinVC.instance
             self.pushWithFullScreen(nextVC)
         }
@@ -75,11 +80,11 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             viewController.dismissalDelegate = self
             self.presentWithFullScreen(viewController)
         }
-        else if sideTableData[indexPath.row] == "My QR Code"{
+        else if sideTableData[indexPath.row] == "My QR Code" {
             let nextVC = ControllerID.myQRCode.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Bill Payment"{
+        else if sideTableData[indexPath.row] == "Bill Payment" {
             let nextVC = ControllerID.billPaymentVC.instance
             self.pushWithFullScreen(nextVC)
         }
@@ -98,6 +103,18 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
         else if sideTableData[indexPath.row] == "Logout"{
             
         }
+    }
+    
+    
+    
+    func goToEditProfile() {
+        if preferenceHelper.getISKYCApproved() {
+            let nextVC = ControllerID.editProfileVC.instance
+            self.pushWithFullScreen(nextVC)
+        } else {
+            self.showError(message: "KYC error")
+        }
+       
     }
 }
 

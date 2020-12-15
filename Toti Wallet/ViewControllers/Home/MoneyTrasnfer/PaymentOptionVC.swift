@@ -187,7 +187,7 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
                 if let error = error {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
-                    self.showSuccess(message: response!.description!)
+                   
                     self.cardsList.removeAll()
                     self.cardsList.append(contentsOf: response!.cardDetails)
                     self.cardTableView.reloadData()

@@ -23,6 +23,14 @@
 		663958CE25879E590000E1AC /* WRPayBillRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958CD25879E590000E1AC /* WRPayBillRequest.swift */; };
 		663958D12587A0250000E1AC /* WRPrepaidRechargeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958D02587A0250000E1AC /* WRPrepaidRechargeRequest.swift */; };
 		663958D42587A7BB0000E1AC /* WRPrepaidRechargeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958D32587A7BB0000E1AC /* WRPrepaidRechargeResponse.swift */; };
+		663958E72588B88D0000E1AC /* PrepaidStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958E62588B88D0000E1AC /* PrepaidStatusRequest.swift */; };
+		663958EA2588B9180000E1AC /* PrepaidStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958E92588B9180000E1AC /* PrepaidStatusResponse.swift */; };
+		663958ED2588C9C00000E1AC /* SaveCardDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958EC2588C9C00000E1AC /* SaveCardDetailsRequest.swift */; };
+		663958F02588CA050000E1AC /* SaveCardDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958EF2588CA050000E1AC /* SaveCardDetailsResponse.swift */; };
+		663958F32588CCE20000E1AC /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958F22588CCE20000E1AC /* UITextField.swift */; };
+		663958F62588E2020000E1AC /* LoadVirtualCardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958F52588E2020000E1AC /* LoadVirtualCardRequest.swift */; };
+		663958F92588E28A0000E1AC /* LoadPrepaidCardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958F82588E28A0000E1AC /* LoadPrepaidCardResponse.swift */; };
+		663958FC2588FE990000E1AC /* B2BTransferDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958FB2588FE990000E1AC /* B2BTransferDetails.swift */; };
 		6648E27D2574F89D003F697F /* ForgotPassotpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E27C2574F89D003F697F /* ForgotPassotpVC.swift */; };
 		6648E29A2575120C003F697F /* CountryListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E2992575120C003F697F /* CountryListProtocol.swift */; };
 		6648E2AE257515C2003F697F /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E2AD257515C2003F697F /* ImageView.swift */; };
@@ -317,6 +325,14 @@
 		663958CD25879E590000E1AC /* WRPayBillRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRPayBillRequest.swift; sourceTree = "<group>"; };
 		663958D02587A0250000E1AC /* WRPrepaidRechargeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRPrepaidRechargeRequest.swift; sourceTree = "<group>"; };
 		663958D32587A7BB0000E1AC /* WRPrepaidRechargeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WRPrepaidRechargeResponse.swift; sourceTree = "<group>"; };
+		663958E62588B88D0000E1AC /* PrepaidStatusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepaidStatusRequest.swift; sourceTree = "<group>"; };
+		663958E92588B9180000E1AC /* PrepaidStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepaidStatusResponse.swift; sourceTree = "<group>"; };
+		663958EC2588C9C00000E1AC /* SaveCardDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardDetailsRequest.swift; sourceTree = "<group>"; };
+		663958EF2588CA050000E1AC /* SaveCardDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardDetailsResponse.swift; sourceTree = "<group>"; };
+		663958F22588CCE20000E1AC /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		663958F52588E2020000E1AC /* LoadVirtualCardRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadVirtualCardRequest.swift; sourceTree = "<group>"; };
+		663958F82588E28A0000E1AC /* LoadPrepaidCardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPrepaidCardResponse.swift; sourceTree = "<group>"; };
+		663958FB2588FE990000E1AC /* B2BTransferDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B2BTransferDetails.swift; sourceTree = "<group>"; };
 		6648E27C2574F89D003F697F /* ForgotPassotpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassotpVC.swift; sourceTree = "<group>"; };
 		6648E2992575120C003F697F /* CountryListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListProtocol.swift; sourceTree = "<group>"; };
 		6648E2AD257515C2003F697F /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -627,6 +643,7 @@
 				663958C725877F560000E1AC /* GetWRPrepaidPlansRequest.swift */,
 				663958CD25879E590000E1AC /* WRPayBillRequest.swift */,
 				663958D02587A0250000E1AC /* WRPrepaidRechargeRequest.swift */,
+				663958E62588B88D0000E1AC /* PrepaidStatusRequest.swift */,
 			);
 			path = utilityrequest;
 			sourceTree = "<group>";
@@ -639,6 +656,7 @@
 				663958C425877A280000E1AC /* PrepaidOperatorResponse.swift */,
 				663958CA258780570000E1AC /* GetPrepaidPlansResponse.swift */,
 				663958D32587A7BB0000E1AC /* WRPrepaidRechargeResponse.swift */,
+				663958E92588B9180000E1AC /* PrepaidStatusResponse.swift */,
 			);
 			path = utilityresponse;
 			sourceTree = "<group>";
@@ -739,6 +757,9 @@
 				6649B2112578DBFE003846A2 /* GetWalletCurrencyListRequest.swift */,
 				66B7C4652580A32200D4C0C6 /* WalletHistoryRequest.swift */,
 				66B7C46B2580ADB400D4C0C6 /* TransactionHistoryRequest.swift */,
+				663958EC2588C9C00000E1AC /* SaveCardDetailsRequest.swift */,
+				663958F52588E2020000E1AC /* LoadVirtualCardRequest.swift */,
+				663958FB2588FE990000E1AC /* B2BTransferDetails.swift */,
 			);
 			path = requests;
 			sourceTree = "<group>";
@@ -756,6 +777,8 @@
 				6649B2142578DC90003846A2 /* WalletCurrencyListResponse.swift */,
 				66B7C4682580A37200D4C0C6 /* WalletTransferHistoryResponse.swift */,
 				66B7C46E2580AE0400D4C0C6 /* TransactionHistoryResponse.swift */,
+				663958EF2588CA050000E1AC /* SaveCardDetailsResponse.swift */,
+				663958F82588E28A0000E1AC /* LoadPrepaidCardResponse.swift */,
 			);
 			path = responses;
 			sourceTree = "<group>";
@@ -1000,6 +1023,7 @@
 				914F529A2574C1EE0020C44A /* KeyBoardExtension.swift */,
 				914F529B2574C1EE0020C44A /* ExtensionString.swift */,
 				6648E2AD257515C2003F697F /* ImageView.swift */,
+				663958F22588CCE20000E1AC /* UITextField.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1573,6 +1597,7 @@
 				6649B12D2576876C003846A2 /* GetSendRecCurrencyResponse.swift in Sources */,
 				91F306A4257E390B008D2F45 /* AddBankBeneficiaryVC.swift in Sources */,
 				66B7C439257F7F8400D4C0C6 /* BranchNamesVC.swift in Sources */,
+				663958EA2588B9180000E1AC /* PrepaidStatusResponse.swift in Sources */,
 				6649B156257698C2003846A2 /* GetCashNetworkListResponse.swift in Sources */,
 				9121173A2583B44D003FF146 /* BusinessTranscationVC.swift in Sources */,
 				6649B11225767E71003846A2 /* LoadWalletRequest.swift in Sources */,
@@ -1602,6 +1627,7 @@
 				6649B1F72578BDF2003846A2 /* CustomerCardNoResponse.swift in Sources */,
 				914F52A42574C1EE0020C44A /* Network.swift in Sources */,
 				915859D6257CB8F2006AC531 /* WalletHistoryVC.swift in Sources */,
+				663958ED2588C9C00000E1AC /* SaveCardDetailsRequest.swift in Sources */,
 				66BEEE02257BC18800714E3B /* YCitiesVC.swift in Sources */,
 				663958BC258774DE0000E1AC /* WRBillerTypeResponse.swift in Sources */,
 				916A28DF25739F3900A73313 /* HeaderTableCell.swift in Sources */,
@@ -1627,6 +1653,7 @@
 				66BEEDBE257B947000714E3B /* WalletBalanceResponse.swift in Sources */,
 				91F22E3D2578E7D000943E25 /* RequestMoneyVC.swift in Sources */,
 				66BEEDC1257B990200714E3B /* PaymentTypes.swift in Sources */,
+				663958E72588B88D0000E1AC /* PrepaidStatusRequest.swift in Sources */,
 				914F52C52574C2020020C44A /* ForgotPinApprovedUserResponse.swift in Sources */,
 				914F52CD2574C2020020C44A /* LoginRequest.swift in Sources */,
 				914F52C72574C2020020C44A /* CustomerRegistrationResponse.swift in Sources */,
@@ -1648,6 +1675,7 @@
 				915859D5257CB8F2006AC531 /* TransactionHistoryVC.swift in Sources */,
 				918024B9257108DF00EB0806 /* UIButton+Extension.swift in Sources */,
 				6649B1DA2577DC13003846A2 /* GetProfileImage.swift in Sources */,
+				663958F32588CCE20000E1AC /* UITextField.swift in Sources */,
 				663958B6258771B40000E1AC /* WrCountryVC.swift in Sources */,
 				91F3069D257E387E008D2F45 /* BankDetailAlert.swift in Sources */,
 				9121173B2583B44D003FF146 /* BusinessTransactionPaymentDetail.swift in Sources */,
@@ -1667,6 +1695,7 @@
 				914F52D62574C2020020C44A /* HTTPConnection.swift in Sources */,
 				663958A4258741680000E1AC /* InactiveVC.swift in Sources */,
 				66BEEDE6257BBC3700714E3B /* GetYCity.swift in Sources */,
+				663958F62588E2020000E1AC /* LoadVirtualCardRequest.swift in Sources */,
 				6648E2AE257515C2003F697F /* ImageView.swift in Sources */,
 				91076B4125762E8C00D4E3C8 /* CountryTableCell.swift in Sources */,
 				6649B13025768911003846A2 /* GetSendRecCurrencyRequest.swift in Sources */,
@@ -1741,6 +1770,7 @@
 				66BEEDF5257BBED600714E3B /* YBranchResponse.swift in Sources */,
 				6649B0FB25767044003846A2 /* TotiPaySend.swift in Sources */,
 				6649B0BE25764E5F003846A2 /* PreferenceHelper.swift in Sources */,
+				663958F92588E28A0000E1AC /* LoadPrepaidCardResponse.swift in Sources */,
 				66B7C430257F6EC400D4C0C6 /* BankNameProtocol.swift in Sources */,
 				6649B1F42578BD9C003846A2 /* GetCustomerCardNoRequest.swift in Sources */,
 				663958C525877A280000E1AC /* PrepaidOperatorResponse.swift in Sources */,
@@ -1761,6 +1791,7 @@
 				66BEEE05257BC1A400714E3B /* YLocationsVC.swift in Sources */,
 				6649B13425768A88003846A2 /* EditCustomerProfileRequest.swift in Sources */,
 				663958BF258776E40000E1AC /* WRBillerNameProtocol.swift in Sources */,
+				663958F02588CA050000E1AC /* SaveCardDetailsResponse.swift in Sources */,
 				6649B20C2578C898003846A2 /* GetTransactionReceiptRequest.swift in Sources */,
 				663958A825876B000000E1AC /* GetWRCountryListRequest.swift in Sources */,
 				91E677392574D0D300C2E9D0 /* Storage.swift in Sources */,
@@ -1775,6 +1806,7 @@
 				91E6773A2574D0D300C2E9D0 /* UIView+Direction.swift in Sources */,
 				91E6773C2574D0D300C2E9D0 /* UIImageView+Direction.swift in Sources */,
 				6649B1CA2577CFD0003846A2 /* BarcodeGenerator.swift in Sources */,
+				663958FC2588FE990000E1AC /* B2BTransferDetails.swift in Sources */,
 				6649B1DF2577DCD4003846A2 /* SimpleResponse.swift in Sources */,
 				91E59EF125718D1100FEB6A7 /* RateCollectionCell.swift in Sources */,
 				6649B1EA2577DEB2003846A2 /* GetCustomerProfileImageRequest.swift in Sources */,

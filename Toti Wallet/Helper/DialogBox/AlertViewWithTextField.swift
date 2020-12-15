@@ -50,8 +50,15 @@ class AlertViewWithTextField: UIView {
     }
     
     @IBAction func btnOKFunc(_ sender: UIButton) {
-        self.delegate?.handleAction(txtFieldValue: txtCVV.text ?? "")
-        parentView.removeFromSuperview()
+        
+        if !txtCVV.text!.isEmpty {
+            self.delegate?.handleAction(txtFieldValue: txtCVV.text ?? "")
+            parentView.removeFromSuperview()
+        } else {
+            
+        }
+        
+       
     }
     
     func hideAlert() {

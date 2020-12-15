@@ -10,9 +10,20 @@ import UIKit
 
 class HeaderTableCell: UITableViewCell {
 
-    
+    var sideMenu:SideMenuVC!
     @IBOutlet weak var btnImage: UIButton!
     @IBOutlet weak var lblImage: UILabel!
     @IBOutlet weak var btnEdit: UIButton!
+    
+    
+    func initView(sideMenu:SideMenuVC) {
+        self.sideMenu = sideMenu
+    }
+    
+    
+    @IBAction func btnEditProfile(_ sender: Any) {
+        self.sideMenu.goToEditProfile()
+    }
+    
     
 }

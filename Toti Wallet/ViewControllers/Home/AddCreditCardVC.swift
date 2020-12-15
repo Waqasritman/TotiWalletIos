@@ -8,7 +8,9 @@
 
 import UIKit
 
-class AddCreditCardVC: UIViewController, UITextFieldDelegate {
+class AddCreditCardVC: BaseVC, UITextFieldDelegate {
+    
+    let repo:Repository = Repository()
     
     @IBOutlet weak var viewCard: UIView!
     @IBOutlet weak var txtName: UITextField!
@@ -19,6 +21,21 @@ class AddCreditCardVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lblExpireDate: UILabel!
     
     @IBOutlet weak var btnSubmit: UIButton!
+    
+    
+    
+    override func isValidate() -> Bool {
+        if txtName.text!.isEmpty {
+            return false
+        } else if txtNumber.text!.isEmpty {
+            return false
+        } else if txtExpireDat.text!.isEmpty {
+            return false
+        }
+        return true
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +43,7 @@ class AddCreditCardVC: UIViewController, UITextFieldDelegate {
         txtName.layer.cornerRadius = 12
         txtNumber.layer.cornerRadius = 12
         txtExpireDat.layer.cornerRadius = 12
+  
         
         txtName.setLeftPaddingPoints(10)
         txtNumber.setLeftPaddingPoints(10)
@@ -39,7 +57,37 @@ class AddCreditCardVC: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func btnBackFunc(_ sender: UIButton) {
+    
+    
+    @IBAction func addCardDetails(_ sender:Any) {
+        if Network.isConnectedToNetwork() {
+            if isValidate() {
+                showProgress()
+                let request = SaveCardDetailsRequest()
+                request.customerNo = preferenceHelper.getCustomerNo()
+                request.customerCardNo = txtNumber.text!
+                request.cardName = txtName.text!
+                request.cardExpireDate = txtExpireDat.text!
+                
+                
+                repo.saveCardDetails(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_SAVE_CARD_DETAILS), completion: {(response , error ) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else if response!.responseCode == 101 {
+                        self.showSuccess(message: response!.description!)
+                        self.btnBackFunc(self)
+                    } else {
+                        self.showError(message: response!.description!)
+                    }
+                })
+            }
+        } else {
+            self.noInternet()
+        }
+    }
+    
+    @IBAction func btnBackFunc(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -52,12 +100,11 @@ extension AddCreditCardVC {
         let currentString = string
         let txtFieldText = textField.text!
         var finalString = ""
-        
+        print(textField.tag)
         if string.count > 0 { // if it was not delete character
             finalString = txtFieldText + currentString
         }
-        else if txtFieldText.count > 0{ // if it was a delete character
-            
+        else if txtFieldText.count > 0 { // if it was a delete character
             finalString = String(txtFieldText.dropLast())
         }
         
@@ -67,7 +114,7 @@ extension AddCreditCardVC {
         else if textField.tag == 2 {
             lblNumber.text = finalString
         }
-        else{
+        else {
             lblExpireDate.text = finalString
         }
         

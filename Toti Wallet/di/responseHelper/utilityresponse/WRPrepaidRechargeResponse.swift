@@ -17,8 +17,8 @@ class WRPrepaidRechargeResponse: XMLMappable {
     var description:String!
     var rechargeId:String!
     func mapping(map: XMLMap) {
-        responseCode <- map["s:Body.GetWRPrepaidPlansResponse.GetWRPrepaidPlansResult.ResponseCode"]
-        description <- map["s:Body.GetWRPrepaidPlansResponse.GetWRPrepaidPlansResult.Description"]
-        rechargeId <- map["s:Body.GetWRPrepaidPlansResponse.GetWRPrepaidPlansResult.RechargeId"]
+        responseCode <- map["s:Body.WRPrepaidRechargeResponse.WRPrepaidRechargeResult.ResponseCode"]
+        description <- map["s:Body.WRPrepaidRechargeResponse.WRPrepaidRechargeResult.Description"]
+        rechargeId <- map["s:Body.WRPrepaidRechargeResponse.WRPrepaidRechargeResult.RechargeId"]
     }
 }

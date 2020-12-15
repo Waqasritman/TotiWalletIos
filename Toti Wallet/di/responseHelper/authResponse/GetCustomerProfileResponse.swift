@@ -14,6 +14,10 @@ class GetCustomerProfileResponse:XMLMappable  {
         
     }
     
+    init() {
+        
+    }
+    
     var nodeName: String!
     var responseCode:Int?
     var description:String?

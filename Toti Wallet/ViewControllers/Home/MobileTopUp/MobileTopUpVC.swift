@@ -25,7 +25,7 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
     @IBOutlet weak var codelbl: UILabel!
     
     var countryShortName = ""
-    
+    var operatorLoaded = false
     
     func isNumberValidate() -> Bool {
         if countryShortName.isEmpty {
@@ -40,6 +40,26 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
         return true
     }
     
+    
+    override func isValidate() -> Bool {
+        if countryShortName.isEmpty {
+            return false
+        }else if txtPhoneNumber.text!.isEmpty {
+            showError(message: "Enter Number")
+            return false
+        } else if !verifyNumber(number: codelbl.text! + txtPhoneNumber.text!) {
+            showError(message: "Enter Number Is Invalid")
+            return false
+        }
+       
+        else if !operatorLoaded {
+            showError(message: "Invalid Opertor")
+            return false
+        }
+        return true
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +73,8 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
         
         btnOperator.imageEdgeInsets.left = self.view.frame.width - 50
         flagIcon.makeImageCircle()
+        
+        
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
         viewCode.addGestureRecognizer(viewCodeGesture)
         
@@ -89,9 +111,11 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
     
     
     @IBAction func btnOnNextClick(_ sender:Any) {
-        
-        let nextVC = ControllerID.selectPlanVC.instance
-        self.pushWithFullScreen(nextVC)
+        if isValidate() {
+            let nextVC = ControllerID.selectPlanVC.instance
+            self.pushWithFullScreen(nextVC)
+        }
+   
     }
     
     
@@ -146,7 +170,7 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
     func showOperator(pOperator:PrepaidOperatorResponse) {
         btnOperator.setTitle(pOperator.operatorName , for: .normal)
         btnOperator.setTitleColor(.black, for: .normal)
-        
+        operatorLoaded = true
         GetWRPrepaidPlansRequest.shared.circleCode = pOperator.circleCode
         GetWRPrepaidPlansRequest.shared.countryCode = countryShortName
         GetWRPrepaidPlansRequest.shared.operatorCode = pOperator.operatorCode!

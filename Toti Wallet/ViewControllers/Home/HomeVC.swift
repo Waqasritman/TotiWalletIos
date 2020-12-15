@@ -106,7 +106,7 @@ class HomeVC: BaseVC {
             btnRegistration.isHidden = true
         } else {
             btnRegistration.isHidden = false
-            AlertView.instance.showAlert(title: "complete_profile".localiz() , message: "please_complete_kyc".localiz())
+            AlertView.instance.showAlert(title: "complete_profile".localizedLowercase , message: "please_complete_kyc".localiz())
         }
         
         if preferenceHelper.getISKYCApproved() {

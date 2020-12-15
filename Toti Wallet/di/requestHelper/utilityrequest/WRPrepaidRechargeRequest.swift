@@ -58,4 +58,22 @@ class WRPrepaidRechargeRequest {
         
         return stringParams
     }
+    
+    
+    func clearRequest() {
+        customerNo = ""
+        payoutCurrency = ""  //
+        payOutAmount = ""
+        payInCurrency = ""
+        countryCode = ""  //
+        mobileNumber = "" //
+        planId = ""
+        languageId = "1"
+        paymentTypeId = ""
+        cardNumber = ""
+        expireDate = ""
+        securityCode = ""
+        
+        operatorName = "" //
+    }
 }

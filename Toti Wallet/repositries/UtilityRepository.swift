@@ -47,6 +47,42 @@ class UtilityRepository {
     }
     
     
+    func getStatus(request:URLRequest ,completion: @escaping (PrepaidStatusResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<PrepaidStatusResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(data, nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let changePinResponse = PrepaidStatusResponse()
+                            changePinResponse.description = "something went wrong"
+                            changePinResponse.responseCode = 500
+                            completion(changePinResponse, nil)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
+    
     func getMobileTopUpTypes(request:URLRequest ,completion: @escaping (WRBillerTypeResponse?, String?) -> () ) {
         Alamofire.request(request)
             .responseXMLObject{(response: DataResponse<WRBillerTypeResponse>) in

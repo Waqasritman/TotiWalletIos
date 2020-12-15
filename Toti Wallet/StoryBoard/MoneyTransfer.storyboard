@@ -41,12 +41,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0u-g6-Hrv">
-                                                        <rect key="frame" x="16" y="8" width="40" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="56"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="AVM-je-WcF"/>
-                                                            <constraint firstAttribute="width" constant="40" id="HDI-rA-bOj"/>
+                                                            <constraint firstAttribute="width" constant="60" id="2BG-zh-mBv"/>
                                                         </constraints>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="12" maxX="10" maxY="12"/>
+                                                        <inset key="imageEdgeInsets" minX="16" minY="12" maxX="10" maxY="12"/>
                                                         <state key="normal" image="backIconWhite"/>
                                                         <connections>
                                                             <action selector="btnBackFunc:" destination="Y7N-Rk-hmY" eventType="touchUpInside" id="Zdv-wi-nTH"/>
@@ -69,13 +68,14 @@
                                                 </subviews>
                                                 <color key="backgroundColor" name="931D55"/>
                                                 <constraints>
-                                                    <constraint firstItem="y0u-g6-Hrv" firstAttribute="leading" secondItem="C2l-Ra-4M6" secondAttribute="leading" constant="16" id="3Gp-PJ-0Rq"/>
+                                                    <constraint firstItem="y0u-g6-Hrv" firstAttribute="leading" secondItem="C2l-Ra-4M6" secondAttribute="leading" id="3YQ-3H-Q9q"/>
                                                     <constraint firstItem="Par-B1-4IF" firstAttribute="centerX" secondItem="C2l-Ra-4M6" secondAttribute="centerX" id="987-lf-1vG"/>
                                                     <constraint firstItem="FrV-ie-lTZ" firstAttribute="centerY" secondItem="C2l-Ra-4M6" secondAttribute="centerY" id="Csj-QN-ayQ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="y0u-g6-Hrv" secondAttribute="bottom" id="Dhf-Ga-JjH"/>
+                                                    <constraint firstItem="y0u-g6-Hrv" firstAttribute="top" secondItem="C2l-Ra-4M6" secondAttribute="top" id="Y3D-zA-mvR"/>
                                                     <constraint firstAttribute="trailing" secondItem="FrV-ie-lTZ" secondAttribute="trailing" constant="16" id="kRs-X6-8gY"/>
                                                     <constraint firstAttribute="height" constant="56" id="mmR-fi-AUl"/>
                                                     <constraint firstItem="Par-B1-4IF" firstAttribute="centerY" secondItem="C2l-Ra-4M6" secondAttribute="centerY" id="naE-hL-smf"/>
-                                                    <constraint firstItem="y0u-g6-Hrv" firstAttribute="centerY" secondItem="C2l-Ra-4M6" secondAttribute="centerY" id="ocz-03-LPc"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like to pay?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zu4-V7-Ylh">
@@ -5841,30 +5841,30 @@
                                                 <rect key="frame" x="16" y="50" width="343" height="561"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CardTableCell" rowHeight="150" id="xYO-fg-k9H" customClass="CardTableCell" customModule="Toti_Wallet" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="343" height="150"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CardTableCell" rowHeight="170" id="xYO-fg-k9H" customClass="CardTableCell" customModule="Toti_Wallet" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="343" height="170"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xYO-fg-k9H" id="bx8-vh-CLc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="170"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHU-sl-hwu">
-                                                                    <rect key="frame" x="2" y="2" width="339" height="146"/>
+                                                                    <rect key="frame" x="2" y="2" width="339" height="166"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="0vg-FI-uGe">
-                                                                            <rect key="frame" x="16" y="8" width="102.5" height="24.5"/>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="debit_design" translatesAutoresizingMaskIntoConstraints="NO" id="0vg-FI-uGe">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="339" height="166"/>
                                                                         </imageView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dJm-ev-ZSx">
-                                                                            <rect key="frame" x="16" y="82" width="171.5" height="48"/>
+                                                                            <rect key="frame" x="16" y="42" width="50" height="108"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waqas raajbhoot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-Rl-yWX">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="129" height="20"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-Rl-yWX">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234-1234-1234-1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bi-ff-TjD">
-                                                                                    <rect key="frame" x="0.0" y="28" width="171.5" height="20"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bi-ff-TjD">
+                                                                                    <rect key="frame" x="0.0" y="58" width="50" height="50"/>
                                                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
@@ -5875,9 +5875,11 @@
                                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="bottom" secondItem="dJm-ev-ZSx" secondAttribute="bottom" constant="16" id="5kF-FW-C31"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="0vg-FI-uGe" secondAttribute="trailing" id="8xq-Ea-ixc"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="0vg-FI-uGe" secondAttribute="bottom" id="J9s-4i-dIO"/>
+                                                                        <constraint firstItem="0vg-FI-uGe" firstAttribute="top" secondItem="sHU-sl-hwu" secondAttribute="top" id="cHv-Ah-JQe"/>
                                                                         <constraint firstItem="dJm-ev-ZSx" firstAttribute="leading" secondItem="sHU-sl-hwu" secondAttribute="leading" constant="16" id="i1l-lB-pEO"/>
-                                                                        <constraint firstItem="0vg-FI-uGe" firstAttribute="top" secondItem="sHU-sl-hwu" secondAttribute="top" constant="8" id="iy1-D7-JLv"/>
-                                                                        <constraint firstItem="0vg-FI-uGe" firstAttribute="leading" secondItem="sHU-sl-hwu" secondAttribute="leading" constant="16" id="jWq-JZ-3Qv"/>
+                                                                        <constraint firstItem="0vg-FI-uGe" firstAttribute="leading" secondItem="sHU-sl-hwu" secondAttribute="leading" id="zMg-zX-vFR"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -5993,6 +5995,23 @@
                                                     <constraint firstItem="PSQ-xn-viU" firstAttribute="leading" secondItem="npv-Wz-c3i" secondAttribute="leading" id="xn3-86-pT8"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf0-8V-tmY">
+                                                <rect key="frame" x="16" y="550" width="343" height="45"/>
+                                                <color key="backgroundColor" name="931D55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="Ahh-0J-JKr"/>
+                                                    <constraint firstAttribute="height" constant="45" id="Gtc-2u-fYf"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="Tpq-LT-L8a"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="18"/>
+                                                <state key="normal" title="Generate card">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnGenerateLoadCardCick:" destination="0qb-x3-4YF" eventType="touchUpInside" id="stB-fV-poz"/>
+                                                    <action selector="btnNextFunc:" destination="IQi-f3-a5s" eventType="touchUpInside" id="XAo-zc-gcx"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -6004,8 +6023,11 @@
                                             <constraint firstAttribute="trailing" secondItem="k4N-aQ-zgn" secondAttribute="trailing" id="Wdw-Gg-w6w"/>
                                             <constraint firstAttribute="bottom" secondItem="npv-Wz-c3i" secondAttribute="bottom" constant="16" id="XFS-VC-VZd"/>
                                             <constraint firstAttribute="bottom" secondItem="GaJ-RT-LyT" secondAttribute="bottom" id="fkh-zY-G8A"/>
+                                            <constraint firstAttribute="bottom" secondItem="nf0-8V-tmY" secondAttribute="bottom" constant="16" id="iSW-oN-7B3"/>
+                                            <constraint firstAttribute="trailing" secondItem="nf0-8V-tmY" secondAttribute="trailing" constant="16" id="ix3-Ng-hgo"/>
                                             <constraint firstItem="GaJ-RT-LyT" firstAttribute="leading" secondItem="s3L-3X-M4t" secondAttribute="leading" constant="16" id="kAu-Rw-Hf0"/>
                                             <constraint firstItem="npv-Wz-c3i" firstAttribute="top" secondItem="k4N-aQ-zgn" secondAttribute="bottom" constant="16" id="qOi-xk-lLi"/>
+                                            <constraint firstItem="nf0-8V-tmY" firstAttribute="leading" secondItem="s3L-3X-M4t" secondAttribute="leading" constant="16" id="syX-bS-8wi"/>
                                             <constraint firstItem="npv-Wz-c3i" firstAttribute="leading" secondItem="s3L-3X-M4t" secondAttribute="leading" constant="16" id="zPu-bF-Rx9"/>
                                         </constraints>
                                     </view>
@@ -6071,6 +6093,7 @@
                         <outlet property="btnLoadCard" destination="RMy-x4-xtF" id="fMH-tO-oLK"/>
                         <outlet property="btnMyCards" destination="Ab0-9f-8uk" id="LeP-Mq-hI1"/>
                         <outlet property="cardTableView" destination="GaJ-RT-LyT" id="vbt-6W-6F7"/>
+                        <outlet property="generateLoadCardBtn" destination="nf0-8V-tmY" id="aV0-ks-ECs"/>
                         <outlet property="txtAmount" destination="PSQ-xn-viU" id="2hE-7t-VTR"/>
                         <outlet property="viewBar" destination="Dyq-Vm-8GY" id="a0Q-iU-ZfT"/>
                         <outlet property="viewLoadCard" destination="npv-Wz-c3i" id="b17-64-w5P"/>
@@ -6703,6 +6726,7 @@
         <image name="bankIcon" width="35" height="35"/>
         <image name="cancel" width="32" height="32"/>
         <image name="cashIcon" width="35" height="35"/>
+        <image name="debit_design" width="234" height="132"/>
         <image name="downArrow" width="13" height="8"/>
         <image name="flag" width="37" height="19"/>
         <image name="historySelected" width="24" height="24"/>

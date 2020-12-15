@@ -14,6 +14,9 @@ class AddCustomerCardNoResponse: XMLMappable {
     required init?(map: XMLMap) {
         
     }
+    init() {
+        
+    }
     var responseCode:Int!
     var description:String!
     var nodeName: String!
