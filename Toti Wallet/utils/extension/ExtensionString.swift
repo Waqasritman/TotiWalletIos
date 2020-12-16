@@ -8,18 +8,25 @@
 
 import Foundation
 extension String {
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    
+    
     var floatValue: Float {
         return (self as NSString).floatValue
     }
     
     
     func separate(every stride: Int = 4, with separator: Character = " ") -> String {
-            return String(enumerated().map { $0 > 0 && $0 % stride == 0 ? [separator, $1] : [$1]}.joined())
-        }
+        return String(enumerated().map { $0 > 0 && $0 % stride == 0 ? [separator, $1] : [$1]}.joined())
+    }
     
     static func randomString(length: Int) -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
     

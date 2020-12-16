@@ -104,7 +104,7 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
                     } else if response!.responseCode == 101 {
                         if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.CREDIT_CARD {
                             AlertView.instance.delegate = self
-                            AlertView.instance.showAlert(title: "in_process".localiz() , message: "in_process_msg_card".localiz())
+                            AlertView.instance.showAlert(title: "in_process" , message: "in_process_msg_card")
             
                         } else if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.BANK_DEPOSIT {
                             BankDetailAlert.instance.delegate = self
@@ -165,6 +165,6 @@ extension AddMoneyPaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
         LoadWalletRequest.shared.cardNumber = cardsList[indexPath.row].cardNumber
         LoadWalletRequest.shared.expireDate = cardsList[indexPath.row].cardExpireDate
         AlertViewWithTextField.instance.delegate = self
-        AlertViewWithTextField.instance.showAlert(title: "enter_cvv".localiz(), txtFieldPlaceHolder: "CVV")
+        AlertViewWithTextField.instance.showAlert(title: "enter_cvv", txtFieldPlaceHolder: "CVV")
     }
 }

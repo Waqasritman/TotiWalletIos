@@ -1,0 +1,144 @@
+
+/* Class = "UIButton"; normalTitle = "Change Pin"; ObjectID = "2A6-ne-X2F"; */
+"2A6-ne-X2F.normalTitle" = "Change Pin";
+
+/* Class = "UILabel"; text = "We offer you the best Foreign Exchange rates"; ObjectID = "2m1-eB-Q7Z"; */
+"2m1-eB-Q7Z.text" = "We offer you the best Foreign Exchange rates";
+
+/* Class = "UILabel"; text = "Using Mobile Number"; ObjectID = "4Dh-AC-Gh4"; */
+"4Dh-AC-Gh4.text" = "Using Mobile Number";
+
+/* Class = "UILabel"; text = "Please Enter Required Data"; ObjectID = "6cu-3F-Ym9"; */
+"6cu-3F-Ym9.text" = "Please Enter Required Data";
+
+/* Class = "UIButton"; normalTitle = "Didn't receive the OTP? "; ObjectID = "CAJ-Y5-wz0"; */
+"CAJ-Y5-wz0.normalTitle" = "Didn't receive the OTP? ";
+
+/* Class = "UIButton"; normalTitle = "Send OTP via e-mail"; ObjectID = "Cd7-SQ-Y6o"; */
+"Cd7-SQ-Y6o.normalTitle" = "Send OTP via e-mail";
+
+/* Class = "UILabel"; text = "+44"; ObjectID = "DVf-Cx-iLu"; */
+"DVf-Cx-iLu.text" = "+44";
+
+/* Class = "UILabel"; text = "Re-enter New PIN*"; ObjectID = "EGs-42-plx"; */
+"EGs-42-plx.text" = "Re-enter New PIN*";
+
+/* Class = "UITextField"; placeholder = "Enter Email"; ObjectID = "FbQ-KJ-Bo0"; */
+"FbQ-KJ-Bo0.placeholder" = "Enter Email";
+
+/* Class = "UIButton"; normalTitle = "RESEND"; ObjectID = "HOO-PQ-cca"; */
+"HOO-PQ-cca.normalTitle" = "RESEND";
+
+/* Class = "UIButton"; normalTitle = " Continue"; ObjectID = "Hud-r4-Cqp"; */
+"Hud-r4-Cqp.normalTitle" = " Continue";
+
+/* Class = "UILabel"; text = "Using E-mail Address"; ObjectID = "I8J-ri-7Tj"; */
+"I8J-ri-7Tj.text" = "Using E-mail Address";
+
+/* Class = "UITextField"; placeholder = "123456789"; ObjectID = "J27-Z4-vD2"; */
+"J27-Z4-vD2.placeholder" = "123456789";
+
+/* Class = "UILabel"; text = "Enter New PIN*"; ObjectID = "Ky1-Hb-EbU"; */
+"Ky1-Hb-EbU.text" = "Enter New PIN*";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LAu-80-oeY"; */
+"LAu-80-oeY.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NEB-KX-5wW"; */
+"NEB-KX-5wW.text" = "Label";
+
+/* Class = "UILabel"; text = "Select Country"; ObjectID = "Ok6-hD-GlV"; */
+"Ok6-hD-GlV.text" = "Select Country";
+
+/* Class = "UIButton"; normalTitle = "Create an Account"; ObjectID = "SUh-RL-a0j"; */
+"SUh-RL-a0j.normalTitle" = "Create an Account";
+
+/* Class = "UIButton"; normalTitle = "Existing Customer"; ObjectID = "UC7-tB-q56"; */
+"UC7-tB-q56.normalTitle" = "Existing Customer";
+
+/* Class = "UILabel"; text = "Enter Pincode"; ObjectID = "Y4c-Ub-LTG"; */
+"Y4c-Ub-LTG.text" = "Enter Pincode";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "Zhh-MG-PUB"; */
+"Zhh-MG-PUB.normalTitle" = "Confirm";
+
+/* Class = "UIButton"; normalTitle = "RESEND"; ObjectID = "ada-Wx-7mg"; */
+"ada-Wx-7mg.normalTitle" = "RESEND";
+
+/* Class = "UILabel"; text = "Remember me"; ObjectID = "bFg-4a-FNf"; */
+"bFg-4a-FNf.text" = "Remember me";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "bkU-Kn-E7X"; */
+"bkU-Kn-E7X.placeholder" = "Search";
+
+/* Class = "UILabel"; text = "Enter Your mobile number"; ObjectID = "c2s-6R-KTe"; */
+"c2s-6R-KTe.text" = "Enter Your mobile number";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "cha-rc-gtx"; */
+"cha-rc-gtx.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "+44"; ObjectID = "e1m-4i-sIF"; */
+"e1m-4i-sIF.text" = "+44";
+
+/* Class = "UILabel"; text = "ID Expire Date*"; ObjectID = "e27-Yw-Emd"; */
+"e27-Yw-Emd.text" = "ID Expire Date*";
+
+/* Class = "UILabel"; text = "OR"; ObjectID = "fDl-tD-JQd"; */
+"fDl-tD-JQd.text" = "OR";
+
+/* Class = "UILabel"; text = "Change Pin"; ObjectID = "fhN-fi-ZC9"; */
+"fhN-fi-ZC9.text" = "Change Pin";
+
+/* Class = "UILabel"; text = "By submitting you confirm that you are 18 years of age and agree to the T&C and Privacy Policy"; ObjectID = "g0N-Er-RvA"; */
+"g0N-Er-RvA.text" = "By submitting you confirm that you are 18 years of age and agree to the T&C and Privacy Policy";
+
+/* Class = "UITextField"; placeholder = "123456789"; ObjectID = "gYK-rO-VeF"; */
+"gYK-rO-VeF.placeholder" = "123456789";
+
+/* Class = "UILabel"; text = "Verify OTP that you have received"; ObjectID = "ggB-6L-0OU"; */
+"ggB-6L-0OU.text" = "Verify OTP that you have received";
+
+/* Class = "UILabel"; text = "Verify OTP that you have received"; ObjectID = "hyQ-jX-o4v"; */
+"hyQ-jX-o4v.text" = "Verify OTP that you have received";
+
+/* Class = "UILabel"; text = "+44"; ObjectID = "j4K-h6-XM6"; */
+"j4K-h6-XM6.text" = "+44";
+
+/* Class = "UILabel"; text = "How would you want to login into your account?"; ObjectID = "kyq-A8-Uad"; */
+"kyq-A8-Uad.text" = "How would you want to login into your account?";
+
+/* Class = "UIButton"; normalTitle = "Select Date"; ObjectID = "lUH-2k-gae"; */
+"lUH-2k-gae.normalTitle" = "Select Date";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "o23-Jd-lPc"; */
+"o23-Jd-lPc.normalTitle" = "LOGIN";
+
+/* Class = "UITextField"; placeholder = "Enter Email"; ObjectID = "oIv-Sg-uk9"; */
+"oIv-Sg-uk9.placeholder" = "Enter Email";
+
+/* Class = "UIButton"; normalTitle = "Accept and Continue"; ObjectID = "oYn-Gv-MpK"; */
+"oYn-Gv-MpK.normalTitle" = "Accept and Continue";
+
+/* Class = "UILabel"; text = "ID Number*"; ObjectID = "qei-lg-4KA"; */
+"qei-lg-4KA.text" = "ID Number*";
+
+/* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "qwc-jW-tez"; */
+"qwc-jW-tez.normalTitle" = "Confirm";
+
+/* Class = "UILabel"; text = "Login into your account"; ObjectID = "sc2-ct-S5a"; */
+"sc2-ct-S5a.text" = "Login into your account";
+
+/* Class = "UIButton"; normalTitle = "Didn't receive the OTP? "; ObjectID = "uHD-Zs-Dvz"; */
+"uHD-Zs-Dvz.normalTitle" = "Didn't receive the OTP? ";
+
+/* Class = "UIButton"; normalTitle = "FORGOT PIN?"; ObjectID = "ucf-5T-rcV"; */
+"ucf-5T-rcV.normalTitle" = "FORGOT PIN?";
+
+/* Class = "UITextField"; placeholder = "123456789"; ObjectID = "ugS-l4-828"; */
+"ugS-l4-828.placeholder" = "123456789";
+
+/* Class = "UILabel"; text = "Enter Your mobile number"; ObjectID = "wef-Xt-1Hv"; */
+"wef-Xt-1Hv.text" = "Enter Your mobile number";
+
+/* Class = "UITextField"; placeholder = "Enter Email"; ObjectID = "x2D-16-tsY"; */
+"x2D-16-tsY.placeholder" = "Enter Email";

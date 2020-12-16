@@ -570,7 +570,7 @@
         <scene sceneID="UhJ-ft-KGL">
             <objects>
                 <tabBarController storyboardIdentifier="tabbar" id="Kdk-25-Wrc" customClass="CustomTabBarController" customModule="Toti_Wallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J8b-CG-c6l">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J8b-CG-c6l" customClass="MyTabBar" customModule="Toti_Wallet" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

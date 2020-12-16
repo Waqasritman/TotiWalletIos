@@ -24,7 +24,7 @@ enum ControllerID<T: UIViewController> : String {
     case profileBasicDetailVC = "ProfileBasicDetailVC"
     case profileAddressDetailVC = "ProfileAddressDetailVC"
     case tabbar = "tabbar"
-    
+    case swiftPurposeVC = "SwiftPurposeVC"
     case quickPayVC = "QuickPayVC"
     case businessTranscationVC = "BusinessTranscationVC"
     case myQRCode = "MyQRCode"
@@ -125,7 +125,7 @@ enum ControllerID<T: UIViewController> : String {
             return .AddMoney
         case .mobileTopUpVC, .simTypeVC, .selectPlanVC, .mobileTopUpPaymentVC, .mobileTopUpSuccessVC , .wrCountryVC:
             return .MobileTopUp
-        case .businessTranscationVC, .businessTransactionPaymentDetail, .businessTransctionBankDetail, .businessTransactionCorrespondent:
+        case .businessTranscationVC, .businessTransactionPaymentDetail, .businessTransctionBankDetail, .businessTransactionCorrespondent , .swiftPurposeVC:
             return .BusinessTransction
         }
     }

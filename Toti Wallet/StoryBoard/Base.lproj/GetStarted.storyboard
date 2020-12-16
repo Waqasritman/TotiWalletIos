@@ -123,7 +123,7 @@
                                         <color key="textColor" white="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGp-aw-rR5" customClass="DropDown" customModule="Toti_Wallet" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="English" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGp-aw-rR5" customClass="DropDown" customModule="Toti_Wallet" customModuleProvider="target">
                                         <rect key="frame" x="257" y="18" width="100" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="WeU-tM-4IF"/>
@@ -170,6 +170,7 @@
                         <outlet property="btnCreateAccount" destination="SUh-RL-a0j" id="UGT-f9-zc5"/>
                         <outlet property="btnExistingCustomer" destination="UC7-tB-q56" id="tcz-gY-8M2"/>
                         <outlet property="dropDown" destination="ZGp-aw-rR5" id="TjB-jN-f3r"/>
+                        <outlet property="titlePage" destination="2m1-eB-Q7Z" id="3ci-FJ-HDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxL-7P-RnW" userLabel="First Responder" sceneMemberID="firstResponder"/>

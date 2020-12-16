@@ -83,7 +83,7 @@ class HomeVC: BaseVC {
         viewPrepaidCards.addGestureRecognizer(viewPrepaidCardsGesture)
         
         
-        if self.preferenceHelper.getIsWalletNeedToUpdate() {
+        if preferenceHelper.getIsWalletNeedToUpdate() {
             getCustomerWallets()
         }
         
@@ -107,7 +107,7 @@ class HomeVC: BaseVC {
             btnRegistration.isHidden = true
         } else {
             btnRegistration.isHidden = false
-            AlertView.instance.showAlert(title: "complete_profile".localizedLowercase , message: "please_complete_kyc".localiz())
+            AlertView.instance.showAlert(title: "complete_profile".localizedLowercase , message: "please_complete_kyc")
         }
         
         if preferenceHelper.getISKYCApproved() {
@@ -115,7 +115,7 @@ class HomeVC: BaseVC {
         } else {
             if !preferenceHelper.getIsDocumentUploaded() {
                 btnRegistration.isHidden = false
-                AlertView.instance.showAlert(title: "complete_profile".localiz() , message: "please_complete_kyc".localiz())
+                AlertView.instance.showAlert(title: "complete_profile" , message: "please_complete_kyc")
             } else {
                 btnRegistration.isHidden = true
             
@@ -192,7 +192,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                     self.walletList.removeAll()
                     self.walletList.append(contentsOf: response!.walletList)
                     self.rateCollectionView.reloadData()
-                    self.preferenceHelper.isWalletNeedToUpdate(isNeed: false);
+                   preferenceHelper.isWalletNeedToUpdate(isNeed: false);
                 } else {
                     self.showError(message: response!.description)
                 }

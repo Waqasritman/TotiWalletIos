@@ -172,7 +172,7 @@ extension MobileTopUpPaymentVC: UITableViewDelegate, UITableViewDataSource {
         WRPrepaidRechargeRequest.shared.paymentTypeId = String(PaymentTypes.shared.CREDIT_CARD)
         WRPrepaidRechargeRequest.shared.payInCurrency = "GBP"
         AlertViewWithTextField.instance.delegate = self
-        AlertViewWithTextField.instance.showAlert(title: "enter_cvv".localiz(), txtFieldPlaceHolder: "CVV")
+        AlertViewWithTextField.instance.showAlert(title: "enter_cvv", txtFieldPlaceHolder: "CVV")
     }
     
     

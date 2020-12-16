@@ -112,9 +112,9 @@ class ProfileAddressDetailVC: BaseVC , CountryListProtocol {
                 } else {
                     if response!.responseCode == 101 {
                         self.hideProgress()
-                        self.preferenceHelper.isWalletNeedToUpdate(isNeed: true);
-                        self.preferenceHelper.setCustomerNo(customerNo: customerNo)
-                        self.preferenceHelper.filCustomerData(userRequest: response!)
+                        preferenceHelper.isWalletNeedToUpdate(isNeed: true);
+                       preferenceHelper.setCustomerNo(customerNo: customerNo)
+                        preferenceHelper.filCustomerData(userRequest: response!)
                         self.toHome()
                     }
                 }

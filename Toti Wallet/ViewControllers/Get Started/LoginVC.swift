@@ -44,7 +44,7 @@ class LoginVC: BaseVC {
         
         if isByPhoneNumber {
             if countryCode.isEmpty {
-                showError(message: "Select country")
+                showError(message:  "selecet country")
                 return false
             } else if txtPhoneNumber.text!.isEmpty {
                 showError(message: "Enter Number")
@@ -61,7 +61,7 @@ class LoginVC: BaseVC {
                 showError(message: "Enter email address")
                 return false
             } else if getCode().count < 4 {
-                showError(message: "Enter correct pin")
+                showError(message: "enter_pin".localized)
                 return false
             }
         }
@@ -194,9 +194,9 @@ class LoginVC: BaseVC {
                 } else {
                     if response!.responseCode == 101 {
                        
-                        self.preferenceHelper.isWalletNeedToUpdate(isNeed: true);
-                        self.preferenceHelper.setCustomerNo(customerNo: customerNo)
-                        self.preferenceHelper.filCustomerData(userRequest: response!)
+                        preferenceHelper.isWalletNeedToUpdate(isNeed: true);
+                        preferenceHelper.setCustomerNo(customerNo: customerNo)
+                       preferenceHelper.filCustomerData(userRequest: response!)
                         self.getCustomerImage(customerNo: customerNo)
                    
                     }
@@ -224,7 +224,7 @@ class LoginVC: BaseVC {
                 self.toHome()
             } else if response!.ResponseCode == 101 {
                 print(response!.Description)
-                self.preferenceHelper.userImage(imageData: response!.ImageData)
+                preferenceHelper.userImage(imageData: response!.ImageData)
                 self.toHome()
             } else {
                 print("error")

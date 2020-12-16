@@ -31,6 +31,12 @@
 		663958F62588E2020000E1AC /* LoadVirtualCardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958F52588E2020000E1AC /* LoadVirtualCardRequest.swift */; };
 		663958F92588E28A0000E1AC /* LoadPrepaidCardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958F82588E28A0000E1AC /* LoadPrepaidCardResponse.swift */; };
 		663958FC2588FE990000E1AC /* B2BTransferDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663958FB2588FE990000E1AC /* B2BTransferDetails.swift */; };
+		663959102589F28A0000E1AC /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663959122589F28A0000E1AC /* GetStarted.storyboard */; };
+		6639591A2589F35F0000E1AC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6639591C2589F35F0000E1AC /* Localizable.strings */; };
+		663959222589F9570000E1AC /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663959212589F9570000E1AC /* Localizer.swift */; };
+		663959262589F9700000E1AC /* LocalizeLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663959252589F9700000E1AC /* LocalizeLanguage.swift */; };
+		66395929258A2EAF0000E1AC /* SwiftPurposeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66395928258A2EAF0000E1AC /* SwiftPurposeVC.swift */; };
+		6639592C258A36A60000E1AC /* B2BTransferResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639592B258A36A60000E1AC /* B2BTransferResponse.swift */; };
 		6648E27D2574F89D003F697F /* ForgotPassotpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E27C2574F89D003F697F /* ForgotPassotpVC.swift */; };
 		6648E29A2575120C003F697F /* CountryListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E2992575120C003F697F /* CountryListProtocol.swift */; };
 		6648E2AE257515C2003F697F /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6648E2AD257515C2003F697F /* ImageView.swift */; };
@@ -147,7 +153,6 @@
 		91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91076B482576301D00D4E3C8 /* OurRatesVC.swift */; };
 		9116F9CC256E46D700952AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CB256E46D700952AF4 /* AppDelegate.swift */; };
 		9116F9CE256E46D700952AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9116F9CD256E46D700952AF4 /* ViewController.swift */; };
-		9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9DD256E483100952AF4 /* GetStarted.storyboard */; };
 		9116F9F3256E4DCC00952AF4 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */; };
 		9116F9F4256E4DCC00952AF4 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */; };
 		9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9116F9E3256E4DC900952AF4 /* Lato-Italic.ttf */; };
@@ -323,6 +328,13 @@
 		663958F52588E2020000E1AC /* LoadVirtualCardRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadVirtualCardRequest.swift; sourceTree = "<group>"; };
 		663958F82588E28A0000E1AC /* LoadPrepaidCardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPrepaidCardResponse.swift; sourceTree = "<group>"; };
 		663958FB2588FE990000E1AC /* B2BTransferDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B2BTransferDetails.swift; sourceTree = "<group>"; };
+		663959112589F28A0000E1AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GetStarted.storyboard; sourceTree = "<group>"; };
+		6639591B2589F35F0000E1AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6639591E2589F3630000E1AC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		663959212589F9570000E1AC /* Localizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
+		663959252589F9700000E1AC /* LocalizeLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeLanguage.swift; sourceTree = "<group>"; };
+		66395928258A2EAF0000E1AC /* SwiftPurposeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPurposeVC.swift; sourceTree = "<group>"; };
+		6639592B258A36A60000E1AC /* B2BTransferResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B2BTransferResponse.swift; sourceTree = "<group>"; };
 		6648E27C2574F89D003F697F /* ForgotPassotpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassotpVC.swift; sourceTree = "<group>"; };
 		6648E2992575120C003F697F /* CountryListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListProtocol.swift; sourceTree = "<group>"; };
 		6648E2AD257515C2003F697F /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
@@ -442,7 +454,6 @@
 		9116F9CB256E46D700952AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9116F9CD256E46D700952AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9116F9D7256E46D900952AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9116F9DD256E483100952AF4 /* GetStarted.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStarted.storyboard; sourceTree = "<group>"; };
 		9116F9E1256E4DC800952AF4 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		9116F9E2256E4DC900952AF4 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		9116F9E3256E4DC900952AF4 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
@@ -640,6 +651,15 @@
 			path = utilityresponse;
 			sourceTree = "<group>";
 		};
+		663959202589F9410000E1AC /* LocalizationManager */ = {
+			isa = PBXGroup;
+			children = (
+				663959212589F9570000E1AC /* Localizer.swift */,
+				663959252589F9700000E1AC /* LocalizeLanguage.swift */,
+			);
+			path = LocalizationManager;
+			sourceTree = "<group>";
+		};
 		6648E298257511F4003F697F /* protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +778,7 @@
 				66B7C46E2580AE0400D4C0C6 /* TransactionHistoryResponse.swift */,
 				663958EF2588CA050000E1AC /* SaveCardDetailsResponse.swift */,
 				663958F82588E28A0000E1AC /* LoadPrepaidCardResponse.swift */,
+				6639592B258A36A60000E1AC /* B2BTransferResponse.swift */,
 			);
 			path = responses;
 			sourceTree = "<group>";
@@ -925,7 +946,7 @@
 		9116FA07256E5AC700952AF4 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				9116F9DD256E483100952AF4 /* GetStarted.storyboard */,
+				663959122589F28A0000E1AC /* GetStarted.storyboard */,
 				9149CA2E25715A3500CD8A34 /* Profile.storyboard */,
 				916AE94E25873BED00A8B2C7 /* Main.storyboard */,
 				91076B3C25762D1500D4E3C8 /* SideMenu.storyboard */,
@@ -936,6 +957,7 @@
 				912117442583B8D4003FF146 /* MobileTopUp.storyboard */,
 				915859D9257CBFC5006AC531 /* KVC.storyboard */,
 				91C155CC256ED007001468FB /* Storyboard.swift */,
+				6639591C2589F35F0000E1AC /* Localizable.strings */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -962,6 +984,7 @@
 				912117352583B44D003FF146 /* BusinessTransctionBankDetail.swift */,
 				912117362583B44D003FF146 /* BusinessTranscationVC.swift */,
 				912117372583B44D003FF146 /* BusinessTransactionPaymentDetail.swift */,
+				66395928258A2EAF0000E1AC /* SwiftPurposeVC.swift */,
 			);
 			path = "Business Tanscation";
 			sourceTree = "<group>";
@@ -979,6 +1002,7 @@
 		914F52972574C1EE0020C44A /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				663959202589F9410000E1AC /* LocalizationManager */,
 				914F52982574C1EE0020C44A /* extension */,
 				914F529C2574C1EE0020C44A /* UrlToBase64.swift */,
 				914F529D2574C1EE0020C44A /* Network.swift */,
@@ -1426,6 +1450,7 @@
 				9149CA2D2571556D00CD8A34 /* AlertView.xib in Resources */,
 				9116F9F8256E4DCC00952AF4 /* Lato-HairlineItalic.ttf in Resources */,
 				9116F9FE256E4DCC00952AF4 /* Lato-ThinItalic.ttf in Resources */,
+				6639591A2589F35F0000E1AC /* Localizable.strings in Resources */,
 				9116F9F9256E4DCC00952AF4 /* Lato-Hairline.ttf in Resources */,
 				9116FA01256E4DCC00952AF4 /* Lato-HeavyItalic.ttf in Resources */,
 				9116FA06256E581200952AF4 /* Colors.xcassets in Resources */,
@@ -1445,7 +1470,7 @@
 				915859DC257CBFCD006AC531 /* History.storyboard in Resources */,
 				915859DA257CBFC6006AC531 /* KVC.storyboard in Resources */,
 				9116F9F5256E4DCC00952AF4 /* Lato-Italic.ttf in Resources */,
-				9116F9DE256E483100952AF4 /* GetStarted.storyboard in Resources */,
+				663959102589F28A0000E1AC /* GetStarted.storyboard in Resources */,
 				9116F9FC256E4DCC00952AF4 /* Lato-BoldItalic.ttf in Resources */,
 				91F306A8257E39EC008D2F45 /* AddMoney.storyboard in Resources */,
 			);
@@ -1624,6 +1649,7 @@
 				66B7CB682580F150006CE991 /* IdTypeProtocol.swift in Sources */,
 				91076B492576301D00D4E3C8 /* OurRatesVC.swift in Sources */,
 				66B7C4692580A37200D4C0C6 /* WalletTransferHistoryResponse.swift in Sources */,
+				663959262589F9700000E1AC /* LocalizeLanguage.swift in Sources */,
 				663958C825877F560000E1AC /* GetWRPrepaidPlansRequest.swift in Sources */,
 				9180253E257122A500EB0806 /* StringExtension.swift in Sources */,
 				6649B0EB257668D9003846A2 /* GetBeneficiaryListResponse.swift in Sources */,
@@ -1656,6 +1682,7 @@
 				913B420E2577B091001C9F3F /* SelectWalletVC.swift in Sources */,
 				6649B1CD2577D730003846A2 /* Repository.swift in Sources */,
 				6649B118257681E6003846A2 /* GetCustomerWalletDetailsResponse.swift in Sources */,
+				663959222589F9570000E1AC /* Localizer.swift in Sources */,
 				6649B1ED2578BB49003846A2 /* AddCustomerCardNoRequest.swift in Sources */,
 				66B7C46F2580AE0400D4C0C6 /* TransactionHistoryResponse.swift in Sources */,
 				91633D0D257A1CA200A8225A /* BankTransferConverterVC.swift in Sources */,
@@ -1688,6 +1715,7 @@
 				663958F92588E28A0000E1AC /* LoadPrepaidCardResponse.swift in Sources */,
 				66B7C430257F6EC400D4C0C6 /* BankNameProtocol.swift in Sources */,
 				6649B1F42578BD9C003846A2 /* GetCustomerCardNoRequest.swift in Sources */,
+				6639592C258A36A60000E1AC /* B2BTransferResponse.swift in Sources */,
 				663958C525877A280000E1AC /* PrepaidOperatorResponse.swift in Sources */,
 				663958B32587709C0000E1AC /* WRCountryListProtocol.swift in Sources */,
 				914F52A62574C1EE0020C44A /* GetDateAndTime.swift in Sources */,
@@ -1714,6 +1742,7 @@
 				6649B0C4257654DE003846A2 /* ChangePinResponse.swift in Sources */,
 				912117322583B446003FF146 /* BeneficiaryDeleteVC.swift in Sources */,
 				6649B2002578C0E2003846A2 /* GetRelationListRequest.swift in Sources */,
+				66395929258A2EAF0000E1AC /* SwiftPurposeVC.swift in Sources */,
 				663958D12587A0250000E1AC /* WRPrepaidRechargeRequest.swift in Sources */,
 				91C155C7256ECEA9001468FB /* LoginVC.swift in Sources */,
 				6649B1CA2577CFD0003846A2 /* BarcodeGenerator.swift in Sources */,
@@ -1756,6 +1785,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		663959122589F28A0000E1AC /* GetStarted.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				663959112589F28A0000E1AC /* Base */,
+			);
+			name = GetStarted.storyboard;
+			sourceTree = "<group>";
+		};
+		6639591C2589F35F0000E1AC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6639591B2589F35F0000E1AC /* en */,
+				6639591E2589F3630000E1AC /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9116F9D8256E46D900952AF4 /* Debug */ = {

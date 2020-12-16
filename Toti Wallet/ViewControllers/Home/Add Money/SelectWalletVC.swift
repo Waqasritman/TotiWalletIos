@@ -52,7 +52,7 @@ class SelectWalletVC: BaseVC {
                     self.walletList.removeAll()
                     self.walletList.append(contentsOf: response!.walletList)
                     self.walletCollectionView.reloadData()
-                    self.preferenceHelper.isWalletNeedToUpdate(isNeed: false);
+                   preferenceHelper.isWalletNeedToUpdate(isNeed: false);
                 } else {
                     self.showError(message: response!.description)
                 }

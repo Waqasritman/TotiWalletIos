@@ -139,7 +139,7 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
                         self.receiptNumber = response!.transactionNo!
                         if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.CREDIT_CARD {
                             AlertView.instance.delegate = self
-                            AlertView.instance.showAlert(title: "in_process".localiz() , message: "in_process_msg_card".localiz())
+                            AlertView.instance.showAlert(title: "in_process" , message: "in_process_msg_card")
             
                         } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.BANK_DEPOSIT {
                             BankDetailAlert.instance.delegate = self
@@ -222,7 +222,7 @@ extension PaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
         TotiPaySend.shared.cardNumber = cardsList[indexPath.row].cardNumber
         TotiPaySend.shared.expireDate = cardsList[indexPath.row].cardExpireDate
         AlertViewWithTextField.instance.delegate = self
-        AlertViewWithTextField.instance.showAlert(title: "enter_cvv".localiz(), txtFieldPlaceHolder: "CVV")
+        AlertViewWithTextField.instance.showAlert(title: "enter_cvv", txtFieldPlaceHolder: "CVV")
     }
     
     

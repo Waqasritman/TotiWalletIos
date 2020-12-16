@@ -50,7 +50,43 @@ class Repository {
             }
     }
     
-    
+    func b2bTransfer(request:URLRequest ,completion: @escaping (B2BTransferResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<B2BTransferResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = B2BTransferResponse()
+                            response.description = "something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
     
     
     func loadCustomerCards(request:URLRequest ,completion: @escaping (GetCardDetailsResponse?, String?) -> () ) {

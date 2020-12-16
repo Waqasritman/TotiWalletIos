@@ -32,6 +32,7 @@ class SelectCountryVC: BaseVC {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
+        txtSearch.delegate = self
         
         if Network.isConnectedToNetwork() {
             showProgress()
@@ -124,7 +125,7 @@ extension SelectCountryVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension SelectCountryVC {
+extension SelectCountryVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let string1 = string

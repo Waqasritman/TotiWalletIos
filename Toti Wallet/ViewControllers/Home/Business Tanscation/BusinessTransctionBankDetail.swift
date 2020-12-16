@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessTransctionBankDetail: UIViewController {
+class BusinessTransctionBankDetail: BaseVC {
 
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtAccountNumber: UITextField!
@@ -16,6 +16,22 @@ class BusinessTransctionBankDetail: UIViewController {
     @IBOutlet weak var txtAddress: UITextField!
     @IBOutlet weak var txtSwift: UITextField!
     @IBOutlet weak var btnNext: UIButton!
+    
+    
+    override func isValidate() -> Bool {
+        if txtName.text!.isEmpty {
+            return false
+        } else if txtAccountNumber.text!.isEmpty {
+            return false
+        } else if txtBranch.text!.isEmpty {
+            return false
+        } else if txtAddress.text!.isEmpty {
+            return false
+        } else if txtSwift.text!.isEmpty {
+            return false
+        }
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +52,23 @@ class BusinessTransctionBankDetail: UIViewController {
     }
     
     @IBAction func btnNextFunc(_ sender: UIButton) {
-        let nextVC = ControllerID.businessTransactionCorrespondent.instance
-        self.pushWithFullScreen(nextVC)
+        if isValidate() {
+            B2BTransferDetails.shared.bankName = txtName.text!
+            B2BTransferDetails.shared.accountNumber = txtAccountNumber.text!
+            B2BTransferDetails.shared.bankBranch = txtBranch.text!
+            B2BTransferDetails.shared.bankAddress = txtAddress.text!
+            B2BTransferDetails.shared.swiftBIC = txtSwift.text!
+            
+            let nextVC = ControllerID.businessTransactionCorrespondent.instance
+            self.pushWithFullScreen(nextVC)
+        }
+        
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
 
+    @IBAction func closeBtnAction(_ sender: Any) {
+    }
 }
