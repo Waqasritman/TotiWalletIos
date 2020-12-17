@@ -12,7 +12,7 @@ import SideMenu
 
 class HomeVC: BaseVC {
     let authRepo:AuthRepository = AuthRepository()
-    @IBOutlet weak var btnProfileImage: UIButton!
+    @IBOutlet weak var btnProfileImage: UIImageView!
     @IBOutlet weak var rateCollectionView: UICollectionView!
     @IBOutlet weak var offerCollectionView: UICollectionView!
     @IBOutlet weak var viewBottom: UIView!
@@ -102,26 +102,28 @@ class HomeVC: BaseVC {
         
         print(preferenceHelper.getUserImage())
         
-        
-        if preferenceHelper.getIsDocumentUploaded() {
-            btnRegistration.isHidden = true
-        } else {
-            btnRegistration.isHidden = false
-            AlertView.instance.showAlert(title: "complete_profile".localizedLowercase , message: "please_complete_kyc")
+        btnProfileImage.makeImageCircle()
+        if  preferenceHelper.getUserImage() != "" {
+            btnProfileImage.image = fromBase64(strBase64: preferenceHelper.getUserImage())
         }
-        
-        if preferenceHelper.getISKYCApproved() {
-            btnRegistration.isHidden = true
-        } else {
-            if !preferenceHelper.getIsDocumentUploaded() {
-                btnRegistration.isHidden = false
-                AlertView.instance.showAlert(title: "complete_profile" , message: "please_complete_kyc")
-            } else {
+        if !preferenceHelper.getISKYCApproved() {
+            if preferenceHelper.getDocumentUploaded() {
                 btnRegistration.isHidden = true
-            
+            } else {
+                btnRegistration.isHidden = false
+                AlertView.instance.showAlert(title: "complete_profile".localizedLowercase , message: "please_complete_kyc")
             }
-            
+        } else {
+            btnRegistration.isHidden = true
         }
+ 
+    }
+    
+    
+    func fromBase64(strBase64:String) -> UIImage {
+        let dataDecoded : Data = Data(base64Encoded: strBase64, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        return decodedimage!
     }
     
     @IBAction func btnBarCodeFunc(_ sender: UIButton) {

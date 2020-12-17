@@ -25,11 +25,13 @@ class LoginSignUpOptionVC: BaseVC {
      
         dropDown.didSelect{(selectedText , index ,id) in
            print("Selected String: \(selectedText) \n index: \(index)")
+            self.showProgress()
             preferenceHelper.setLanguage(String(index))
             self.changed(index)
         }
       
-      
+        btnCreateAccount.setTitle("create".localized, for: .normal)
+        btnExistingCustomer.setTitle("already".localized, for: .normal)
         titlePage.text = "textOffer".localized
     }
     

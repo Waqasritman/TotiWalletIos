@@ -10,12 +10,6 @@ import UIKit
 
 class SignUpVC: BaseVC , CountryListProtocol {
     
-    func onSelectCountry(country: WRCountryList) {
-        if lblCode != nil {
-            lblCode.text = country.countryCode
-            countryCode = country.countryCode
-        }
-    }
     
     let authRepository:AuthRepository = AuthRepository()
     @IBOutlet weak var lblHeading: UILabel!
@@ -28,7 +22,14 @@ class SignUpVC: BaseVC , CountryListProtocol {
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var viewCode: UIView!
     @IBOutlet weak var lblCode: UILabel!
+    @IBOutlet weak var btnFlag: UIImageView!
     
+    
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var ageRestrictLbl: UILabel!
+    @IBOutlet weak var orLAbel: UILabel!
+    
+
     var countryCode:String = ""
     var isSignUpViaNumber = true
     
@@ -59,7 +60,7 @@ class SignUpVC: BaseVC , CountryListProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        btnFlag.makeImageCircle()
         mainView.layer.cornerRadius = 16
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
@@ -139,6 +140,16 @@ class SignUpVC: BaseVC , CountryListProtocol {
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
+    func onSelectCountry(country: WRCountryList) {
+        if lblCode != nil {
+            lblCode.text = country.countryCode
+            countryCode = country.countryCode
+            btnFlag.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
+        }
     }
     
 }

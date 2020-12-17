@@ -87,15 +87,7 @@ class PreferenceHelper :NSObject{
         return (ph.value(forKey: KEY_USER_IMAGE) as? String) ?? ""
     }
     
-    
-    func documentUploaded(value:Bool) {
-        ph.set(value, forKey: KEY_DOCUMENTED_UPLOADED)
-    }
-    
-    func getIsDocumentUploaded() -> Bool {
-        return (ph.value(forKey: KEY_DOCUMENTED_UPLOADED) as? Bool) ?? false
-    }
-    
+
     func getISKYCApproved() -> Bool {
         return (ph.value(forKey: KEY_IS_APPROVED_KYC) as? Bool) ?? false
     }
@@ -105,6 +97,15 @@ class PreferenceHelper :NSObject{
         ph.synchronize();
     }
     
+    func setDocumentUploaded(value:Bool) {
+        ph.set(value, forKey: "document_uploaded");
+        ph.synchronize();
+    }
+    
+    
+    func getDocumentUploaded() -> Bool {
+        return (ph.value(forKey: "document_uploaded") as? Bool) ?? false
+    }
     
     func getCustomerNo() -> String {
         return (ph.value(forKey: "customer_no") as? String) ?? ""

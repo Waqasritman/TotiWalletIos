@@ -44,7 +44,8 @@ class GetCustomerProfileResponse:XMLMappable  {
     var idTypeDescription:String = ""
     var sourceOfDescription:String = ""
     var kyc:String = ""
-    
+    var docs:String = ""
+    var isDocUploaded:Bool = false
     func mapping(map: XMLMap) {
         responseCode <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.ResponseCode"]
         description <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.Description"]
@@ -75,8 +76,15 @@ class GetCustomerProfileResponse:XMLMappable  {
         sourceOfFund <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.SourceOfFund"]
         isActive <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.IsActive"]
         idTypeDescription <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.IDtype_Description"]
-        
+        docs <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.IsDocUploaded"]
         sourceOfDescription <- map["s:Body.GetCustomerProfileResponse.GetCustomerProfileResult.SourceOfFund_Desc"]
+        
+        if docs.lowercased() == "true" {
+            isDocUploaded = true
+        } else {
+            isDocUploaded = false
+        }
+        
     }
     
     

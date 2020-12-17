@@ -18,4 +18,9 @@ class SimpleResponse: Codable {
         self.Description = Description
     }
     
+    enum CodingKeys: String, CodingKey {
+        case ResponseCode = "ResponseCode"
+        case Description = "Description"
+    }
+    
 }

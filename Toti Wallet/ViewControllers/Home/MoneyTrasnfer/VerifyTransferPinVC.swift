@@ -36,6 +36,11 @@ class VerifyTransferPinVC: BaseVC {
         })
     }
     
+    
+    @IBAction func btnEdit(_ sender:Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 
     
     @IBAction func btnConfirm(_ sender:Any) {

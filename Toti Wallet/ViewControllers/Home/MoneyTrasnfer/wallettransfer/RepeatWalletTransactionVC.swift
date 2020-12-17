@@ -22,8 +22,8 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     let walletTransferRequest:WalletToWalletTransferRequest = WalletToWalletTransferRequest()
     @IBOutlet weak var btnConvert: UIButton!
     @IBOutlet weak var btnSendNow: UIButton!
-    @IBOutlet weak var firstDropDown: UIButton!
-    @IBOutlet weak var secondDropDown: UIButton!
+    @IBOutlet weak var firstDropDown: UILabel!
+    @IBOutlet weak var secondDropDown: UILabel!
     @IBOutlet weak var txtFirst: UITextField!
     @IBOutlet weak var txtSecond: UITextField!
     @IBOutlet weak var viewBottom: UIView!
@@ -35,7 +35,13 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
   
     @IBOutlet weak var commissionView: UIStackView!
     @IBOutlet weak var dataViewStack: UIStackView!
+    @IBOutlet weak var receivingIcon: UIImageView!
+    @IBOutlet weak var sendingIcon: UIImageView!
+    @IBOutlet weak var receivingView: UIView!
+    @IBOutlet weak var sendingView: UIView!
     
+    var isFromQrCode = false
+    var customerNo = ""
     
     override func isValidate() -> Bool {
         if txtPhoneNumber.text!.isEmpty {
@@ -62,12 +68,11 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         btnConvert.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
         btnSendNow.layer.cornerRadius = 8
         
-        firstDropDown.layer.cornerRadius = 8
-        secondDropDown.layer.cornerRadius = 8
-        
-        firstDropDown.imageEdgeInsets.left = self.firstDropDown.frame.width - 25
-        secondDropDown.imageEdgeInsets.left = self.secondDropDown.frame.width - 25
-        
+        sendingView.layer.cornerRadius = 8
+        receivingView.layer.cornerRadius = 8
+        sendingIcon.makeImageCircle()
+        receivingIcon.makeImageCircle()
+ 
         txtFirst.layer.cornerRadius = 8
         txtSecond.layer.cornerRadius = 8
         
@@ -82,8 +87,19 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         
         txtPhoneNumber.setLeftPaddingPoints(5)
 
-        txtPhoneNumber.text = history.receiverNumber
+        if !isFromQrCode {
+            txtPhoneNumber.text = history.receiverNumber
+        } else {
+            getCustomerProfile(customerNo: customerNo)
+        }
+       
         txtPhoneNumber.isEnabled = false
+        
+        let sendingGes = UITapGestureRecognizer(target: self, action: #selector(btnSendingCurrency(_:)))
+        sendingView.addGestureRecognizer(sendingGes)
+        
+        let receivingGes = UITapGestureRecognizer(target: self, action: #selector(btnReceivingCurrency(_:)))
+        receivingView.addGestureRecognizer(receivingGes)
 
     }
     
@@ -91,13 +107,13 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     
     
     
-    @IBAction func btnSendingCurrency(_ sender:Any) {
+    @objc func btnSendingCurrency(_ sender:Any) {
         isSendingSelect = true
         getWalletCurrencies()
     }
     
     
-    @IBAction func btnReceivingCurrency(_ sender:Any) {
+    @objc func btnReceivingCurrency(_ sender:Any) {
         isSendingSelect = false
         getWalletCurrencies()
     }
@@ -121,7 +137,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
             walletTransferRequest.receiptCurrency = calRequest.payoutCurrency
             walletTransferRequest.receiptMobileNo = self.txtPhoneNumber.text!
             walletTransferRequest.transferAmount = calRequest.transferAmount
-            walletTransferRequest.languageId = preferenceHelper.getLanguage()
+            walletTransferRequest.languageId = preferenceHelper.getApiLangugae()
             let nextVC = ControllerID.verifyTransferDetailVC.instance
             (nextVC  as! VerifyTransferDetailVC).walletRequest = walletTransferRequest
             (nextVC as! VerifyTransferDetailVC).protocolConfirm = self
@@ -142,6 +158,39 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    
+    func getCustomerProfile(customerNo:String) {
+        if Network.isConnectedToNetwork() {
+            let request = GetCustomerProfileRequest()
+            request.customerNo = customerNo
+            request.emailAddress = ""
+            request.mobileNo = ""
+            request.languageId = "1"
+            
+            
+            authRepo.getCustomerProfile(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER), completion: {(response , error) in
+                if let error = error {
+                    self.hideProgress()
+                    self.showError(message: error)
+                } else {
+                    if response!.responseCode == 101 {
+                        self.txtName.text = response!.firstName + " " +  response!.lastName
+                        self.txtPhoneNumber.text = response!.mobileNo
+                        self.txtName.isEnabled = false
+                        self.txtPhoneNumber.isEnabled = false
+                      
+                    }
+                }
+            })
+            
+            
+        } else {
+            self.noInternet()
+        }
+    }
+    
     
     
     func getWalletCurrencies() {
@@ -198,11 +247,11 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     
     func onSelectCurrency(currency: RecCurrency) {
         if isSendingSelect {
-            self.firstDropDown.setTitle(currency.currencyShortName, for: .normal)
+            self.firstDropDown.text = currency.currencyShortName
             calRequest.payInCurrency = currency.currencyShortName
             calRequest.transferCurrency = currency.currencyShortName
         } else {
-            self.secondDropDown.setTitle(currency.currencyShortName, for: .normal)
+            self.secondDropDown.text = currency.currencyShortName
             calRequest.payoutCurrency = currency.currencyShortName
         }
         txtSecond.text = ""
@@ -213,11 +262,11 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         if currencyList.count == 1 {
             self.hideProgress()
             if isSendingSelect {
-                self.firstDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
+                self.firstDropDown.text = currencyList[0].currencyShortName
                 calRequest.payInCurrency = currencyList[0].currencyShortName
                 calRequest.transferCurrency = currencyList[0].currencyShortName
             } else {
-                self.secondDropDown.setTitle(currencyList[0].currencyShortName, for: .normal)
+                self.secondDropDown.text = currencyList[0].currencyShortName
                 calRequest.payoutCurrency = currencyList[0].currencyShortName
             }
             
@@ -270,7 +319,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
                 })
             }
         }else {
-            
+            self.showError(message: "plz_complete_kyc".localized)
         }
     }
     

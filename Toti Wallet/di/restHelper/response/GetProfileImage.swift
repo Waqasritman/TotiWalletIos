@@ -16,6 +16,7 @@ class GetProfileImage: Codable {
         case ResponseCode = "ResponseCode"
         case ImageData = "ImageData"
         case Description = "Description"
+          
     }
     
     init(ResponseCode: Int, ImageData: String, Description: String) {

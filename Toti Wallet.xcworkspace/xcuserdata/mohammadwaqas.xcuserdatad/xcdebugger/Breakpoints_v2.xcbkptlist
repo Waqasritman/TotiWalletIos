@@ -136,7 +136,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A7CD809A-6D14-4852-AD8C-7186F4C1078C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/cashtransfer/CashBeneficaryVC.swift"
@@ -152,7 +152,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CB622C93-C591-40E8-91D4-8FF592317E61"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/cashtransfer/CashBeneficaryVC.swift"
@@ -168,7 +168,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FD5427E3-56C7-4D5B-B659-B3C06EECC8E9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/cashtransfer/CashBeneficaryVC.swift"
@@ -200,7 +200,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5B79CBD4-0CBD-42BF-83CB-81F7B0C91497"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/PaymentOptionVC.swift"
@@ -222,8 +222,8 @@
             filePath = "Toti Wallet/ViewControllers/Home/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "getCustomerWallets()"
             landmarkType = "7">
          </BreakpointContent>
@@ -240,8 +240,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
-            landmarkName = "showReceipt(receipt:)"
-            landmarkType = "7">
+            landmarkName = "ReceiptVC"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -529,6 +529,262 @@
             startingLineNumber = "76"
             endingLineNumber = "76"
             landmarkName = "btnNextFunc(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "897DB628-CCDC-42C1-B360-20306F4B870C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/repositries/RestRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "getCustomerImage(param:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "897DB628-CCDC-42C1-B360-20306F4B870C - cb54c9a97e0815e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Toti_Wallet.RestRepositor.getCustomerImage(param: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;Toti_Wallet.GetProfileImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Toti Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadwaqas/Desktop/gi/Toti%20Wallet/repositries/RestRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "336">
+               </Location>
+               <Location
+                  uuid = "897DB628-CCDC-42C1-B360-20306F4B870C - cb54c9a97e0815e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Toti_Wallet.RestRepositor.getCustomerImage(param: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;Toti_Wallet.GetProfileImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Toti Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadwaqas/Desktop/gi/Toti%20Wallet/repositries/RestRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE4499D6-2A08-4A7B-B6D4-C057CD2088BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/repositries/RestRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "getCustomerImage(param:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EE4499D6-2A08-4A7B-B6D4-C057CD2088BD - 5817467ca8db0b54"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Toti_Wallet.RestRepositor.getCustomerImage(param: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;Toti_Wallet.GetProfileImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Toti Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadwaqas/Desktop/gi/Toti%20Wallet/repositries/RestRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "EE4499D6-2A08-4A7B-B6D4-C057CD2088BD - cb54c9a97e080a8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Toti_Wallet.RestRepositor.getCustomerImage(param: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;Toti_Wallet.GetProfileImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Toti Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadwaqas/Desktop/gi/Toti%20Wallet/repositries/RestRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "428CB005-C12B-4F0B-A8B7-571DAE4578AB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Get Started/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "getCustomerImage(customerNo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0218F1C5-3692-4144-A844-3A68E83AB25C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/PrepardCardVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "btnMyCards(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0218F1C5-3692-4144-A844-3A68E83AB25C - 1a4062ec7d77c671"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Toti_Wallet.PrepardCardVC.btnMyCards(__C.UIButton) -&gt; ()"
+                  moduleName = "Toti Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadwaqas/Desktop/gi/Toti%20Wallet/ViewControllers/Home/MoneyTrasnfer/PrepardCardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "0218F1C5-3692-4144-A844-3A68E83AB25C - 839176f7f4d55b12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Toti_Wallet.PrepardCardVC.btnMyCards(__C.UIButton) -&gt; ()"
+                  moduleName = "Toti Wallet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mohammadwaqas/Desktop/gi/Toti%20Wallet/ViewControllers/Home/MoneyTrasnfer/PrepardCardVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6719C815-D631-4A9A-B79C-D66B18E91766"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/PrepardCardVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "btnMyCards(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F59E42B5-3299-4A6E-B42B-095138B9347A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Get Started/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "getCustomerImage(customerNo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DCD9900D-834C-4262-A65A-A3DBCD4101C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/wallettransfer/RepeatWalletTransactionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "onPinVerified(action:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2153CC06-252A-47B1-AC7A-89926A6B102F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Home/MoneyTrasnfer/wallettransfer/RepeatWalletTransactionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "walletTransfer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE79ABDB-C2DE-43B5-B10F-E5898CDEF2A2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Get Started/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "isValidate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2C66D7D-720E-40C1-A19B-D56B6B540747"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toti Wallet/ViewControllers/Get Started/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "isValidate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

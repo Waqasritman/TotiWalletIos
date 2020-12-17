@@ -5,4 +5,28 @@
  Created by Mohammad Waqas on 12/16/20.
  Copyright © 2020 iOS Technologies. All rights reserved.
  */
+
+
+"create" = "إنشاء حساب";
+"already" = "عميل موجود";
 "textOffer" = "نقدم لك افضل سعر صرف";
+"already_have_an_account" = "العميل غير موجود؟";
+"sign_in" = "تسجيل الدخول";
+"skip" = "تجاهل";
+"back" = "العودة";
+"forgot_pin" = "نسيان كلمة المرور؟";
+"first_name" = "الاسم الأول*";
+"Please_Enter_email_mobile_number" = "برجاء ادخال البريد الالكتروني او رقم الهاتف";
+"Please_select_agents" = "برجاء اختيار الوكيل المتوف";
+"address" = "العنوان*";
+"email" = "البريد الالكتروني*";
+"gender" = "الجنس*";
+"male" = "ذكر";
+"female" = "أنثى";
+"kyc" = "إستكمال الاجراءات";
+"quick_pay" = "الدفع السريغ";
+"beneficiary" = "المستفيد";
+"history" = "الحركات المالية";
+"bank_name" = "اسم البنك*‬";
+"bank_account_number" = "رقم الحساب*‬";
+"ifsc_code" = "رقم الايبان*";

@@ -8,10 +8,16 @@
 
 import UIKit
 
-class LoginOptionVC: UIViewController {
+class LoginOptionVC: BaseVC {
 
     @IBOutlet weak var phoneNumberView: UIView!
     @IBOutlet weak var emailView: UIView!
+    
+    
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var notAnExistinlbl: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,12 @@ class LoginOptionVC: UIViewController {
         
         let emailViewGesture = UITapGestureRecognizer(target: self, action: #selector(emailViewFunc(_:)))
         emailView.addGestureRecognizer(emailViewGesture)
+        pageTitle.text  = "already_have_an_account".localized
+        
+        
+     //   notAnExistinlbl.titleLabel?.text = "already_have_an_account".localized
+        
+      notAnExistinlbl.setTitle("already_have_an_account", for: .normal)
     }
     
     @objc private func phoneViewFunc(_ sender: UIGestureRecognizer) {

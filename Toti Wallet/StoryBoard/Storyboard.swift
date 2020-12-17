@@ -97,7 +97,7 @@ enum ControllerID<T: UIViewController> : String {
     case addCreditCardVC = "AddCreditCardVC"
     case InactiveVC = "inactiveVC"
     case editProfileVC = "EditProfileVC"
-    
+    case barCodeScanner = "BarCodeScanViewController"
     var instance: T {
         return storyboard.instance(viewController: self.rawValue) as T
     }
@@ -111,7 +111,7 @@ enum ControllerID<T: UIViewController> : String {
             return .Profile
         case .tabbar, .notificationListVC, .ourRatesVC, .addCreditCardVC, .InactiveVC, .editProfileVC :
             return .Main
-        case .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC:
+        case .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC , .barCodeScanner:
             return .SideMenu
             
         case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches, .receiptVC, .prepardCardVC, .addBankBeneficiaryVC, .addBankBeneficiaryBankDetail ,.branchNamesVC , .bankNamesVC, .beneficiaryDeleteVC , .indiaBankBeneVC , .repeatWalletVC:

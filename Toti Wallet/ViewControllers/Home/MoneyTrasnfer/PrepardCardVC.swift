@@ -221,10 +221,11 @@ extension PrepardCardVC: UITableViewDataSource, UITableViewDelegate {
                     self.customerCardNo =  response!.cardNo
                     self.cardTableView.reloadData()
                     self.generateLoadCardBtn.isHidden = true
-                } else if response!.cardNo.isEmpty {
-                    self.generateLoadCardBtn.isHidden = false
-                    self.generateLoadCardBtn.setTitle("Generate Card", for: .normal)
                 }
+//                else if response!.cardNo.isEmpty {
+//                    self.generateLoadCardBtn.isHidden = false
+//                    self.generateLoadCardBtn.setTitle("Generate Card", for: .normal)
+//                }
                 else {
                     self.showError(message: response!.description!)
                 }

@@ -23,7 +23,7 @@ class LoginVC: BaseVC {
     @IBOutlet weak var viewCode: UIView!
     
     @IBOutlet weak var lblCode: UILabel!
-    @IBOutlet weak var btnFlag:UIButton!
+    @IBOutlet weak var btnFlag:UIImageView!
     
     
     var countryCode:String = ""
@@ -69,7 +69,7 @@ class LoginVC: BaseVC {
     }
     
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +78,7 @@ class LoginVC: BaseVC {
             KWTextFieldView.clipsToBounds = true
             KWTextFieldView.layer.cornerRadius = 8
         })
-        
+        btnFlag.makeImageCircle()
         btnLogin.layer.cornerRadius = 8
         mainView.layer.cornerRadius = 16
         mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -110,7 +110,7 @@ class LoginVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-      
+        
     }
     
     @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
@@ -154,7 +154,7 @@ class LoginVC: BaseVC {
                 request.password = getCode()
                 
                 authRepository.loginRequest(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_LOGIN),completion: { (response, error) in
-                   
+                    
                     if let error = error {
                         self.hideProgress()
                         self.showError(message: error)
@@ -193,12 +193,13 @@ class LoginVC: BaseVC {
                     self.showError(message: error)
                 } else {
                     if response!.responseCode == 101 {
-                       
+                        
                         preferenceHelper.isWalletNeedToUpdate(isNeed: true);
+                        preferenceHelper.setDocumentUploaded(value: response!.isDocUploaded)
                         preferenceHelper.setCustomerNo(customerNo: customerNo)
-                       preferenceHelper.filCustomerData(userRequest: response!)
+                        preferenceHelper.filCustomerData(userRequest: response!)
                         self.getCustomerImage(customerNo: customerNo)
-                   
+                        
                     }
                 }
             })
@@ -215,7 +216,7 @@ class LoginVC: BaseVC {
     func getCustomerImage(customerNo:String) {
         let request = GetCustomerProfileImageRequest()
         request.Customer_No = customerNo
-       // request.credentials.LanguageID = 1
+        // request.credentials.LanguageID = 1
         print(request.toJSON())
         restRepo.getCustomerImage(param: request.toJSON(), completion: {(response ,error) in
             self.hideProgress()
@@ -227,7 +228,7 @@ class LoginVC: BaseVC {
                 preferenceHelper.userImage(imageData: response!.ImageData)
                 self.toHome()
             } else {
-                print("error")
+                print(response!.Description)
                 self.toHome()
             }
         })
@@ -244,15 +245,13 @@ class LoginVC: BaseVC {
 extension LoginVC : CountryListProtocol {
     
     func onSelectCountry(country: WRCountryList) {
-        if lblCode != nil {
-            lblCode.text = country.countryCode
-            countryCode = country.countryCode
-        }
+      
+        lblCode.text = country.countryCode
+        countryCode = country.countryCode
+        
         flagURL = country.url
-//        let image:UIImage = Ui
-//        
-//       // btnFlag.setBackgroundImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
-//        btnFlag.setImage(UIImage(named: "play.png"), forState: UIControlState.Normal)
+        btnFlag.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
+     
     }
     
     

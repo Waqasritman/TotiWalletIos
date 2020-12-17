@@ -20,12 +20,22 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
     @IBOutlet weak var phoneNumberView: UIView!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var viewCode: UIView!
+  
+    @IBOutlet weak var lblCode: UILabel!
     
+    @IBOutlet weak var btnFlag: UIImageView!
     var isByNumber:Bool = false;
-    
+    var isCountrySelected = false
     override func isValidate() -> Bool {
         if isByNumber {
-            if txtNumber.text!.isEmpty {
+            if !isCountrySelected {
+                self.showError(message: "country")
+                return false
+            } else if txtNumber.text!.isEmpty {
+                self.showError(message: "enter number")
+                return false
+            } else if !verifyNumber(number: lblCode.text!z + txtNumber.text!) {
+                showError(message: "Enter Number Is Invalid")
                 return false
             }
         } else {
@@ -42,7 +52,7 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        btnFlag.makeImageCircle()
         viewMain.layer.cornerRadius = 16
         viewMain.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
@@ -136,7 +146,9 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
     
     
     func onSelectCountry(country: WRCountryList) {
-        
+        lblCode.text = country.countryCode
+       
+        btnFlag.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
     }
 
 }

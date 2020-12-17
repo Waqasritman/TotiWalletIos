@@ -74,11 +74,24 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "Pay via QR Code"{
-            let viewController = BarcodeScannerViewController()
-            viewController.codeDelegate = self
-            viewController.errorDelegate = self
-            viewController.dismissalDelegate = self
-            self.presentWithFullScreen(viewController)
+//            let viewController = BarcodeScannerViewController()
+//            viewController.codeDelegate = self
+//            viewController.errorDelegate = self
+//            viewController.dismissalDelegate = self
+//            self.presentWithFullScreen(viewController)
+            var style = LBXScanViewStyle()
+            style.centerUpOffset = 44
+            style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle.On
+            style.photoframeLineW = 6
+            style.photoframeAngleW = 24
+            style.photoframeAngleH = 24
+            style.isNeedShowRetangle = true
+                   
+            style.anmiationStyle = LBXScanViewAnimationStyle.NetGrid
+            style.animationImage = UIImage(named: "qrcode_scan_part_net")
+            let nextVC = ControllerID.barCodeScanner.instance
+            (nextVC as! BarCodeScanViewController).scanStyle = style
+            self.pushWithFullScreen(nextVC)
         }
         else if sideTableData[indexPath.row] == "My QR Code" {
             let nextVC = ControllerID.myQRCode.instance
