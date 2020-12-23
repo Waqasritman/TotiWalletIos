@@ -10,7 +10,6 @@ import UIKit
 
 class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomeProtocol , TransferPurposeProtocol {
     
-
     var beneDetails:BeneficiaryList!
     
     let calRequest:CalTransferRequest = CalTransferRequest()
@@ -22,6 +21,10 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     @IBOutlet weak var txtsecond: UITextField!
     @IBOutlet weak var btnApply: UIButton!
     @IBOutlet weak var stackCommission: UIStackView!
+    
+    @IBOutlet weak var sendingStack: UIStackView!
+    @IBOutlet weak var comStack: UIStackView!
+    
     @IBOutlet weak var lblPayable: UILabel!
     @IBOutlet weak var lblSendingAmmount: UILabel!
     @IBOutlet weak var lblCommission: UILabel!
@@ -37,6 +40,8 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     @IBOutlet weak var payInFlag:UIImageView!
     @IBOutlet weak var payOutFlag: UIImageView!
     
+    @IBOutlet weak var priceBreakDownBtn: UIButton!
+    @IBOutlet weak var totalPaylbl: UILabel!
     
     var isPriceViewVisible = false
     var isWalletSelected = false
@@ -44,13 +49,19 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     var isSourceOfIncomeSelect = false
     
     
+    @IBOutlet weak var sourceOfincomelbl: UILabel!
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var purposeofTranslbl: UILabel!
+    
+    @IBOutlet weak var commissionlbl: UILabel!
+    @IBOutlet weak var sendingAmountlbl: UILabel!
     
     func isRateValidite() -> Bool {
         if !isWalletSelected {
-            self.showError(message: "Select Wallet")
+            self.showError(message: "plz_select_sending_currency".localized)
             return false
         } else if txtFirst.text!.isEmpty {
-            self.showError(message: "Enter amount to transfer")
+            self.showError(message: "please_enter_amount".localized)
             return false
         }
         return true
@@ -59,10 +70,10 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     
     override func isValidate() -> Bool {
         if !isSourceOfIncomeSelect  {
-            self.showError(message: "Select Source of income")
+            self.showError(message: "plz_select_source_of_income_error".localized)
             return false
         } else if !isPurposeSelected {
-            self.showError(message: "Select Purpose")
+            self.showError(message: "plz_select_send_purpose_error".localized)
             return false
         }
         return true
@@ -70,6 +81,28 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if beneDetails.paymentMode == PaymentMode.payment_cash {
+            toolTitle.text = "cash_transfer".localized
+        } else {
+            toolTitle.text = "bank_transfer".localized
+        }
+        btnConvert.setTitle("convert_string".localized, for: .normal)
+        totalPaylbl.text = "total_payable".localized
+        sendingAmountlbl.text = "sending_amount".localized
+        commissionlbl.text = "commission_amount".localized
+        txtPromo.placeholder = "enter_promo_code".localized
+        btnApply.setTitle("apply_txt".localized, for: .normal)
+        sourceOfincomelbl.text = "source_income".localized
+        purposeofTranslbl.text = "purpose_of_transfer".localized
+        btnSource.setTitle("select_source_income".localized, for: .normal)
+        btnTransfer.setTitle("select_the_purpose_txt".localized, for: .normal)
+        btnSendNow.setTitle("send_now".localized, for: .normal)
+        priceBreakDownBtn.setTitle("view_price_break_down".localized, for: .normal)
+        
+        
+        comStack.layer.cornerRadius = 8
+        sendingStack.layer.cornerRadius = 8
         initDesign()
         payInFlag.makeImageCircle()
         payOutFlag.makeImageCircle()
@@ -81,12 +114,12 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
         if isPriceViewVisible {
             stackCommission.isHidden = true
             isPriceViewVisible = false
-            sender.setTitle("Show price break down", for: .normal)
+            sender.setTitle("view_price_break_down".localized, for: .normal)
         }
         else{
             stackCommission.isHidden = false
             isPriceViewVisible = true
-            sender.setTitle("Hide price break down", for: .normal)
+            sender.setTitle("hide_break_down".localized, for: .normal)
         }
     }
     
@@ -97,7 +130,7 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
         
         if Network.isConnectedToNetwork() {
             let walletCurrencyRequest = GetWalletCurrencyListRequest()
-            walletCurrencyRequest.languageId = preferenceHelper.getLanguage()
+            walletCurrencyRequest.languageId = preferenceHelper.getApiLangugae()
             showProgress()
             moneyTransferRepo.getWalletCurrency(request: HTTPConnection.openConnection(stringParams: walletCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_WALLET_CURRENCY), completion: {(response , error ) in
                 if let error = error {
@@ -140,15 +173,12 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -170,6 +200,7 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     
     func onSelectSourceOfIncome(sourceOfIncome: SourceOfIncome) {
         btnSource.setTitle(sourceOfIncome.incomeName, for: .normal)
+        btnSource.setTitleColor(.black, for: .normal)
         TotiPaySend.shared.sourceOfIncome = sourceOfIncome.id!
         isSourceOfIncomeSelect = true
     }
@@ -177,6 +208,7 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     
     func onSelectTransferProtocol(purpose: PurposeOfTransfer) {
         btnTransfer.setTitle(purpose.purposeOfTransfer, for: .normal)
+        btnTransfer.setTitleColor(.black, for: .normal)
         TotiPaySend.shared.purposeOfTransfer = purpose.purposeOfTransferID!
         isPurposeSelected = true
     }
@@ -218,7 +250,7 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
             if Network.isConnectedToNetwork() {
                 self.showProgress()
                 calRequest.transferAmount = txtFirst.text!
-                calRequest.languageId = preferenceHelper.getLanguage()
+                calRequest.languageId = preferenceHelper.getApiLangugae()
                 calRequest.paymentMode = beneDetails.paymentMode
                 print(calRequest.getXML())
                 moneyTransferRepo.getRates(request: HTTPConnection.openConnection(stringParams: calRequest.getXML(), action: SoapActionHelper.shared.ACTION_CAL_TRANSFER), completion: {(response , error) in
@@ -297,6 +329,18 @@ class BankTransferConverterVC: BaseVC , CurrencyListProtocol , SourceOFIncomePro
     func hideViews() {
         viewBottom.isHidden = true
         btnConvert.isHidden = false
+    }
+    
+}
+extension BankTransferConverterVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+     //   if string.count > 0 { // if it was not delete character
+            hideViews()
+            txtsecond.text = "0.00"
+     //   }
+        
+        return true
     }
     
 }

@@ -11,7 +11,12 @@ import UIKit
 class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProtocol
                                , AlertViewWithTextProtocol {
     
-   
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var payThroughCardBtn: UIButton!
+    @IBOutlet weak var payBanklbl: UILabel!
+    @IBOutlet weak var bankLbl: UILabel!
+    
     
     let repo:Repository = Repository()
     let moneyRepo:MoneyTransferRepository = MoneyTransferRepository()
@@ -34,6 +39,13 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
         
         let viewBankAccountGesture = UITapGestureRecognizer(target: self, action: #selector(viewBankAccountFunc(_:)))
         viewBankAccount.addGestureRecognizer(viewBankAccountGesture)
+        
+        pageTitle.text = "how_would_you_like".localized
+        payThroughCardBtn.setTitle("pay_thorough_card".localized, for: .normal)
+        btnLoad.setTitle("load_cards".localized, for: .normal)
+        payBanklbl.text = "process_payment".localized
+        bankLbl.text = "bank_account_details".localized
+        toolTitle.text = "payment".localized
     }
     
     @objc
@@ -57,12 +69,8 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -86,7 +94,7 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
     
     
     func handleAction() {
-        
+        gotoHome()
     }
     
 
@@ -94,7 +102,7 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
         if preferenceHelper.getISKYCApproved() {
             if Network.isConnectedToNetwork() {
                 showProgress()
-                LoadWalletRequest.shared.languageId = preferenceHelper.getLanguage()
+                LoadWalletRequest.shared.languageId = preferenceHelper.getApiLangugae()
                 LoadWalletRequest.shared.customerNo = preferenceHelper.getCustomerNo()
                 
                 moneyRepo.loadWallet(request: HTTPConnection.openConnection(stringParams: LoadWalletRequest.shared.getXML(), action: SoapActionHelper.shared.ACTION_LOAD_WALLET), completion: {(response , error) in
@@ -102,9 +110,10 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
                     if let error = error {
                         self.showError(message: error)
                     } else if response!.responseCode == 101 {
+                        preferenceHelper.isWalletNeedToUpdate(isNeed: true)
                         if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.CREDIT_CARD {
                             AlertView.instance.delegate = self
-                            AlertView.instance.showAlert(title: "in_process" , message: "in_process_msg_card")
+                            AlertView.instance.showAlert(title: "in_process".localized , message: "in_process_msg_card".localized , hide: true)
             
                         } else if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.BANK_DEPOSIT {
                             BankDetailAlert.instance.delegate = self
@@ -127,7 +136,7 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
             self.showProgress()
             let request = GetCardDetailsRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getLanguage()
+            request.languageID = preferenceHelper.getApiLangugae()
             repo.loadCustomerCards(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CARD_DETAILS), completion: {(response , error) in
                 self.hideProgress()
                 if let error = error {
@@ -165,6 +174,6 @@ extension AddMoneyPaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
         LoadWalletRequest.shared.cardNumber = cardsList[indexPath.row].cardNumber
         LoadWalletRequest.shared.expireDate = cardsList[indexPath.row].cardExpireDate
         AlertViewWithTextField.instance.delegate = self
-        AlertViewWithTextField.instance.showAlert(title: "enter_cvv", txtFieldPlaceHolder: "CVV")
+        AlertViewWithTextField.instance.showAlert(title: "enter_cvv".localized, txtFieldPlaceHolder: "cvv_txt".localized)
     }
 }

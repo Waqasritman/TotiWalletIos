@@ -14,7 +14,7 @@ public class ForgotPinRequestApprovedUserRequest {
     var mobileNumber = ""
     var idNumber = ""
     var idExpireDate = ""
-    var languageId = "1"
+    var languageId = preferenceHelper.getApiLangugae()
     
     
     public func getXML() -> String {

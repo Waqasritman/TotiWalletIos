@@ -10,11 +10,9 @@ import UIKit
 
 class YLocationsVC:  BaseVC {
     
-    @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var searchTableView: UITableView!
 
-    
-    var list:[YLocations] = Array()
+    @IBOutlet weak var titlelbl: UILabel!
     var filteredList:[YLocations] = Array()
     
     
@@ -26,7 +24,7 @@ class YLocationsVC:  BaseVC {
     
         searchTableView.delegate = self
         searchTableView.dataSource = self
-        
+        titlelbl.text = "select_location_txt".localized
     }
     
 
@@ -34,24 +32,6 @@ class YLocationsVC:  BaseVC {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        filteredList = list.filter({ (country) -> Bool in
-            let countryText: NSString = country.locationName as NSString
-            
-            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        searchTableView.reloadData()
-    }
-
 }
 
 //MARK : TableView Functions

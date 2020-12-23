@@ -11,6 +11,7 @@ import UIKit
 class RelationVC: BaseVC {
 
     
+    @IBOutlet weak var pageTitle: UILabel!
     let repository:AuthRepository = AuthRepository()
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var searchTableView: UITableView! {
@@ -21,7 +22,7 @@ class RelationVC: BaseVC {
     }
     
     
-    var list:[Relation] = Array()
+   
     var filteredList:[Relation] = Array()
     
     
@@ -29,7 +30,7 @@ class RelationVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        pageTitle.text = "plz_select_relation".localized
         getPurposeList()
     }
     
@@ -53,7 +54,7 @@ class RelationVC: BaseVC {
                     self.showError(message: error)
                     self.btnBackFunc(self)
                 } else if response!.responseCode == 101 {
-                    self.list.append(contentsOf: response!.relationList!)
+                  
                     self.filteredList.append(contentsOf: response!.relationList!)
                     self.searchTableView.reloadData()
                 } else {
@@ -69,22 +70,7 @@ class RelationVC: BaseVC {
     }
     
     
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        filteredList = list.filter({ (country) -> Bool in
-            let countryText: NSString = country.relationName as NSString
-            
-            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        searchTableView.reloadData()
-    }
-
+   
 }
 
 //MARK : TableView Functions

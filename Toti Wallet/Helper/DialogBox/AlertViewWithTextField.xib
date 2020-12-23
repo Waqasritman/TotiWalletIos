@@ -20,7 +20,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertViewWithTextField" customModule="Toti_Wallet" customModuleProvider="target">
             <connections>
                 <outlet property="alertView" destination="Zim-37-ag3" id="uLf-h5-37f"/>
-                <outlet property="btnOK" destination="IaQ-qQ-05N" id="ebe-fP-0Qe"/>
+                <outlet property="btnOK" destination="LT0-hx-d5c" id="mzz-CE-Buq"/>
+                <outlet property="cancelBtn" destination="IaQ-qQ-05N" id="XcE-pd-Mi9"/>
+                <outlet property="error_label" destination="uRL-JL-ZVn" id="Bvj-0o-HS0"/>
                 <outlet property="parentView" destination="9mu-j1-0Om" id="zOu-eL-FaU"/>
                 <outlet property="titleLbl" destination="qXZ-yI-HMr" id="Wfb-e6-JwE"/>
                 <outlet property="txtCVV" destination="XLZ-wS-FoZ" id="TPR-HZ-c78"/>
@@ -36,26 +38,43 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zim-37-ag3">
-                    <rect key="frame" x="37.5" y="269.5" width="300" height="128"/>
+                    <rect key="frame" x="37.5" y="258.5" width="300" height="150"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter security code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXZ-yI-HMr">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Enter security code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXZ-yI-HMr">
                             <rect key="frame" x="8" y="8" width="284" height="17.5"/>
                             <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="error_text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRL-JL-ZVn">
+                            <rect key="frame" x="15" y="30.5" width="270" height="13.5"/>
+                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="13"/>
+                            <color key="textColor" name="650C39"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="21i-mY-eZ9">
-                            <rect key="frame" x="16" y="80" width="268" height="36"/>
+                            <rect key="frame" x="16" y="102" width="268" height="36"/>
                             <subviews>
-                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaQ-qQ-05N">
-                                    <rect key="frame" x="0.0" y="0.0" width="268" height="36"/>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT0-hx-d5c">
+                                    <rect key="frame" x="0.0" y="0.0" width="130" height="36"/>
                                     <color key="backgroundColor" name="650C39"/>
                                     <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
                                     <state key="normal" title="OK">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="btnOKFunc:" destination="-1" eventType="touchUpInside" id="OFE-Kl-tcX"/>
+                                        <action selector="btnOKFunc:" destination="-1" eventType="touchUpInside" id="sHe-F6-Wg4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaQ-qQ-05N">
+                                    <rect key="frame" x="138" y="0.0" width="130" height="36"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
+                                    <state key="normal" title="Cancel">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelbtnclick:" destination="-1" eventType="touchUpInside" id="McC-kM-oDq"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -64,8 +83,11 @@
                             </constraints>
                         </stackView>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="cvv" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XLZ-wS-FoZ">
-                            <rect key="frame" x="16" y="33.5" width="268" height="38.5"/>
+                            <rect key="frame" x="16" y="49" width="268" height="45"/>
                             <color key="backgroundColor" name="F7F7F7"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="INs-Y9-ajD"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -76,15 +98,18 @@
                         <constraint firstItem="21i-mY-eZ9" firstAttribute="top" secondItem="XLZ-wS-FoZ" secondAttribute="bottom" constant="8" id="GOZ-rE-P3w"/>
                         <constraint firstAttribute="width" constant="300" id="Gix-c3-LAi"/>
                         <constraint firstItem="qXZ-yI-HMr" firstAttribute="leading" secondItem="Zim-37-ag3" secondAttribute="leading" constant="8" id="MSl-mY-CwB"/>
-                        <constraint firstAttribute="height" constant="128" id="OLK-IH-GnO"/>
+                        <constraint firstAttribute="height" constant="150" id="OLK-IH-GnO"/>
                         <constraint firstAttribute="trailing" secondItem="XLZ-wS-FoZ" secondAttribute="trailing" constant="16" id="Rzh-EY-CPC"/>
-                        <constraint firstItem="XLZ-wS-FoZ" firstAttribute="top" secondItem="qXZ-yI-HMr" secondAttribute="bottom" constant="8" id="T9Z-6O-Smz"/>
+                        <constraint firstItem="uRL-JL-ZVn" firstAttribute="top" secondItem="qXZ-yI-HMr" secondAttribute="bottom" constant="5" id="Shv-zy-8B4"/>
                         <constraint firstAttribute="bottom" secondItem="21i-mY-eZ9" secondAttribute="bottom" constant="12" id="TKC-Vk-3bb"/>
                         <constraint firstItem="21i-mY-eZ9" firstAttribute="leading" secondItem="Zim-37-ag3" secondAttribute="leading" constant="16" id="Tx1-7f-6tx"/>
                         <constraint firstItem="qXZ-yI-HMr" firstAttribute="top" secondItem="Zim-37-ag3" secondAttribute="top" constant="8" id="Vge-sH-kdm"/>
+                        <constraint firstItem="uRL-JL-ZVn" firstAttribute="leading" secondItem="Zim-37-ag3" secondAttribute="leading" constant="15" id="YP4-SH-kOh"/>
+                        <constraint firstItem="XLZ-wS-FoZ" firstAttribute="top" secondItem="uRL-JL-ZVn" secondAttribute="bottom" constant="5" id="bTb-Jo-lAR"/>
                         <constraint firstItem="qXZ-yI-HMr" firstAttribute="centerX" secondItem="Zim-37-ag3" secondAttribute="centerX" id="iot-7a-UJM"/>
                         <constraint firstAttribute="trailing" secondItem="21i-mY-eZ9" secondAttribute="trailing" constant="16" id="kfA-QM-8vy"/>
                         <constraint firstAttribute="trailing" secondItem="qXZ-yI-HMr" secondAttribute="trailing" constant="8" id="pbv-5H-z9K"/>
+                        <constraint firstAttribute="trailing" secondItem="uRL-JL-ZVn" secondAttribute="trailing" constant="15" id="qew-XA-hu4"/>
                     </constraints>
                 </view>
             </subviews>

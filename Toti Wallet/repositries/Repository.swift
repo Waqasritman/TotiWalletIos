@@ -255,10 +255,11 @@ class Repository {
                                 }
                             }
                         } else {
-                            do {
-                                DispatchQueue.main.async {
-                                    completion(data , nil)
-                                }
+                            DispatchQueue.main.async {
+                                let response = SaveCardDetailsResponse()
+                                response.description = "something went wrong"
+                                response.responseCode = 500
+                                completion(response, nil)
                             }
                         }
                     } else {

@@ -20,6 +20,11 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
     var isLocationSelected = false
     var isBranchSelected = false
     
+    @IBOutlet weak var branchlbl: UILabel!
+    @IBOutlet weak var locationlbl: UILabel!
+    @IBOutlet weak var cityTitle: UILabel!
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
     
     var cityId:Int!
     var locationId:Int!
@@ -49,6 +54,17 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
         btnAddBeneficary.layer.cornerRadius = 8
         
         stackBranch.isHidden = true
+        
+        
+        toolTitle.text = "cash_beneficiary".localized
+        pageTitle.text = "send_money_via_cash".localized
+        cityTitle.text = "select_city".localized
+        locationlbl.text = "select_location".localized
+        branchlbl.text = "select_branch_m".localized
+        btnCity.setTitle("select_city_txt".localized, for: .normal)
+        btnLocation.setTitle("select_location_txt".localized, for: .normal)
+        btnBranch.setTitle("select_branch".localized, for: .normal)
+        btnAddBeneficary.setTitle("add_beneficiary".localized, for: .normal)
     }
     
     
@@ -82,26 +98,33 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
    
     @IBAction func btnLocation(_ sender:Any) {
         if yLocations.isEmpty {
-            if Network.isConnectedToNetwork() {
-                showProgress()
-                let request = GetYLocationRequest()
-                request.cityID = cityId
-                request.languageID = preferenceHelper.getLanguage()
-                repo.getYLocations(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_Y_LOCATION_ACTION), completion: {(response , error) in
-                    self.hideProgress()
-                    if let error = error {
-                        self.showError(message: error)
-                    } else if response!.responseCode == 101 {
-                        self.yLocations.removeAll()
-                        self.yLocations.append(contentsOf: response!.list)
-                        self.showLocation()
-                    } else {
-                        self.showError(message: response!.description!)
-                    }
-                })
+            
+            if cityId != nil {
+                if Network.isConnectedToNetwork() {
+                    showProgress()
+                    let request = GetYLocationRequest()
+                    request.cityID = cityId
+                    request.languageID = preferenceHelper.getLanguage()
+                    repo.getYLocations(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_Y_LOCATION_ACTION), completion: {(response , error) in
+                        self.hideProgress()
+                        if let error = error {
+                            self.showError(message: error)
+                        } else if response!.responseCode == 101 {
+                            self.yLocations.removeAll()
+                            self.yLocations.append(contentsOf: response!.list)
+                            self.showLocation()
+                        } else {
+                            self.showError(message: response!.description!)
+                        }
+                    })
+                } else {
+                    self.noInternet()
+                }
             } else {
-                self.noInternet()
+                self.showError(message: "select_city_error".localized)
             }
+            
+        
         } else {
             showLocation()
         }
@@ -109,27 +132,32 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
     
     @IBAction func btnBranch(_ sender:Any) {
         if yBranches.isEmpty {
-            if Network.isConnectedToNetwork() {
-                showProgress()
-                let request = GetYBranchRequest()
-                request.cityID = cityId
-                request.locationID = locationId
-                request.languageID = preferenceHelper.getLanguage()
-                repo.getYBranch(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_Y_BRANCH_ACTION), completion: {(response , error) in
-                    self.hideProgress()
-                    if let error = error {
-                        self.showError(message: error)
-                    } else if response!.responseCode == 101 {
-                        self.yBranches.removeAll()
-                        self.yBranches.append(contentsOf: response!.list)
-                        self.showBranch()
-                    } else {
-                        self.showError(message: response!.description!)
-                    }
-                })
+            if locationId != nil  {
+                if Network.isConnectedToNetwork() {
+                    showProgress()
+                    let request = GetYBranchRequest()
+                    request.cityID = cityId
+                    request.locationID = locationId
+                    request.languageID = preferenceHelper.getLanguage()
+                    repo.getYBranch(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_Y_BRANCH_ACTION), completion: {(response , error) in
+                        self.hideProgress()
+                        if let error = error {
+                            self.showError(message: error)
+                        } else if response!.responseCode == 101 {
+                            self.yBranches.removeAll()
+                            self.yBranches.append(contentsOf: response!.list)
+                            self.showBranch()
+                        } else {
+                            self.showError(message: response!.description!)
+                        }
+                    })
+                } else {
+                    self.noInternet()
+                }
             } else {
-                self.noInternet()
+                self.showError(message: "select_location".localized)
             }
+       
         } else {
             showBranch()
         }
@@ -146,6 +174,12 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
                         self.showError(message: error)
                     } else if response!.responseCode == 101 {
                         self.showSuccess(message: response!.description!)
+                        for controller in self.navigationController!.viewControllers as Array {
+                                if controller.isKind(of: BeneficiaryListVC.self) {
+                                    _ =  self.navigationController!.popToViewController(controller, animated: true)
+                                    break
+                                }
+                            }
                     } else {
                         self.showError(message: response!.description!)
                     }
@@ -155,12 +189,8 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -171,6 +201,7 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
         btnCity.setTitle(city.cityName, for: .normal)
         cityId = city.cityId
         isCitySelected = true
+        yLocations.removeAll()
     }
     
     func onSelectLocation(location: YLocations) {
@@ -178,6 +209,7 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
         locationId = location.locationId
         stackBranch.isHidden = false
         isLocationSelected = true
+        yBranches.removeAll()
     }
     
     func onSelectBranch(branch: YBranches) {

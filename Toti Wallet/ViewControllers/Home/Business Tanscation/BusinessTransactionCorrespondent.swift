@@ -16,14 +16,22 @@ class BusinessTransactionCorrespondent: BaseVC {
     @IBOutlet weak var txtSwift: UITextField!
     @IBOutlet weak var txtAccount: UITextField!
     @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var toolTitle: UILabel!
     
+    @IBOutlet weak var pageTitle: UILabel!
     
+    @IBOutlet weak var accountnolbl: UILabel!
+    @IBOutlet weak var bicLabel: UILabel!
+    @IBOutlet weak var namelbl: UILabel!
     override func isValidate() -> Bool {
         if txtName.text!.isEmpty {
+            showError(message: "enter_correspondent_detals".localized)
             return false
         } else if txtSwift.text!.isEmpty {
+            showError(message: "enter_cb_account_no".localized)
             return false
         } else if txtAccount.text!.isEmpty {
+            showError(message: "enter_cb_swift_bic".localized)
             return false
         }
         return true
@@ -40,6 +48,20 @@ class BusinessTransactionCorrespondent: BaseVC {
         txtSwift.layer.cornerRadius = 8
         txtAccount.layer.cornerRadius = 8
         btnNext.layer.cornerRadius = 8
+        
+        
+        toolTitle.text = "swift_transfer".localized
+        pageTitle.text = "enter_correspondent_detals".localized
+        namelbl.text = "correspondent_bank".localized
+        bicLabel.text = "cb_swift_ibac".localized
+        accountnolbl.text = "cb_account_no_txt".localized
+        
+        
+        txtName.placeholder = "bank_name_txt".localized
+        txtSwift.placeholder = "account_no_hint".localized
+        txtAccount.placeholder = "account_no_hint".localized
+        
+        btnNext.setTitle("submit_txt".localized, for: .normal)
         
     }
     
@@ -69,7 +91,8 @@ class BusinessTransactionCorrespondent: BaseVC {
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {
-        self.gotoHome()
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

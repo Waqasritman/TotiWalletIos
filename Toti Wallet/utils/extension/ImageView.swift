@@ -35,7 +35,14 @@ extension UIImageView {
         return decodedimage!
     }
     
+    func convertImageToBase64String (img: UIImage) -> String {
+        return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    }
     
-   
+    func resize(targetSize: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size:targetSize).image { _ in
+            self.draw(CGRect(origin: .zero, size: targetSize))
+        }
+    }
     
 }

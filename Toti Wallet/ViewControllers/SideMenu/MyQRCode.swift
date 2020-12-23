@@ -10,8 +10,10 @@ import UIKit
 
 class MyQRCode: BaseVC {
 
+    @IBOutlet weak var pageTitlelbl: UILabel!
     @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var barCode:UIImageView!
+    @IBOutlet weak var shareView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +36,20 @@ class MyQRCode: BaseVC {
       
         barCode.image =
             UIImage(cgImage: cgImage)
+        
+        pageTitlelbl.text = "your_qr_code".localized
+        btnShare.setTitle("share_text".localized, for: .normal)
             
     }
     
 
+    @IBAction func btnShare(_ sender: Any) {
+        let image = shareView.takeScreenshot()
+        let items = [image]
+        let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(ac, animated: true)
+        
+    }
     @IBAction func btnBackFunc(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

@@ -17,6 +17,7 @@ class HomeVC: BaseVC {
     @IBOutlet weak var offerCollectionView: UICollectionView!
     @IBOutlet weak var viewBottom: UIView!
     
+    @IBOutlet weak var offerlbl: UILabel!
     @IBOutlet weak var btnRegistration: UIButton!
     @IBOutlet weak var viewAddMoney: UIView!
     @IBOutlet weak var viewMoneyTransfer: UIView!
@@ -27,6 +28,18 @@ class HomeVC: BaseVC {
     
     
     var walletList:[CustomerWalletDetails] = Array()
+    
+    @IBOutlet weak var addMoneylbl: UILabel!
+    @IBOutlet weak var moneyTransferlbl: UILabel!
+    @IBOutlet weak var prepaidlbl: UILabel!
+    
+    @IBOutlet weak var billPaymentlbl: UILabel!
+    @IBOutlet weak var mobileTopuplbl: UILabel!
+    @IBOutlet weak var ownWalletlbl: UILabel!
+    
+    @IBOutlet weak var scrollViewOutlet: UIScrollView!
+    
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +77,13 @@ class HomeVC: BaseVC {
         viewBillPayments.dropShadow()
         viewPrepaidCards.dropShadow()
         
+        offerlbl.text = "offer_of_home".localized
+        addMoneylbl.text = "add_moeny_txt".localized
+        moneyTransferlbl.text = "money_transfer".localized
+        ownWalletlbl.text = "convert_currency_home".localized
+        mobileTopuplbl.text = "mobile_top_up_home".localized
+        billPaymentlbl.text = "biller_name_home".localized
+        prepaidlbl.text = "prepaid_card_home".localized
         let viewAddMoneyGesture = UITapGestureRecognizer(target: self, action: #selector(addMoneyFunc(_:)))
         viewAddMoney.addGestureRecognizer(viewAddMoneyGesture)
         
@@ -86,12 +106,26 @@ class HomeVC: BaseVC {
         if preferenceHelper.getIsWalletNeedToUpdate() {
             getCustomerWallets()
         }
-        
-       
-        
+
     }
     
-    @IBAction func btnRegistrationFunc(_ sender: UIButton) {
+    override func viewWillAppear(_ animated: Bool) {
+            self.refreshControl.tintColor = UIColor.black
+           
+            self.refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
+            scrollViewOutlet.isScrollEnabled = true
+            scrollViewOutlet.alwaysBounceVertical = true
+            scrollViewOutlet.addSubview(refreshControl)
+        }
+        
+        @objc func refresh(sender:AnyObject) {
+            // Code to refresh table view
+            print("Yes")
+            refreshControl.endRefreshing()
+            getCustomerWallets()
+        }
+    
+    @IBAction func btnRegistrationFunc(_ sender: Any) {
         let nextVC = ControllerID.completeRegistrationVC.instance
         self.pushWithFullScreen(nextVC)
     }
@@ -111,7 +145,7 @@ class HomeVC: BaseVC {
                 btnRegistration.isHidden = true
             } else {
                 btnRegistration.isHidden = false
-                AlertView.instance.showAlert(title: "complete_profile".localizedLowercase , message: "please_complete_kyc")
+                AlertView.instance.showAlert(title: "complete_profile".localized , message: "please_complete_kyc".localized)
             }
         } else {
             btnRegistration.isHidden = true
@@ -120,12 +154,7 @@ class HomeVC: BaseVC {
     }
     
     
-    func fromBase64(strBase64:String) -> UIImage {
-        let dataDecoded : Data = Data(base64Encoded: strBase64, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        return decodedimage!
-    }
-    
+   
     @IBAction func btnBarCodeFunc(_ sender: UIButton) {
         //        let viewController = BarcodeScannerViewController()
         //        viewController.codeDelegate = self
@@ -171,6 +200,13 @@ class HomeVC: BaseVC {
     }
     
     
+    override func handleAction(action: Bool) {
+        if action {
+            self.btnRegistrationFunc(self)
+        }
+    }
+    
+    
 }
 
 // MARK: CollectionView Functions
@@ -182,7 +218,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = GetCustomerWalletDetailsRequest()
-            request.languageId = "1"
+            request.languageId = preferenceHelper.getApiLangugae()
             request.customerNo = preferenceHelper.getCustomerNo()
             request.mobileNumber  = ""
             
@@ -194,7 +230,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                     self.walletList.removeAll()
                     self.walletList.append(contentsOf: response!.walletList)
                     self.rateCollectionView.reloadData()
-                   preferenceHelper.isWalletNeedToUpdate(isNeed: false);
+                    preferenceHelper.isWalletNeedToUpdate(isNeed: false);
                 } else {
                     self.showError(message: response!.description)
                 }
@@ -223,6 +259,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             cell.walletName.text = walletList[indexPath.row].currencyFullName + " " + "(\(String(describing: walletList[indexPath.row].currencyShortName!)))"
             cell.walletBalance.text =  walletList[indexPath.row].balance
             cell.image.sd_setImage(with: URL(string: walletList[indexPath.row].imageURL), placeholderImage: UIImage(named: "flag"))
+            cell.balancelbl.text = "balance_text".localized
             cell.image.makeImageCircle()
             cell.viewMain.dropShadow()
             return cell
@@ -242,23 +279,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             return CGSize(width: collectionView.frame.width - 100, height: collectionView.frame.height)
         }
         else{
-            return CGSize(width: 150, height: 80)
+            return CGSize(width: 150, height: 100)
         }
         
     }
 }
-
-//extension HomeVC: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {
-//
-//    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-//
-//    }
-//
-//    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
-//
-//    }
-//
-//    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
-//        controller.dismiss(animated: true, completion: nil)
-//    }
-//}

@@ -15,6 +15,11 @@ class BeneficiaryDeleteVC: UIViewController {
     @IBOutlet weak var txtBankName: UITextField!
     @IBOutlet weak var txtBranchName: UITextField!
     @IBOutlet weak var txtAccountNumber: UITextField!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var beneNamelbl: UILabel!
+    @IBOutlet weak var bankName: UILabel!
+    @IBOutlet weak var branchName: UILabel!
+    @IBOutlet weak var accountNumberlbl: UILabel!
     
     
     override func viewDidLoad() {
@@ -25,6 +30,14 @@ class BeneficiaryDeleteVC: UIViewController {
         txtBankName.layer.cornerRadius = 8
         txtBranchName.layer.cornerRadius = 8
         txtAccountNumber.layer.cornerRadius = 8
+        
+        
+        pageTitle.text = "beneficiary_details_txt".localized
+        beneNamelbl.text = "bene_name".localized
+        bankName.text = "bank_name".localized
+        branchName.text  = "branch_name".localized
+        accountNumberlbl.text = "acount_number_m".localized
+        btnDelete.setTitle("delete_beneficary".localized, for: .normal)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

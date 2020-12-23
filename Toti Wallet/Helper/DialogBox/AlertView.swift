@@ -25,6 +25,8 @@ class AlertView: UIView {
     
     var delegate: PopUpProtocol?
     
+    var hideCancelBtn:Bool = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         Bundle.main.loadNibNamed("AlertView", owner: self, options: nil)
@@ -55,13 +57,29 @@ class AlertView: UIView {
         UIApplication.shared.keyWindow?.addSubview(parentView)
     }
     
+    
+    func showAlert(title: String) {
+        self.titleLbl.text = ""
+        self.messageLbl.text = title
+        
+        UIApplication.shared.keyWindow?.addSubview(parentView)
+    }
+    
+    
+    func showAlert(title: String, message: String , hide:Bool) {
+        self.titleLbl.text = title
+        self.messageLbl.text = message
+        self.btnCancel.isHidden = hide
+        UIApplication.shared.keyWindow?.addSubview(parentView)
+    }
+    
     @IBAction func btnOKFunc(_ sender: UIButton) {
         self.delegate?.handleAction(action: true)
         parentView.removeFromSuperview()
     }
     
     @IBAction func btnCancelFunc(_ sender: UIButton) {
-        self.delegate?.handleAction(action: true)
+   
         parentView.removeFromSuperview()
     }
     

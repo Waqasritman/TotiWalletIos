@@ -11,9 +11,10 @@ import Foundation
  Program Will help to handle the response of Confirmation Apis  / POST api
  */
 class SimpleResponse: Codable {
-    let ResponseCode, Description: String
+    let ResponseCode:Int
+    let Description: String
     
-    init(ResponseCode: String, Description: String) {
+    init(ResponseCode: Int, Description: String) {
         self.ResponseCode = ResponseCode
         self.Description = Description
     }

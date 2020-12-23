@@ -44,28 +44,29 @@ class RestRepositor {
     }
     
     func uploadCustomerImage(param: [String:Any] ,completion: @escaping (SimpleResponse?, Error?) -> ()) {
-           var statusCode:Int = 0
-              Alamofire.request(RestApiManager.getUploadCustomerImage(), method: .post , parameters: param).responseJSON { (response) in
-               switch (response.result){
-               case .success( _):
-                   print(response)
-                   statusCode = (response.response?.statusCode)!
-                   print(statusCode)
-                   if statusCode == 200 {
-                       if let data = response.data {
-                           do {
-                               let decoder = JSONDecoder()
-                               let respons = try decoder.decode(SimpleResponse.self, from: data)
-                               DispatchQueue.main.async {
-                                   completion(respons , nil)
-                               }
-                           } catch {
-                            let errorBody = SimpleResponse(ResponseCode: "500", Description: "Something went wrong")
+        var statusCode:Int = 0
+        let headers = ["Content-Type":"application/json"]
+        Alamofire.request(RestApiManager.getUploadCustomerImage(), method: .post , parameters: param ,encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            switch (response.result){
+            case .success( _):
+                print(response)
+                statusCode = (response.response?.statusCode)!
+                print(statusCode)
+                if statusCode == 200 {
+                    if let data = response.data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let respons = try decoder.decode(SimpleResponse.self, from: data)
+                            DispatchQueue.main.async {
+                                completion(respons , nil)
+                            }
+                        } catch {
+                            let errorBody = SimpleResponse(ResponseCode: 500, Description: "Something went wrong")
                             completion(errorBody , nil)
-                           }
-                       }
-                   }
-               case .failure(let error):
+                        }
+                    }
+                }
+            case .failure(let error):
                 completion(nil , error)
                 return
             }
@@ -74,31 +75,36 @@ class RestRepositor {
     
     
     func uploadKYCImage(param: [String:Any] ,completion: @escaping (SimpleResponse?, Error?) -> ()) {
-           var statusCode:Int = 0
-              Alamofire.request(RestApiManager.getUploadCustomerImage(), method: .post , parameters: param).responseJSON { (response) in
-               switch (response.result){
-               case .success( _):
-                   print(response)
-                   statusCode = (response.response?.statusCode)!
-                   print(statusCode)
-                   if statusCode == 200 {
-                       if let data = response.data {
-                           do {
-                               let decoder = JSONDecoder()
-                               let respons = try decoder.decode(SimpleResponse.self, from: data)
-                               DispatchQueue.main.async {
-                                   completion(respons , nil)
-                               }
-                           } catch {
-                            let errorBody = SimpleResponse(ResponseCode: "500", Description: "Something went wrong")
-                            completion(errorBody , nil)
-                           }
-                       }
-                   }
-               case .failure(let error):
-                completion(nil , error)
-                return
-            }
-        }
+        var statusCode:Int = 0
+        let headers = ["Content-Type":"application/json"]
+        Alamofire.request(RestApiManager.getUploadAttachment(), method: .post , parameters: param
+                          ,encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+                            switch (response.result){
+                            case .success( _):
+                                print(response)
+                                statusCode = (response.response?.statusCode)!
+                                print(statusCode)
+                                if statusCode == 200 {
+                                    if let data = response.data {
+                                        do {
+                                            let decoder = JSONDecoder()
+                                            let respons = try decoder.decode(SimpleResponse.self, from: data)
+                                            DispatchQueue.main.async {
+                                                completion(respons , nil)
+                                            }
+                                        } catch {
+                                            let errorBody = SimpleResponse(ResponseCode: 500, Description: "Something went wrong")
+                                            completion(errorBody , nil)
+                                        }
+                                    }
+                                } else {
+                                    let errorBody = SimpleResponse(ResponseCode: 500, Description: "Something went wrong")
+                                    completion(errorBody , nil)
+                                }
+                            case .failure(let error):
+                                completion(nil , error)
+                                return
+                            }
+                          }
     }
 }

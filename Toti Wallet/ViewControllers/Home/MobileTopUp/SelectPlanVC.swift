@@ -10,12 +10,18 @@ import UIKit
 
 class SelectPlanVC: BaseVC {
 
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var toolTitle: UILabel!
     let repo:UtilityRepository = UtilityRepository()
     @IBOutlet weak var planTableView: UITableView!
     var plansData:[GetPrepaidPlan] = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        toolTitle.text = "mobile_top_up".localized
+        pageTitle.text = "select_plan".localized
+        
+        
         planTableView.delegate = self
         planTableView.dataSource = self
         showProgress()
@@ -41,12 +47,8 @@ class SelectPlanVC: BaseVC {
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
 }

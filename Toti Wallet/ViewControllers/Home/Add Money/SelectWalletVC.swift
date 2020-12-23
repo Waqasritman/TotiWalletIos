@@ -11,10 +11,14 @@ import UIKit
 class SelectWalletVC: BaseVC {
     let authRepo = AuthRepository()
     @IBOutlet weak var walletCollectionView: UICollectionView!
+    @IBOutlet weak var pageTitle: UILabel!
+    
+    
     var walletList:[CustomerWalletDetails] = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        pageTitle.text = "please_select_wallet_account".localized
         walletCollectionView.delegate = self
         walletCollectionView.dataSource = self
       getCustomerWallets()
@@ -26,12 +30,8 @@ class SelectWalletVC: BaseVC {
     }
    
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     
@@ -40,7 +40,7 @@ class SelectWalletVC: BaseVC {
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = GetCustomerWalletDetailsRequest()
-            request.languageId = "1"
+            request.languageId = preferenceHelper.getApiLangugae()
             request.customerNo = preferenceHelper.getCustomerNo()
             request.mobileNumber  = ""
             
@@ -89,6 +89,7 @@ extension SelectWalletVC: UICollectionViewDelegate, UICollectionViewDataSource,
             cell.walletBalance.text =  walletList[indexPath.row].balance
             cell.image.sd_setImage(with: URL(string: walletList[indexPath.row].imageURL), placeholderImage: UIImage(named: "flag"))
             cell.image.makeImageCircle()
+           cell.balancelbl.text = "balance_text".localized
             cell.viewMain.dropShadow()
             return cell
      

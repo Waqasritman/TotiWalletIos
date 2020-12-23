@@ -21,7 +21,8 @@ class IDTypeVC: BaseVC {
     }
     
     
-    var list:[IdType] = Array()
+  
+    @IBOutlet weak var pageTitle: UILabel!
     var filteredList:[IdType] = Array()
     var idType = ""
     
@@ -32,6 +33,7 @@ class IDTypeVC: BaseVC {
         super.viewDidLoad()
 
         getPurposeList()
+        pageTitle.text = "selectid_type".localized
     }
     
 
@@ -54,7 +56,6 @@ class IDTypeVC: BaseVC {
                     self.showError(message: error)
                     self.btnBackFunc(self)
                 } else if response!.responseCode == 101 {
-                    self.list.append(contentsOf: response!.idTypeList!)
                     self.filteredList.append(contentsOf: response!.idTypeList!)
                     self.searchTableView.reloadData()
                 } else {
@@ -69,23 +70,7 @@ class IDTypeVC: BaseVC {
         }
     }
     
-    
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        filteredList = list.filter({ (country) -> Bool in
-            let countryText: NSString = country.idTypeName as NSString
-            
-            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        searchTableView.reloadData()
-    }
-
+  
 }
 
 //MARK : TableView Functions

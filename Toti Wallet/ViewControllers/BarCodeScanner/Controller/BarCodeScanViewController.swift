@@ -121,9 +121,9 @@ class BarCodeScanViewController: BaseVC , UIImagePickerControllerDelegate, UINav
         
         self.view .addSubview(bottomItemsView!)
         
-     let button1 = UIButton(frame: CGRect(x: view.frame.size.width - 56, y: 20, width: 42, height: 42))
+     let button1 = UIButton(frame: CGRect(x: 16, y: 20, width: 42, height: 42))
        // let button1 = UIButton(frame: CGRect(x: view.frame.size.height, y: view.frame.size.width - 56, width: 60, height: 60))
-       button1.setImage(UIImage(named: "cancel"), for: UIControl.State.normal)
+       button1.setImage(UIImage(named: "backIconWhite"), for: UIControl.State.normal)
         button1.addTarget(self, action: #selector(backButtonPressed), for: UIControl.Event.touchUpInside)
         self.view .addSubview(button1)
     }

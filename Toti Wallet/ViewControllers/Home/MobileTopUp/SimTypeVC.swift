@@ -14,6 +14,7 @@ class SimTypeVC: BaseVC {
     
     @IBOutlet weak var searchTableView: UITableView!
     
+    @IBOutlet weak var toolTitle: UILabel!
     var list:[WRBillerType] = []
     var delegate:WRBillerNameProtocol!
     var countryCode:String = ""
@@ -23,13 +24,14 @@ class SimTypeVC: BaseVC {
         
         searchTableView.delegate = self
         searchTableView.dataSource = self
-        
+        toolTitle.text = "select_type".localized
         
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = GetWRMobileTopupTypesRequest()
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             request.countryCode = countryCode
+            print(request.getXML())
             repo.getMobileTopUpTypes(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_WR_BILLER_TYPE_MOBILE), completion: {(response ,error) in
                 self.hideProgress()
                 if let error = error {
@@ -71,7 +73,8 @@ extension SimTypeVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = list[indexPath.row].billerName
         cell.lblDetail.isHidden = true
         
-        cell.imageOutlet.image = nil
+        cell.imageOutlet.sd_setImage(with: URL(string:"https://183.87.134.37/IconsImages/Mobile Recharge.png"), placeholderImage: UIImage(named: "flag"))
+        
         return cell
     }
     

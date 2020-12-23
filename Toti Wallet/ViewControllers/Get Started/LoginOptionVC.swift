@@ -17,6 +17,8 @@ class LoginOptionVC: BaseVC {
     @IBOutlet weak var pageTitle: UILabel!
     @IBOutlet weak var notAnExistinlbl: UIButton!
     
+    @IBOutlet weak var usingMobilelbl: UILabel!
+    @IBOutlet weak var usingEmaillbl: UILabel!
     
     
     override func viewDidLoad() {
@@ -30,12 +32,12 @@ class LoginOptionVC: BaseVC {
         
         let emailViewGesture = UITapGestureRecognizer(target: self, action: #selector(emailViewFunc(_:)))
         emailView.addGestureRecognizer(emailViewGesture)
-        pageTitle.text  = "already_have_an_account".localized
+        pageTitle.text  = "how_would_you_like_to_login".localized
         
-        
-     //   notAnExistinlbl.titleLabel?.text = "already_have_an_account".localized
-        
-      notAnExistinlbl.setTitle("already_have_an_account", for: .normal)
+        usingEmaillbl.text = "using_email_address".localized
+        usingMobilelbl.text = "using_mobile".localized
+        let string:String = "already_have_an_account".localized + " " + "sign_up".localized
+      notAnExistinlbl.setTitle(string, for: .normal)
     }
     
     @objc private func phoneViewFunc(_ sender: UIGestureRecognizer) {

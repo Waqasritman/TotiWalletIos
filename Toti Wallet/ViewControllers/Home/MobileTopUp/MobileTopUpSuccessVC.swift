@@ -49,12 +49,7 @@ class MobileTopUpSuccessVC: BaseVC {
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+       gotoHome()
     }
     
 

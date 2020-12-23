@@ -10,11 +10,13 @@ import UIKit
 
 class VerifyTransferPinVC: BaseVC {
 
+    @IBOutlet weak var btnConfirm: UIButton!
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var viewVerificationCode: KWVerificationCodeView!
     var delegate:PinVerifiedProtocol!
     
+    @IBOutlet weak var pageTitle: UILabel!
     
     override func isValidate() -> Bool {
         if viewVerificationCode.getVerificationCode().count < 4 {
@@ -27,6 +29,7 @@ class VerifyTransferPinVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        btnConfirm.layer.cornerRadius = 8
         viewMain.layer.cornerRadius = 16
         viewMain.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
@@ -34,6 +37,10 @@ class VerifyTransferPinVC: BaseVC {
             KWTextFieldView.clipsToBounds = true
             KWTextFieldView.layer.cornerRadius = 8
         })
+        
+        
+        pageTitle.text = "enter_pin_tosend".localized
+        btnConfirm.setTitle("confirm_text".localized, for: .normal)
     }
     
     

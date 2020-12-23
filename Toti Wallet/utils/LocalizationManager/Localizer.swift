@@ -48,26 +48,27 @@ extension UILabel {
         if self.isKind(of: NSClassFromString("UITextFieldLabel")!) {
             return // handle special case with uitextfields
         }
-        if self.tag <= 0  {
-            if UIApplication.isRTL()  {
-                if self.textAlignment == .left {
-                    return
-                }
-            } else {
-                if self.textAlignment == .left {
-                    return
-                }
-            }
-        }
-        if self.tag <= 0 {
-            if UIApplication.isRTL()  {
-                self.textAlignment = .left
-            } else {
-                self.textAlignment = .left
-            }
-        }
-        }
+//        if self.tag <= 0  {
+//            if UIApplication.isRTL()  {
+//                if self.textAlignment == .left {
+//                    return
+//                }
+//            } else {
+//                if self.textAlignment == .left {
+//                    return
+//                }
+//            }
+//        }
+//        if self.tag <= 0 {
+//            if UIApplication.isRTL()  {
+//                self.textAlignment = .left
+//            } else {
+//                self.textAlignment = .left
+//            }
+//        }
+//        }
     }
+}
 }
 
 extension UIButton {

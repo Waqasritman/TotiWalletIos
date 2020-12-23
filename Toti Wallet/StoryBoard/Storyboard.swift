@@ -10,6 +10,7 @@ import UIKit
 
 enum ControllerID<T: UIViewController> : String {
     
+    case loginSignUpOptionVC = "LoginSignUpOptionVC"
     case splashVC = "splashVC"
     case getStartedNav = "navStarted"
     case loginOptionVC = "LoginOptionVC"
@@ -56,7 +57,7 @@ enum ControllerID<T: UIViewController> : String {
     case cashBeneficaryAddressVC = "CashBeneficaryAddressVC"
     case cashBeneficiaryBranchVC = "CashBeneficiaryBranchVC"
     
-    
+    case completedKYCVC = "CompletedKYCVC"
     case sourceOfIncome = "SourceOfIncomeVC"
     case purposeOfTransfer = "PurposeVC"
     case relationVC = "RelationVC"
@@ -105,21 +106,21 @@ enum ControllerID<T: UIViewController> : String {
     var storyboard: Storyboard {
         
         switch self {
-        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC, .forgotPassGetEmailVC, .forgotPassGetPinVC, .forgotPassGetDataVC , .forgotPassotpVC :
+        case .splashVC, .getStartedNav, .loginOptionVC, .loginVC, .signUpVC, .verifyOptVC, .selectCountryVC, .forgotPassGetEmailVC, .forgotPassGetPinVC,.loginSignUpOptionVC , .forgotPassGetDataVC , .forgotPassotpVC :
             return .GetStarted
         case .profileBasicDetailVC, .profileAddressDetailVC:
             return .Profile
         case .tabbar, .notificationListVC, .ourRatesVC, .addCreditCardVC, .InactiveVC, .editProfileVC :
             return .Main
-        case .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC, .beneficiaryListVC , .changePinVC , .barCodeScanner:
+        case .myQRCode, .settingsVC, .billPaymentVC, .businessTextVC, .shareWthFriendVC, .loyaltyPointsVC,   .changePinVC , .barCodeScanner:
             return .SideMenu
             
-        case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches, .receiptVC, .prepardCardVC, .addBankBeneficiaryVC, .addBankBeneficiaryBankDetail ,.branchNamesVC , .bankNamesVC, .beneficiaryDeleteVC , .indiaBankBeneVC , .repeatWalletVC:
+        case .quickPayVC,.sourceOfIncome,.purposeOfTransfer ,.walletTransferVC, .verifyTransferDetailVC, .verifyTransferPinVC, .requestMoneyVC, .bankTransferConverterVC, .summaryVC, .paymentOptionVC, .cardDetailVC, .cashBeneficaryVC, .cashBeneficaryAddressVC, .cashBeneficiaryBranchVC, .selectCurrencyVC , .relationVC , .ycities , .yLocations , .yBranches, .receiptVC, .prepardCardVC, .addBankBeneficiaryVC, .addBankBeneficiaryBankDetail ,.branchNamesVC , .bankNamesVC, .beneficiaryDeleteVC , .indiaBankBeneVC , .repeatWalletVC , .beneficiaryListVC:
             return .MoneyTransfer
             
         case .transactionHistoryVC, .walletHistoryVC:
             return .History
-        case .completeRegistrationVC , .idTypesVC , .cardKyc:
+        case .completeRegistrationVC , .idTypesVC , .cardKyc , .completedKYCVC:
             return .KVC
         case .addMoneyVC, .selectWalletVC, .addMoneyPaymentOptionVC:
             return .AddMoney

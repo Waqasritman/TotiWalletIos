@@ -58,7 +58,7 @@ class ProgressBar:NSObject {
     
     
     static func noInternetAlert(view: UIViewController) {
-        let alert = UIAlertController(title: "Network Error", message: "No Internet Connection", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Network Error", message: "no_internet".localized, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
         DispatchQueue.main.async(execute: {
             view.present(alert, animated: true)

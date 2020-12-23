@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ChangePinVC: BaseVC {
+class ChangePinVC: BaseVC   , UITextFieldDelegate {
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var btnChangePin: UIButton!
     @IBOutlet weak var txtOldPin: UITextField!
     @IBOutlet weak var txtNewPin: UITextField!
     @IBOutlet weak var txtReEnterNewPin: UITextField!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var oldpinlbl: UILabel!
+    @IBOutlet weak var newpinlbl: UILabel!
+    @IBOutlet weak var reenterpinlbl: UILabel!
     
     
     override func isValidate() -> Bool {
@@ -47,6 +51,24 @@ class ChangePinVC: BaseVC {
         
         btnChangePin.layer.cornerRadius = 8
         
+        txtNewPin.setLeftPaddingPoints(10)
+        txtReEnterNewPin.setLeftPaddingPoints(10)
+        txtOldPin.setLeftPaddingPoints(10)
+        
+        txtNewPin.delegate = self
+        txtReEnterNewPin.delegate = self
+        txtOldPin.delegate = self
+        
+        txtNewPin.placeholder = "0000"
+        txtReEnterNewPin.placeholder = "0000"
+        txtOldPin.placeholder = "0000"
+        
+        
+        pageTitle.text = "change_pin".localized
+        oldpinlbl.text = "old_pin".localized
+        newpinlbl.text = "new_pin".localized
+        reenterpinlbl.text = "confirm_pin".localized
+        btnChangePin.setTitle("change_pin".localized, for: .normal)        
     }
     
     @IBAction func btnContinueFunc(_ sender: UIButton) {
@@ -87,5 +109,11 @@ class ChangePinVC: BaseVC {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        return textField.text!.count < 4 || string == ""
+    }
 
 }

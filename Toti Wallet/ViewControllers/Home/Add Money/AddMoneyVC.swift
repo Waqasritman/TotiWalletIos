@@ -10,18 +10,24 @@ import UIKit
 
 class AddMoneyVC: BaseVC {
 
+    @IBOutlet weak var walletLbl: UILabel!
     @IBOutlet weak var btnProcced: UIButton!
     @IBOutlet weak var txtAmount: UITextField!
     
+    @IBOutlet weak var pageTitlelbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         btnProcced.layer.cornerRadius = 8
+        walletLbl.text = LoadWalletRequest.shared.walletCurrency
+        pageTitlelbl.text = "enter_your_amount_you_want_to_load".localized
+        btnProcced.setTitle("proceed_to_pay".localized, for: .normal)
     }
     
     
     override func isValidate() -> Bool {
         if txtAmount.text!.isEmpty {
+            showError(message: "enter_the_amount".localized)
             return false
         }
         return true
@@ -41,12 +47,8 @@ class AddMoneyVC: BaseVC {
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
 
 }

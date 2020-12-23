@@ -19,15 +19,21 @@ class BeneficiaryListVC: BaseVC {
     }
     @IBOutlet weak var notFoundView: UIView!
     @IBOutlet weak var btnAddBeneficary: UIButton!
+    @IBOutlet weak var pageTitle: UILabel!
+    
+    @IBOutlet weak var searchtxtField: UITextField!
+    
     
     var isFromBankTransfer = false
     var isFromCashTransfer = false
     
+    
+    var list:[BeneficiaryList] = []
     var beneficiaryList : [BeneficiaryList] = Array()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        searchtxtField.delegate = self
         btnAddBeneficary.layer.cornerRadius = 8
         if isFromBankTransfer || isFromCashTransfer {
             btnAddBeneficary.isHidden = false
@@ -35,7 +41,8 @@ class BeneficiaryListVC: BaseVC {
             btnAddBeneficary.isHidden = true
         }
         
-       // getBeneficiary()
+        pageTitle.text = "select_beneficairy".localized
+        searchtxtField.placeholder = "search".localized
     }
     
 
@@ -75,10 +82,13 @@ class BeneficiaryListVC: BaseVC {
                 } else if response!.responseCode == 101 {
                     self.beneficiaryList.removeAll()
                     if self.isFromCashTransfer {
+                        self.list.append(contentsOf: BeneficiaryParser.getCashBene(list: response!.beneficiaryList!))
                         self.beneficiaryList.append(contentsOf: BeneficiaryParser.getCashBene(list: response!.beneficiaryList!))
                     } else if self.isFromBankTransfer {
+                        self.list.append(contentsOf: BeneficiaryParser.getCashBene(list: response!.beneficiaryList!))
                         self.beneficiaryList.append(contentsOf: BeneficiaryParser.getBankBene(list: response!.beneficiaryList!))
                     } else {
+                        self.list.append(contentsOf: BeneficiaryParser.getCashBene(list: response!.beneficiaryList!))
                         self.beneficiaryList.append(contentsOf: response!.beneficiaryList!)
                     }
                    
@@ -142,4 +152,27 @@ extension BeneficiaryListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+}
+extension BeneficiaryListVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let string1 = string
+        let string2 = searchtxtField.text!
+        var finalString = ""
+        
+        if string.count > 0 { // if it was not delete character
+            finalString = string2 + string1
+        }
+        else if string2.count > 0{ // if it was a delete character
+            
+            finalString = String(string2.dropLast())
+        }
+        
+        beneficiaryList.removeAll()
+        beneficiaryList = list.filter { $0.firstName.lowercased().hasPrefix(finalString.lowercased())}
+        
+        listTableView.reloadData()
+        return true
+    }
+    
 }

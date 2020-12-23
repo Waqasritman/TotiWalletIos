@@ -26,16 +26,32 @@ class BusinessTransactionPaymentDetail: BaseVC , CountryListProtocol
     var isCountrySelected = false
     var purposeTypeSelected = false
     
+    
+    @IBOutlet weak var toolTitle: UILabel!
+    
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var receivingcountrylbl: UILabel!
+    
+    @IBOutlet weak var amountlbl: UILabel!
+    @IBOutlet weak var chargeslbl: UILabel!
+    @IBOutlet weak var purposelbl: UILabel!
+    
+    
     override func isValidate() -> Bool {
         if !isCountrySelected {
+            showError(message: "enter_rece_country".localized)
             return false
         } else if txtAmmount.text!.isEmpty {
+            showError(message: "enter_the_amount".localized)
             return false
         } else if txtCharges.text!.isEmpty {
+            showError(message: "select_the_purpose_txt".localized)
             return false
         } else if !txtOthers.isHidden  && txtOthers.text!.isEmpty {
+            showError(message: "enter_purpose_of_transfer".localized)
             return false
         } else if !purposeTypeSelected {
+            showError(message: "enter_purpose_of_transfer".localized)
             return false
         }
         return true
@@ -56,6 +72,20 @@ class BusinessTransactionPaymentDetail: BaseVC , CountryListProtocol
         txtCharges.isEnabled = false
         btnCountry.imageEdgeInsets.left = self.view.frame.width - 50
         btnPurpose.imageEdgeInsets.left = self.view.frame.width - 50
+        
+        
+        toolTitle.text = "swift_transfer".localized
+        pageTitle.text = "enter_payment_details".localized
+        receivingcountrylbl.text = "rece_country".localized
+        amountlbl.text = "receiving_amount_m".localized
+        chargeslbl.text = "charges_txt_m".localized
+        purposelbl.text = "purpose_of_transfer_m".localized
+        otherlbl.text = "others_txt_m".localized
+        
+        btnCountry.setTitle("Republic of China", for: .normal)
+        txtAmmount.placeholder = "amount_hint".localized
+        btnPurpose.setTitle("select_the_purpose_txt".localized, for: .normal)
+        txtOthers.placeholder = "purpose_of_transfer".localized
     }
     
     
@@ -95,7 +125,8 @@ class BusinessTransactionPaymentDetail: BaseVC , CountryListProtocol
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {
-        
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     func onSelectCountry(country: WRCountryList) {

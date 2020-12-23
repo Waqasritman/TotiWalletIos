@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class CardDetailVC: BaseVC {
+import FormTextField
+class CardDetailVC: BaseVC  , UITextFieldDelegate{
     
     private var previousTextFieldContent: String?
     private var previousSelection: UITextRange?
@@ -16,22 +16,33 @@ class CardDetailVC: BaseVC {
     
     @IBOutlet weak var btnSubmit: UIButton!
     @IBOutlet weak var txtName: UITextField!
-    @IBOutlet weak var txtNumber: UITextField!
-    @IBOutlet weak var txtValid: UITextField!
+    @IBOutlet weak var txtNumber: FormTextField!
+    @IBOutlet weak var txtValid: FormTextField!
     @IBOutlet weak var txtCvv: UITextField!
     
     
     var delegate:CardSumitProtocol!
     
+    @IBOutlet weak var cvvlbl: UILabel!
+    @IBOutlet weak var validlbl: UILabel!
+    @IBOutlet weak var cardnumberlbl: UILabel!
+    @IBOutlet weak var namelbl: UILabel!
     
     override func isValidate() -> Bool {
         if txtName.text!.isEmpty {
+            showError(message: "Enter Name".localized)
             return false
-        } else if txtNumber.text!.isEmpty {
+        } else if txtNumber.text!.isEmpty || txtNumber.text!.count < 19 {
+            showError(message: "enter_valid_card_number".localized)
             return false
-        } else if txtValid.text!.isEmpty {
+        } else if txtValid.text!.isEmpty || txtValid.text!.count < 5 {
+            showError(message: "plz_enter_valid_expire_date".localized)
             return false
         } else if txtCvv.text!.isEmpty {
+            showError(message: "plz_enter_valid_cvv".localized)
+            return false
+        } else if txtCvv.text!.count < 3 {
+            showError(message: "plz_enter_valid_cvv".localized)
             return false
         }
         return true
@@ -40,14 +51,60 @@ class CardDetailVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        namelbl.text = "name_on_card_txt".localized
+        cardnumberlbl.text = "number_on_card".localized
+        validlbl.text = "valid_through".localized
+        cvvlbl.text = "cvv_txt".localized
+        btnSubmit.setTitle("submit_txt".localized, for: .normal)
+        
+        txtNumber.delegate = self
+        txtValid.delegate = self
+        txtCvv.delegate = self
+        
+        txtNumber.setLeftPaddingPoints(10)
+        txtName.setLeftPaddingPoints(10)
+        txtValid.setLeftPaddingPoints(10)
+        txtCvv.setLeftPaddingPoints(10)
+        
+        txtName.placeholder  = "name".localized
+        txtNumber.placeholder = "card_number_hint".localized
+        txtValid.placeholder = "mm_txt_yy".localized
+        txtCvv.placeholder  = "cvv_txt".localized
         btnSubmit.layer.cornerRadius = 8
-       // txtValid.delegate = self
+        
+        
+        
+        
+        var validation = Validation()
+        validation.minimumValue = 1
+        
+        txtValid.inputValidator = InputValidator(validation: validation)
+        txtValid.formatter = CardExpirationDateFormatter()
+        txtValid.inputType = .integer
+        
+        
+        var numberVal = Validation()
+        numberVal.maximumLength = "1234 5678 1234 5678".count
+        numberVal.minimumLength = "1234 5678 1234 5678".count
+        
+        let characterSet = NSMutableCharacterSet.decimalDigit()
+        characterSet.addCharacters(in: " ")
+        validation.characterSet = characterSet as CharacterSet
+        let inputValidator = InputValidator(validation: validation)
+        txtNumber.inputValidator = inputValidator
+        txtNumber.formatter = CardNumberFormatter()
+        txtNumber.inputType = .integer
+        txtNumber.clearButtonColor = .darkGray
+        
     }
     
     
     @IBAction func btnSubmitFunc(_ sender: UIButton) {
-        delegate.onAddCardDetails(cardNumber: txtNumber.text!, cardExpire: txtValid.text!, cardCVV: txtCvv.text!)
-        self.btnBackFunc(self)
+        if isValidate() {
+            delegate.onAddCardDetails(cardNumber: txtNumber.text!, cardExpire: txtValid.text!, cardCVV: txtCvv.text!)
+            self.btnBackFunc(self)
+        }
+       
     }
     
     @IBAction func btnBackFunc(_ sender: Any) {
@@ -58,71 +115,38 @@ class CardDetailVC: BaseVC {
     
    
 }
-extension CardDetailVC: UITextFieldDelegate {
+extension CardDetailVC {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let normalText = textField.text else { return false }
-
-        let beginning = textField.beginningOfDocument
-        // save cursor location
-        let cursorLocation = textField.position(from: beginning, offset: range.location + string.count)
-
-        let newString = (normalText as NSString).replacingCharacters(in: range, with: string)
-        let newStringClean = newString.stringWithOnlyNumbers().withMask(mask: mask)
-
-        guard newString != newStringClean else { return true }
-
-        textField.text = newStringClean
-        guard string != "" else { return false }
-
-        // fix cursor location after changing textfield.text
-        if let cL = cursorLocation {
-            let textRange = textField.textRange(from: cL, to: cL)
-            textField.selectedTextRange = textRange
+        
+        let currentString = string
+        let txtFieldText = textField.text!
+        var finalString = ""
+        print(textField.tag)
+        if string.count > 0 { // if it was not delete character
+            finalString = txtFieldText + currentString
         }
-
-        return false
-    }
-}
-extension String {
-    func stringWithOnlyNumbers() -> String {
-        return self.reduce("") { (acc, c) -> String in
-            guard c.isDigit() else { return acc }
-            return "\(acc)\(c)"
+        else if txtFieldText.count > 0 { // if it was a delete character
+            finalString = String(txtFieldText.dropLast())
         }
-    }
-
-    func withMask(mask: String) -> String {
-        var resultString = String()
-
-        let chars = self
-        let maskChars = mask
-
-        var stringIndex = chars.startIndex
-        var maskIndex = mask.startIndex
-
-        while stringIndex < chars.endIndex && maskIndex < maskChars.endIndex {
-            if (maskChars[maskIndex] == "#") {
-                resultString.append(chars[stringIndex])
-                stringIndex = chars.index(after: stringIndex)
-            } else {
-                resultString.append(maskChars[maskIndex])
+        
+        if textField.tag == 2 {
+            if finalString.count > 19 {
+                return false
             }
-            maskIndex = chars.index(after: maskIndex)
         }
+        else if textField.tag  == 3 {
+            if finalString.count > 5 {
+                return false
+            }
+        }
+        else if textField.tag == 4 {
+            if finalString.count > 4 {
+                return false
+            }
+        }
+        
 
-        return resultString
+      return true
     }
-
+    
 }
-extension Character {
-    func isDigit() -> Bool {
-        let s = String(self).unicodeScalars
-        let uni = s[s.startIndex]
-
-        let digits = NSCharacterSet.decimalDigits
-        let isADigit = digits.hasMember(inPlane: UInt8(uni.value))
-
-        return isADigit
-    } }
-
-

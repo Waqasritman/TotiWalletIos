@@ -16,11 +16,19 @@ class TransactionHistoryVC: BaseVC {
     @IBOutlet weak var btnAll: UIButton!
     @IBOutlet weak var btnPaid: UIButton!
     
+    @IBOutlet weak var viewPaid: UIView!
     var list: [TransactionHistory] = []
     var filteredList: [TransactionHistory] = []
     
+    
+    @IBOutlet weak var toolTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toolTitle.text = "transaction_history_txt".localized
+        btnPaid.setTitle("all_text".localized, for: .normal)
+        btnAll.setTitle("paid_text".localized, for: .normal)
         
         historyTableView.delegate = self
         historyTableView.dataSource = self
@@ -28,23 +36,25 @@ class TransactionHistoryVC: BaseVC {
     }
     
     @IBAction func btnAllFunc(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
-            self.viewBar.frame = CGRect(x: self.btnAll.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
-        }, completion: { (finished: Bool) -> Void in
-        })
-        
+//        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
+//            self.viewBar.frame = CGRect(x: self.btnAll.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
+//        }, completion: { (finished: Bool) -> Void in
+//        })
+        viewBar.isHidden = false
+        viewPaid.isHidden = true
         filteredList.removeAll()
         filteredList.append(contentsOf: list)
         historyTableView.reloadData()
     }
     
     @IBAction func btnPaidFunc(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
-            self.viewBar.frame = CGRect(x: self.btnPaid.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
-        }, completion: { (finished: Bool) -> Void in
-        })
+//        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
+//            self.viewBar.frame = CGRect(x: self.btnPaid.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
+//        }, completion: { (finished: Bool) -> Void in
+//        })
         
-        
+        viewBar.isHidden = true
+        viewPaid.isHidden = false
         filteredList.removeAll()
         for history in list {
             if history.status.lowercased().elementsEqual("paid") {
@@ -101,7 +111,7 @@ extension TransactionHistoryVC: UITableViewDataSource, UITableViewDelegate , Rec
         cell.viewMain.dropShadow()
         cell.receiptDelegate = self
         cell.setTransactionHistoryData(history: filteredList[indexPath.row])
-        
+        cell.btnReceipt.setTitle("view_reciept".localized, for: .normal)
         return cell
     }
     

@@ -23,17 +23,20 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     @IBOutlet weak var sendingIcon:UIImageView!
     @IBOutlet weak var receivingIcon:UIImageView!
     
+    @IBOutlet weak var toolTitle: UILabel!
     @IBOutlet weak var sendingView:UIView!
     @IBOutlet weak var receivingView:UIView!
     
     
     override func isValidate() -> Bool {
         if calRequest.payInCurrency.isEmpty {
+            self.showError(message: "plz_select_sending_currency".localized)
             return false
         } else if calRequest.payoutCurrency.isEmpty {
+            self.showError(message: "plz_select_receiving_currency".localized)
             return false
         }else if txtFirst.text!.isEmpty {
-            self.showError(message: "Enter sending amount")
+            self.showError(message: "please_enter_amount".localized)
             return false
         }
         return true
@@ -41,7 +44,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        txtFirst.delegate = self
         btnConvert.layer.cornerRadius = 8
         btnConvert.layer.borderWidth = 1
         btnConvert.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
@@ -55,6 +58,11 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         
         txtFirst.setLeftPaddingPoints(10)
         txtSecond.setLeftPaddingPoints(10)
+        
+        
+        toolTitle.text = "best_rate".localized
+        btnConvert.setTitle("convert_string".localized, for: .normal)
+        btnTransferNow.setTitle("transfer_now".localized, for: .normal)
             
         
         let sendingGes = UITapGestureRecognizer.init(target: self, action: #selector(btnSendingCurrency(_:)))
@@ -149,7 +157,8 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         self.secondDropDown.text =  country.currencyShortName
         self.secondDropDown.textColor = .black
         calRequest.payoutCurrency = country.currencyShortName
-
+        receivingIcon.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
+       // countryFlag.makeImageCircle()
         txtSecond.text = ""
     }
     
@@ -159,6 +168,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
             self.firstDropDown.text = currency.currencyShortName
             calRequest.payInCurrency = currency.currencyShortName
             calRequest.transferCurrency = currency.currencyShortName
+            sendingIcon.sd_setImage(with: URL(string: currency.image_URL), placeholderImage: UIImage(named: "flag"))
         }
         txtSecond.text = ""
     }
@@ -188,4 +198,16 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         txtSecond.text = String(format: "%.02f", response.payoutAmount)
     }
 
+}
+extension OurRatesVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+       // if string.count > 0 { // if it was not delete character
+           // hideViews()
+            txtSecond.text = "0.00"
+        //}
+        
+        return true
+    }
+    
 }

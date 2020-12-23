@@ -9,7 +9,7 @@
 import Foundation
 class GetCountryListRequest {
     static let shared = GetCountryListRequest()
-    var languageId:String = "1"
+    var languageId:String = preferenceHelper.getApiLangugae()
     
     public func getXML() -> String {
          let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"

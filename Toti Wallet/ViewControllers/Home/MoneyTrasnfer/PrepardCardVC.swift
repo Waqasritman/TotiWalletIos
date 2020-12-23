@@ -22,18 +22,33 @@ class PrepardCardVC: BaseVC {
     @IBOutlet weak var btn400: UIButton!
     @IBOutlet weak var btn500: UIButton!
     @IBOutlet weak var txtAmount: UITextField!
+    @IBOutlet weak var loadtitle: UILabel!
     
+   
+    @IBOutlet weak var loadViewb: UIView!
     @IBOutlet weak var generateLoadCardBtn: UIButton!
     
-    var customerCardNo:String = "0000-0000-0000-0000"
+    var customerCardNo:String = ""
+    
+    
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var pageTitlelbl: UILabel!
+    @IBOutlet weak var pickamountlbl: UILabel!
     
     
     override func isValidate() -> Bool {
         if txtAmount.text!.isEmpty {
+            showError(message: "enter_the_amount".localized)
             return false
-        } else if Double(txtAmount.text!)! < 25 {
+        } else if customerCardNo.isEmpty {
+            showError(message: "plz_generate_your_card".localized)
+            return false
+        }
+        else if Double(txtAmount.text!)! < 25 {
+            showError(message: "maximum_amount_of_top_is_2000".localized)
             return false
         } else if Double(txtAmount.text!)! > 900 {
+            showError(message: "maximum_amount_of_top_is_2000".localized)
             return false
         }
          return true
@@ -42,6 +57,13 @@ class PrepardCardVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadtitle.text = "maximum_amount_of_top_is_2000".localized
+        toolTitle.text = "prepaid_card_title".localized
+        pickamountlbl.text = "or_pick_qucik_amount".localized
+        pageTitlelbl.text = "enter_your_amount".localized
+        btnMyCards.setTitle("my_card".localized, for: .normal)
+        btnLoadCard.setTitle("load_card".localized, for: .normal)
 
         cardTableView.delegate = self
         cardTableView.dataSource = self
@@ -83,10 +105,10 @@ class PrepardCardVC: BaseVC {
     }
     
     
-    @IBAction func btnGenerateLoadCardCick(_ sender: Any) {
-        if customerCardNo.isEmpty && generateLoadCardBtn.titleLabel?.text == "Generate Card" {
+    @IBAction func btnGenerateLoadCardCick(_ sender: UIButton) {
+        if customerCardNo.isEmpty  {
             generateCustomerCardNo()
-        } else if generateLoadCardBtn.titleLabel?.text == "load card" {
+        } else if sender.titleLabel!.text == "load_card".localized {
             if isValidate() {
                 loadPrepaidCard()
             }
@@ -95,29 +117,49 @@ class PrepardCardVC: BaseVC {
     
     
     @IBAction func btnMyCards(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
-            self.viewBar.frame = CGRect(x: self.btnMyCards.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
-            
-            self.cardTableView.isHidden = false
-            self.viewLoadCard.isHidden = true
-            self.generateLoadCardBtn.setTitle("Generate Card", for: .normal)
+        
+        loadViewb.isHidden = true
+        viewBar.isHidden = false
+        self.cardTableView.isHidden = false
+        self.viewLoadCard.isHidden = true
+        self.generateLoadCardBtn.setTitle("generate_prepaid_card".localized, for: .normal)
+        if customerCardNo.isEmpty {
             self.generateLoadCardBtn.isHidden = false
-        }, completion: { (finished: Bool) -> Void in
-            
-        })
+        } else {
+            self.generateLoadCardBtn.isHidden = true
+        }
+       
+        
+//        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
+//            self.viewBar.frame = CGRect(x: self.btnMyCards.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
+//
+//            self.cardTableView.isHidden = false
+//            self.viewLoadCard.isHidden = true
+//            self.generateLoadCardBtn.setTitle("generate_prepaid_card".localized, for: .normal)
+//            self.generateLoadCardBtn.isHidden = false
+//        }, completion: { (finished: Bool) -> Void in
+//
+//        })
     }
     
     @IBAction func btnLoadCardFunc(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
-            self.viewBar.frame = CGRect(x: self.btnLoadCard.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
-            
-            self.cardTableView.isHidden = true
-            self.viewLoadCard.isHidden = false
-            self.generateLoadCardBtn.setTitle("load card", for: .normal)
-            self.generateLoadCardBtn.isHidden = false
-        }, completion: { (finished: Bool) -> Void in
-            
-        })
+        loadViewb.isHidden = false
+        viewBar.isHidden = true
+        self.cardTableView.isHidden = true
+        self.viewLoadCard.isHidden = false
+        self.generateLoadCardBtn.setTitle("load_card".localized, for: .normal)
+        self.generateLoadCardBtn.isHidden = false
+//        
+//        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
+//            self.viewBar.frame = CGRect(x: self.btnLoadCard.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
+//            
+//            self.cardTableView.isHidden = true
+//            self.viewLoadCard.isHidden = false
+//            self.generateLoadCardBtn.setTitle("load_card".localized, for: .normal)
+//            self.generateLoadCardBtn.isHidden = false
+//        }, completion: { (finished: Bool) -> Void in
+//            
+//        })
     }
     
     
@@ -159,7 +201,7 @@ extension PrepardCardVC: UITableViewDataSource, UITableViewDelegate {
              showProgress()
             let request = LoadVirtualCardRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getLanguage()
+            request.languageID = preferenceHelper.getApiLangugae()
             request.virtualCardNo = customerCardNo
             request.loadAmount = txtAmount.text!
             
@@ -186,7 +228,7 @@ extension PrepardCardVC: UITableViewDataSource, UITableViewDelegate {
             showProgress()
             let request = AddCustomerCardNoRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getLanguage()
+            request.languageID = preferenceHelper.getApiLangugae()
             
             repo.createCustomerCardNo(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_ADD_CUSTOMER_CARD_NO), completion: {(response , error ) in
                 self.hideProgress()
@@ -210,7 +252,7 @@ extension PrepardCardVC: UITableViewDataSource, UITableViewDelegate {
             showProgress()
             let request = GetCustomerCardNoRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getLanguage()
+            request.languageID = preferenceHelper.getApiLangugae()
             
             
             repo.getCustomerCardNo(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER_CARD_NO), completion: {(response , error) in

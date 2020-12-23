@@ -10,12 +10,22 @@ import UIKit
 
 class ShareWthFriendVC: UIViewController {
 
+    @IBOutlet weak var referalCodelbl: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
     @IBOutlet weak var btnShare: UIButton!
+    @IBOutlet weak var referMessagelbl: UILabel!
+    @IBOutlet weak var shareReferallbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         btnShare.layer.cornerRadius = 8
+        
+        pageTitle.text = "share_and_earn".localized
+        referalCodelbl.text = "text_Referral".localized
+        referMessagelbl.text = "share_message".localized
+        shareReferallbl.text = "msg_share_referral".localized
+        btnShare.setTitle("text_share_with_friend".localized, for: .normal)
     }
     
 

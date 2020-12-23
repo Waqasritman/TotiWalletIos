@@ -12,7 +12,8 @@ class HistoryOptionVC: UIViewController {
 
     @IBOutlet weak var viewTransction: UIButton!
     @IBOutlet weak var viewWallet: UIButton!
-    
+
+    @IBOutlet weak var pageTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +22,11 @@ class HistoryOptionVC: UIViewController {
         
         viewTransction.imageEdgeInsets.left = self.view.frame.width - 50
         viewWallet.imageEdgeInsets.left = self.view.frame.width - 50
+        
+        
+        pageTitle.text = "history".localized
+        viewTransction.setTitle("transaction_history".localized, for: .normal)
+        viewWallet.setTitle("wallet_traansaction_histry".localized, for: .normal)
     }
     
     @IBAction func btnTranscationHistoryFunc(_ sender: UIButton) {

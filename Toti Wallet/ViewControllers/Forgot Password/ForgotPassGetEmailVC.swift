@@ -24,26 +24,32 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
     @IBOutlet weak var lblCode: UILabel!
     
     @IBOutlet weak var btnFlag: UIImageView!
+    @IBOutlet weak var pageSubTitle: UILabel!
+    
+    
+    
+    
+    
     var isByNumber:Bool = false;
     var isCountrySelected = false
     override func isValidate() -> Bool {
         if isByNumber {
             if !isCountrySelected {
-                self.showError(message: "country")
+                self.showError(message:"plz_select_country_code".localized)
                 return false
             } else if txtNumber.text!.isEmpty {
-                self.showError(message: "enter number")
+                self.showError(message: "enter_email_or_number_login".localized)
                 return false
-            } else if !verifyNumber(number: lblCode.text!z + txtNumber.text!) {
-                showError(message: "Enter Number Is Invalid")
+            } else if !verifyNumber(number: lblCode.text! + txtNumber.text!) {
+                showError(message: "plz_enter_valid_phone_or_email".localized)
                 return false
             }
         } else {
             if txtEmail.text!.isEmpty {
-                showError(message: "Enter email address")
+                showError(message: "pleaseenter_email_address".localized)
                 return false
             } else if !String().isValidEmailAddress(emailAddressString: txtEmail.text!) {
-                showError(message: "Enter correct email address")
+                showError(message:"plz_enter_valid_phone_or_email".localized)
                 return false
             }
         }
@@ -67,11 +73,17 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
         if isByNumber {
             phoneNumberView.isHidden = false
             emailView.isHidden = true
+            pageSubTitle.text = "Please_enteR_nmber".localized
         }
         else{
             phoneNumberView.isHidden = true
             emailView.isHidden = false
+            pageSubTitle.text = "Please_Enter_email_txt_phone".localized
         }
+        
+        txtNumber.placeholder = "phone_number_hint".localized
+        btnContinue.setTitle("continue_txt".localized, for: .normal)
+        txtEmail.placeholder = "enteremaail_adress".localized
     }
     
     
@@ -81,7 +93,8 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
                 showProgress()
                 let request = GetCustomerProfileRequest()
                 if isByNumber {
-                    
+                    request.emailAddress = ""
+                    request.mobileNo = String().removePlus(number: lblCode.text! + txtNumber.text!)
                 } else {
                     request.emailAddress = txtEmail.text!
                     request.mobileNo = ""
@@ -97,11 +110,11 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
                         if self.isByNumber {
                             ForgotPinRequestApprovedUserRequest.shared.mobileNumber = self.txtNumber.text!
                             ForgotPinRequestApprovedUserRequest.shared.emailAddress = ""
-                            ForgotPinRequestApprovedUserRequest.shared.languageId = "1"
+                            ForgotPinRequestApprovedUserRequest.shared.languageId = preferenceHelper.getApiLangugae()
                         } else {
                             ForgotPinRequestApprovedUserRequest.shared.mobileNumber = ""
                             ForgotPinRequestApprovedUserRequest.shared.emailAddress = self.txtEmail.text!
-                            ForgotPinRequestApprovedUserRequest.shared.languageId = "1"
+                            ForgotPinRequestApprovedUserRequest.shared.languageId = preferenceHelper.getApiLangugae()
                         }
                         
                         
@@ -147,7 +160,7 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
     
     func onSelectCountry(country: WRCountryList) {
         lblCode.text = country.countryCode
-       
+        isCountrySelected = true
         btnFlag.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
     }
 

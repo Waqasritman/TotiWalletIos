@@ -37,21 +37,21 @@ class SignUpVC: BaseVC , CountryListProtocol {
     override func isValidate() -> Bool {
         if isSignUpViaNumber {
             if countryCode.isEmpty {
-                showError(message: "Select country")
+                showError(message: "plz_select_country_code".localized)
                 return false
             } else if txtPhoneNumber.text!.isEmpty {
-                showError(message: "Enter phone number")
+                showError(message: "enter_mobile_no_error".localized)
                 return false
             } else if !verifyNumber(number: countryCode + txtPhoneNumber.text!) {
-                showError(message: "Enter Number Is Invalid")
+                showError(message: "invalid_number".localized)
                 return false
             }
         } else {
             if txtEmail.text!.isEmpty {
-                showError(message: "Enter email address")
+                showError(message: "enter_email_or_number_login".localized)
                 return false
             } else if !String().isValidEmailAddress(emailAddressString: txtEmail.text!) {
-                showError(message: "Invalid email address")
+                showError(message: "plz_enter_valid_phone_or_email".localized)
                 return false
             }
         }
@@ -72,14 +72,33 @@ class SignUpVC: BaseVC , CountryListProtocol {
         
         let viewCodeGesture = UITapGestureRecognizer(target: self, action: #selector(showCountriesFunc(_:)))
         viewCode.addGestureRecognizer(viewCodeGesture)
+        setLabels()
     }
     
     @objc
     func showCountriesFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.selectCountryVC.instance
         (nextVC as! SelectCountryVC).countryProtocol = self
+        (nextVC as! SelectCountryVC).codeShown = true
         self.pushWithFullScreen(nextVC)
     }
+    
+    
+    func setLabels() {
+        if isSignUpViaNumber {
+            txtPhoneNumber.placeholder = "phone_number_hint".localized
+            pageTitle.text = "enter_mobile_no_txt".localized
+            btnSendOTP.setTitle("send_otp_email".localized, for: .normal)
+        } else {
+            txtEmail.placeholder = "email".localized
+            pageTitle.text = "Please_Enter_email_txt".localized
+            btnSendOTP.setTitle("send_otp_mobile".localized, for: .normal)
+        }
+        ageRestrictLbl.text = "submitting_txt".localized
+        orLAbel.text = "or".localized
+        btnAccept.setTitle("accept_continue".localized, for: .normal)
+    }
+    
     
     @IBAction func btnAccept(_ sender: UIButton) {
         
@@ -90,11 +109,11 @@ class SignUpVC: BaseVC , CountryListProtocol {
                 let authRequest = AuthenticationRequest()
                 if isSignUpViaNumber {
                     authRequest.email = ""
-                    authRequest.languageID = "1"
+                    authRequest.languageID = preferenceHelper.getApiLangugae()
                     authRequest.mobileNumber = String().removePlus(number: countryCode + txtPhoneNumber.text!)
                 } else {
                     authRequest.email = txtEmail.text!
-                    authRequest.languageID = "1"
+                    authRequest.languageID = preferenceHelper.getApiLangugae()
                     authRequest.mobileNumber = ""
                 }
                 
@@ -110,6 +129,7 @@ class SignUpVC: BaseVC , CountryListProtocol {
                         
                         let nextVC = ControllerID.verifyOptVC.instance
                         (nextVC as! VerifyOptVC).isByNumber = self.isSignUpViaNumber
+                        (nextVC as! VerifyOptVC).authRequest = authRequest
                         self.pushWithFullScreen(nextVC)
                     }
                 })
@@ -122,19 +142,19 @@ class SignUpVC: BaseVC , CountryListProtocol {
     
     
     @IBAction func btnSendOtpFunc(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Send OTP via e-mail" {
-            btnSendOTP.setTitle("Send OTP via Mobile number", for: .normal)
-            lblHeading.text = "Enter Your e-mail address"
+        if sender.titleLabel?.text == "send_otp_email".localized {
+        
             viewPhoneNumber.isHidden = true
             viewEmail.isHidden = false
             isSignUpViaNumber = false
+            setLabels()
         }
         else{
-            btnSendOTP.setTitle("Send OTP via e-mail", for: .normal)
-            lblHeading.text = "Enter Your mobile number"
+           
             viewPhoneNumber.isHidden = false
             viewEmail.isHidden = true
             isSignUpViaNumber = true
+            setLabels()
         }
     }
     

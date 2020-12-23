@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuickPayVC: UIViewController {
+class QuickPayVC: BaseVC {
 
     @IBOutlet weak var viewWallet: UIView!
     @IBOutlet weak var viewBank: UIView!
@@ -20,6 +20,11 @@ class QuickPayVC: UIViewController {
     
     var isBottomSheetVisible = false
     
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var cashTransferlbl: UILabel!
+    @IBOutlet weak var bankTransferlbl: UILabel!
+    @IBOutlet weak var walletTransferlbl: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +37,14 @@ class QuickPayVC: UIViewController {
         
         btnSendMoney.layer.cornerRadius = 8
         btnRequestMoney.layer.cornerRadius = 8
+        
+        
+        pageTitle.text = "how_would_you_like".localized
+        walletTransferlbl.text = "wallet_transfer".localized
+        bankTransferlbl.text  = "bank_transfer".localized
+        cashTransferlbl.text = "cash_transfer".localized
+        btnSendMoney.setTitle("send_money_txt".localized, for: .normal)
+        btnRequestMoney.setTitle("request_money_btn".localized, for: .normal)
         
         
         let viewWalletGesture = UITapGestureRecognizer(target: self, action: #selector(viewWalletFunc(_:)))
@@ -72,12 +85,8 @@ class QuickPayVC: UIViewController {
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

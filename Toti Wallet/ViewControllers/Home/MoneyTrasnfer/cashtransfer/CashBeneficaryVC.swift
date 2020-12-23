@@ -12,8 +12,17 @@ class CashBeneficaryVC: BaseVC , CountryListProtocol , CurrencyListProtocol
                         , RelationProtocol {
  
     
-
- 
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var lastNamelbl: UILabel!
+    @IBOutlet weak var mobileNolbl: UILabel!
+    @IBOutlet weak var countryLbl: UILabel!
+    
+    @IBOutlet weak var relationLbl: UILabel!
+    @IBOutlet weak var addressLbl: UILabel!
+    @IBOutlet weak var middleNamelbl: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var firstNamelbl: UILabel!
+    
     let authRepos:AuthRepository = AuthRepository()
 
     @IBOutlet weak var txtName: UITextField!
@@ -56,6 +65,28 @@ class CashBeneficaryVC: BaseVC , CountryListProtocol , CurrencyListProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        toolTitle.text = "cash_beneficiary".localized
+        pageTitle.text = "send_money_via_cash".localized
+        firstNamelbl.text  = "first_name".localized
+        middleNamelbl.text = "middle_name_txt".localized
+        lastNamelbl.text = "last_name_text_m".localized
+        mobileNolbl.text = "mobile_number".localized
+        countryLbl.text = "country_m".localized
+        addressLbl.text = "address".localized
+        relationLbl.text = "relation_with_beneficiary".localized
+        
+        txtName.placeholder = "first_name_text".localized
+        txtMiddleName.placeholder = "middle_name".localized
+        txtlastName.placeholder = "last_name_text".localized
+        txtMobile.placeholder = "phone_number_hint".localized
+        btnCountry.setTitle("select_country".localized, for: .normal)
+        txtAddress.placeholder = "address__hint".localized
+        btnRelation.setTitle("select_reltion_txt".localized, for: .normal)
+        btnNext.setTitle("add_beneficiary".localized, for: .normal)
+        
 
         txtName.layer.cornerRadius = 8
         txtMiddleName.layer.cornerRadius = 8
@@ -102,7 +133,8 @@ class CashBeneficaryVC: BaseVC , CountryListProtocol , CurrencyListProtocol
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        self.gotoHome()
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

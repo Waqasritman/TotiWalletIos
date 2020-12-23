@@ -25,6 +25,13 @@ class BankDetailAlert: UIView {
     @IBOutlet weak var lblSortCode: UILabel!
     @IBOutlet weak var lblAccountNumber: UILabel!
 
+    
+    @IBOutlet weak var referlbl: UILabel!
+    
+    @IBOutlet weak var acnolbl: UILabel!
+    @IBOutlet weak var sortcodelbl: UILabel!
+    @IBOutlet weak var titlelbl: UILabel!
+    
     var delegate: BankDetailAlertProtocol?
     
     override init(frame: CGRect) {
@@ -44,11 +51,21 @@ class BankDetailAlert: UIView {
         
         parentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    
+    
+        titleLbl.text = "bank_details_txt".localized
+        messageLbl.text = "bank_depost_message".localized
+        referlbl.text = "refer_no".localized
+        titlelbl.text = "bank_account_title_txt".localized
+        sortcodelbl.text = "sort_code".localized
+        acnolbl.text = "account_number".localized
+        
+        btnOK.setTitle("okay".localized, for: .normal)
     }
     
     func showAlert(referenceNumber: String) {
-        self.titleLbl.text = "Bank Details"
-        self.messageLbl.text = "Please transfer/deposit the amount into the below bank account"
+//        self.titleLbl.text = "Bank Details"
+//        self.messageLbl.text = "Please transfer/deposit the amount into the below bank account"
         self.lblReferenceNumber.text = referenceNumber
         self.lblAccountTitle.text = "TotiPay Limited"
         self.lblSortCode.text = "60-83-71"

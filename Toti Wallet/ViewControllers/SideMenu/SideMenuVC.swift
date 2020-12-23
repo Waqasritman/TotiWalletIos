@@ -14,7 +14,7 @@ class SideMenuVC: BaseVC {
     
     @IBOutlet weak var sideTableView: UITableView!
     
-    let sideTableData = ["Business Transaction", "Change PIN", "My Beneficiary List", "Pay via QR Code", "My QR Code", "Bill Payment", "Loyalty Points" ,"Refer to Friends", "Settings", "Logout"]
+    let sideTableData = ["swift_transfer".localized, "change_pin".localized, "my_bene_list".localized, "pay_via_qr_code".localized, "my_qr_code".localized, "bill_payment_vc".localized, "loyalty_points_txt".localized ,"refer_to_friends".localized, "settings".localized, "logout_txt".localized]
     
     let sideTableImages = [UIImage(named: "SideMenuQRCode"), UIImage(named: "SideMenuQRCode"), UIImage(named: "SideMenuQRCode"), UIImage(named: "SideMenuQRCode"), UIImage(named: "sideMenuQRCode2"), UIImage(named: "sideMenuBill"), UIImage(named: "sideMenuLoyalty"), UIImage(named: "sideMenuShare"), UIImage(named: "sideMenuInfo") ,UIImage(named: "sideMenuLogout")]
     
@@ -23,7 +23,25 @@ class SideMenuVC: BaseVC {
         
         sideTableView.delegate = self
         sideTableView.dataSource = self
-        
+
+    }
+    
+    override func handleAction(action: Bool) {
+        if action {
+            
+            let nextVC = ControllerID.loginSignUpOptionVC.instance
+            self.pushWithFullScreen(nextVC)
+            
+//            for controller in self.navigationController!.viewControllers as Array {
+//                    if controller.isKind(of: LoginSignUpOptionVC.self) {
+//                        _ =  self.navigationController!.popToViewController(controller, animated: true)
+//                        break
+//                    }
+//                }
+         
+        } else {
+            
+        }
     }
     
 }
@@ -48,6 +66,10 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "sideMenuCell") as! HeaderTableCell
         headerCell.btnImage.layer.cornerRadius = headerCell.btnImage.frame.height/2
         headerCell.lblImage.text = preferenceHelper.getCustomerName()
+        if  preferenceHelper.getUserImage() != "" {
+            headerCell.btnImage.image = fromBase64(strBase64: preferenceHelper.getUserImage())
+        }
+        headerCell.btnEdit.setTitle("edit_profile_txt".localized, for: .normal)
         headerCell.initView(sideMenu: self)
         return headerCell
     }
@@ -69,11 +91,11 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             let nextVC = ControllerID.changePinVC.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "My Beneficiary List"{
+        else if indexPath.row == 2{
             let nextVC = ControllerID.beneficiaryListVC.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Pay via QR Code"{
+        else if indexPath.row == 3{
 //            let viewController = BarcodeScannerViewController()
 //            viewController.codeDelegate = self
 //            viewController.errorDelegate = self
@@ -93,28 +115,30 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             (nextVC as! BarCodeScanViewController).scanStyle = style
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "My QR Code" {
+        else if indexPath.row == 4 {
             let nextVC = ControllerID.myQRCode.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Bill Payment" {
+        else if indexPath.row == 5 {
             let nextVC = ControllerID.billPaymentVC.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Loyalty Points"{
+        else if indexPath.row == 6 {
             let nextVC = ControllerID.loyaltyPointsVC.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Refer to Friends"{
+        else if indexPath.row == 7 {
             let nextVC = ControllerID.shareWthFriendVC.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Settings"{
+        else if indexPath.row == 8 {
             let nextVC = ControllerID.settingsVC.instance
             self.pushWithFullScreen(nextVC)
         }
-        else if sideTableData[indexPath.row] == "Logout"{
+        else if indexPath.row == 9 {
+            AlertView.instance.delegate = self
             
+            AlertView.instance.showAlert(title: "logout_txt".localized, message: "logout_message".localized, hide: false)
         }
     }
     
@@ -129,6 +153,11 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
         }
        
     }
+    
+    
+ 
+    
+    
 }
 
 extension SideMenuVC: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate {

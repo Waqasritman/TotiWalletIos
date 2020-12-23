@@ -17,7 +17,10 @@ class WalletHistoryVC: BaseVC {
     @IBOutlet weak var btnAll: UIButton!
     @IBOutlet weak var btnReceived: UIButton!
     @IBOutlet weak var btnPaid: UIButton!
+    @IBOutlet weak var viewPaid: UIView!
     
+    @IBOutlet weak var viewReceived: UIView!
+    @IBOutlet weak var pageTitle: UILabel!
     
     var list:[WalletHistory] = []
     var filteredList:[WalletHistory] = []
@@ -25,17 +28,21 @@ class WalletHistoryVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pageTitle.text = "wallet_history".localized
+        btnAll.setTitle("all_text".localized, for: .normal)
+        btnReceived.setTitle("received_text".localized, for: .normal)
+        btnPaid.setTitle("paid_text".localized, for: .normal)
+        
         historyTableView.delegate = self
         historyTableView.dataSource = self
         getWalletHistory()
     }
     
     @IBAction func btnAllFunc(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
-            self.viewBar.frame = CGRect(x: self.btnAll.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
-        }, completion: { (finished: Bool) -> Void in
-        })
-        
+
+        viewBar.isHidden = false
+        viewReceived.isHidden = true
+        viewPaid.isHidden = true
         filteredList.removeAll()
         filteredList.append(contentsOf: list)
         historyTableView.reloadData()
@@ -43,11 +50,10 @@ class WalletHistoryVC: BaseVC {
     
     
     @IBAction func btnReceivedFunc(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
-            self.viewBar.frame = CGRect(x: self.btnReceived.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
-        }, completion: { (finished: Bool) -> Void in
-        })
-        
+
+        viewBar.isHidden = true
+        viewReceived.isHidden = false
+        viewPaid.isHidden = true
         filteredList.removeAll()
         for history in list {
             if history.status.lowercased().elementsEqual("received") {
@@ -59,10 +65,10 @@ class WalletHistoryVC: BaseVC {
     }
     
     @IBAction func btnPaidFunc(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: { () -> Void in
-            self.viewBar.frame = CGRect(x: self.btnPaid.frame.origin.x , y: self.viewBar.frame.origin.y, width: self.viewBar.frame.size.width ,height: 2)
-        }, completion: { (finished: Bool) -> Void in
-        })
+
+        viewBar.isHidden = true
+        viewReceived.isHidden = true
+        viewPaid.isHidden = false
         filteredList.removeAll()
         for history in list {
             if history.status.lowercased().elementsEqual("paid") {
@@ -109,8 +115,6 @@ class WalletHistoryVC: BaseVC {
 //MARK : TableView Functions
 extension WalletHistoryVC: UITableViewDataSource, UITableViewDelegate , RepeatDelegate {
    
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredList.count
     }
@@ -119,7 +123,8 @@ extension WalletHistoryVC: UITableViewDataSource, UITableViewDelegate , RepeatDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableCell") as! HistoryTableCell
         cell.viewMain.layer.cornerRadius = 10
         cell.viewMain.dropShadow()
-        
+        cell.btnReceipt.setTitle("repeat_txt".localized, for: .normal)
+        cell.btnReceipt.layer.cornerRadius = 5
         cell.walletDelegate = self
         cell.setWalletHistoryData(history: filteredList[indexPath.row])
         

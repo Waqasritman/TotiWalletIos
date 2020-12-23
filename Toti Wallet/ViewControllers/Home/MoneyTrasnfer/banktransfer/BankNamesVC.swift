@@ -10,8 +10,9 @@ import UIKit
 
 class BankNamesVC: BaseVC {
 
+    @IBOutlet weak var toolTitle: UILabel!
     let repo:BeneficiaryRespository = BeneficiaryRespository()
-    @IBOutlet weak var txtSearch: UITextField!
+   
     @IBOutlet weak var searchTableView: UITableView! {
         didSet {
             searchTableView.delegate = self
@@ -20,7 +21,7 @@ class BankNamesVC: BaseVC {
     }
     
     
-    var list:[BankName] = Array()
+    
     var filteredList:[BankName] = Array()
     
     
@@ -31,6 +32,7 @@ class BankNamesVC: BaseVC {
         super.viewDidLoad()
 
         getBankNetwork()
+        toolTitle.text = "select_bank".localized
     }
     
     
@@ -46,10 +48,9 @@ class BankNamesVC: BaseVC {
                 if let error = error {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
-                    self.list.removeAll()
-                    self.filteredList.removeAll()
+                  self.filteredList.removeAll()
                     self.filteredList.append(contentsOf: response!.bankNames)
-                    self.list.append(contentsOf: response!.bankNames)
+                   
                     self.searchTableView.reloadData()
                 } else {
                     self.showError(message: response!.description)
@@ -62,24 +63,7 @@ class BankNamesVC: BaseVC {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        filteredList = list.filter({ (country) -> Bool in
-            let countryText: NSString = country.bankName as NSString
-            
-            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        searchTableView.reloadData()
-    }
-
+   
 }
 
 //MARK : TableView Functions

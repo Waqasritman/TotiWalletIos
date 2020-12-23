@@ -8,15 +8,20 @@
 
 import UIKit
 
-class SummaryVC: UIViewController {
-
+class SummaryVC: BaseVC {
+    @IBOutlet weak var pageTitle: UILabel!
+    
     @IBOutlet weak var btnSendNow: UIButton!
     @IBOutlet weak var viewTransfer: UIView!
     @IBOutlet weak var viewSendingCurrencey: UIView!
     @IBOutlet weak var viewPayable: UIView!
     @IBOutlet weak var viewAmount: UIView!
     
+    @IBOutlet weak var sendingcurrencylbl: UILabel!
+    @IBOutlet weak var totalpayablelbl: UILabel!
+    @IBOutlet weak var transferamountlbl: UILabel!
     
+    @IBOutlet weak var transfertolbl: UILabel!
     @IBOutlet weak var beneNamelbl:UILabel!
     @IBOutlet weak var sendingCurrenyLbl:UILabel!
     @IBOutlet weak var totalPayableLbl:UILabel!
@@ -29,6 +34,14 @@ class SummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        pageTitle.text = "confirm_title_money".localized
+        transfertolbl.text = "sending_currency".localized
+        sendingcurrencylbl.text = "sending_currency".localized
+        totalpayablelbl.text = "total_payable".localized
+        transferamountlbl.text = "transfer_amount".localized
+        btnSendNow.setTitle("confirm_text".localized, for: .normal)
+        
+        
         btnSendNow.layer.cornerRadius = 8
         viewTransfer.layer.cornerRadius = 8
         viewSendingCurrencey.layer.cornerRadius = 8
@@ -50,12 +63,8 @@ class SummaryVC: UIViewController {
     
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

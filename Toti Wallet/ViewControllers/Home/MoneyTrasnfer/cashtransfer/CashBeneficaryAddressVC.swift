@@ -15,6 +15,10 @@ class CashBeneficaryAddressVC: BaseVC {
     @IBOutlet weak var btnAgent: UIButton!
     @IBOutlet weak var btnAddBeneficiary: UIButton!
     
+    @IBOutlet weak var agentlbl: UILabel!
+    @IBOutlet weak var citylbl: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var toolTitle: UILabel!
     
     var netWorkList:[CashNetworks] = Array()
     
@@ -26,6 +30,15 @@ class CashBeneficaryAddressVC: BaseVC {
         btnAddBeneficiary.layer.cornerRadius = 8
         
         btnAgent.imageEdgeInsets.left = self.view.frame.width - 50
+        
+        toolTitle.text = "cash_beneficiary".localized
+        pageTitle.text = "send_money_via_cash".localized
+        citylbl.text = "city".localized
+        agentlbl.text = "availiable_agents".localized
+        
+        txtCity.placeholder = "city_hint".localized
+        btnAgent.setTitle("Please_select_agents".localized, for: .normal)
+        btnAddBeneficiary.setTitle("add_beneficiary".localized, for: .normal)
         
         
         
@@ -76,6 +89,12 @@ class CashBeneficaryAddressVC: BaseVC {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
                     self.showSuccess(message: response!.description!)
+                    for controller in self.navigationController!.viewControllers as Array {
+                            if controller.isKind(of: BeneficiaryListVC.self) {
+                                _ =  self.navigationController!.popToViewController(controller, animated: true)
+                                break
+                            }
+                        }
                 } else {
                     self.showError(message: response!.description!)
                 }
@@ -84,12 +103,8 @@ class CashBeneficaryAddressVC: BaseVC {
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {

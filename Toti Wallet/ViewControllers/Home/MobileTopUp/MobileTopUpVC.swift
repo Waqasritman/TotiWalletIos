@@ -22,19 +22,30 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
     @IBOutlet weak var flagIcon: UIImageView!
     @IBOutlet weak var countryView: UIView!
     
+    @IBOutlet weak var toolTitle: UILabel!
     @IBOutlet weak var codelbl: UILabel!
+    @IBOutlet weak var opertaorStack: UIStackView!
+    
+    
+    @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var countrylbl: UILabel!
+    
+    @IBOutlet weak var operatorlbl: UILabel!
+    @IBOutlet weak var typelbl: UILabel!
     
     var countryShortName = ""
     var operatorLoaded = false
     
     func isNumberValidate() -> Bool {
         if countryShortName.isEmpty {
+            showError(message: "select_country".localized)
             return false
         }else if txtPhoneNumber.text!.isEmpty {
-            showError(message: "Enter Number")
+            showError(message: "plz_enter_mobile_no".localized)
             return false
         } else if !verifyNumber(number: codelbl.text! + txtPhoneNumber.text!) {
-            showError(message: "Enter Number Is Invalid")
+            showError(message: "invalid_number".localized)
             return false
         }
         return true
@@ -43,17 +54,18 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
     
     override func isValidate() -> Bool {
         if countryShortName.isEmpty {
+            showError(message: "select_country".localized)
             return false
         }else if txtPhoneNumber.text!.isEmpty {
-            showError(message: "Enter Number")
+            showError(message: "plz_enter_mobile_no".localized)
             return false
         } else if !verifyNumber(number: codelbl.text! + txtPhoneNumber.text!) {
-            showError(message: "Enter Number Is Invalid")
+            showError(message: "invalid_number".localized)
             return false
         }
        
         else if !operatorLoaded {
-            showError(message: "Invalid Opertor")
+            showError(message: "select_operator".localized)
             return false
         }
         return true
@@ -62,6 +74,17 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toolTitle.text = "mobile_top_up".localized
+        pageTitle.text = "mobile_top_up".localized
+        countrylbl.text = "mobile_number".localized
+        typelbl.text = "select_type".localized
+        operatorlbl.text = "select_operator".localized
+        btnNext.setTitle("next".localized, for: .normal)
+        
+        txtPhoneNumber.placeholder = "phone_number_hint".localized
+        btnType.setTitle("select_type".localized, for: .normal)
+        btnOperator.setTitle("select_operator".localized, for: .normal)
         
         btnType.layer.cornerRadius = 8
         countryView.layer.cornerRadius = 8
@@ -91,12 +114,8 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnOnTopupType(_ sender: Any) {
@@ -176,11 +195,8 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
         GetWRPrepaidPlansRequest.shared.operatorCode = pOperator.operatorCode!
         GetWRPrepaidPlansRequest.shared.languageId = preferenceHelper.getLanguage()
         
-        
+        opertaorStack.isHidden = false
         WRPrepaidRechargeRequest.shared.operatorName = pOperator.operatorName!
         WRPrepaidRechargeRequest.shared.mobileNumber = txtPhoneNumber.text!
-        
-        
-        
     }
 }

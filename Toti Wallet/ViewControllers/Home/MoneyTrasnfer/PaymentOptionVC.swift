@@ -15,6 +15,10 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
     let moneyRepo:MoneyTransferRepository = MoneyTransferRepository()
     let repo:Repository = Repository()
     
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var bankTitlelbl: UILabel!
+    @IBOutlet weak var bankAccountlbl: UILabel!
     
     var cardsList:[CardDetails] = Array()
     
@@ -34,6 +38,15 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        toolTitle.text = "payment".localized
+        pageTitle.text = "how_would_you_like".localized
+        payThroughCard.text = "pay_thorough_card".localized
+        btnLoad.setTitle("load_cards".localized, for: .normal)
+        bankTitlelbl.text = "process_payment".localized
+        bankAccountlbl.text = "bank_account_details".localized
         
         cardTableView.delegate = self
         cardTableView.dataSource = self
@@ -85,12 +98,8 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -139,7 +148,7 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
                         self.receiptNumber = response!.transactionNo!
                         if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.CREDIT_CARD {
                             AlertView.instance.delegate = self
-                            AlertView.instance.showAlert(title: "in_process" , message: "in_process_msg_card")
+                            AlertView.instance.showAlert(title: "in_process".localized , message: "in_process_msg_card".localized , hide: true)
             
                         } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.BANK_DEPOSIT {
                             BankDetailAlert.instance.delegate = self
@@ -172,6 +181,7 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
     func goToReceipt(number:String) {
         let nextVc = ControllerID.receiptVC.instance
         (nextVc as! ReceiptVC).tranactionNumber = receiptNumber
+        (nextVc as! ReceiptVC).comeFromHome = false
         self.pushWithFullScreen(nextVc)
     }
     
@@ -222,7 +232,7 @@ extension PaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
         TotiPaySend.shared.cardNumber = cardsList[indexPath.row].cardNumber
         TotiPaySend.shared.expireDate = cardsList[indexPath.row].cardExpireDate
         AlertViewWithTextField.instance.delegate = self
-        AlertViewWithTextField.instance.showAlert(title: "enter_cvv", txtFieldPlaceHolder: "CVV")
+        AlertViewWithTextField.instance.showAlert(title: "enter_cvv".localized, txtFieldPlaceHolder: "cvv_txt".localized)
     }
     
     
@@ -252,8 +262,5 @@ extension PaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
             self.noInternet()
         }
     }
-    
-    
-    
-    
+
 }

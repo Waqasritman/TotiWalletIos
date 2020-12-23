@@ -14,6 +14,8 @@ class RateCollectionCell: UICollectionViewCell {
     @IBOutlet weak var walletName:UILabel!
     @IBOutlet weak var walletBalance:UILabel!
     @IBOutlet weak var image:UIImageView!
+    
+    @IBOutlet weak var balancelbl: UILabel!
 }
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgotPassGetPinVC: BaseVC {
+class ForgotPassGetPinVC: BaseVC  , UITextFieldDelegate {
 
     let authRepository :AuthRepository = AuthRepository()
     @IBOutlet weak var viewMain: UIView!
@@ -17,19 +17,27 @@ class ForgotPassGetPinVC: BaseVC {
     @IBOutlet weak var txtNewPin: UITextField!
     @IBOutlet weak var txtReEnterNewPin: UITextField!
     
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var enterNewpinlbl: UILabel!
     
+    @IBOutlet weak var reenterpinlbl: UILabel!
     var isByNumber = false
     
     override func isValidate() -> Bool {
         if txtNewPin.text!.isEmpty {
+            showError(message: "enter_new_pin".localized)
             return false
         } else if txtReEnterNewPin.text!.isEmpty {
+            showError(message: "enter_confirm_pin".localized)
             return false
         } else if txtNewPin.text!.count < 4 {
+            showError(message: "pin_must_4_digit".localized)
             return false
         } else if txtReEnterNewPin.text!.count < 4 {
+            showError(message: "pin_must_4_digit".localized)
             return false
         } else if !txtNewPin.text!.elementsEqual(txtReEnterNewPin.text!) {
+            showError(message: "pin_must_be_same".localized)
             return false
         }
         return true
@@ -39,6 +47,21 @@ class ForgotPassGetPinVC: BaseVC {
         super.viewDidLoad()
         initDesign()
         
+        
+        pageTitle.text = "change_pin".localized
+        enterNewpinlbl.text = "new_pin".localized
+        reenterpinlbl.text = "confirm_pin".localized
+        btnChangePin.setTitle("change_pin".localized, for: .normal)
+        
+        
+        txtNewPin.setLeftPaddingPoints(10)
+        txtReEnterNewPin.setLeftPaddingPoints(10)
+        
+        txtNewPin.delegate = self
+        txtReEnterNewPin.delegate = self
+        
+        txtNewPin.placeholder = "0000"
+        txtReEnterNewPin.placeholder = "0000"
     }
     
     @IBAction func btnContinueFunc(_ sender: UIButton) {
@@ -56,7 +79,7 @@ class ForgotPassGetPinVC: BaseVC {
                     request.emailAddress = ForgotPinRequestApprovedUserRequest.shared.emailAddress
                     request.mobileNumber = ""
                 }
-                request.languageId = preferenceHelper.getLanguage()
+                request.languageId = preferenceHelper.getApiLangugae()
                 
                 authRepository.resetPinForgot(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_SET_NEW_PIN), completion: {(response , error) in
                     self.hideProgress()
@@ -66,8 +89,12 @@ class ForgotPassGetPinVC: BaseVC {
                     } else if response!.responseCode == 101 {
                         self.showSuccess(message: response!.description!)
                         ForgotPinRequestApprovedUserRequest.shared.clearData()
-                       // let nextVC = ControllerID.getStartedNav.instance
-                       // self.pushWithFullScreen(nextVC)
+                        for controller in self.navigationController!.viewControllers as Array {
+                                if controller.isKind(of: LoginOptionVC.self) {
+                                    _ =  self.navigationController!.popToViewController(controller, animated: true)
+                                    break
+                                }
+                            }
                     } else {
                         self.showError(message: response!.description!)
                     }
@@ -80,6 +107,7 @@ class ForgotPassGetPinVC: BaseVC {
             
         }
     }
+    
 
     @IBAction func btnBackFunc(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -100,4 +128,10 @@ class ForgotPassGetPinVC: BaseVC {
     }
     
 
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        return textField.text!.count < 4 || string == ""
+    }
 }

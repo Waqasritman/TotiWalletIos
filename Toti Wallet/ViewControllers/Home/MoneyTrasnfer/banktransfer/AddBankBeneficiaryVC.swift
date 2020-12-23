@@ -8,13 +8,20 @@
 
 import UIKit
 
-class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , CurrencyListProtocol {
+class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , CurrencyListProtocol
+ , UITextFieldDelegate{
     
     let authRepos:AuthRepository = AuthRepository()
     var isCountrySelected = false
     var isRelationSelected = false
     
-
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var firstnamelbl: UILabel!
+    @IBOutlet weak var lastNamelbl: UILabel!
+    @IBOutlet weak var countrylbl: UILabel!
+    @IBOutlet weak var relationlbl: UILabel!
+    
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtLastName: UITextField!
     @IBOutlet weak var btnCountry: UIButton!
@@ -24,24 +31,48 @@ class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , Cu
     
     override func isValidate() -> Bool {
         if txtName.text!.isEmpty {
+            showError(message: "enter_name_bene__first_name_error".localized)
             return false
         }  else if txtLastName.text!.isEmpty {
+            showError(message: "enter_name_bene__last_name_error".localized)
             return false
         } else if !isCountrySelected {
+            showError(message: "plz_select_country_error".localized)
             return false
         }  else if !isRelationSelected {
-            return false
-        } else if txtName.text!.count < 3 {
-            return false
-        }  else if txtLastName.text!.count < 3 {
+            showError(message: "plz_select_relation".localized)
             return false
         }
+//        else if txtName.text!.count < 3 {
+//            showError(message: "".localized)
+//            return false
+//        }  else if txtLastName.text!.count < 3 {
+//            showError(message: "".localized)
+//            return false
+//        }
         return true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        txtName.delegate = self
+        txtLastName.delegate = self
+        
+        toolTitle.text = "bank_beneficairy".localized
+        pageTitle.text = "send_money_via_bank".localized
+        firstnamelbl.text = "first_name".localized
+        lastNamelbl.text = "last_name_text_m".localized
+        countrylbl.text = "select_country_m".localized
+        relationlbl.text = "relation_with_beneficiary".localized
+        
+        txtName.placeholder = "john_txt".localized
+        txtLastName.placeholder  = "smith" .localized
+        btnCountry.setTitle("select_country".localized, for: .normal)
+        btnRelation.setTitle("select_the_relation_txt".localized, for: .normal)
 
+        btnNext.setTitle("next".localized, for: .normal)
+        
         txtName.layer.cornerRadius = 8
         txtLastName.layer.cornerRadius = 8
         btnCountry.layer.cornerRadius = 8
@@ -92,7 +123,8 @@ class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , Cu
     }
 
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -103,6 +135,7 @@ class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , Cu
     func onSelectCountry(country: WRCountryList) {
         isCountrySelected = true
         btnCountry.setTitle(country.countryName, for: .normal)
+        btnCountry.setTitleColor(.black, for: .normal)
         BeneficiaryAddRequest.shared.PayoutCountryCode = country.countryShortName
         BeneficiaryAddRequest.shared.BankCountry = country.countryShortName
         BeneficiaryAddRequest.shared.countryID = country.countryId
@@ -136,6 +169,7 @@ class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , Cu
     func onSelectRelation(relation: Relation) {
         isRelationSelected = true
         btnRelation.setTitle(relation.relationName, for: .normal)
+        btnRelation.setTitleColor(.black, for: .normal)
         BeneficiaryAddRequest.shared.CustomerRelation = relation.relationName
         
     }
@@ -161,4 +195,13 @@ class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , Cu
     }
     
 
+}
+extension AddBankBeneficiaryVC {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let aSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        return string == numberFiltered
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 
-class LoginVC: BaseVC {
+class LoginVC: BaseVC  , CountryListProtocol{
     let restRepo:RestRepositor = RestRepositor()
     let authRepository:AuthRepository = AuthRepository()
     //MARK - variables
@@ -25,6 +25,10 @@ class LoginVC: BaseVC {
     @IBOutlet weak var lblCode: UILabel!
     @IBOutlet weak var btnFlag:UIImageView!
     
+    @IBOutlet weak var pagesubTitle: UILabel!
+    @IBOutlet weak var forgotPinBtn: UIButton!
+    @IBOutlet weak var rememberMeLoginlbl: UILabel!
+    @IBOutlet weak var enterPinLabel: UILabel!
     
     var countryCode:String = ""
     var flagURL:String = ""
@@ -44,24 +48,24 @@ class LoginVC: BaseVC {
         
         if isByPhoneNumber {
             if countryCode.isEmpty {
-                showError(message:  "selecet country")
+                showError(message:  "plz_select_country_code".localized)
                 return false
             } else if txtPhoneNumber.text!.isEmpty {
-                showError(message: "Enter Number")
+                showError(message: "enter_email_or_number_login".localized)
                 return false
             } else if !verifyNumber(number: countryCode + txtPhoneNumber.text!) {
-                showError(message: "Enter Number Is Invalid")
+                showError(message: "plz_enter_valid_phone_or_email".localized)
                 return false
             } else if getCode().count < 4 {
-                showError(message: "Enter correct pin")
+                showError(message: "askfordigit".localized)
                 return false
             }
         } else  {
             if txtEmail.text!.isEmpty {
-                showError(message: "Enter email address")
+                showError(message: "pleaseenter_email_address".localized)
                 return false
             } else if getCode().count < 4 {
-                showError(message: "enter_pin".localized)
+                showError(message: "askfordigit".localized)
                 return false
             }
         }
@@ -94,18 +98,15 @@ class LoginVC: BaseVC {
             phoneNumberView.isHidden = true
             emailView.isHidden = false
         }
+        
+        setLabels()
+    
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if isByPhoneNumber {
-            txtPhoneNumber.text = preferenceHelper.getNumber()
-            lblCode.text = preferenceHelper.getCountryCode()
-        } else if !preferenceHelper.getEmail().isEmpty{
-            txtEmail.text = preferenceHelper.getEmail()
-            
-        }
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,9 +114,31 @@ class LoginVC: BaseVC {
         
     }
     
+    
+    func setLabels(){
+      
+        pagesubTitle.text = "log_in_to_account_txt".localized
+
+        rememberMeLoginlbl.text = "remember_me".localized
+        enterPinLabel.text = "enter_pin".localized
+        forgotPinBtn.setTitle("forgot_pin".localized, for: .normal)
+        btnLogin.setTitle("log_in_to_account_txt".localized, for: .normal)
+        
+        
+        if isByPhoneNumber {
+            txtPhoneNumber.text = preferenceHelper.getNumber()
+            lblCode.text = preferenceHelper.getCountryCode()
+            btnFlag.sd_setImage(with: URL(string:  preferenceHelper.getURL()), placeholderImage: UIImage(named: "flag"))
+        } else if !preferenceHelper.getEmail().isEmpty{
+            txtEmail.text = preferenceHelper.getEmail()
+            
+        }
+    }
+    
     @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
         let nextVC = ControllerID.selectCountryVC.instance
         (nextVC as! SelectCountryVC).countryProtocol = self
+        (nextVC as! SelectCountryVC).codeShown = true
         self.pushWithFullScreen(nextVC)
     }
     
@@ -152,6 +175,13 @@ class LoginVC: BaseVC {
                     request.mobileNumber = ""
                 }
                 request.password = getCode()
+                request.languageId = preferenceHelper.getApiLangugae()
+                
+                if request.password.count < 4 {
+                    showError(message: "askfordigit".localized)
+                    return
+                }
+                
                 
                 authRepository.loginRequest(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_LOGIN),completion: { (response, error) in
                     
@@ -184,7 +214,7 @@ class LoginVC: BaseVC {
             request.customerNo = customerNo
             request.emailAddress = ""
             request.mobileNo = ""
-            request.languageId = "1"
+            request.languageId = preferenceHelper.getApiLangugae()
             
             
             authRepository.getCustomerProfile(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER), completion: {(response , error) in
@@ -216,7 +246,7 @@ class LoginVC: BaseVC {
     func getCustomerImage(customerNo:String) {
         let request = GetCustomerProfileImageRequest()
         request.Customer_No = customerNo
-        // request.credentials.LanguageID = 1
+        request.langugaeID = preferenceHelper.getApiLangugae()
         print(request.toJSON())
         restRepo.getCustomerImage(param: request.toJSON(), completion: {(response ,error) in
             self.hideProgress()
@@ -241,11 +271,8 @@ class LoginVC: BaseVC {
         self.pushWithFullScreen(nextVC)
     }
     
-}
-extension LoginVC : CountryListProtocol {
-    
     func onSelectCountry(country: WRCountryList) {
-      
+        lblCode.text = ""
         lblCode.text = country.countryCode
         countryCode = country.countryCode
         
@@ -254,6 +281,9 @@ extension LoginVC : CountryListProtocol {
      
     }
     
+}
+extension LoginVC  {
+   
     
     func saveUserDetails() {
         if isByPhoneNumber {

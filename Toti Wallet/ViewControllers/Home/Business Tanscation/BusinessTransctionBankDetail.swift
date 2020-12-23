@@ -17,17 +17,31 @@ class BusinessTransctionBankDetail: BaseVC {
     @IBOutlet weak var txtSwift: UITextField!
     @IBOutlet weak var btnNext: UIButton!
     
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var namelbl: UILabel!
+    
+    @IBOutlet weak var accountnolbl: UILabel!
+    @IBOutlet weak var branchlbl: UILabel!
+    @IBOutlet weak var addresslbl: UILabel!
+    
+    @IBOutlet weak var swiftbiclbl: UILabel!
     
     override func isValidate() -> Bool {
         if txtName.text!.isEmpty {
+            showError(message: "select_bank_name".localized)
             return false
         } else if txtAccountNumber.text!.isEmpty {
+            showError(message: "enter_account_no_error".localized)
             return false
         } else if txtBranch.text!.isEmpty {
+            showError(message: "enter_bank_branch".localized)
             return false
         } else if txtAddress.text!.isEmpty {
+            showError(message: "bankaddress_txt_error".localized)
             return false
         } else if txtSwift.text!.isEmpty {
+            showError(message: "plz_enter_swift_ibc".localized)
             return false
         }
         return true
@@ -48,6 +62,26 @@ class BusinessTransctionBankDetail: BaseVC {
         txtBranch.setLeftPaddingPoints(10)
         txtAddress.setLeftPaddingPoints(10)
         txtSwift.setLeftPaddingPoints(10)
+        
+        
+        
+        toolTitle.text = "swift_transfer".localized
+        pageTitle.text = "enter_beneficiary_bank_details    ".localized
+        namelbl.text = "bank_name".localized
+        accountnolbl.text = "account_no_txt".localized
+        branchlbl.text = "bank_branch_txt".localized
+        addresslbl.text = "bankaddress_txt".localized
+        swiftbiclbl.text = "swift_ibac".localized
+        
+        
+        txtName.placeholder = "bank_name_txt".localized
+        txtAccountNumber.placeholder = "account_no_hint".localized
+        txtBranch.placeholder = "address__hint".localized
+        txtAddress.placeholder = "address__hint".localized
+        txtSwift.placeholder = "enter_swift_bic".localized
+        
+        
+        btnNext.setTitle("next".localized, for: .normal)
         
     }
     
@@ -70,5 +104,8 @@ class BusinessTransctionBankDetail: BaseVC {
     }
 
     @IBAction func closeBtnAction(_ sender: Any) {
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
+    
 }

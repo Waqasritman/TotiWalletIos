@@ -44,6 +44,13 @@ class BaseVC: UIViewController , PopUpProtocol {
         }
     }
     
+    func fromBase64(strBase64:String) -> UIImage {
+        let dataDecoded : Data = Data(base64Encoded: strBase64, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        return decodedimage!
+    }
+    
+    
     func changed(_ language: Int)
     {
         showProgress()
@@ -97,6 +104,7 @@ class BaseVC: UIViewController , PopUpProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.semanticContentAttribute = .forceRightToLeft
+        observeTimeout()
        // self.hideKeyboardWhenTappedAround()
     }
     
@@ -138,13 +146,16 @@ class BaseVC: UIViewController , PopUpProtocol {
     }
     
     
-    public func showAlert(title:String , message:String) {
+    public func showAlert(title:String , message:String , hidebtn:Bool) {
         AlertView.instance.delegate = self
-        AlertView.instance.showAlert(title: title, message: message)
+        
+        AlertView.instance.showAlert(title: title, message: message, hide: hidebtn)
     }
     
     public func handleAction(action: Bool) {
-        
+        if action {
+            gotoHome()
+        }
     }
    
 

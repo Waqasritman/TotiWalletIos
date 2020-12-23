@@ -17,6 +17,9 @@ class ForgotPassotpVC: BaseVC {
     @IBOutlet weak var viewVerificationCode: KWVerificationCodeView!
     @IBOutlet weak var timerLabel:UIButton!
     
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var didNotreceivebtn: UIButton!
+    @IBOutlet weak var btnResend: UIButton!
     
     var isByNumber:Bool = true
     
@@ -31,7 +34,7 @@ class ForgotPassotpVC: BaseVC {
 
     override func isValidate() -> Bool {
         if viewVerificationCode.getVerificationCode().count < 4 {
-            showError(message: "Enter correct pin")
+            showError(message: "askfordigit".localized)
             return false
         }
         return true
@@ -40,6 +43,11 @@ class ForgotPassotpVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
        // startTimer()
+     
+        timerLabel.setTitle("resend_otp".localized, for: .normal)
+        pageTitle.text = "verify_otp_txt".localized
+        didNotreceivebtn.setTitle("did_not_receive_otp".localized, for: .normal)
+        btnConfirm.setTitle("confirm_text".localized, for: .normal)
         sendOTP()
         viewMain.layer.cornerRadius = 16
         viewMain.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -67,6 +75,7 @@ class ForgotPassotpVC: BaseVC {
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = ForgotPinRequestApprovedUserRequest.shared.getXML()
+            
             print(request)
             authRepository.forgotPinApprovedUserRequest(request: HTTPConnection.openConnection(stringParams: request, action: SoapActionHelper.shared.ACTION_FORGOT_REQUEST_APPROVED_USER), completion: {(response , error) in
                 self.hideProgress()
@@ -75,7 +84,7 @@ class ForgotPassotpVC: BaseVC {
                     self.showError(message: error)
                     self.btnBackFunc(self)
                 } else {
-                    print(response?.responseCode)
+                  
                     if response!.responseCode == 101 {
                         print("sendt")
                         self.startTimer()
@@ -107,8 +116,11 @@ class ForgotPassotpVC: BaseVC {
                     verifyOTPRequest.email = ForgotPinRequestApprovedUserRequest.shared.emailAddress
                     verifyOTPRequest.mobileNumber = ""
                 }
-                verifyOTPRequest.languageID = "1"
-                
+                verifyOTPRequest.languageID = preferenceHelper.getApiLangugae()
+                if verifyOTPRequest.OTP.count < 4 {
+                    showError(message: "askfordigit".localized)
+                    return
+                }
                 authRepository.verifyOTP(request: HTTPConnection.openConnection(stringParams: verifyOTPRequest.getXML(), action: SoapActionHelper.shared.ACTION_VERIFY_OTP), completion: {(response , error) in
                     self.hideProgress()
                     if let error = error {
@@ -118,9 +130,6 @@ class ForgotPassotpVC: BaseVC {
                         self.pushWithFullScreen(nextVC)
                     }
                 })
-                
-                
-                
             } else {
                 self.noInternet()
             }
@@ -130,6 +139,11 @@ class ForgotPassotpVC: BaseVC {
         
         
     }
+    
+    @IBAction func btnResend(_ sender:Any) {
+        sendOTP()
+    }
+    
     
     @IBAction func btnBackFunc(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -156,11 +170,11 @@ class ForgotPassotpVC: BaseVC {
     
     @objc func updateCounter() {
         if counter > 0 {
-            timerLabel.setTitle("resend in 00:\(counter)", for: .normal)
+            timerLabel.setTitle("\("resend_otp".localized) in 00:\(counter)", for: .normal)
             timerLabel.isEnabled = false
             counter -= 1
         } else {
-            timerLabel.setTitle("Resend", for: .normal)
+            timerLabel.setTitle("resend_otp".localized, for: .normal)
             timerLabel.isEnabled = true
         }
     }

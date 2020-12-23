@@ -24,14 +24,27 @@ class ProfileAddressDetailVC: BaseVC , CountryListProtocol {
     
     var isCountrySeleted = false
     
+    
+    @IBOutlet weak var countryTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var cityLbl: UILabel!
+    
+    @IBOutlet weak var addresslbl: UILabel!
+    @IBOutlet weak var nationalitylbl: UILabel!
+    
+    
     override func isValidate() -> Bool {
         if countryName.isEmpty {
+            showError(message: "select_country".localized)
             return false
         } else if txtCity.text!.isEmpty {
+            showError(message: "enter_city_name".localized)
             return false
         } else if txtAddress.text!.isEmpty {
+            showError(message: "address_enter".localized)
             return false
         } else if nationality.isEmpty {
+            showError(message: "select_nationlity".localized)
             return false
         }
         return true
@@ -53,6 +66,19 @@ class ProfileAddressDetailVC: BaseVC , CountryListProtocol {
         
         btnCountryName.imageEdgeInsets.left = self.view.frame.width - 50
         btnNationality.imageEdgeInsets.left = self.view.frame.width - 50
+        
+        
+        
+        pageTitle.text = "complete_profile".localized
+        countryTitle.text = "country".localized
+        cityLbl.text = "city".localized
+        addresslbl.text = "address".localized
+        nationalitylbl.text = "nationality_m".localized
+        btnCountryName.setTitle("select_country".localized, for: .normal)
+        txtCity.placeholder = "city_hint".localized
+        txtAddress.placeholder = "address__hint".localized
+        btnNationality.setTitle("nationality".localized, for: .normal)
+        btnNext.setTitle("done".localized, for: .normal)
     }
     
     @IBAction func btnShowCountriesFunc(_ sender: UIButton) {

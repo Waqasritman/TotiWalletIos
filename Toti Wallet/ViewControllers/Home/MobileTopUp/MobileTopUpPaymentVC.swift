@@ -25,7 +25,11 @@ class MobileTopUpPaymentVC: BaseVC , CurrencyListProtocol , CardSumitProtocol
   
     var cardsList:[CardDetails] = Array()
     
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var walletLbl: UILabel!
     
+    @IBOutlet weak var payThroughbtn: UIButton!
     var isPaymentMethiodSelected = false
  
     override func isValidate() -> Bool {
@@ -35,6 +39,16 @@ class MobileTopUpPaymentVC: BaseVC , CurrencyListProtocol , CardSumitProtocol
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        toolTitle.text = "mobile_top_up".localized
+        pageTitle.text = "how_would_you_like".localized
+        walletLbl.text = "available_wallets".localized
+        btnWallet.setTitle("select_wallet".localized, for: .normal)
+        payThroughbtn.setTitle("pay_thorough_card".localized, for: .normal)
+        btnLoad.setTitle("load_cards".localized, for: .normal)
+        btnProcced.setTitle("proceed_to_pay".localized, for: .normal)
+        
         
         cardTableView.delegate = self
         cardTableView.dataSource = self
@@ -65,10 +79,10 @@ class MobileTopUpPaymentVC: BaseVC , CurrencyListProtocol , CardSumitProtocol
             if isPaymentMethiodSelected {
                 prepaidCharge()
             } else {
-                self.showError(message: "Select Wallet")
+                self.showError(message: "choose_wallet".localized)
             }
         } else {
-            self.showError(message: "KYC Error")
+            self.showError(message: "plz_complete_kyc".localized)
         }
         
        
@@ -76,12 +90,8 @@ class MobileTopUpPaymentVC: BaseVC , CurrencyListProtocol , CardSumitProtocol
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -108,7 +118,8 @@ class MobileTopUpPaymentVC: BaseVC , CurrencyListProtocol , CardSumitProtocol
         WRPrepaidRechargeRequest.shared.securityCode = cardCVV
         WRPrepaidRechargeRequest.shared.payInCurrency = "GBP"
         WRPrepaidRechargeRequest.shared.paymentTypeId = String(PaymentTypes.shared.CREDIT_CARD)
-        isPaymentMethiodSelected = false
+        isPaymentMethiodSelected = true
+        calRequest.payInCurrency = "GBP"
         getRates()
     }
     
@@ -171,8 +182,10 @@ extension MobileTopUpPaymentVC: UITableViewDelegate, UITableViewDataSource {
         WRPrepaidRechargeRequest.shared.expireDate = cardsList[indexPath.row].cardExpireDate
         WRPrepaidRechargeRequest.shared.paymentTypeId = String(PaymentTypes.shared.CREDIT_CARD)
         WRPrepaidRechargeRequest.shared.payInCurrency = "GBP"
+        calRequest.payInCurrency = "GBP"
+        
         AlertViewWithTextField.instance.delegate = self
-        AlertViewWithTextField.instance.showAlert(title: "enter_cvv", txtFieldPlaceHolder: "CVV")
+        AlertViewWithTextField.instance.showAlert(title: "enter_cvv".localized, txtFieldPlaceHolder: "CVV")
     }
     
     

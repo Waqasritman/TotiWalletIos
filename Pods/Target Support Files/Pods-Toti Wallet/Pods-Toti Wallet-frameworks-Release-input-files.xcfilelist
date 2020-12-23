@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-Toti Wallet/Pods-Toti Wallet-frameworks.s
 ${BUILT_PRODUCTS_DIR}/AYPopupPickerView/AYPopupPickerView.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/BarcodeScanner/BarcodeScanner.framework
+${BUILT_PRODUCTS_DIR}/FormTextField/FormTextField.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework

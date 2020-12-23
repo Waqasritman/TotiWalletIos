@@ -11,8 +11,9 @@ import UIKit
 class PurposeVC: BaseVC {
 
     
+    @IBOutlet weak var pageTitle: UILabel!
     let repository:MoneyTransferRepository = MoneyTransferRepository()
-    @IBOutlet weak var txtSearch: UITextField!
+    
     @IBOutlet weak var searchTableView: UITableView! {
         didSet {
             searchTableView.delegate = self
@@ -21,7 +22,7 @@ class PurposeVC: BaseVC {
     }
     
     
-    var list:[PurposeOfTransfer] = Array()
+   
     var filteredList:[PurposeOfTransfer] = Array()
     
     
@@ -30,7 +31,8 @@ class PurposeVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        pageTitle.text = "select_the_purpose_txt".localized
+        
         getPurposeList()
     }
     
@@ -54,7 +56,7 @@ class PurposeVC: BaseVC {
                     self.showError(message: error)
                     self.btnBackFunc(self)
                 } else if response!.responseCode == 101 {
-                    self.list.append(contentsOf: response!.purposeList!)
+                  
                     self.filteredList.append(contentsOf: response!.purposeList!)
                     self.searchTableView.reloadData()
                 } else {
@@ -72,19 +74,7 @@ class PurposeVC: BaseVC {
     
     
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        filteredList = list.filter({ (country) -> Bool in
-            let countryText: NSString = country.purposeOfTransfer as NSString
-            
-            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        searchTableView.reloadData()
-    }
+   
 
 }
 

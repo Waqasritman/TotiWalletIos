@@ -40,15 +40,23 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     @IBOutlet weak var receivingView: UIView!
     @IBOutlet weak var sendingView: UIView!
     
+    @IBOutlet weak var tooltitle: UILabel!
+    
+    @IBOutlet weak var mobileNolbl: UILabel!
+    @IBOutlet weak var descriptionlbl: UILabel!
+    @IBOutlet weak var walletNamelbl: UILabel!
+    @IBOutlet weak var commissionlbl: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    
     var isFromQrCode = false
     var customerNo = ""
     
     override func isValidate() -> Bool {
         if txtPhoneNumber.text!.isEmpty {
-            showError(message: "Enter number")
+            showError(message: "enter_mobile_no_error".localized)
             return false
         }  else if txtName.text!.isEmpty {
-            showError(message: "Enter Wallet name")
+            showError(message: "recever_name_error".localized)
             return false
         }
         return true
@@ -56,12 +64,32 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     
     
     func isRateValidate() -> Bool {
+        if calRequest.payInCurrency.isEmpty {
+            self.showError(message: "plz_select_sending_currency".localized)
+            return false
+        } else if calRequest.payoutCurrency.isEmpty {
+            self.showError(message: "plz_select_receiving_currency".localized)
+            return false
+        } else if txtFirst.text!.isEmpty {
+            self.showError(message: "please_enter_amount".localized)
+            return false
+        }
         return true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtFirst.delegate = self
+        btnConvert.setTitle("convert_string".localized, for: .normal)
+        pageTitle.text = "send_moeny_to_wallet".localized
+        tooltitle.text = "wallet_transfer".localized
+        commissionlbl.text = "commission_amount".localized
+        mobileNolbl.text = "mobile_number".localized
+        walletNamelbl.text = "wallet_name".localized
+        descriptionlbl.text = "description_txt_optional".localized
+        txtDescription.placeholder = "wallet_des_hint".localized
+        btnSendNow.setTitle("send_now".localized, for: .normal)
         
         btnConvert.layer.cornerRadius = 8
         btnConvert.layer.borderWidth = 1
@@ -147,12 +175,8 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -167,7 +191,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
             request.customerNo = customerNo
             request.emailAddress = ""
             request.mobileNo = ""
-            request.languageId = "1"
+            request.languageId = preferenceHelper.getApiLangugae()
             
             
             authRepo.getCustomerProfile(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER), completion: {(response , error) in
@@ -250,9 +274,11 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
             self.firstDropDown.text = currency.currencyShortName
             calRequest.payInCurrency = currency.currencyShortName
             calRequest.transferCurrency = currency.currencyShortName
+            sendingIcon.sd_setImage(with: URL(string: currency.image_URL), placeholderImage: UIImage(named: "flag"))
         } else {
             self.secondDropDown.text = currency.currencyShortName
             calRequest.payoutCurrency = currency.currencyShortName
+            receivingIcon.sd_setImage(with: URL(string: currency.image_URL), placeholderImage: UIImage(named: "flag"))
         }
         txtSecond.text = ""
     }
@@ -265,9 +291,13 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
                 self.firstDropDown.text = currencyList[0].currencyShortName
                 calRequest.payInCurrency = currencyList[0].currencyShortName
                 calRequest.transferCurrency = currencyList[0].currencyShortName
+                sendingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
+               
             } else {
                 self.secondDropDown.text = currencyList[0].currencyShortName
                 calRequest.payoutCurrency = currencyList[0].currencyShortName
+                receivingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
+              
             }
             
         } else {
@@ -312,7 +342,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
                     if let error = error {
                         self.showError(message: error)
                     } else if response!.responseCode == 101 {
-                        self.showAlert(title: "successfully_tranfared".localizedLowercase, message: "wallet_traansaction_success".localizedLowercase)
+                        self.showAlert(title: "successfully_tranfared".localized, message: "wallet_traansaction_success".localized , hidebtn: true)
                     } else {
                         self.showError(message: response!.description!)
                     }
@@ -333,6 +363,18 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     func showViews() {
         viewBottom.isHidden = false
         btnConvert.isHidden = true
+    }
+    
+}
+extension RepeatWalletTransactionVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+      //  if string.count > 0 { // if it was not delete character
+            hideViews()
+            txtSecond.text = "0.00"
+      //  }
+        
+        return true
     }
     
 }

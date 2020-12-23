@@ -11,19 +11,30 @@ import UIKit
 class MyCardsVC: BaseVC {
 
     let repo:Repository = Repository()
-    @IBOutlet weak var viewGooglePay: UIView!
-    @IBOutlet weak var viewPaytm: UIView!
+
     @IBOutlet weak var loadCardsBtn: UIButton!
     @IBOutlet weak var cardTableView: UITableView!
     var cardsList:[CardDetails] = Array()
     
+
+    @IBOutlet weak var addnewcardbtn: UIButton!
+    @IBOutlet weak var pageTitle: UILabel!
+    
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewGooglePay.layer.cornerRadius = 8
-        viewPaytm.layer.cornerRadius = 8
-       
+        cardTableView.isHidden = true
+        cardTableView.delegate = self
+        cardTableView.dataSource = self
+        
+      //  morePlatform.setTitle("more_platform".localized, for: .normal)
+        pageTitle.text = "my_cards_and_bank".localized
+        addnewcardbtn.setTitle("add_card".localized, for: .normal)
+        loadCardsBtn.setTitle("load_cards".localized, for: .normal)
+       // linkLabel.text = "link_txt".localized
+       // googlePaylabel.text = "google_play_txt".localized
+       // paytmLabel.text = "paytm_txt".localized
     }
     
     
@@ -58,6 +69,8 @@ class MyCardsVC: BaseVC {
                     self.cardTableView.reloadData()
                     self.cardTableView.isHidden = false
                     self.loadCardsBtn.isHidden = true
+                    
+                    self.cardTableView.reloadData()
                 } else {
                     self.showError(message: response!.description!)
                 }

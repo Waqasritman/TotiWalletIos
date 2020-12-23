@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectCurrencyVC: BaseVC ,UISearchBarDelegate {
+class SelectCurrencyVC: BaseVC  {
 
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var txtSearch: UITextField!
@@ -20,6 +20,7 @@ class SelectCurrencyVC: BaseVC ,UISearchBarDelegate {
     }
     
     
+    @IBOutlet weak var pageTitle: UILabel!
     var countriesList:[RecCurrency] = Array()
     var filteredList:[RecCurrency] = Array()
     
@@ -29,7 +30,9 @@ class SelectCurrencyVC: BaseVC ,UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        txtSearch.delegate = self
+        pageTitle.text = "select_currecny".localized
+        txtSearch.placeholder = "search".localized
    
     }
     
@@ -38,24 +41,6 @@ class SelectCurrencyVC: BaseVC ,UISearchBarDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
-    
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
-        filteredList = countriesList.filter({ (country) -> Bool in
-            let countryText: NSString = country.currencyName as NSString
-            
-            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-        })
-        searchTableView.reloadData()
-    }
-
 }
 
 //MARK : TableView Functions
@@ -69,10 +54,8 @@ extension SelectCurrencyVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! CountryTableCell
         cell.lblTitle.text = filteredList[indexPath.row].currencyShortName
-       
-            cell.lblDetail.text = ""
+        cell.lblDetail.text = ""
         
-       
         cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].image_URL), placeholderImage: UIImage(named: "flag"))
         cell.imageOutlet.makeImageCircle()
         return cell
@@ -83,4 +66,27 @@ extension SelectCurrencyVC: UITableViewDelegate, UITableViewDataSource {
         self.btnBackFunc(self)
     }
 
+}
+extension SelectCurrencyVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let string1 = string
+        let string2 = txtSearch.text!
+        var finalString = ""
+        
+        if string.count > 0 { // if it was not delete character
+            finalString = string2 + string1
+        }
+        else if string2.count > 0{ // if it was a delete character
+            
+            finalString = String(string2.dropLast())
+        }
+        
+        filteredList.removeAll()
+        filteredList = countriesList.filter { $0.currencyShortName.lowercased().hasPrefix(finalString.lowercased())}
+        
+        searchTableView.reloadData()
+        return true
+    }
+    
 }

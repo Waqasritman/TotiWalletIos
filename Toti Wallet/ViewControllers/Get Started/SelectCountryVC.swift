@@ -16,6 +16,7 @@ class SelectCountryVC: BaseVC {
     @IBOutlet weak var searchTableView: UITableView!
 
     
+    @IBOutlet weak var pageTitle: UILabel!
     var countriesList:[WRCountryList] = Array()
     var filteredList:[WRCountryList] = Array()
     
@@ -28,7 +29,8 @@ class SelectCountryVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        pageTitle.text = "select_country".localized
+        txtSearch.placeholder = "search".localized
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
@@ -74,24 +76,6 @@ class SelectCountryVC: BaseVC {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
-    
-    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        // When there is no text, filteredData is the same as the original data
-//        // When user has entered text into the search box
-//        // Use the filter method to iterate over all items in the data array
-//        // For each item, return true if the item should be included and false if the
-//        // item should NOT be included
-//        filteredList = countriesList.filter({ (country) -> Bool in
-//            let countryText: NSString = country.countryName as NSString
-//
-//            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
-//        })
-//        searchTableView.reloadData()
-//    }
-
 }
 
 //MARK : TableView Functions

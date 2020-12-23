@@ -16,4 +16,5 @@ pod 'PhoneNumberKit', '~> 3.3'
 pod 'BarcodeScanner'
 pod 'AYPopupPickerView'
 pod 'TOCropViewController'
+pod 'FormTextField'
 end

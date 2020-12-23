@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.9.1)
   - AYPopupPickerView (1.2)
   - BarcodeScanner (5.0.0)
+  - FormTextField (3.0.0)
   - IQKeyboardManagerSwift (6.5.6)
   - PhoneNumberKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - AYPopupPickerView
   - BarcodeScanner
+  - FormTextField
   - IQKeyboardManagerSwift
   - PhoneNumberKit (~> 3.3)
   - SDWebImage (~> 5.0)
@@ -39,6 +41,7 @@ SPEC REPOS:
     - Alamofire
     - AYPopupPickerView
     - BarcodeScanner
+    - FormTextField
     - IQKeyboardManagerSwift
     - PhoneNumberKit
     - SDWebImage
@@ -51,6 +54,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AYPopupPickerView: 639e88c630c79f68e1dc34cf2c90f43ea2dbff46
   BarcodeScanner: 2f5a53198eae49dc39bf61f2c1f05c04e01ff72d
+  FormTextField: fd5dc441ad40ba12d08ef66aeb0453ee9bf55e6d
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
@@ -59,6 +63,6 @@ SPEC CHECKSUMS:
   TOCropViewController: da59f531f8ac8a94ef6d6c0fc34009350f9e8bfe
   XMLMapper: 758f91d48600afe51e1e9a973cbe779df7a20d99
 
-PODFILE CHECKSUM: 15b91ab9388ef573169de86425587e8ea9bee22e
+PODFILE CHECKSUM: 058d0e03d252a081036a7b8bb6b52d0af1f8324b
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

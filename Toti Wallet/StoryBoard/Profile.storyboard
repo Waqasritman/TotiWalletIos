@@ -72,14 +72,14 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7vv-iZ-K5z">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7vv-iZ-K5z">
                                                 <rect key="frame" x="16" y="97" width="343" height="42"/>
                                                 <color key="backgroundColor" name="F7F7F7"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="l4f-EA-M8v"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail address*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtT-lX-O0c">
                                                 <rect key="frame" x="16" y="233.5" width="343" height="16.5"/>
@@ -221,6 +221,14 @@
                     </view>
                     <connections>
                         <outlet property="btnNext" destination="3m8-67-zFd" id="Tav-S5-h5b"/>
+                        <outlet property="emailAddresslbl" destination="MtT-lX-O0c" id="PIg-ar-Dus"/>
+                        <outlet property="femaleBtn" destination="1jw-4W-cmV" id="fAr-8B-6v8"/>
+                        <outlet property="firstNamelbl" destination="RXk-gh-8PF" id="sH1-eX-3FZ"/>
+                        <outlet property="genderLbl" destination="O7g-03-5Rj" id="J51-4e-s6R"/>
+                        <outlet property="lastNamelbl" destination="Df0-WG-BC6" id="lth-lM-aUA"/>
+                        <outlet property="maleBtn" destination="hwv-QP-xtY" id="vvO-eh-iKf"/>
+                        <outlet property="middleNamelbl" destination="dey-4i-Wn3" id="eOm-ng-Mmw"/>
+                        <outlet property="pagetitle" destination="yFt-Q5-I1U" id="UI8-yg-1As"/>
                         <outlet property="txtEmailAddress" destination="dT7-xi-xd7" id="tHo-Pw-59y"/>
                         <outlet property="txtFirstName" destination="7vv-iZ-K5z" id="gfV-Lw-B2u"/>
                         <outlet property="txtLastName" destination="ugU-Rv-M2h" id="icY-C7-tWl"/>
@@ -423,9 +431,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addresslbl" destination="xvv-Yo-nFU" id="LwU-vy-JIE"/>
                         <outlet property="btnCountryName" destination="zhg-Bh-Ord" id="pbK-kZ-tIQ"/>
                         <outlet property="btnNationality" destination="dPv-Ko-O2q" id="gzQ-1c-SAO"/>
                         <outlet property="btnNext" destination="cq5-Eu-ZnQ" id="ptr-l7-7M4"/>
+                        <outlet property="cityLbl" destination="Alx-1o-fQD" id="2D1-PS-RkV"/>
+                        <outlet property="countryTitle" destination="sFX-RV-SdR" id="DiV-Km-ryy"/>
+                        <outlet property="nationalitylbl" destination="X2t-yQ-SEU" id="wbL-R9-ENp"/>
+                        <outlet property="pageTitle" destination="wqF-pW-HD3" id="olL-U3-jOb"/>
                         <outlet property="txtAddress" destination="2XX-sA-Z0w" id="DXQ-vF-v42"/>
                         <outlet property="txtCity" destination="XbY-dx-nNN" id="q0M-0L-MJF"/>
                         <outlet property="viewMain" destination="9KZ-IS-uRO" id="KHj-11-LBN"/>

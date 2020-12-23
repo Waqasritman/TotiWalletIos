@@ -15,13 +15,17 @@ class BusinessTranscationVC: BaseVC {
     @IBOutlet weak var txtContactNumber: UITextField!
     @IBOutlet weak var btnNext: UIButton!
     
+
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var toolTitle: UILabel!
+    @IBOutlet weak var nameTitle: UILabel!
+    @IBOutlet weak var addressTitle: UILabel!
+    @IBOutlet weak var contacttitle: UILabel!
+    
     
     override func isValidate() -> Bool {
         if txtBeneficiaryName.text!.isEmpty {
-            return false
-        } else if txtAddress.text!.isEmpty {
-            return false
-        } else if txtContactNumber.text!.isEmpty {
+            showError(message: "enter_name_bene_error".localized)
             return false
         }
         return true
@@ -30,6 +34,18 @@ class BusinessTranscationVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        toolTitle.text = "swift_transfer".localized
+        pageTitle.text = "enter_bene_personal_details".localized
+        nameTitle.text = "beneficiary_name_account_title".localized
+        addressTitle.text = "address_txt".localized
+        contacttitle.text = "contact_no".localized
+        
+        txtBeneficiaryName.placeholder = "jhon_smith".localized
+        txtAddress.placeholder = "address__hint".localized
+        txtContactNumber.placeholder = "phone_number_hint".localized
+        btnNext.setTitle("next".localized, for: .normal)
+        
     
         txtBeneficiaryName.layer.cornerRadius = 8
         txtAddress.layer.cornerRadius = 8
@@ -61,6 +77,8 @@ class BusinessTranscationVC: BaseVC {
     }
    
     @IBAction func closeBtnAction(_ sender: Any) {
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
 }

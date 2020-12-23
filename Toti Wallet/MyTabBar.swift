@@ -8,9 +8,15 @@
 
 import UIKit
 
-class MyTabBar: UITabBar {
+protocol MyTabBarDelegate {
+    func Tesst()
+}
+
+class MyTabBar: UITabBar  {
 
     private var middleButton = UIButton()
+    
+    var delegatse: MyTabBarDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,13 +45,17 @@ class MyTabBar: UITabBar {
         middleButton.backgroundColor = UIColor.white
         middleButton.layer.cornerRadius = 30
         middleButton.layer.masksToBounds = true
+        
+        
         middleButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 0)
         middleButton.addTarget(self, action: #selector(test), for: .touchUpInside)
         addSubview(middleButton)
     }
     
     @objc func test() {
-        print("my name is jeff")
+        delegatse?.Tesst()
+//        let nextVC = ControllerID.quickPayVC.instance
+//        self.pushWithFullScreen(nextVC)
     }
 
 }

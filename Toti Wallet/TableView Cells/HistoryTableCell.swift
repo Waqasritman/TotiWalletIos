@@ -18,7 +18,6 @@ protocol RepeatDelegate {
 
 class HistoryTableCell: UITableViewCell {
 
-    
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var lblType: UILabel!
     @IBOutlet weak var lblDate: UILabel!
@@ -33,6 +32,8 @@ class HistoryTableCell: UITableViewCell {
     
     var receiptDelegate:ReceiptDelegate!
     var walletDelegate:RepeatDelegate!
+    
+
     
     @IBAction func onClickReceipt(_ sender:Any) {
         if receiptDelegate != nil {
@@ -67,11 +68,11 @@ class HistoryTableCell: UITableViewCell {
         lblStatus.text = walletHistory.status
         
         if walletHistory.status.lowercased().elementsEqual("received") {
-            lblTransferType.text = "Received from"
+            lblTransferType.text = "received_from".localized
             lblName.text = walletHistory.senderName
             btnReceipt.isHidden = true
         } else {
-            lblTransferType.text = "Transfer to"
+            lblTransferType.text = "transfer_to".localized
             lblName.text = walletHistory.receiverName
             btnReceipt.isHidden = false
         }

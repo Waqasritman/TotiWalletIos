@@ -20,20 +20,25 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     
     @IBOutlet weak var flagIcon: UIImageView!
     
+    @IBOutlet weak var mobileLbl: UILabel!
+    @IBOutlet weak var toolTitlelbl: UILabel!
+    @IBOutlet weak var pageTitlelbl: UILabel!
+    @IBOutlet weak var amountlbl: UILabel!
+    @IBOutlet weak var descriptionlbl: UILabel!
     
     override func isValidate() -> Bool {
         
         if codeLbl.text!.isEmpty {
-            self.showError(message: "select country")
+            self.showError(message: "plz_select_country_code".localized)
             return false
         } else if txtPhoneNumber.text!.isEmpty {
-            self.showError(message: "enter number")
+            self.showError(message: "enter_mobile_no_error".localized)
             return false
         } else if txtAmount.text!.isEmpty {
-            self.showError(message: "enter amount")
+            self.showError(message: "please_enter_amount".localized)
             return false
         } else if !verifyNumber(number: codeLbl.text! + txtPhoneNumber.text!) {
-            showError(message: "Enter Number Is Invalid")
+            showError(message: "invalid_number".localized)
             return false
         }
         return true
@@ -42,6 +47,16 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toolTitlelbl.text = "wallet_transfer".localized
+        pageTitlelbl.text = "request_money_from_wallet".localized
+        mobileLbl.text = "mobile_number".localized
+        amountlbl.text = "single_amount_txt".localized
+        descriptionlbl.text = "description_txt_optional".localized
+        btnRequestMoney.setTitle("request_money".localized, for: .normal)
+        txtAmount.placeholder = "0.00".localized
+        txtDescription.placeholder = "wallet_des_hint".localized
+        txtPhoneNumber.placeholder = "phone_number_hint".localized
         
         txtAmount.layer.cornerRadius = 8
         txtDescription.layer.cornerRadius = 8
@@ -79,7 +94,7 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
                         if let error = error {
                             self.showError(message: error)
                         } else if response!.responseCode == 101 {
-                            self.showAlert(title: "Request money", message: "Request sent successfully")
+                            self.showAlert(title: "request_money".localized, message: "request_money_message".localized , hidebtn: true)
                         } else {
                             self.showError(message: response!.description!)
                         }
@@ -91,12 +106,8 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -108,12 +119,5 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
         codeLbl.text = country.countryCode
     }
     
-    
-    override func handleAction(action: Bool) {
-        if action {
-            self.navigationController?.popToViewController(ControllerID.tabbar.instance, animated: true)
-            // let nextVC = ControllerID.tabbar.instance
-            // self.pushWithFullScreen(nextVC)
-        }
-    }
+   
 }

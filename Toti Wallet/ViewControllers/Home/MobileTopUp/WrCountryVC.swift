@@ -13,6 +13,7 @@ class WrCountryVC: BaseVC {
     let repo:UtilityRepository = UtilityRepository()
     
     @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet weak var toolTitle: UILabel!
     
     var countriesList:[WRCountry] = []
     var delegate:WRCountryListProtocol!
@@ -22,7 +23,7 @@ class WrCountryVC: BaseVC {
         searchTableView.delegate = self
         searchTableView.dataSource = self
         
-        
+        toolTitle.text = "select_country".localized
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = GetWRCountryListRequest()

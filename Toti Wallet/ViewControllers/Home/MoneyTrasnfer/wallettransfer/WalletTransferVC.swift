@@ -44,33 +44,43 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     @IBOutlet weak var sendingIcon: UIImageView!
     @IBOutlet weak var countryVIew: UIView!
     
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var tooltitle: UILabel!
+    @IBOutlet weak var commlbl: UILabel!
+    
+    @IBOutlet weak var mobilelbl: UILabel!
+    @IBOutlet weak var walletnamelbl: UILabel!
+    @IBOutlet weak var descriptionbl: UILabel!
+    
     override func isValidate() -> Bool {
         if isOwnWallet {
             return true
         }
         if lblCode.text!.isEmpty {
-            showError(message: "Select Country")
+            showError(message: "plz_select_country_code".localized)
             return false
         } else if txtPhoneNumber.text!.isEmpty {
-            showError(message: "Enter number")
+            showError(message: "enter_mobile_no_error".localized)
             return false
         } else if !verifyNumber(number: lblCode.text! + txtPhoneNumber.text!) {
-            showError(message: "Enter Number Is Invalid")
+            showError(message: "invalid_number".localized)
             return false
         } else if txtName.text!.isEmpty {
-            showError(message: "Enter Wallet name")
+            showError(message: "recever_name_error".localized)
             return false
         }
         return true
     }
     
-    
     func isRateValidate() -> Bool {
         if calRequest.payInCurrency.isEmpty {
+            self.showError(message: "plz_select_sending_currency".localized)
             return false
         } else if calRequest.payoutCurrency.isEmpty {
+            self.showError(message: "plz_select_receiving_currency".localized)
             return false
         } else if txtFirst.text!.isEmpty {
+            self.showError(message: "please_enter_amount".localized)
             return false
         }
         return true
@@ -79,6 +89,22 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtFirst.delegate = self
+        btnConvert.setTitle("convert_string".localized, for: .normal)
+        pageTitle.text = "send_moeny_to_wallet".localized
+        tooltitle.text = "wallet_transfer".localized
+        commlbl.text = "commission_amount".localized
+        mobilelbl.text = "mobile_number".localized
+        walletnamelbl.text = "wallet_name".localized
+        descriptionbl.text = "description_txt_optional".localized
+        txtDescription.placeholder = "wallet_des_hint".localized
+        btnSendNow.setTitle("send_now".localized, for: .normal)
+        txtSecond.isEnabled = false
+        
+        
+        txtPhoneNumber.placeholder = "phone_number_hint".localized
+        txtName.placeholder = "name_hint".localized
+        
         
         btnConvert.layer.cornerRadius = 8
         btnConvert.layer.borderWidth = 1
@@ -173,12 +199,8 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
-        if let destinationViewController = navigationController?.viewControllers
-            .filter(
-                {$0 is CustomTabBarController})
-            .first {
-            navigationController?.popToViewController(destinationViewController, animated: true)
-        }
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
@@ -324,7 +346,7 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
                     if let error = error {
                         self.showError(message: error)
                     } else if response!.responseCode == 101 {
-                        self.showAlert(title: "successfully_tranfared".localizedLowercase, message: "wallet_traansaction_success".localizedLowercase)
+                        self.showAlert(title: "successfully_tranfared".localized, message: "wallet_traansaction_success".localized , hidebtn: true)
                     } else {
                         self.showError(message: response!.description!)
                     }
@@ -345,6 +367,19 @@ class WalletTransferVC: BaseVC ,  CountryListProtocol , CurrencyListProtocol
     func showViews() {
         viewBottom.isHidden = false
         btnConvert.isHidden = true
+    }
+
+    
+}
+extension WalletTransferVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+       // if string.count > 0 { // if it was not delete character
+            hideViews()
+            txtSecond.text = "0.00"
+        //}
+        
+        return true
     }
     
 }

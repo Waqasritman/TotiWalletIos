@@ -13,7 +13,7 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var settingTableView: UITableView!
     
     
-    let tableData = ["About Us", "Terms & Conditions", "Pricacy Policy"]
+    let tableData = ["about_us".localized, "terms".localized, "privacy".localized]
     let tableImages = [#imageLiteral(resourceName: "sideMenuInfo"),#imageLiteral(resourceName: "sideMenuInfo"),#imageLiteral(resourceName: "sideMenuInfo")]
     
     override func viewDidLoad() {

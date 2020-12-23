@@ -35,6 +35,11 @@ class CompleteRegistrationVC: BaseVC , CountryListProtocol , IdTypeProtocol {
     @IBOutlet weak var lblCountryCode:UILabel!
     @IBOutlet weak var countryFlag:UIImageView!
     
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var mobileNolbl: UILabel!
+    
+    
+    
     var isNumberEmpty = false
     let popupDatePickerView = AYPopupDatePickerView()
     
@@ -49,27 +54,35 @@ class CompleteRegistrationVC: BaseVC , CountryListProtocol , IdTypeProtocol {
     override func isValidate() -> Bool {
         if isNumberEmpty {
             if countryCode.isEmpty {
+                showError(message: "plz_select_country_code".localized)
                 return false
             } else if txtPhoneNumber.text!.isEmpty {
+                showError(message: "enter_mobile_no_error".localized)
                 return false
             } else if !verifyNumber(number: countryCode + txtPhoneNumber.text!) {
-                showError(message: "Entered Number Is Invalid")
+                showError(message: "invalid_number".localized)
                 return false
             }
-            return false
+         
         }
         if !isIssueCountrySelect {
+            showError(message: "plz_select_country_error".localized)
             return false
         } else if idType.isEmpty {
+            showError(message: "plz_select_id_type".localized)
             return false
         } else if txtNumber.text!.isEmpty {
+            showError(message: "plz_enter_id_number".localized)
             return false
         } else if !isIssueDateSelected {
+            showError(message: "plz_select_issue_date".localized)
             return false
         } else if !isExpireDateSelected {
+            showError(message: "plz_select_expire_date".localized)
             return false
         } else if !switchOutlet.isOn {
             if dateOfBirth.isEmpty {
+                showError(message: "enter_dob_error".localized)
                 return false
             }
         }
@@ -83,13 +96,26 @@ class CompleteRegistrationVC: BaseVC , CountryListProtocol , IdTypeProtocol {
         initDesign()
         setLabels()
         setLocalizie()
+        
+        
+        pageTitle.text = "please_complete_kyc".localized
+        mobileNolbl.text = "mobile_number".localized
+        txtPhoneNumber.placeholder = "phone_number_hint".localized
+        btnCountry.setTitle("select_country".localized, for: .normal)
+        btnIDType.setTitle("please_select_id_type".localized, for: .normal)
+        txtNumber.placeholder = "01234".localized
+        btnIssueDate.setTitle("date_hint".localized, for: .normal)
+        btnExpireDate.setTitle("date_hint".localized, for: .normal)
+        btnDOB.setTitle("date_hint".localized, for: .normal)
     }
     
     
     
     
     @objc func showCountriesFunc(_ sender: UITapGestureRecognizer) {
+        isNumberCountrySelect = true
         let nextVC = ControllerID.selectCountryVC.instance
+        (nextVC as! SelectCountryVC).countryProtocol = self
         self.pushWithFullScreen(nextVC)
     }
     
@@ -114,7 +140,7 @@ class CompleteRegistrationVC: BaseVC , CountryListProtocol , IdTypeProtocol {
             (nextVC as! IDTypeVC).delegate = self
             self.pushWithFullScreen(nextVC)
         } else {
-            self.showError(message: "Select issuance Country")
+            self.showError(message: "plz_select_country_error".localized)
         }
     }
     
@@ -172,7 +198,7 @@ class CompleteRegistrationVC: BaseVC , CountryListProtocol , IdTypeProtocol {
         if isValidate() {
             editCustomerRequest.customer = preferenceHelper.getCustomerData()
             if isNumberEmpty {
-                editCustomerRequest.customer.phoneNumber = ""
+                editCustomerRequest.customer.phoneNumber = String().removePlus(number: countryCode+txtPhoneNumber.text!)
             } else {
                 editCustomerRequest.customer.phoneNumber = preferenceHelper.getPhoneForKYC()
             }
@@ -219,8 +245,9 @@ class CompleteRegistrationVC: BaseVC , CountryListProtocol , IdTypeProtocol {
     
     func onSelectCountry(country: WRCountryList) {
         if isNumberCountrySelect {
-            // lblCountry.text = country.countryName
-            
+            countryCode = country.countryCode
+            lblCountryCode.text = country.countryCode
+            countryFlag.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
         } else if isIssueCountrySelect {
             btnCountry.setTitle(country.countryName, for: .normal)
             btnCountry.setTitleColor(UIColor.black, for: .normal)
@@ -266,32 +293,32 @@ extension CompleteRegistrationVC {
     func setLabels() {
         if switchOutlet.isOn == false {
             editCustomerRequest.customer.dob = dateOfBirth
-            lblRegistrationType.text = "Individual registration"
-            lblCountry.text = "ID issuance country*"
+            lblRegistrationType.text = "individual_reg".localized
+            lblCountry.text = "issuance_country".localized
            // btnCountry.setTitle("select Country", for: .normal)
-            lblIDType.text = "ID type*"
+            lblIDType.text = "id_type".localized
           //  btnIDType.setTitle("Please select ID type", for: .normal)
-            lblIDNumber.text = "ID Number*"
+            lblIDNumber.text = "id_number_text".localized
            // txtNumber.placeholder = "Enter number"
-            lblIssueDate.text = "ID issue date*"
+            lblIssueDate.text = "id_issue_date".localized
           //  btnIssueDate.setTitle("mm/dd/yyyy", for: .normal)
-            lblExpireDate.text = "ID expire date*"
+            lblExpireDate.text = "id_expirey_date".localized
            // btnExpireDate.setTitle("mm/dd/yyyy", for: .normal)
             dobStackView.isHidden = false
-            
+            lblDOB.text = "date_of_birth_txt".localized
         }
         else {
             editCustomerRequest.customer.dob = "10/12/1900"
-            lblRegistrationType.text = "Business registration"
-            lblCountry.text = "Business issuance country*"
+            lblRegistrationType.text = "bussiness_regis".localized
+            lblCountry.text = "business_issue_country".localized
           //  btnCountry.setTitle("select Country", for: .normal)
-            lblIDType.text = "Business id type*"
+            lblIDType.text = "business_id_type".localized
            // btnIDType.setTitle("Please select ID type", for: .normal)
-            lblIDNumber.text = "Business id number"
+            lblIDNumber.text = "business_id_number_text".localized
            // txtNumber.placeholder = "1234"
-            lblIssueDate.text = "Business id issue date*"
+            lblIssueDate.text = "business_id_issue_date".localized
           //  btnIssueDate.setTitle("mm/dd/yyyy", for: .normal)
-            lblExpireDate.text = "Business id expire date*"
+            lblExpireDate.text = "business_id_expirey_date".localized
           //  btnExpireDate.setTitle("mm/dd/yyyy", for: .normal)
             dobStackView.isHidden = true
         

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+//
 
 class EditProfileVC: BaseVC {
     var customerProfile = GetCustomerProfileResponse()
     let authRepo:AuthRepository = AuthRepository()
+    let restRepo:RestRepositor = RestRepositor()
     @IBOutlet weak var txtFirstName: UITextField!
     @IBOutlet weak var txtLastName: UITextField!
     @IBOutlet weak var txtNumber: UITextField!
@@ -22,11 +24,30 @@ class EditProfileVC: BaseVC {
     @IBOutlet weak var imgOutlet: UIImageView!
     @IBOutlet weak var maleBtn: UIButton!
     @IBOutlet weak var femaleBtn: UIButton!
+    var imagePicker: ImagePicker!
+    
+    
+    @IBOutlet weak var genderlbl: UILabel!
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var btnEdit: UIButton!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        pageTitle.text = "edit_profile_txt".localized
+        btnEdit.setTitle("edit".localized, for: .normal)
+        maleBtn.setTitle("male".localized, for: .normal)
+        femaleBtn.setTitle("female".localized, for: .normal)
+        genderlbl.text = "gender".localized
+        btnUpdate.setTitle("update_profile".localized, for: .normal)
+        txtAddress.placeholder = "address".localized
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         imgOutlet.layer.cornerRadius = imgOutlet.frame.height/2
+        imgOutlet.image = fromBase64(strBase64: preferenceHelper.getUserImage())
         txtFirstName.layer.cornerRadius = 8
         txtLastName.layer.cornerRadius = 8
         txtNumber.layer.cornerRadius = 8
@@ -50,13 +71,16 @@ class EditProfileVC: BaseVC {
         disableViews()
     }
     
-    @IBAction func btnBackFunc(_ sender: UIButton) {
+    @IBAction func btnBackFunc(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func editProfilePicture(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
+    }
     
+
     @IBAction func btnUpdateProfile(_ sender:UIButton) {
-        
         let editCustomerProfileRequest:EditCustomerProfileRequest = EditCustomerProfileRequest()
         editCustomerProfileRequest.customer.firstName = customerProfile.firstName
         editCustomerProfileRequest.customer.lastName = customerProfile.lastName
@@ -84,6 +108,7 @@ class EditProfileVC: BaseVC {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
                     self.showSuccess(message: response!.description)
+                    self.btnBackFunc(self)
                 } else {
                     self.showError(message: response!.description!)
                 }
@@ -146,4 +171,37 @@ class EditProfileVC: BaseVC {
         txtAddress.text = customer.address
     }
     
+}
+extension EditProfileVC: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        imgOutlet.image = image
+      
+        if image != nil {
+            if Network.isConnectedToNetwork() {
+                showProgress()
+                let request = UploadKYCImageRequest()
+                request.Customer_No = preferenceHelper.getCustomerNo()
+                request.Image_Name = "User_IMAGE.jpg"
+                request.Image = UIImageView().convertImageToBase64String(img: image!)
+                request.credentials.LanguageID = Int(preferenceHelper.getApiLangugae())!
+                print(request.toJSON())
+                
+                restRepo.uploadCustomerImage(param: request.toJSON(), completion: {(response , error ) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error.localizedDescription)
+                    } else if response!.ResponseCode == 101 {
+                        self.showSuccess(message: response!.Description)
+                        preferenceHelper.userImage(imageData:  request.Image)
+                    } else {
+                        self.showError(message: response!.Description)
+                    }
+                })
+                
+            }
+        } else {
+            self.showError(message: "Select Image")
+        }
+    }
 }

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol {
+class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol , UITextFieldDelegate {
    
-    
-
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var toolTitle: UILabel!
     let addBeneRepo = BeneficiaryRespository()
     @IBOutlet weak var hdfcCodeField:UITextField!
     @IBOutlet weak var accountNoField:UITextField!
@@ -29,13 +29,20 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol {
     
     var bankNetworkList:[BankNetwork] = []
     
+    @IBOutlet weak var ifscLbl: UILabel!
+    @IBOutlet weak var reEnteraccountlbl: UILabel!
+    @IBOutlet weak var accountNolbl: UILabel!
+    @IBOutlet weak var bankNamelbl: UILabel!
     
     override func isValidate() -> Bool {
         if accountNoField.text!.isEmpty {
+            showError(message: "enter_account_no_error".localized)
             return false
         } else if reEnterAccountNoField.text!.isEmpty {
+            showError(message: "enter_account_no_error".localized)
             return false
         } else if !accountNoField.text!.elementsEqual(reEnterAccountNoField.text!) {
+            showError(message: "account_no_same_error".localized)
             return false
         }
         return true
@@ -50,6 +57,11 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol {
         reEnterAccountNoField.setLeftPaddingPoints(10)
         hdfcCodeField.setLeftPaddingPoints(10)
         accountNoField.setLeftPaddingPoints(10)
+        hdfcCodeLbl.setLeftPaddingPoints(10)
+       
+        
+        accountNoField.delegate = self
+        reEnterAccountNoField.delegate = self
         
         btnSearchBank.layer.cornerRadius = 8
         btnSearchBank.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
@@ -59,6 +71,26 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol {
         
         bankNameLbl.imageEdgeInsets.left = self.view.frame.width - 50
        
+        hdfcCodeField.layer.cornerRadius = 8
+        accountNoField.layer.cornerRadius = 8
+        reEnterAccountNoField.layer.cornerRadius = 8
+        hdfcCodeLbl.layer.cornerRadius = 8
+        
+
+        toolTitle.text = "bank_beneficairy".localized
+        pageTitle.text = "enter_ifsc_code".localized
+        hdfcLbl.text = "ifsc_text".localized
+        bankNamelbl.text = "bank_name".localized
+        accountNolbl.text = "account_no_txt".localized
+        reEnteraccountlbl.text = "re_enter_account_no_m".localized
+        ifscLbl.text = "ifsc_code".localized
+        
+        hdfcCodeField.placeholder = "ifsc_code".localized
+        btnSearchBank.setTitle("search_bank".localized, for: .normal)
+        bankNameLbl.setTitle("bank_name".localized, for: .normal)
+        accountNoField.placeholder = "account_no_hint".localized
+        reEnterAccountNoField.placeholder = "account_no_hint".localized
+        hdfcCodeLbl.placeholder = "ifsc_code".localized
     }
     
 
@@ -103,14 +135,14 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol {
                 
             }
         } else {
-            self.showError(message: "Enter HDFC Code")
+            self.showError(message: "enter_ifsc_code".localized)
         }
     }
     
     
     
     func onSelectBankNetwork(network: BankNetwork) {
-        bankNameLbl.setTitle(network.branchName, for: .normal)
+        bankNameLbl.setTitle(network.bankName, for: .normal)
         bankNameLbl.setTitleColor(.black, for: .normal)
         ifscStack.isHidden = true
         bankStack.isHidden = false
@@ -142,6 +174,12 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol {
                         self.showError(message: error)
                     } else if response!.responseCode == 101 {
                         self.showSuccess(message: response!.description!)
+                        for controller in self.navigationController!.viewControllers as Array {
+                                if controller.isKind(of: BeneficiaryListVC.self) {
+                                    _ =  self.navigationController!.popToViewController(controller, animated: true)
+                                    break
+                                }
+                            }
                     } else {
                         self.showError(message: response!.description!)
                     }
@@ -153,8 +191,22 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol {
     }
     
     
+    @IBAction func onClossClick(_ sender:Any) {
+        AlertView.instance.delegate = self
+        AlertView.instance.showAlert(title: "cancel_tran".localized)
+    }
+    
     @IBAction func btnBackFunc(_ sender:Any) {
         self.navigationController?.popViewController(animated: true)
     }
 
+}
+extension BankBeneficiaryIndiaVC {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let aSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        return string == numberFiltered
+    }
 }
