@@ -44,7 +44,7 @@ class SourceOfIncomeVC: BaseVC {
         if Network.isConnectedToNetwork() {
             showProgress()
             let request:GetSourceIncomeListRequest = GetSourceIncomeListRequest()
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             
             repository.getSourceOfIncome(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_SOURCE_OF_INCOME), completion: {(response , error) in
                 self.hideProgress()

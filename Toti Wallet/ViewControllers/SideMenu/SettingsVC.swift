@@ -13,7 +13,8 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var settingTableView: UITableView!
     
     
-    let tableData = ["about_us".localized, "terms".localized, "privacy".localized]
+    let tableData = ["terms".localized, "privacy".localized , "FAQ".localized]
+    let headingData = ["terms_text".localized ,"privacy_txt".localized , "".localized]
     let tableImages = [#imageLiteral(resourceName: "sideMenuInfo"),#imageLiteral(resourceName: "sideMenuInfo"),#imageLiteral(resourceName: "sideMenuInfo")]
     
     override func viewDidLoad() {
@@ -45,8 +46,15 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = ControllerID.businessTextVC.instance
-        (nextVC as! BusinessTextVC).heading = tableData[indexPath.row]
-        self.pushWithFullScreen(nextVC)
+        if indexPath.row == 2 {
+            let nextVC = ControllerID.faqVc.instance
+            self.pushWithFullScreen(nextVC)
+        } else {
+            let nextVC = ControllerID.businessTextVC.instance
+            (nextVC as! BusinessTextVC).heading = tableData[indexPath.row]
+            (nextVC as! BusinessTextVC).detailTxt = headingData[indexPath.row]
+            self.pushWithFullScreen(nextVC)
+        }
+       
     }
 }

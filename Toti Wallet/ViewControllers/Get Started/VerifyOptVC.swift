@@ -34,7 +34,7 @@ class VerifyOptVC: BaseVC {
     
     
     override func isValidate() -> Bool {
-        if viewVerificationCode.getVerificationCode().count < 4 {
+        if viewVerificationCode.getVerificationCode().trim().count < 4 {
             showError(message: "askfordigit".localized)
             return false
         }
@@ -99,8 +99,8 @@ class VerifyOptVC: BaseVC {
                     if let error = error {
                         self.showError(message: error)
                     } else {
-                        self.showAlert(title: "attention_txt".localized, message: "otp_message".localized +
-                                        verifyOTPRequest.OTP + "remember_me_otp".localized , hidebtn: true)
+                        self.showAlert(title: "attention_txt".localized, message: "otp_message".localized 
+                                       + " " + verifyOTPRequest.OTP + " " + "remember_me_otp".localized , hidebtn: true)
                     }
                 })
                 

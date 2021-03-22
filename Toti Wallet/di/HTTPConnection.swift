@@ -9,8 +9,8 @@
 import Foundation
 class HTTPConnection {
     
-    static let url = URL(string:"https://183.87.134.37/TotipayPayinApi/TotiPay.svc?wsdl")
-    
+  static let url = URL(string:"https://183.87.134.37/TotipayPayinApi/TotiPay.svc?wsdl")
+  //  static let url =  URL(string:"https://payinapi.totiwallet.com/TotiPay.svc?wsdl")
     public static func openConnection(stringParams:String , action:String) -> URLRequest {
         var xmlRequest = URLRequest(url: url!)
         //  let xmlRequest = NSMutableURLRequest(url: url!)
@@ -22,18 +22,7 @@ class HTTPConnection {
         //  xmlRequest.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
         xmlRequest.timeoutInterval = 5000
-//        let connection = NSURLConnection(request: xmlRequest as URLRequest, delegate: self, startImmediately: true)
-//
-//        connection?.start()
-//
-//        
-//        if ((connection != nil) == true) {
-//            print("Connection success")
-//            var _ : Void = NSMutableData.initialize()
-//        }else{
-//            print("Error in connection")
-//        }
-//        
+
         return xmlRequest
     }
 }

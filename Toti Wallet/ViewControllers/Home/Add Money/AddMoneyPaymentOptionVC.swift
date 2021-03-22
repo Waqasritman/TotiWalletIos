@@ -14,59 +14,92 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
     @IBOutlet weak var toolTitle: UILabel!
     @IBOutlet weak var pageTitle: UILabel!
     @IBOutlet weak var payThroughCardBtn: UIButton!
-    @IBOutlet weak var payBanklbl: UILabel!
-    @IBOutlet weak var bankLbl: UILabel!
+    @IBOutlet weak var payThroughBankBtn: UIButton!
+    @IBOutlet weak var addMoneyBtn: UIButton!
     
+    @IBOutlet private var optionBtns:[UIButton]! {
+        didSet {
+            optionBtns.forEach { (button) in
+                button.setImage(#imageLiteral(resourceName: "radioUnchecked"), for: .normal)
+                button.setImage(#imageLiteral(resourceName: "radioChecked"), for: .selected)
+            }
+        }
+    }
     
     let repo:Repository = Repository()
     let moneyRepo:MoneyTransferRepository = MoneyTransferRepository()
     @IBOutlet weak var btnLoad: UIButton!
     @IBOutlet weak var cardTableView: UITableView!
-    @IBOutlet weak var viewBankAccount: UIView!
+   // @IBOutlet weak var viewBankAccount: UIView!
     var cardsList:[CardDetails] = Array()
     var isTableViewVisiable = false
 
+    
+    var selectedTag = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cardTableView.delegate = self
         cardTableView.dataSource = self
         
-
+        self.payThroughCardBtn.isSelected = true
         btnLoad.layer.cornerRadius = 8
         cardTableView.layer.cornerRadius = 8
-        viewBankAccount.layer.cornerRadius = 8
-        
-        let viewBankAccountGesture = UITapGestureRecognizer(target: self, action: #selector(viewBankAccountFunc(_:)))
-        viewBankAccount.addGestureRecognizer(viewBankAccountGesture)
-        
+        addMoneyBtn.layer.cornerRadius = 8
+
         pageTitle.text = "how_would_you_like".localized
         payThroughCardBtn.setTitle("pay_thorough_card".localized, for: .normal)
+        payThroughBankBtn.setTitle("pay_thorough_bank".localized, for: .normal)
         btnLoad.setTitle("load_cards".localized, for: .normal)
-        payBanklbl.text = "process_payment".localized
-        bankLbl.text = "bank_account_details".localized
+
+       
+        payThroughBankBtn.setTitle("bank_account_details".localized, for: .normal)
+        
         toolTitle.text = "payment".localized
+        addMoneyBtn.setTitle("add_moeny_txtt".localized, for: .normal)
     }
     
-    @objc
-    private func viewBankAccountFunc(_ sender: UIGestureRecognizer) {
-        LoadWalletRequest.shared.paymentType = PaymentTypes.shared.BANK_DEPOSIT
-        LoadWalletRequest.shared.cardNumber = ""
-        LoadWalletRequest.shared.expireDate = ""
-        LoadWalletRequest.shared.securityNumber = ""
-        loadWallet()
-    }
+   
     
     @IBAction func btnLoadFunc(_ sender: UIButton) {
         getCustomerCards()
     }
     
     
-    @IBAction func btnPaythroughCard(_ sender:UIButton) {
-        let nextVC = ControllerID.cardDetailVC.instance
-        (nextVC as! CardDetailVC).delegate = self
-        self.pushWithFullScreen(nextVC)
+    @IBAction private func paymentAction(_ sender: UIButton){
+        uncheck()
+        sender.checkboxAnimation {
+            print(sender.titleLabel?.text ?? "")
+            print(sender.isSelected)
+        }
+        
+        selectedTag = sender.tag
     }
+    
+    func uncheck(){
+        optionBtns.forEach { (button) in
+            button.isSelected = false
+        }
+    }
+    
+    
+    @IBAction func loadWalletBtn(_ sender: Any) {
+        if selectedTag == payThroughCardBtn.tag {
+            let nextVC = ControllerID.cardDetailVC.instance
+            (nextVC as! CardDetailVC).delegate = self
+            self.pushWithFullScreen(nextVC)
+        } else if selectedTag == payThroughBankBtn.tag {
+            LoadWalletRequest.shared.paymentType = PaymentTypes.shared.BANK_DEPOSIT
+            LoadWalletRequest.shared.cardNumber = ""
+            LoadWalletRequest.shared.expireDate = ""
+            LoadWalletRequest.shared.securityNumber = ""
+            loadWallet()
+        }
+    }
+    
+    
+   
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
         AlertView.instance.delegate = self
@@ -83,7 +116,7 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
         LoadWalletRequest.shared.cardNumber = cardNumber
         LoadWalletRequest.shared.expireDate = cardExpire
         LoadWalletRequest.shared.securityNumber = cardCVV
-        loadWallet()
+       
     }
     
     
@@ -114,10 +147,16 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
                         if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.CREDIT_CARD {
                             AlertView.instance.delegate = self
                             AlertView.instance.showAlert(title: "in_process".localized , message: "in_process_msg_card".localized , hide: true)
-            
+                           
                         } else if LoadWalletRequest.shared.paymentType == PaymentTypes.shared.BANK_DEPOSIT {
-                            BankDetailAlert.instance.delegate = self
-                            BankDetailAlert.instance.showAlert(referenceNumber: response!.referenceNo)
+//                            BankDetailAlert.instance.delegate = self
+//                            BankDetailAlert.instance.showAlert(referenceNumber: response!.referenceNo , isYemen: self.isYemenClient())
+                            
+                            let nextVc = ControllerID.bankDepositDetail.instance
+                            (nextVc as! DepositBankDetailsVC).receiptNumber = response!.referenceNo
+                            (nextVc as! DepositBankDetailsVC).isShowReceipt = false
+                            //(nextVc as! ReceiptVC).comeFromHome = false
+                            self.pushWithFullScreen(nextVc)
                         }
                     } else {
                         self.showError(message: response!.description!)
@@ -126,6 +165,8 @@ class AddMoneyPaymentOptionVC: BaseVC , CardSumitProtocol , BankDetailAlertProto
             } else {
                 self.noInternet()
             }
+        } else {
+            showError(message: "plz_complete_kyc".localized)
         }
       
     }

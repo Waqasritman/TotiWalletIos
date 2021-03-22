@@ -36,6 +36,7 @@ class ProfileBasicDetailVC: BaseVC , UITextFieldDelegate {
     @IBOutlet weak var genderLbl: UILabel!
     @IBOutlet weak var emailAddresslbl: UILabel!
     
+    @IBOutlet weak var genderStack: UIStackView!
     var gender:String = ""
     
  
@@ -65,10 +66,11 @@ class ProfileBasicDetailVC: BaseVC , UITextFieldDelegate {
             self.showError(message: "invalid_email_address_txt".localized)
             return false
         }
-        
-        else if gender.isEmpty {
-            self.showError(message: "select_gender".localized)
-            return false
+        else  if !preferenceHelper.getHideStatus() {
+            if gender.isEmpty {
+                self.showError(message: "select_gender".localized)
+                return false
+            }
         }
         return true
     }
@@ -76,6 +78,16 @@ class ProfileBasicDetailVC: BaseVC , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if preferenceHelper.getHideStatus() {
+            genderLbl.isHidden = true
+            genderStack.isHidden = true
+        } else {
+            genderLbl.isHidden = false
+            genderStack.isHidden = false
+        }
+        
+        
+        
         viewMain.layer.cornerRadius = 16
         viewMain.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         txtFirstName.layer.cornerRadius = 8
@@ -127,6 +139,7 @@ class ProfileBasicDetailVC: BaseVC , UITextFieldDelegate {
     
     @IBAction private func maleFemaleAction(_ sender: UIButton){
         uncheck()
+
         sender.checkboxAnimation {
             print(sender.titleLabel?.text ?? "")
             print(sender.isSelected)
@@ -150,7 +163,12 @@ class ProfileBasicDetailVC: BaseVC , UITextFieldDelegate {
             RegisterUserRequest.shared.firstName = txtFirstName.text!
             RegisterUserRequest.shared.middleName = txtMiddleName.text!
             RegisterUserRequest.shared.lastName = txtLastName.text!
-            RegisterUserRequest.shared.gender = gender
+            if preferenceHelper.getHideStatus() {
+                RegisterUserRequest.shared.gender = "m"
+            } else {
+                RegisterUserRequest.shared.gender = gender
+            }
+           
             RegisterUserRequest.shared.email = txtEmailAddress.text!
             let nextVC = ControllerID.profileAddressDetailVC.instance
             self.pushWithFullScreen(nextVC)

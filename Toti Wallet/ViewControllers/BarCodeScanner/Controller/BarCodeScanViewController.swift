@@ -138,12 +138,9 @@ class BarCodeScanViewController: BaseVC , UIImagePickerControllerDelegate, UINav
     @objc func openOrCloseFlash() {
         scanObj?.changeTorch()
         isOpenedFlash = !isOpenedFlash
-        if isOpenedFlash
-        {
+        if isOpenedFlash {
             btnFlash.setImage(UIImage(named: "flash_icon"), for:UIControl.State.normal)
-        }
-        else
-        {
+        } else {
             btnFlash.setImage(UIImage(named: "flash_icon"), for:UIControl.State.normal)
         }
     }
@@ -270,12 +267,7 @@ class BarCodeScanViewController: BaseVC , UIImagePickerControllerDelegate, UINav
         (nextVC as! RepeatWalletTransactionVC).customerNo = qrCodeLink
         (nextVC as! RepeatWalletTransactionVC).isFromQrCode = true
         self.pushWithFullScreen(nextVC)
-     //   let beneficairyDetail = qrCodeLink.split(separator: ",")
-     //   BalanceTransferSingleton.shared.isWithOutBeneficiary = true
-      //  BalanceTransferSingleton.shared.beneficiaryUserName = String(beneficairyDetail[0])
-      //  BalanceTransferSingleton.shared.beneficiaryName = String(beneficairyDetail[1])
-      //  BalanceTransferSingleton.shared.beneficiaryAccountNo = String(beneficairyDetail[2])
-       // viewsDelegate.moveToTransferDetail()
+    
     }
     
     

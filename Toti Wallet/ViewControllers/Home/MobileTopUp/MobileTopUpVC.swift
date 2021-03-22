@@ -167,7 +167,7 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
             let request = GetWRPrepaidOperatorRequest()
             request.countryShortName = countryShortName;
             request.mobileNo = txtPhoneNumber.text!
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             
             repo.getPrepaidOperators(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.GET_WR_PREPAID_OPERATOR_ACTION), completion: {(response , error ) in
                 self.hideProgress()
@@ -193,7 +193,7 @@ class MobileTopUpVC: BaseVC , WRCountryListProtocol , WRBillerNameProtocol {
         GetWRPrepaidPlansRequest.shared.circleCode = pOperator.circleCode
         GetWRPrepaidPlansRequest.shared.countryCode = countryShortName
         GetWRPrepaidPlansRequest.shared.operatorCode = pOperator.operatorCode!
-        GetWRPrepaidPlansRequest.shared.languageId = preferenceHelper.getLanguage()
+        GetWRPrepaidPlansRequest.shared.languageId = preferenceHelper.getApiLangugae()
         
         opertaorStack.isHidden = false
         WRPrepaidRechargeRequest.shared.operatorName = pOperator.operatorName!

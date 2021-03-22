@@ -35,7 +35,7 @@ class SummaryVC: BaseVC {
         super.viewDidLoad()
 
         pageTitle.text = "confirm_title_money".localized
-        transfertolbl.text = "sending_currency".localized
+        transfertolbl.text = "beneficiary".localized
         sendingcurrencylbl.text = "sending_currency".localized
         totalpayablelbl.text = "total_payable".localized
         transferamountlbl.text = "transfer_amount".localized

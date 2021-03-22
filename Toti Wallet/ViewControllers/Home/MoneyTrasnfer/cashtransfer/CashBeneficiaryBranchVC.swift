@@ -55,6 +55,9 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
         
         stackBranch.isHidden = true
         
+        btnCity.imageEdgeInsets.left = self.view.frame.width - 50
+        btnLocation.imageEdgeInsets.left = self.view.frame.width - 50
+        btnBranch.imageEdgeInsets.left = self.view.frame.width - 50
         
         toolTitle.text = "cash_beneficiary".localized
         pageTitle.text = "send_money_via_cash".localized
@@ -74,7 +77,7 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
             if Network.isConnectedToNetwork() {
                 showProgress()
                 let request = GetYCityRequest()
-                request.languageId = preferenceHelper.getLanguage()
+                request.languageId = preferenceHelper.getApiLangugae()
                 repo.getYCities(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_Y_CITY_ACTION), completion: {(response , error) in
                     self.hideProgress()
                     if let error = error {
@@ -104,7 +107,7 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
                     showProgress()
                     let request = GetYLocationRequest()
                     request.cityID = cityId
-                    request.languageID = preferenceHelper.getLanguage()
+                    request.languageID = preferenceHelper.getApiLangugae()
                     repo.getYLocations(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_Y_LOCATION_ACTION), completion: {(response , error) in
                         self.hideProgress()
                         if let error = error {
@@ -138,7 +141,7 @@ class CashBeneficiaryBranchVC: BaseVC , YCityProtocol , YLocationProtocol , YBra
                     let request = GetYBranchRequest()
                     request.cityID = cityId
                     request.locationID = locationId
-                    request.languageID = preferenceHelper.getLanguage()
+                    request.languageID = preferenceHelper.getApiLangugae()
                     repo.getYBranch(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_Y_BRANCH_ACTION), completion: {(response , error) in
                         self.hideProgress()
                         if let error = error {

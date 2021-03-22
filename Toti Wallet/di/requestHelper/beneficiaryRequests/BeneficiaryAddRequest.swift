@@ -39,7 +39,8 @@ class BeneficiaryAddRequest {
     var languageId:String = "1"
     var countryRegion:Int = 0
     
-    
+    var ipAddress:String = preferenceHelper.getCountryIP()
+    var ipCountryName:String = preferenceHelper.getCountryName()
     public func getXML() -> String {
         let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
             + "<soapenv:Header/>" +
@@ -70,6 +71,8 @@ class BeneficiaryAddRequest {
             "<tpay:PayoutCountryCode>" + PayoutCountryCode + "</tpay:PayoutCountryCode>" +
             "<tpay:CustomerRelation>" + CustomerRelation + "</tpay:CustomerRelation>" +
             "<tpay:BankBranch>" + BankBranch + "</tpay:BankBranch>" +
+            "<tpay:IpAddress>" + ipAddress + "</tpay:IpAddress>" +
+            "<tpay:IpCountryName>" + ipCountryName + "</tpay:IpCountryName>" +
             "</tpay:Req>" +
             "</tpay:BeneficiaryRegistration>" +
             "</soapenv:Body>" +

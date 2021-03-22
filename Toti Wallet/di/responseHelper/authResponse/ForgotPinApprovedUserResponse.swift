@@ -10,7 +10,7 @@ import Foundation
 import XMLMapper
 class ForgotPinApprovedUserResponse :XMLMappable{
     required init?(map: XMLMap) { }
-    
+    init() {}
     var nodeName: String!
     var responseCode:Int?
     var description:String?

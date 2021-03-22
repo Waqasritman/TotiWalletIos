@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="tz7-KL-4eO">
-                                                <rect key="frame" x="16" y="16" width="102.5" height="24.5"/>
+                                                <rect key="frame" x="16" y="15.5" width="82" height="25"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" name="931D55"/>
@@ -225,6 +225,7 @@
                         <outlet property="femaleBtn" destination="1jw-4W-cmV" id="fAr-8B-6v8"/>
                         <outlet property="firstNamelbl" destination="RXk-gh-8PF" id="sH1-eX-3FZ"/>
                         <outlet property="genderLbl" destination="O7g-03-5Rj" id="J51-4e-s6R"/>
+                        <outlet property="genderStack" destination="vdR-OE-aOG" id="y4b-ql-oek"/>
                         <outlet property="lastNamelbl" destination="Df0-WG-BC6" id="lth-lM-aUA"/>
                         <outlet property="maleBtn" destination="hwv-QP-xtY" id="vvO-eh-iKf"/>
                         <outlet property="middleNamelbl" destination="dey-4i-Wn3" id="eOm-ng-Mmw"/>
@@ -257,7 +258,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="DYX-N1-0Ql">
-                                                <rect key="frame" x="72" y="16" width="102" height="24"/>
+                                                <rect key="frame" x="72" y="15.5" width="82" height="25"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-oP-4dq">
                                                 <rect key="frame" x="16" y="8" width="40" height="40"/>
@@ -452,7 +453,7 @@
     <resources>
         <image name="backIconWhite" width="24.5" height="19.5"/>
         <image name="downArrow" width="13" height="8"/>
-        <image name="logoWhite" width="102.5" height="24.5"/>
+        <image name="logoWhite" width="82" height="25"/>
         <image name="radioChecked" width="16" height="16"/>
         <image name="radioUnchecked" width="16" height="16"/>
         <namedColor name="650C39">

@@ -338,7 +338,7 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cOp-ss-py2">
                                                                             <rect key="frame" x="8" y="10" width="66.5" height="24"/>
                                                                             <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qgm-IZ-YtG">
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobileTopUp" translatesAutoresizingMaskIntoConstraints="NO" id="Qgm-IZ-YtG">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="24" id="TTy-16-cnn"/>
@@ -1153,7 +1153,7 @@
     </scenes>
     <resources>
         <image name="CirclerPlan" width="120" height="120"/>
-        <image name="HistoryUnSelected" width="24" height="24"/>
+        <image name="HistoryUnSelected" width="23" height="18.5"/>
         <image name="arrowDownFill" width="10" height="5"/>
         <image name="backIconWhite" width="24.5" height="19.5"/>
         <image name="backgroundImage" width="360" height="760"/>
@@ -1161,6 +1161,7 @@
         <image name="downArrow" width="13" height="8"/>
         <image name="flag" width="37" height="19"/>
         <image name="historySelected" width="24" height="24"/>
+        <image name="mobileTopUp" width="40" height="40"/>
         <image name="rightArrow" width="8" height="13"/>
         <namedColor name="650C39">
             <color red="0.39599999785423279" green="0.046999998390674591" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

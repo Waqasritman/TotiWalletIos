@@ -27,7 +27,7 @@ class LoginRequest {
             "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
             "</tpay:Credentials>" +
             "<tpay:Email_Address>" + email + "</tpay:Email_Address>" +
-            "<tpay:Mobile_Number>" + mobileNumber + "</tpay:Mobile_Number>" +
+            "<tpay:Mobile_Number>" + mobileNumber.removeWhitespace() + "</tpay:Mobile_Number>" +
             "<tpay:Password>" + password + "</tpay:Password>" +
             "</tpay:Req>" +
             "</tpay:Login>" +

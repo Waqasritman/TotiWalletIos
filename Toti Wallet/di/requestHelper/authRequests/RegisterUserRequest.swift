@@ -24,7 +24,8 @@ class RegisterUserRequest {
     var address:String = ""
     var nationality:String = ""
     var languageID:String = "1"
-    
+    var ipAddress:String = preferenceHelper.getCountryIP()
+    var ipCountryName:String = preferenceHelper.getCountryName()
     
     public func getXML() -> String {
         let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
@@ -47,6 +48,8 @@ class RegisterUserRequest {
             "<tpay:Nationality>" + nationality + "</tpay:Nationality>" +
             "<tpay:EmailID>" + email + "</tpay:EmailID>" +
             "<tpay:ResidenceCountry>" + country + "</tpay:ResidenceCountry>" +
+            "<tpay:IpAddress>" + ipAddress + "</tpay:IpAddress>" +
+            "<tpay:IpCountryName>" + ipCountryName + "</tpay:IpCountryName>" +
             "</tpay:Req>" +
             "</tpay:CustomerRegistration>" +
             "</soapenv:Body>" +

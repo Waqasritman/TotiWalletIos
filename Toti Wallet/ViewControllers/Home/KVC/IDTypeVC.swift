@@ -48,7 +48,7 @@ class IDTypeVC: BaseVC {
             showProgress()
             let request:GetIDTypeRequest = GetIDTypeRequest()
             request.countryShortName = idType
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             
             repository.getIdTypes(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_ID), completion: {(response , error) in
                 self.hideProgress()

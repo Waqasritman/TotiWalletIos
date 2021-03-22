@@ -74,7 +74,7 @@ class TransactionHistoryVC: BaseVC {
         if Network.isConnectedToNetwork() {
             let request = TransactionHistroyRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             showProgress()
             repository.getTransactionHistory(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_HISTORY), completion: {(response ,error) in
                 self.hideProgress()

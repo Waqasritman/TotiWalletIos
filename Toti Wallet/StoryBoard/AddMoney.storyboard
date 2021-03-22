@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +14,9 @@
         </array>
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
+        </array>
+        <array key="Lato-Semibold.ttf">
+            <string>Lato-Semibold</string>
         </array>
     </customFonts>
     <scenes>
@@ -431,8 +434,23 @@
                                                 <color key="textColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SB-r6-kvR">
+                                                <rect key="frame" x="16" y="107.5" width="343" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="xOS-yC-YzT"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Pay through card" image="radioChecked">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="paymentAction:" destination="2GM-Bk-iUn" eventType="touchUpInside" id="9tI-IZ-HPg"/>
+                                                </connections>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4i5-Ko-Ykf">
-                                                <rect key="frame" x="16" y="167.5" width="343" height="42"/>
+                                                <rect key="frame" x="16" y="213.5" width="343" height="42"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaO-Kb-B4e">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
@@ -501,76 +519,56 @@
                                                     </tableView>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Process payment through bank account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPM-Za-acf">
-                                                <rect key="frame" x="16" y="226.5" width="343" height="16.5"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifP-4S-5dz">
-                                                <rect key="frame" x="16" y="251" width="343" height="42"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9aH-j2-Rnt">
-                                                        <rect key="frame" x="8" y="8" width="26" height="26"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="fDf-4v-k2l"/>
-                                                            <constraint firstAttribute="width" constant="26" id="gG2-Fv-gvn"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank account detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nm6-U0-hzQ">
-                                                        <rect key="frame" x="42" y="13" width="124.5" height="16.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Amy-Ph-fd3">
-                                                        <rect key="frame" x="327" y="14.5" width="8" height="13"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" name="F7F7F7"/>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bl-LI-uh9">
+                                                <rect key="frame" x="16" y="160.5" width="343" height="45"/>
                                                 <constraints>
-                                                    <constraint firstItem="Amy-Ph-fd3" firstAttribute="centerY" secondItem="ifP-4S-5dz" secondAttribute="centerY" id="Aps-eQ-u04"/>
-                                                    <constraint firstAttribute="height" constant="42" id="VVf-hW-Fte"/>
-                                                    <constraint firstItem="9aH-j2-Rnt" firstAttribute="leading" secondItem="ifP-4S-5dz" secondAttribute="leading" constant="8" id="d90-6R-8S3"/>
-                                                    <constraint firstItem="9aH-j2-Rnt" firstAttribute="centerY" secondItem="ifP-4S-5dz" secondAttribute="centerY" id="dcF-dw-BmT"/>
-                                                    <constraint firstItem="nm6-U0-hzQ" firstAttribute="centerY" secondItem="9aH-j2-Rnt" secondAttribute="centerY" id="gia-v4-Cqc"/>
-                                                    <constraint firstItem="nm6-U0-hzQ" firstAttribute="leading" secondItem="9aH-j2-Rnt" secondAttribute="trailing" constant="8" id="oPH-A0-N27"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Amy-Ph-fd3" secondAttribute="trailing" constant="8" id="rhA-eO-We7"/>
+                                                    <constraint firstAttribute="height" constant="45" id="53d-3X-BWn"/>
                                                 </constraints>
-                                            </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrQ-qB-cFD">
-                                                <rect key="frame" x="16" y="114.5" width="343" height="45"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="A5l-K3-xyS"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Pay through card">
+                                                <fontDescription key="fontDescription" name="Lato-Semibold" family="Lato" pointSize="14"/>
+                                                <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Pay through bank" image="radioUnchecked">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="btnPaythroughCard:" destination="2GM-Bk-iUn" eventType="touchUpInside" id="DXp-h6-fui"/>
+                                                    <action selector="paymentAction:" destination="2GM-Bk-iUn" eventType="touchUpInside" id="bUF-u7-bjQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0L-JF-SSO">
+                                                <rect key="frame" x="16" y="597" width="343" height="45"/>
+                                                <color key="backgroundColor" name="931D55"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="cgf-LP-R83"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                                <state key="normal" title="Add Money">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="loadWalletBtn:" destination="2GM-Bk-iUn" eventType="touchUpInside" id="vPQ-pR-exR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="9bl-LI-uh9" secondAttribute="trailing" constant="16" id="3qj-Zb-zpQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="A0L-JF-SSO" secondAttribute="trailing" constant="16" id="4Az-9g-zlm"/>
                                             <constraint firstItem="mz7-Uq-NOR" firstAttribute="top" secondItem="VDB-Yb-6Xo" secondAttribute="bottom" constant="20" id="Aqp-8y-JVA"/>
-                                            <constraint firstAttribute="trailing" secondItem="ifP-4S-5dz" secondAttribute="trailing" constant="16" id="B7V-3t-Jxu"/>
+                                            <constraint firstItem="9bl-LI-uh9" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="DAb-9h-HQP"/>
                                             <constraint firstItem="VDB-Yb-6Xo" firstAttribute="top" secondItem="Iwb-dP-Qcg" secondAttribute="top" id="DGO-AV-pHs"/>
-                                            <constraint firstItem="ZrQ-qB-cFD" firstAttribute="top" secondItem="mz7-Uq-NOR" secondAttribute="bottom" constant="15" id="Gbp-a9-olo"/>
+                                            <constraint firstAttribute="bottom" secondItem="A0L-JF-SSO" secondAttribute="bottom" constant="25" id="DmU-F1-l9U"/>
                                             <constraint firstItem="VDB-Yb-6Xo" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" id="IKg-Ib-e5S"/>
                                             <constraint firstAttribute="trailing" secondItem="4i5-Ko-Ykf" secondAttribute="trailing" constant="16" id="MeW-19-6ZX"/>
-                                            <constraint firstItem="kPM-Za-acf" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="Trx-1S-k84"/>
-                                            <constraint firstAttribute="trailing" secondItem="kPM-Za-acf" secondAttribute="trailing" constant="16" id="UOQ-nb-ewG"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZrQ-qB-cFD" secondAttribute="trailing" constant="16" id="Vsg-n2-Hqw"/>
-                                            <constraint firstItem="ifP-4S-5dz" firstAttribute="top" secondItem="kPM-Za-acf" secondAttribute="bottom" constant="8" id="aMh-dj-7Av"/>
+                                            <constraint firstItem="9bl-LI-uh9" firstAttribute="top" secondItem="3SB-r6-kvR" secondAttribute="bottom" constant="8" symbolic="YES" id="NUl-rm-AaS"/>
                                             <constraint firstAttribute="trailing" secondItem="mz7-Uq-NOR" secondAttribute="trailing" constant="16" id="bkc-jb-Cdi"/>
+                                            <constraint firstAttribute="trailing" secondItem="3SB-r6-kvR" secondAttribute="trailing" constant="16" id="ce7-lw-MjJ"/>
                                             <constraint firstAttribute="trailing" secondItem="VDB-Yb-6Xo" secondAttribute="trailing" id="dMt-UR-Kuu"/>
-                                            <constraint firstItem="ifP-4S-5dz" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="fkB-5V-5e2"/>
-                                            <constraint firstItem="4i5-Ko-Ykf" firstAttribute="top" secondItem="ZrQ-qB-cFD" secondAttribute="bottom" constant="8" symbolic="YES" id="mTB-dX-Li0"/>
+                                            <constraint firstItem="A0L-JF-SSO" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="fs5-0l-au5"/>
+                                            <constraint firstItem="3SB-r6-kvR" firstAttribute="top" secondItem="mz7-Uq-NOR" secondAttribute="bottom" constant="8" id="g7l-K9-5JA"/>
+                                            <constraint firstItem="3SB-r6-kvR" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="hva-aY-em5"/>
                                             <constraint firstItem="4i5-Ko-Ykf" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="nuf-aP-C7l"/>
-                                            <constraint firstItem="kPM-Za-acf" firstAttribute="top" secondItem="4i5-Ko-Ykf" secondAttribute="bottom" constant="17" id="uA9-ig-Rbk"/>
+                                            <constraint firstItem="4i5-Ko-Ykf" firstAttribute="top" secondItem="9bl-LI-uh9" secondAttribute="bottom" constant="8" id="qi3-te-BXJ"/>
                                             <constraint firstItem="mz7-Uq-NOR" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="xdL-NG-8Ow"/>
-                                            <constraint firstItem="ZrQ-qB-cFD" firstAttribute="leading" secondItem="Iwb-dP-Qcg" secondAttribute="leading" constant="16" id="xy8-47-9m3"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -593,14 +591,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="HistoryUnSelected" selectedImage="historySelected" id="LuU-55-rkX"/>
                     <connections>
-                        <outlet property="bankLbl" destination="nm6-U0-hzQ" id="U70-MP-JER"/>
+                        <outlet property="addMoneyBtn" destination="A0L-JF-SSO" id="8XY-aP-XCB"/>
                         <outlet property="btnLoad" destination="iaO-Kb-B4e" id="Qat-Kr-MJ1"/>
                         <outlet property="cardTableView" destination="LJx-Xa-kfU" id="G80-Gg-5QE"/>
                         <outlet property="pageTitle" destination="mz7-Uq-NOR" id="d2c-Ap-gLS"/>
-                        <outlet property="payBanklbl" destination="kPM-Za-acf" id="fOy-Jd-6Zj"/>
-                        <outlet property="payThroughCardBtn" destination="ZrQ-qB-cFD" id="muv-U5-Ele"/>
+                        <outlet property="payThroughBankBtn" destination="9bl-LI-uh9" id="FJ2-Ex-EZe"/>
+                        <outlet property="payThroughCardBtn" destination="3SB-r6-kvR" id="A0e-fY-EXc"/>
                         <outlet property="toolTitle" destination="ihb-EB-hxF" id="X2W-Qq-mlO"/>
-                        <outlet property="viewBankAccount" destination="ifP-4S-5dz" id="IyP-cd-DSG"/>
+                        <outletCollection property="optionBtns" destination="3SB-r6-kvR" collectionClass="NSMutableArray" id="2Yp-Ah-i8E"/>
+                        <outletCollection property="optionBtns" destination="9bl-LI-uh9" collectionClass="NSMutableArray" id="4IH-MR-Tl7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXY-gu-96y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -613,10 +612,11 @@
         <image name="HistoryUnSelected" width="23" height="18.5"/>
         <image name="airoplaneBlack" width="25.5" height="22"/>
         <image name="backIconWhite" width="24.5" height="19.5"/>
-        <image name="bankIcon" width="35" height="35"/>
         <image name="cancel" width="32" height="32"/>
         <image name="flag" width="37" height="19"/>
         <image name="historySelected" width="24" height="24"/>
+        <image name="radioChecked" width="16" height="16"/>
+        <image name="radioUnchecked" width="16" height="16"/>
         <image name="rightArrow" width="8" height="13"/>
         <namedColor name="650C39">
             <color red="0.39599999785423279" green="0.046999998390674591" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

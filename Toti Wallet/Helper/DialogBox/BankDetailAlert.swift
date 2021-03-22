@@ -25,6 +25,7 @@ class BankDetailAlert: UIView {
     @IBOutlet weak var lblSortCode: UILabel!
     @IBOutlet weak var lblAccountNumber: UILabel!
 
+    @IBOutlet weak var viewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var referlbl: UILabel!
     
@@ -32,6 +33,8 @@ class BankDetailAlert: UIView {
     @IBOutlet weak var sortcodelbl: UILabel!
     @IBOutlet weak var titlelbl: UILabel!
     
+    @IBOutlet weak var yemenSTack: UIStackView!
+    @IBOutlet weak var simpleStack: UIStackView!
     var delegate: BankDetailAlertProtocol?
     
     override init(frame: CGRect) {
@@ -63,13 +66,23 @@ class BankDetailAlert: UIView {
         btnOK.setTitle("okay".localized, for: .normal)
     }
     
-    func showAlert(referenceNumber: String) {
+    func showAlert(referenceNumber: String , isYemen:Bool) {
 //        self.titleLbl.text = "Bank Details"
 //        self.messageLbl.text = "Please transfer/deposit the amount into the below bank account"
         self.lblReferenceNumber.text = referenceNumber
         self.lblAccountTitle.text = "TotiPay Limited"
-        self.lblSortCode.text = "60-83-71"
-        self.lblAccountNumber.text = "70767547"
+        self.lblSortCode.text = "04-29-31"
+        self.lblAccountNumber.text = "34587240"
+        
+        if isYemen {
+            yemenSTack.isHidden = false
+            simpleStack.isHidden = true
+            viewHeight.constant = 380
+        } else {
+            yemenSTack.isHidden = true
+            simpleStack.isHidden = false
+            viewHeight.constant = 340
+        }
         
         UIApplication.shared.keyWindow?.addSubview(parentView)
     }
@@ -82,8 +95,4 @@ class BankDetailAlert: UIView {
     func hideAlert() {
         parentView.removeFromSuperview()
     }
-
-
-    
-
 }

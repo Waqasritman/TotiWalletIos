@@ -17,7 +17,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     let moneyTransferRepo:MoneyTransferRepository = MoneyTransferRepository()
     let authRepo:AuthRepository = AuthRepository()
     var history:WalletHistory!
-    
+    let repo : Repository = Repository()
     
     let walletTransferRequest:WalletToWalletTransferRequest = WalletToWalletTransferRequest()
     @IBOutlet weak var btnConvert: UIButton!
@@ -58,6 +58,9 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         }  else if txtName.text!.isEmpty {
             showError(message: "recever_name_error".localized)
             return false
+        } else if !preferenceHelper.getISKYCApproved() {
+            showError(message: "plz_complete_kyc".localized)
+            return false
         }
         return true
     }
@@ -70,9 +73,6 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         } else if calRequest.payoutCurrency.isEmpty {
             self.showError(message: "plz_select_receiving_currency".localized)
             return false
-        } else if txtFirst.text!.isEmpty {
-            self.showError(message: "please_enter_amount".localized)
-            return false
         }
         return true
     }
@@ -81,6 +81,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     override func viewDidLoad() {
         super.viewDidLoad()
         txtFirst.delegate = self
+        txtSecond.delegate = self
         btnConvert.setTitle("convert_string".localized, for: .normal)
         pageTitle.text = "send_moeny_to_wallet".localized
         tooltitle.text = "wallet_transfer".localized
@@ -107,6 +108,9 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         txtName.layer.cornerRadius = 8
         txtDescription.layer.cornerRadius = 8
         
+        
+        txtPhoneNumber.layer.cornerRadius = 8
+        
         txtName.setLeftPaddingPoints(10)
         txtDescription.setLeftPaddingPoints(10)
         
@@ -128,7 +132,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         
         let receivingGes = UITapGestureRecognizer(target: self, action: #selector(btnReceivingCurrency(_:)))
         receivingView.addGestureRecognizer(receivingGes)
-
+        txtSecond.isEnabled = false
     }
     
     
@@ -137,13 +141,17 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     
     @objc func btnSendingCurrency(_ sender:Any) {
         isSendingSelect = true
-        getWalletCurrencies()
+       // getWalletCurrencies()
+        getCustomerWallets(wallet: preferenceHelper.getCustomerNo(),
+                           actionType: CCYWalletActionType.RECEIVE)
     }
     
     
     @objc func btnReceivingCurrency(_ sender:Any) {
         isSendingSelect = false
-        getWalletCurrencies()
+       // getWalletCurrencies()
+        getCustomerWallets(wallet: String().removePlus(number: txtPhoneNumber.text!),
+                           actionType: CCYWalletActionType.RECEIVE)
     }
     
     
@@ -164,7 +172,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
             walletTransferRequest.payInCurrency = calRequest.payInCurrency
             walletTransferRequest.receiptCurrency = calRequest.payoutCurrency
             walletTransferRequest.receiptMobileNo = self.txtPhoneNumber.text!
-            walletTransferRequest.transferAmount = calRequest.transferAmount
+            walletTransferRequest.transferAmount = self.txtFirst.text!
             walletTransferRequest.languageId = preferenceHelper.getApiLangugae()
             let nextVC = ControllerID.verifyTransferDetailVC.instance
             (nextVC  as! VerifyTransferDetailVC).walletRequest = walletTransferRequest
@@ -180,7 +188,12 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     }
     
     @IBAction func btnBackFunc(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if isFromQrCode {
+            self.gotoHome()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
     
@@ -198,6 +211,7 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
                 if let error = error {
                     self.hideProgress()
                     self.showError(message: error)
+                    self.gotoHome()
                 } else {
                     if response!.responseCode == 101 {
                         self.txtName.text = response!.firstName + " " +  response!.lastName
@@ -205,6 +219,8 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
                         self.txtName.isEnabled = false
                         self.txtPhoneNumber.isEnabled = false
                       
+                    } else {
+                        self.gotoHome()
                     }
                 }
             })
@@ -215,12 +231,32 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         }
     }
     
-    
+    func getCustomerWallets(wallet:String , actionType:String) {
+        if Network.isConnectedToNetwork() {
+            let request = GetCCYForWalletRequest()
+            request.customerNo = wallet
+            request.actionType = actionType
+            request.languageID = preferenceHelper.getApiLangugae()
+            self.showProgress()
+            repo.getCCYWallets(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_ADD_CCY_WALLET), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.onCurrencyList(currencyList: response!.walletCurrencyList)
+                } else if response!.description != nil {
+                    self.showError(message: response!.description)
+                } else {
+                    self.showError(message: "something went wrong")
+                }
+            })
+        }
+    }
     
     func getWalletCurrencies() {
         if Network.isConnectedToNetwork() {
             let walletCurrencyRequest = GetWalletCurrencyListRequest()
-            walletCurrencyRequest.languageId = preferenceHelper.getLanguage()
+            walletCurrencyRequest.languageId = preferenceHelper.getApiLangugae()
             showProgress()
             moneyTransferRepo.getWalletCurrency(request: HTTPConnection.openConnection(stringParams: walletCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_WALLET_CURRENCY), completion: {(response , error ) in
                 if let error = error {
@@ -243,7 +279,16 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
         if isRateValidate() {
             if Network.isConnectedToNetwork() {
                 self.showProgress()
-                calRequest.transferAmount = txtFirst.text!
+                if txtFirst.text!.isEmpty && txtSecond.text!.isEmpty {
+                    self.showError(message: "please_enter_amount".localized)
+                    return
+                } else if !txtFirst.text!.isEmpty {
+                    calRequest.transferCurrency = firstDropDown.text!
+                    calRequest.transferAmount = txtFirst.text!
+                } else if !txtSecond.text!.isEmpty {
+                    calRequest.transferCurrency = secondDropDown.text!
+                    calRequest.transferAmount = txtSecond.text!
+                }
                 calRequest.paymentMode = PaymentMode.wallet_mode
                 print(calRequest.getXML())
                 moneyTransferRepo.getRates(request: HTTPConnection.openConnection(stringParams: calRequest.getXML(), action: SoapActionHelper.shared.ACTION_CAL_TRANSFER), completion: {(response , error) in
@@ -275,39 +320,44 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
             calRequest.payInCurrency = currency.currencyShortName
             calRequest.transferCurrency = currency.currencyShortName
             sendingIcon.sd_setImage(with: URL(string: currency.image_URL), placeholderImage: UIImage(named: "flag"))
+            
         } else {
             self.secondDropDown.text = currency.currencyShortName
             calRequest.payoutCurrency = currency.currencyShortName
             receivingIcon.sd_setImage(with: URL(string: currency.image_URL), placeholderImage: UIImage(named: "flag"))
+            self.secondDropDown.textColor = .black
         }
+        hideViews()
         txtSecond.text = ""
+        txtFirst.text = ""
     }
     
     
     func onCurrencyList(currencyList: [RecCurrency]) {
-        if currencyList.count == 1 {
-            self.hideProgress()
-            if isSendingSelect {
-                self.firstDropDown.text = currencyList[0].currencyShortName
-                calRequest.payInCurrency = currencyList[0].currencyShortName
-                calRequest.transferCurrency = currencyList[0].currencyShortName
-                sendingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
-               
-            } else {
-                self.secondDropDown.text = currencyList[0].currencyShortName
-                calRequest.payoutCurrency = currencyList[0].currencyShortName
-                receivingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
-              
-            }
-            
-        } else {
+//        if currencyList.count == 1 {
+//            self.hideProgress()
+//            if isSendingSelect {
+//                self.firstDropDown.text = currencyList[0].currencyShortName
+//                calRequest.payInCurrency = currencyList[0].currencyShortName
+//                calRequest.transferCurrency = currencyList[0].currencyShortName
+//                sendingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
+//
+//            } else {
+//                self.secondDropDown.text = currencyList[0].currencyShortName
+//                calRequest.payoutCurrency = currencyList[0].currencyShortName
+//                receivingIcon.sd_setImage(with: URL(string: currencyList[0].image_URL), placeholderImage: UIImage(named: "flag"))
+//                self.secondDropDown.textColor = .black
+//
+//            }
+//
+//        } else {
             self.hideProgress()
             let nextVC = ControllerID.selectCurrencyVC.instance
             (nextVC as! SelectCurrencyVC).currencyProtocol = self
             (nextVC as! SelectCurrencyVC).filteredList = currencyList
             (nextVC as! SelectCurrencyVC).countriesList = currencyList
             self.pushWithFullScreen(nextVC)
-        }
+       // }
     }
     
     
@@ -327,7 +377,19 @@ class RepeatWalletTransactionVC:  BaseVC ,  CountryListProtocol , CurrencyListPr
     
     
     func showRates(response:CalTransferResponse) {
-        txtSecond.text = String(format: "%.02f", response.payoutAmount)
+        if(calRequest.payInCurrency.elementsEqual(calRequest.payoutCurrency)) {
+            if !txtFirst.text!.isEmpty {
+                txtSecond.text = String(format: "%.02f", response.payoutAmount)
+            } else if !txtSecond.text!.isEmpty {
+                txtFirst.text = String(format: "%.02f", response.payInAmount)
+            }
+        }
+        
+        else if calRequest.payInCurrency.elementsEqual(calRequest.transferCurrency) {
+            txtSecond.text = String(format: "%.02f", response.payoutAmount)
+        } else if calRequest.payoutCurrency.elementsEqual(calRequest.transferCurrency) {
+            txtFirst.text = String(format: "%.02f", response.payInAmount)
+        }
         lblCommision.text = String(format: "%.02f", response.commission)
         showViews()
     }
@@ -370,9 +432,14 @@ extension RepeatWalletTransactionVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
       //  if string.count > 0 { // if it was not delete character
-            hideViews()
-            txtSecond.text = "0.00"
-      //  }
+        hideViews()
+        if textField.tag == 1 {
+            txtSecond.placeholder = "0.00"
+            txtSecond.text = ""
+        } else if textField.tag == 2 {
+            txtFirst.placeholder = "0.00"
+            txtFirst.text = ""
+        }
         
         return true
     }

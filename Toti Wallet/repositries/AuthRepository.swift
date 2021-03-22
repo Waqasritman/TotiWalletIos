@@ -243,7 +243,6 @@ class AuthRepository {
                             completion(nil, response.value?.description)
                         }
                     }
-
                 case .failure(let error):
                     completion(nil , error.localizedDescription)
                 }
@@ -383,9 +382,8 @@ class AuthRepository {
                 
                 switch response.result {
                 case .success( _):
-                    
-                    if response.value?.responseCode == 101 {
-                        if let data = response.value {
+                    if let data = response.value {
+                        if data.responseCode == 101 {
                             do {
                                 DispatchQueue.main.async {
                                     completion(data , nil)
@@ -393,10 +391,17 @@ class AuthRepository {
                             } catch {
                                 print(error)
                             }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(data, nil)
+                            }
                         }
                     } else {
                         DispatchQueue.main.async {
-                            completion(nil, response.value?.description)
+                            let changePinResponse = ForgotPinApprovedUserResponse()
+                            changePinResponse.description = "some thing went wrong"
+                            changePinResponse.responseCode = 500
+                            completion(changePinResponse, nil)
                         }
                     }
 

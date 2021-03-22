@@ -51,6 +51,12 @@ class BaseVC: UIViewController , PopUpProtocol {
     }
     
     
+    func isYemenClient() -> Bool {
+        return preferenceHelper.getPhoneForKYC().prefix(3).elementsEqual("967")
+    }
+    
+
+    
     func changed(_ language: Int)
     {
         showProgress()

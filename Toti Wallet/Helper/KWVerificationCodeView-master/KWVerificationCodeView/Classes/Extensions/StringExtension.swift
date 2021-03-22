@@ -22,4 +22,15 @@ extension String {
       else { return nil }
     return from ..< to
   }
+    
+    
+    func removeWhitespace() -> String {
+        return components(separatedBy: .whitespaces).joined()
+    }
+    
+    
+    
+    func breakLine(sign:String) -> String {
+        return self.replacingOccurrences(of: sign, with: "\n")
+    }
 }

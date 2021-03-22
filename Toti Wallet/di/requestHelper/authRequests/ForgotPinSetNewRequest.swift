@@ -28,7 +28,7 @@ class ForgotPinSetNewRequest {
              "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
              "</tpay:Credentials>" +
              "<tpay:Email_Address>" + emailAddress + "</tpay:Email_Address>" +
-             "<tpay:Mobile_Number>" + mobileNumber + "</tpay:Mobile_Number>" +
+            "<tpay:Mobile_Number>" + mobileNumber.removeWhitespace() + "</tpay:Mobile_Number>" +
              "<tpay:New_PIN>" + newPin + "</tpay:New_PIN>" +
             "<tpay:Confirm_PIN>" + confirmPin + "</tpay:Confirm_PIN>" +
              "</tpay:Req>" +

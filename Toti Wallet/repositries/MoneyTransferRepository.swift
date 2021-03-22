@@ -12,7 +12,41 @@ import Alamofire
 class MoneyTransferRepository {
     
     
-    
+    func getPayOutCurrency(request:URLRequest ,completion: @escaping (PayoutCurrencyResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<PayoutCurrencyResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                completion(data , nil)
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = PayoutCurrencyResponse()
+                            response.description = "Something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+                
+            }
+    }
     
     func getIdTypes(request:URLRequest ,completion: @escaping (GetIdTypeResponse?, String?) -> () ) {
         Alamofire.request(request)

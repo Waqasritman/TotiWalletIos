@@ -40,7 +40,7 @@ class BankNamesVC: BaseVC {
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = BankNameListRequest()
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             request.shortCountryName = payOutCountry
             
             repo.getBankNamesList(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_BANK_NAME), completion: {(response , error ) in

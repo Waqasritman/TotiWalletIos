@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CashBeneficaryAddressVC: BaseVC {
+class CashBeneficaryAddressVC: BaseVC , OnSelectCashAgent {
+   
+    
     let repo:BeneficiaryRespository = BeneficiaryRespository()
     
     @IBOutlet weak var txtCity: UITextField!
@@ -45,16 +47,17 @@ class CashBeneficaryAddressVC: BaseVC {
         if Network.isConnectedToNetwork() {
             let request = GetCashNetworkListRequest()
             request.countryCode = BeneficiaryAddRequest.shared.PayoutCountryCode
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             showProgress()
  
             repo.getCashNetworkList(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CASH_NETWORK_LIST), completion: { [self](response , error) in
                 self.hideProgress()
-                if let error = error {
+                    if let error = error {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
                     if response!.list?.count == 1 {
                         self.btnAgent.setTitle(response!.list![0].payOutAgent, for: .normal)
+                        self.btnAgent.setTitleColor(.black, for: .normal)
                         BeneficiaryAddRequest.shared.PaymentMode = response!.list![0].paymentMode
                         BeneficiaryAddRequest.shared.PayOutBranchCode = response!.list![0].payOutBranchCode
                     }
@@ -72,10 +75,20 @@ class CashBeneficaryAddressVC: BaseVC {
     }
     
     
+    func onSelectCashAgent(agent: CashNetworks) {
+        self.btnAgent.setTitle(agent.payOutAgent, for: .normal)
+        self.btnAgent.setTitleColor(.black, for: .normal)
+        BeneficiaryAddRequest.shared.PaymentMode = agent.paymentMode
+        BeneficiaryAddRequest.shared.PayOutBranchCode = agent.payOutBranchCode
+    }
+    
     
     @IBAction func btnPayoutAgent(_ sender:UIButton) {
         if netWorkList.count > 1 {
-            
+            let nextVC = ControllerID.cashNetworks.instance
+            (nextVC as! CashNetworkAgentsVC).filteredList = netWorkList
+            (nextVC as! CashNetworkAgentsVC).delegate = self
+            self.pushWithFullScreen(nextVC)
         }
     }
     

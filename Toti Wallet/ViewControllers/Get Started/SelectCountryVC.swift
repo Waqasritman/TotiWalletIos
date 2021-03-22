@@ -97,7 +97,8 @@ extension SelectCountryVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblDetail.text = ""
         }
        
-        cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].url), placeholderImage: UIImage(named: "flag"))
+     //   cell.imageOutlet.sd_setImage(with:URL(string: filteredList[indexPath.row].url) , placeholderImage: UIImage(named: "flag"))
+        cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].url))
         cell.imageOutlet.makeImageCircle()
 
         return cell

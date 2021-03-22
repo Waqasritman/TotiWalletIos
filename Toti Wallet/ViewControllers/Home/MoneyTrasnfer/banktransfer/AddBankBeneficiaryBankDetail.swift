@@ -133,7 +133,7 @@ class AddBankBeneficiaryBankDetail: BaseVC , BankNameProtocol , BankNetworkProto
                 bankNetworkListRequest.bankName = bankName
                 bankNetworkListRequest.countryCode = BeneficiaryAddRequest.shared.PayoutCountryCode
                 bankNetworkListRequest.branchName = txtLocation.text!
-                bankNetworkListRequest.languageId = preferenceHelper.getLanguage()
+                bankNetworkListRequest.languageId = preferenceHelper.getApiLangugae()
                 bankNetworkListRequest.city = txtCityName.text!
                 
                 repo.getBankNetworkList(request: HTTPConnection.openConnection(stringParams: bankNetworkListRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_BANK_NETWORK_LIST), completion: {(response , error) in
@@ -167,7 +167,7 @@ class AddBankBeneficiaryBankDetail: BaseVC , BankNameProtocol , BankNetworkProto
                 BeneficiaryAddRequest.shared.customerNo = preferenceHelper.getCustomerNo()
                 BeneficiaryAddRequest.shared.Telephone = "1234567890"
                 BeneficiaryAddRequest.shared.PaymentMode = "bank"
-                BeneficiaryAddRequest.shared.languageId = preferenceHelper.getLanguage()
+                BeneficiaryAddRequest.shared.languageId = preferenceHelper.getApiLangugae()
                 BeneficiaryAddRequest.shared.AccountNumber = btnAccountNumber.text!
                 
                 print(BeneficiaryAddRequest.shared.getXML())

@@ -31,7 +31,7 @@ class MobileTopUpSuccessVC: BaseVC {
             showProgress()
             let request = PrepaidStatusRequest()
             request.requestId = status
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             
             repo.getStatus(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_PREPAID_STATUS), completion: {(response , error) in
                 self.hideProgress()

@@ -27,7 +27,7 @@ class GetCustomerWalletDetailsRequest {
              "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
              "</tpay:Credentials>" +
              "<tpay:Customer_Number>" + customerNo + "</tpay:Customer_Number>" +
-             "<tpay:Mobile_Number>" + mobileNumber + "</tpay:Mobile_Number>" +
+            "<tpay:Mobile_Number>" + mobileNumber.removeWhitespace() + "</tpay:Mobile_Number>" +
              "</tpay:Req>" +
              "</tpay:GetCustWalletDetails>" +
              "</soapenv:Body>" +

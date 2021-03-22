@@ -48,7 +48,7 @@ class PurposeVC: BaseVC {
             showProgress()
             let request:PurposeOfTransferListRequest = PurposeOfTransferListRequest()
             request.shortCountryName = shortCountryCode
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             
             repository.getPurposeList(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GetPurposeOfTransferResult), completion: {(response , error) in
                 self.hideProgress()

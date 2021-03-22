@@ -73,7 +73,7 @@ class BeneficiaryListVC: BaseVC {
             self.showProgress()
             let beneRequest = BeneficiaryListRequest()
             beneRequest.customerNo = preferenceHelper.getCustomerNo()
-            beneRequest.languageId = preferenceHelper.getLanguage()
+            beneRequest.languageId = preferenceHelper.getApiLangugae()
         
             beneRepository.getBeneficiaryList(request: HTTPConnection.openConnection(stringParams: beneRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_BENEFICIARY_LIST), completion: {(response , error) in
                 self.hideProgress()

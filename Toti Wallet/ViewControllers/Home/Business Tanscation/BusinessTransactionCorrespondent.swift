@@ -33,6 +33,9 @@ class BusinessTransactionCorrespondent: BaseVC {
         } else if txtAccount.text!.isEmpty {
             showError(message: "enter_cb_swift_bic".localized)
             return false
+        } else if !preferenceHelper.getISKYCApproved() {
+            showError(message: "plz_complete_kyc".localized)
+            return false
         }
         return true
     }
@@ -68,6 +71,7 @@ class BusinessTransactionCorrespondent: BaseVC {
     
     @IBAction func btnDone(_ sender:Any) {
         if isValidate(){
+            
             B2BTransferDetails.shared.correspondentBank = txtName.text!
             B2BTransferDetails.shared.cbSwiftBIC = txtSwift.text!
             B2BTransferDetails.shared.cbAccountNumber = txtAccount.text!
@@ -80,6 +84,7 @@ class BusinessTransactionCorrespondent: BaseVC {
                 if let error = error {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
+                    preferenceHelper.isWalletNeedToUpdate(isNeed: true)
                     self.showSuccess(message: response!.description!)
                     self.closeBtnAction(self)
                 } else {

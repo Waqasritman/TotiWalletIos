@@ -47,7 +47,12 @@ class EditProfileVC: BaseVC {
         txtAddress.placeholder = "address".localized
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         imgOutlet.layer.cornerRadius = imgOutlet.frame.height/2
-        imgOutlet.image = fromBase64(strBase64: preferenceHelper.getUserImage())
+        
+        if preferenceHelper.getUserImage() != ""  {
+            imgOutlet.image = fromBase64(strBase64: preferenceHelper.getUserImage())
+        }
+        
+        
         txtFirstName.layer.cornerRadius = 8
         txtLastName.layer.cornerRadius = 8
         txtNumber.layer.cornerRadius = 8
@@ -97,7 +102,7 @@ class EditProfileVC: BaseVC {
         editCustomerProfileRequest.customerNo = preferenceHelper.getCustomerNo()
         editCustomerProfileRequest.residenceCountry = customerProfile.residenceCountry
         editCustomerProfileRequest.customer.address = txtAddress.text!
-        editCustomerProfileRequest.languageId = preferenceHelper.getLanguage()
+        editCustomerProfileRequest.languageId = preferenceHelper.getApiLangugae()
         print(editCustomerProfileRequest.getXML())
         
         if Network.isConnectedToNetwork() {

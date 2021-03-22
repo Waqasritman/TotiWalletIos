@@ -45,7 +45,7 @@ class RelationVC: BaseVC {
         if Network.isConnectedToNetwork() {
             showProgress()
             let request:GetRelationListRequest = GetRelationListRequest()
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
         
             
             repository.getRealationList(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_RELATION_SHIP_LIST), completion: {(response , error) in

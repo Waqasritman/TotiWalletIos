@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,6 +18,15 @@
         </array>
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
+        </array>
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
         </array>
     </customFonts>
     <scenes>
@@ -36,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="d72-0t-ltZ">
-                                                <rect key="frame" x="66" y="16" width="102" height="24"/>
+                                                <rect key="frame" x="66" y="15.5" width="82" height="25"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFE-VV-UsW">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="56"/>
@@ -1067,13 +1076,150 @@
             </objects>
             <point key="canvasLocation" x="4146" y="1299"/>
         </scene>
+        <!--Faq Controller-->
+        <scene sceneID="Zb9-N8-LEK">
+            <objects>
+                <viewController storyboardIdentifier="FaqController" id="7Cq-jD-SQ8" customClass="FaqController" customModule="Toti_Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NCK-9q-1rD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8E-ua-FWU" userLabel="TopBar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faq" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-9v-uAt">
+                                        <rect key="frame" x="82" y="19" width="211" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="210.66999999999999" id="Zoe-Rl-R02"/>
+                                            <constraint firstAttribute="height" constant="22" id="fP2-hm-2e9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Juma Al Majid Building, Mankhool" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLS-IT-lHQ">
+                                        <rect key="frame" x="83.333333333333329" y="57.333333333333329" width="208.66666666666669" height="14"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                        <color key="textColor" red="0.6705882353" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEn-85-3DJ">
+                                        <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="IGc-wD-kVJ"/>
+                                            <constraint firstAttribute="height" constant="50" id="tAP-1Z-IXI"/>
+                                        </constraints>
+                                        <state key="normal" image="backIcon"/>
+                                        <connections>
+                                            <action selector="onBack:" destination="7Cq-jD-SQ8" eventType="touchUpInside" id="lQh-7g-Jzw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="W6c-9v-uAt" firstAttribute="centerX" secondItem="q8E-ua-FWU" secondAttribute="centerX" id="4mD-UV-45s"/>
+                                    <constraint firstAttribute="height" constant="60" id="ISv-QP-G1d"/>
+                                    <constraint firstItem="W6c-9v-uAt" firstAttribute="centerY" secondItem="q8E-ua-FWU" secondAttribute="centerY" id="RoZ-Bp-Sph"/>
+                                    <constraint firstItem="yEn-85-3DJ" firstAttribute="leading" secondItem="q8E-ua-FWU" secondAttribute="leading" constant="5" id="kDi-tg-Pr7"/>
+                                    <constraint firstItem="yEn-85-3DJ" firstAttribute="centerY" secondItem="q8E-ua-FWU" secondAttribute="centerY" id="ksd-p7-5Yp"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="vTe-OC-Jfh"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="qLS-IT-lHQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="lbt-5l-v68">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="PoU-WK-8EO" customClass="FaqHeaderCell" customModule="Toti_Wallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="32.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PoU-WK-8EO" id="9wW-of-zJp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="32.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hafkjahfajkfhakjfhakfhakfhakfjhakfjha" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGb-Mi-syJ">
+                                                    <rect key="frame" x="26" y="5" width="339" height="22.5"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rGb-Mi-syJ" firstAttribute="top" secondItem="9wW-of-zJp" secondAttribute="top" constant="5" id="5V8-YR-3Cb"/>
+                                                <constraint firstItem="rGb-Mi-syJ" firstAttribute="leading" secondItem="9wW-of-zJp" secondAttribute="leadingMargin" constant="10" id="ESx-Wc-2Rm"/>
+                                                <constraint firstAttribute="trailing" secondItem="rGb-Mi-syJ" secondAttribute="trailing" constant="10" id="U5k-Qc-QKn"/>
+                                                <constraint firstItem="rGb-Mi-syJ" firstAttribute="centerY" secondItem="9wW-of-zJp" secondAttribute="centerY" id="u4O-26-xqx"/>
+                                                <constraint firstAttribute="bottom" secondItem="rGb-Mi-syJ" secondAttribute="bottom" constant="5" id="uqa-9B-ie6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="title" destination="rGb-Mi-syJ" id="ATz-Ye-SXs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="nPY-aj-jYG" customClass="FaqDetailCell" customModule="Toti_Wallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="125.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nPY-aj-jYG" id="uP2-7d-tgv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="125.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELv-Ua-LsQ">
+                                                    <rect key="frame" x="26" y="16" width="323" height="93.5"/>
+                                                    <string key="text">hakfhakfjahfkafhakfhakfhafkahfkahfakjfhakfhakjfhakfahfkahfkafhakjfhakjfhakfhakjfhakfhahfalkfhakjfhakjfhakjfhakfjhakfahfkjahfkjahfkajfhakjfhakjfhakjfhakfhakjfhakjfhakjfhakfhakfhakfhakjfhakfhakfhakfha</string>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ELv-Ua-LsQ" firstAttribute="top" secondItem="uP2-7d-tgv" secondAttribute="topMargin" constant="5" id="2Kq-Ti-Car"/>
+                                                <constraint firstItem="ELv-Ua-LsQ" firstAttribute="leading" secondItem="uP2-7d-tgv" secondAttribute="leadingMargin" constant="10" id="MnL-iz-ehT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ELv-Ua-LsQ" secondAttribute="trailing" constant="10" id="QbY-Mp-RaF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ELv-Ua-LsQ" secondAttribute="bottom" constant="5" id="UXL-JP-3cU"/>
+                                                <constraint firstItem="ELv-Ua-LsQ" firstAttribute="centerY" secondItem="uP2-7d-tgv" secondAttribute="centerY" id="zwq-tr-EmY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="answer" destination="ELv-Ua-LsQ" id="Slb-q1-ZcN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mcD-zL-V7h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="q8E-ua-FWU" firstAttribute="top" secondItem="mcD-zL-V7h" secondAttribute="top" id="4Wk-Xu-4Pi"/>
+                            <constraint firstItem="lbt-5l-v68" firstAttribute="leading" secondItem="NCK-9q-1rD" secondAttribute="leading" id="7uk-t1-Tuy"/>
+                            <constraint firstAttribute="trailing" secondItem="lbt-5l-v68" secondAttribute="trailing" id="hFN-BW-FGA"/>
+                            <constraint firstItem="q8E-ua-FWU" firstAttribute="trailing" secondItem="mcD-zL-V7h" secondAttribute="trailing" id="ktM-XW-amE"/>
+                            <constraint firstItem="lbt-5l-v68" firstAttribute="bottom" secondItem="mcD-zL-V7h" secondAttribute="bottom" id="pTE-Tg-JFB"/>
+                            <constraint firstItem="lbt-5l-v68" firstAttribute="top" secondItem="q8E-ua-FWU" secondAttribute="bottom" id="xNQ-kh-GJp"/>
+                            <constraint firstItem="q8E-ua-FWU" firstAttribute="leading" secondItem="mcD-zL-V7h" secondAttribute="leading" id="zMD-RO-zyx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uMP-Vj-wcu"/>
+                    <connections>
+                        <outlet property="pageTitle" destination="W6c-9v-uAt" id="dQS-Gc-SXg"/>
+                        <outlet property="tableView" destination="lbt-5l-v68" id="Xn8-DO-2qQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wlh-e9-Fqp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2919" y="394"/>
+        </scene>
     </scenes>
     <resources>
         <image name="SideMenuQRCode" width="24" height="24"/>
         <image name="backIcon" width="24.5" height="19.5"/>
         <image name="backIconWhite" width="24.5" height="19.5"/>
         <image name="downArrow" width="13" height="8"/>
-        <image name="logoWhite" width="102.5" height="24.5"/>
+        <image name="logoWhite" width="82" height="25"/>
         <image name="notFound" width="344" height="252"/>
         <namedColor name="650C39">
             <color red="0.39599999785423279" green="0.046999998390674591" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

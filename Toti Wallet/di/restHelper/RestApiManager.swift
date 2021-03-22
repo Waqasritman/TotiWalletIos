@@ -7,14 +7,18 @@
 //
 
 import Foundation
-class RestApiManager {
-    static var baseURl:String = "https://183.87.134.37/TotipayImagesApi/"
-    
+struct RestApiManager {
+   static var baseURl:String = "https://183.87.134.37/TotipayImagesApi/"
+   // static var baseURl:String = "https://totiwalletrest.totiwallet.com/"
     static let uploadAttachment = "TotiPayRestAPI/Images/UploadKYCImage"
     static let customerImage = "TotiPayRestAPI/Images/GetCustomerImage2"
     static let uploadCustomerImage = "TotiPayRestAPI/Images/AddCustomerImage"
+    static let getVersion = "TotiPayRestAPI/Version/GetVersion"
+    
+    static let trackBaseURL = "https://ipapi.co/"
     
     
+    static let getTrackURLKey = "xqgm3PkZb4RTXmxMmikizvh4d0IDDjELyWW9VtLYETSANVG8H0"
     
     static func getUploadAttachment() -> String {
         return baseURl + uploadAttachment

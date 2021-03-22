@@ -30,7 +30,7 @@ public class ForgotPinRequestApprovedUserRequest {
             "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
             "</tpay:Credentials>" +
             "<tpay:Email_Address>" + emailAddress + "</tpay:Email_Address>" +
-            "<tpay:Mobile_Number>" + mobileNumber + "</tpay:Mobile_Number>" +
+            "<tpay:Mobile_Number>" + mobileNumber.removeWhitespace() + "</tpay:Mobile_Number>" +
             "<tpay:ID_Number>" + idNumber + "</tpay:ID_Number>" +
             "<tpay:IDExpiry_Date>" + idExpireDate + "</tpay:IDExpiry_Date>" +
             "</tpay:Req>" +

@@ -58,7 +58,7 @@ class MyCardsVC: BaseVC {
             self.showProgress()
             let request = GetCardDetailsRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getLanguage()
+            request.languageID = preferenceHelper.getApiLangugae()
             repo.loadCustomerCards(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CARD_DETAILS), completion: {(response , error) in
                 self.hideProgress()
                 if let error = error {

@@ -13,6 +13,7 @@ class RequestMoney {
     var amount:Double = 0.0
     var description:String = ""
     var languageId:String = "1";
+    var requestCurrency = ""
     
     
     public func getXML() -> String {
@@ -28,8 +29,9 @@ class RequestMoney {
             "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
             "</tpay:Credentials>" +
             "<tpay:Customer_No>" + customerNo + "</tpay:Customer_No>" +
-            "<tpay:Mobile_Number>" + mobileNo + "</tpay:Mobile_Number>" +
+            "<tpay:Mobile_Number>" + mobileNo.removeWhitespace() + "</tpay:Mobile_Number>" +
             "<tpay:Amount>" + String(describing: amount) + "</tpay:Amount>" +
+            "<tpay:Currency>" + requestCurrency + "</tpay:Currency>" +
             "<tpay:Description>" + description + "</tpay:Description>" +
             "</tpay:Req>" +
             "</tpay:RequestMoney>" +

@@ -72,7 +72,7 @@ class CardPicVC: BaseVC, UINavigationControllerDelegate {
                 let request = UploadKYCImageRequest()
                 request.Customer_No = preferenceHelper.getCustomerNo()
                 request.Image_Name = arrayImageNames[position]
-                request.Image = UIImageView().convertImageToBase64String(img: image)
+                request.Image = image.toBase64()!
                 request.credentials.LanguageID = Int(preferenceHelper.getApiLangugae())!
                 print(request.toJSON())
                 restRepo.uploadKYCImage(param: request.toJSON(), completion: {(response , error ) in
@@ -144,34 +144,37 @@ extension CardPicVC:UIImagePickerControllerDelegate {
         {
             image = img
         }
-        imgOutlet.image = image
-        image = UIImageView().resize(targetSize: CGSize(width: 300, height: 300))
+      
+       // image = UIImageView().resize(targetSize: CGSize(width: 300, height: 300))
+        
+        
+        let stirng = convertImageToBase64String(img: image)
+        
+        imgOutlet.image = convertBase64StringToImage(imageBase64String: stirng)
+        
+        
         
         picker.dismiss(animated: true, completion: nil)
     }
     
-    //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    //
-    //
-    //        var image : UIImage!
-    //
-    //        if let img = info[UIImagePickerControllerEditedImage] as? UIImage {
-    //            image = img
-    //
-    //        } else if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
-    //            image = img
-    //        }
-    //
-    //
-    //        let chooseimage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage
-    //        dismiss(animated: true, completion: nil)
-    //
-    //        openTOCropViewController(image: chooseimage!)
-    //    }
     
+    
+    func convertImageToBase64String (img: UIImage) -> String {
+        return img.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    }
+    
+    
+    func convertBase64StringToImage (imageBase64String:String) -> UIImage {
+        let imageData = Data.init(base64Encoded: imageBase64String, options: .init(rawValue: 0))
+        let image = UIImage(data: imageData!)
+        return image!
+    }
+    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: false, completion: nil)
     }
+    
     //MARK:- Open Crop ViewController
     func openTOCropViewController(image: UIImage) {
         
@@ -195,18 +198,16 @@ extension CardPicVC: TOCropViewControllerDelegate {
     func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
         
         let newImage = Utility.resizeImage(image, newWidth: Utility.ScreenSize.SCREEN_WIDTH)
-        
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "ddMMyyyyhhmmss"
-        let result: String = formatter.string(from: date)
-        
         imgOutlet.image = newImage
+       // let date = Date()
+       // let formatter = DateFormatter()
+       // formatter.dateFormat = "ddMMyyyyhhmmss"
+       // let result: String = formatter.string(from: date)
         
-        let strImageName = String(format: "%@.jpg",result)
-        print(strImageName)
+        
+        
+     //   let strImageName = String(format: "%@.jpg",result)
         self.dismiss(animated: false, completion: nil)
-        
     }
 }
 

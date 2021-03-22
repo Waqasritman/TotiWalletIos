@@ -88,7 +88,7 @@ class WalletHistoryVC: BaseVC {
         if Network.isConnectedToNetwork() {
             let request = WalletHistoryRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageId  = preferenceHelper.getLanguage()
+            request.languageId  = preferenceHelper.getApiLangugae()
             showProgress()
             repos.getWalletTransHistory(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_WALLET_HISTORY), completion: {(response , error ) in
                 self.hideProgress()

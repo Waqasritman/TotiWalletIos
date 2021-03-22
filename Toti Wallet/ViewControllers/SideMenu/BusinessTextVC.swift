@@ -14,11 +14,13 @@ class BusinessTextVC: UIViewController {
     @IBOutlet weak var detailTextView: UITextView!
     
     var heading = ""
+    var detailTxt = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         lblHeading.text = heading
+        detailTextView.text = detailTxt
     }
     
 

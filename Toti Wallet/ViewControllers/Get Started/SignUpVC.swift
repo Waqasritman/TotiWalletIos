@@ -117,7 +117,7 @@ class SignUpVC: BaseVC , CountryListProtocol {
                     authRequest.mobileNumber = ""
                 }
                 
-                
+                print(authRequest.getXML())
                 authRepository.authRequest(request: HTTPConnection.openConnection(stringParams: authRequest.getXML(), action: SoapActionHelper.shared.ACTION_AUTHENTICATION),completion: { (response, error) in
                     self.hideProgress()
                     if let error = error {

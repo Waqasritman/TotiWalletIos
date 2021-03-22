@@ -67,8 +67,6 @@ class MobileTopUpPaymentVC: BaseVC , CurrencyListProtocol , CardSumitProtocol
     }
     
     
- 
-    
     @IBAction func btnLoadFunc(_ sender: UIButton) {
         getCustomerCards()
     }
@@ -84,9 +82,6 @@ class MobileTopUpPaymentVC: BaseVC , CurrencyListProtocol , CardSumitProtocol
         } else {
             self.showError(message: "plz_complete_kyc".localized)
         }
-        
-       
-       
     }
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
@@ -193,7 +188,7 @@ extension MobileTopUpPaymentVC: UITableViewDelegate, UITableViewDataSource {
     func getWalletCurrencies() {
         if Network.isConnectedToNetwork() {
             let walletCurrencyRequest = GetWalletCurrencyListRequest()
-            walletCurrencyRequest.languageId = preferenceHelper.getLanguage()
+            walletCurrencyRequest.languageId = preferenceHelper.getApiLangugae()
             showProgress()
             moneyTransferRepo.getWalletCurrency(request: HTTPConnection.openConnection(stringParams: walletCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_WALLET_CURRENCY), completion: {(response , error ) in
                 if let error = error {
@@ -244,7 +239,7 @@ extension MobileTopUpPaymentVC: UITableViewDelegate, UITableViewDataSource {
             self.showProgress()
             let request = GetCardDetailsRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getLanguage()
+            request.languageID = preferenceHelper.getApiLangugae()
             repo.loadCustomerCards(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CARD_DETAILS), completion: {(response , error) in
                 self.hideProgress()
                 if let error = error {
@@ -267,13 +262,14 @@ extension MobileTopUpPaymentVC: UITableViewDelegate, UITableViewDataSource {
         if Network.isConnectedToNetwork() {
             showProgress()
             WRPrepaidRechargeRequest.shared.customerNo = preferenceHelper.getCustomerNo()
-            WRPrepaidRechargeRequest.shared.languageId = preferenceHelper.getLanguage()
+            WRPrepaidRechargeRequest.shared.languageId = preferenceHelper.getApiLangugae()
             
             utilityRepo.prepaidCharge(request: HTTPConnection.openConnection(stringParams: WRPrepaidRechargeRequest.shared.getXML(), action: SoapActionHelper.shared.ACTION_WR_PERPAID_RECHARGE), completion: {(response , error ) in
                 self.hideProgress()
                 if let error = error {
                     self.showError(message: error)
                 } else if response!.responseCode == 101 {
+                    preferenceHelper.isWalletNeedToUpdate(isNeed: true)
                     let nextVC = ControllerID.mobileTopUpSuccessVC.instance
                     (nextVC as! MobileTopUpSuccessVC).status = response!.rechargeId
                     self.pushWithFullScreen(nextVC)

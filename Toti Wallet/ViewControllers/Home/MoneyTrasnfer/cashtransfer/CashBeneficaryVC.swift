@@ -120,7 +120,7 @@ class CashBeneficaryVC: BaseVC , CountryListProtocol , CurrencyListProtocol
             BeneficiaryAddRequest.shared.Telephone = txtMobile.text!
             BeneficiaryAddRequest.shared.Address = txtAddress.text!
             BeneficiaryAddRequest.shared.customerNo = preferenceHelper.getCustomerNo()
-            BeneficiaryAddRequest.shared.languageId = preferenceHelper.getLanguage()
+            BeneficiaryAddRequest.shared.languageId = preferenceHelper.getApiLangugae()
             if BeneficiaryAddRequest.shared.countryID == CountryTypeHelper.YEMEN {
                 let nextVc = ControllerID.cashBeneficiaryBranchVC.instance
                 self.pushWithFullScreen(nextVc)
@@ -158,39 +158,41 @@ class CashBeneficaryVC: BaseVC , CountryListProtocol , CurrencyListProtocol
     func onSelectCountry(country: WRCountryList) {
         isCountrySelected = true
         btnCountry.setTitle(country.countryName, for: .normal)
+        btnCountry.setTitleColor(.black, for: .normal)
         BeneficiaryAddRequest.shared.PayoutCountryCode = country.countryShortName
         BeneficiaryAddRequest.shared.BankCountry = country.countryShortName
         BeneficiaryAddRequest.shared.countryID = country.countryId
+        BeneficiaryAddRequest.shared.PayOutCurrency = country.currencyShortName
         
-        
-        
-        let recCurrencyRequest = GetSendRecCurrencyRequest()
-        recCurrencyRequest.countryType = country.countryType
-        recCurrencyRequest.countryShortName = country.countryShortName
-        recCurrencyRequest.languageId = preferenceHelper.getLanguage()
-        
-        if Network.isConnectedToNetwork() {
-            showProgress()
-            self.authRepos.getReceiveCurrency(request: HTTPConnection.openConnection(stringParams: recCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_REC_CURRENCY), completion: {(response , error ) in
-                if let error = error {
-                    self.hideProgress()
-                    self.showError(message: error)
-                } else if response!.responseCode == 101 {
-                    self.onCurrencyList(currencyList: response!.currencyList)
-                } else {
-                    self.hideProgress()
-                    self.showError(message: response!.description)
-                }
-            })
-        } else {
-            self.noInternet()
-        }
+//
+//        let recCurrencyRequest = GetSendRecCurrencyRequest()
+//        recCurrencyRequest.countryType = country.countryType
+//        recCurrencyRequest.countryShortName = country.countryShortName
+//        recCurrencyRequest.languageId = preferenceHelper.getApiLangugae()
+//
+//        if Network.isConnectedToNetwork() {
+//            showProgress()
+//            self.authRepos.getReceiveCurrency(request: HTTPConnection.openConnection(stringParams: recCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_REC_CURRENCY), completion: {(response , error ) in
+//                if let error = error {
+//                    self.hideProgress()
+//                    self.showError(message: error)
+//                } else if response!.responseCode == 101 {
+//                    self.onCurrencyList(currencyList: response!.currencyList)
+//                } else {
+//                    self.hideProgress()
+//                    self.showError(message: response!.description)
+//                }
+//            })
+//        } else {
+//            self.noInternet()
+//        }
     }
     
     
     func onSelectRelation(relation: Relation) {
         isRelationSelected = true
         btnRelation.setTitle(relation.relationName, for: .normal)
+        btnRelation.setTitleColor(.black, for: .normal)
         BeneficiaryAddRequest.shared.CustomerRelation = relation.relationName
         
     }

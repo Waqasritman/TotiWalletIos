@@ -145,7 +145,7 @@ class AddBankBeneficiaryVC: BaseVC , CountryListProtocol , RelationProtocol , Cu
         let recCurrencyRequest = GetSendRecCurrencyRequest()
         recCurrencyRequest.countryType = country.countryType
         recCurrencyRequest.countryShortName = country.countryShortName
-        recCurrencyRequest.languageId = preferenceHelper.getLanguage()
+        recCurrencyRequest.languageId = preferenceHelper.getApiLangugae()
         
         if Network.isConnectedToNetwork() {
             showProgress()

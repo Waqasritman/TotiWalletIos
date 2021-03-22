@@ -10,8 +10,6 @@ import UIKit
 
 class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
    
-    
-
     let authRepo:AuthRepository = AuthRepository()
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var btnContinue: UIButton!
@@ -25,10 +23,6 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
     
     @IBOutlet weak var btnFlag: UIImageView!
     @IBOutlet weak var pageSubTitle: UILabel!
-    
-    
-    
-    
     
     var isByNumber:Bool = false;
     var isCountrySelected = false
@@ -74,8 +68,7 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
             phoneNumberView.isHidden = false
             emailView.isHidden = true
             pageSubTitle.text = "Please_enteR_nmber".localized
-        }
-        else{
+        } else{
             phoneNumberView.isHidden = true
             emailView.isHidden = false
             pageSubTitle.text = "Please_Enter_email_txt_phone".localized
@@ -101,14 +94,14 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
                 }
                 request.languageId = "1"
                 
-                authRepo.getCustomerProfile(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER), completion: {(response , error) in
+                authRepo.getCustomerProfile(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CUSTOMER), completion: { [self](response , error) in
                     self.hideProgress()
                     if let error = error {
                         self.showError(message: error)
                     } else {
                      
                         if self.isByNumber {
-                            ForgotPinRequestApprovedUserRequest.shared.mobileNumber = self.txtNumber.text!
+                            ForgotPinRequestApprovedUserRequest.shared.mobileNumber = String().removePlus(number: self.lblCode.text! + self.txtNumber.text!)
                             ForgotPinRequestApprovedUserRequest.shared.emailAddress = ""
                             ForgotPinRequestApprovedUserRequest.shared.languageId = preferenceHelper.getApiLangugae()
                         } else {
@@ -118,16 +111,16 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
                         }
                         
                         
-                        if response!.isApprovedKYC {
-                            // then get the id details
-                            print(response!.firstName)
-                            ForgotPinRequestApprovedUserRequest.shared.idNumber = response!.idNumber
-                            ForgotPinRequestApprovedUserRequest.shared.idExpireDate = response!.idExpireDate
-                            
-                            let nextVc = ControllerID.forgotPassGetDataVC.instance
-                            (nextVc as! ForgotPassGetDataVC).isByNumber = self.isByNumber
-                            self.pushWithFullScreen(nextVc)
-                        } else {
+//                        if response!.isApprovedKYC {
+//                            // then get the id details
+//                            print(response!.firstName)
+//                            ForgotPinRequestApprovedUserRequest.shared.idNumber = response!.idNumber
+//                            ForgotPinRequestApprovedUserRequest.shared.idExpireDate = response!.idExpireDate
+//
+//                            let nextVc = ControllerID.forgotPassGetDataVC.instance
+//                            (nextVc as! ForgotPassGetDataVC).isByNumber = self.isByNumber
+//                            self.pushWithFullScreen(nextVc)
+//                        } else {
                             // then send to otp
                             print(response!.firstName)
                             ForgotPinRequestApprovedUserRequest.shared.idNumber = ""
@@ -135,7 +128,7 @@ class ForgotPassGetEmailVC: BaseVC  , CountryListProtocol {
                             let nextVc = ControllerID.forgotPassotpVC.instance
                             (nextVc as! ForgotPassotpVC).isByNumber = self.isByNumber
                             self.pushWithFullScreen(nextVc)
-                        }
+                       // }
                     }
                 })
                 

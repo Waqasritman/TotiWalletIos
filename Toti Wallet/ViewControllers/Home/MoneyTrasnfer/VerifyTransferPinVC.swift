@@ -28,7 +28,8 @@ class VerifyTransferPinVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        pageTitle.text = "enter_pin_tosend".localized
+        btnConfirm.setTitle("confirm_text".localized, for: .normal)
         btnConfirm.layer.cornerRadius = 8
         viewMain.layer.cornerRadius = 16
         viewMain.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -39,15 +40,10 @@ class VerifyTransferPinVC: BaseVC {
         })
         
         
-        pageTitle.text = "enter_pin_tosend".localized
-        btnConfirm.setTitle("confirm_text".localized, for: .normal)
+      
     }
     
-    
-    @IBAction func btnEdit(_ sender:Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+
 
     
     @IBAction func btnConfirm(_ sender:Any) {
@@ -55,7 +51,7 @@ class VerifyTransferPinVC: BaseVC {
             if isValidate() {
                 let request = MatchPinRequest()
                 request.customerNO = preferenceHelper.getCustomerNo()
-                request.languageID = preferenceHelper.getLanguage()
+                request.languageID = preferenceHelper.getApiLangugae()
                 request.customerPIN = viewVerificationCode.getVerificationCode()
                 showProgress()
                 authRepo.matchPin(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_MATCH_PIN), completion: {(response, error) in

@@ -56,7 +56,8 @@ extension SelectCurrencyVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = filteredList[indexPath.row].currencyShortName
         cell.lblDetail.text = ""
         
-        cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].image_URL), placeholderImage: UIImage(named: "flag"))
+      //  cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].image_URL), placeholderImage: UIImage(named: "flag"))
+        cell.imageOutlet.sd_setImage(with: URL(string: filteredList[indexPath.row].image_URL))
         cell.imageOutlet.makeImageCircle()
         return cell
     }

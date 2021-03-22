@@ -197,27 +197,31 @@ extension PrepardCardVC: UITableViewDataSource, UITableViewDelegate {
     
     
     func loadPrepaidCard() {
-        if Network.isConnectedToNetwork() {
-             showProgress()
-            let request = LoadVirtualCardRequest()
-            request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getApiLangugae()
-            request.virtualCardNo = customerCardNo
-            request.loadAmount = txtAmount.text!
-            
-            
-            repo.loadVirtualCard(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_LOAD_VIRTUAL_CARD), completion: {(response , error ) in
-                self.hideProgress()
-                if let error = error {
-                    self.showError(message: error)
-                } else if response!.responseCode == 101 {
-                    self.showSuccess(message: response!.description!)
-                } else {
-                    self.showError(message: response!.description!)
-                }
-            })
+        if preferenceHelper.getISKYCApproved() {
+            if Network.isConnectedToNetwork() {
+                 showProgress()
+                let request = LoadVirtualCardRequest()
+                request.customerNo = preferenceHelper.getCustomerNo()
+                request.languageID = preferenceHelper.getApiLangugae()
+                request.virtualCardNo = customerCardNo
+                request.loadAmount = txtAmount.text!
+                
+                
+                repo.loadVirtualCard(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_LOAD_VIRTUAL_CARD), completion: {(response , error ) in
+                    self.hideProgress()
+                    if let error = error {
+                        self.showError(message: error)
+                    } else if response!.responseCode == 101 {
+                        self.showSuccess(message: response!.description!)
+                    } else {
+                        self.showError(message: response!.description!)
+                    }
+                })
+            } else {
+                self.noInternet()
+            }
         } else {
-            self.noInternet()
+            self.showError(message: "plz_complete_kyc".localized)
         }
     }
     

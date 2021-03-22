@@ -14,6 +14,8 @@ class CalTransferRequest {
     var transferAmount:String = ""
     var paymentMode:String = "!"
     var languageId = "1"
+    var payInCountry:String = ""
+    var payOutCountry:String = ""
     
     
     public func getXML() -> String {
@@ -29,8 +31,10 @@ class CalTransferRequest {
             "<tpay:UserPassword>" + StaticHelper.USER_PASSWORD_VALUE + "</tpay:UserPassword>" +
             "<tpay:LanguageID>" + languageId + "</tpay:LanguageID>" +
             "</tpay:Credentials>" +
-            "<tpay:PayInCurrency>" + payInCurrency + "</tpay:PayInCurrency >" +
+            "<tpay:PayInCurrency>" + payInCurrency + "</tpay:PayInCurrency>" +
             "<tpay:PayoutCurrency>" + payoutCurrency + "</tpay:PayoutCurrency>" +
+            "<tpay:PayInCountry>" + payInCountry + "</tpay:PayInCountry>" +
+            "<tpay:PayOutCountry>" + payOutCountry + "</tpay:PayOutCountry>" +
             "<tpay:TransferCurrency>" + transferCurrency + "</tpay:TransferCurrency>" +
             "<tpay:TransferAmount>" + transferAmount + "</tpay:TransferAmount>" +
             "<tpay:PaymentMode>" + paymentMode + "</tpay:PaymentMode>" +

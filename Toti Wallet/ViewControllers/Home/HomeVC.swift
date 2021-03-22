@@ -26,9 +26,13 @@ class HomeVC: BaseVC {
     @IBOutlet weak var viewBillPayments: UIView!
     @IBOutlet weak var viewPrepaidCards: UIView!
     
+    @IBOutlet weak var createWalletView: UIView!
+    @IBOutlet weak var transactionHistoryView: UIView!
+    @IBOutlet weak var walletHistoryView: UIView!
     
     var walletList:[CustomerWalletDetails] = Array()
     
+    @IBOutlet weak var createWalletLbl: UILabel!
     @IBOutlet weak var addMoneylbl: UILabel!
     @IBOutlet weak var moneyTransferlbl: UILabel!
     @IBOutlet weak var prepaidlbl: UILabel!
@@ -38,7 +42,9 @@ class HomeVC: BaseVC {
     @IBOutlet weak var ownWalletlbl: UILabel!
     
     @IBOutlet weak var scrollViewOutlet: UIScrollView!
+    @IBOutlet weak var transactionHstLBL: UILabel!
     
+    @IBOutlet weak var walletHStlbl: UILabel!
     var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -69,6 +75,13 @@ class HomeVC: BaseVC {
         viewMobileTopUp.layer.cornerRadius = 8
         viewBillPayments.layer.cornerRadius = 8
         viewPrepaidCards.layer.cornerRadius = 8
+        transactionHistoryView.layer.cornerRadius = 8
+        walletHistoryView.layer.cornerRadius = 8
+        createWalletView.layer.cornerRadius = 8
+        
+        transactionHistoryView.dropShadow()
+        walletHistoryView.dropShadow()
+        createWalletView.dropShadow()
         
         viewAddMoney.dropShadow()
         viewMoneyTransfer.dropShadow()
@@ -76,6 +89,11 @@ class HomeVC: BaseVC {
         viewMobileTopUp.dropShadow()
         viewBillPayments.dropShadow()
         viewPrepaidCards.dropShadow()
+        
+        
+        createWalletLbl.text = "create_wallet".localized
+        transactionHstLBL.text = "transaction_history_break".localized
+        walletHStlbl.text = "wallet_history_break".localized
         
         offerlbl.text = "offer_of_home".localized
         addMoneylbl.text = "add_moeny_txt".localized
@@ -103,27 +121,35 @@ class HomeVC: BaseVC {
         viewPrepaidCards.addGestureRecognizer(viewPrepaidCardsGesture)
         
         
-        if preferenceHelper.getIsWalletNeedToUpdate() {
-            getCustomerWallets()
-        }
-
+        let viewCreateWalletGesture = UITapGestureRecognizer(target: self, action: #selector(createWalletFunc(_:)))
+        createWalletView.addGestureRecognizer(viewCreateWalletGesture)
+        
+        let viewTransactionHistoryGesture = UITapGestureRecognizer(target: self, action: #selector(transactionHistory(_:)))
+        transactionHistoryView.addGestureRecognizer(viewTransactionHistoryGesture)
+        
+        let viewWalletHistoryGesture = UITapGestureRecognizer(target: self, action: #selector(walletHistory(_:)))
+        walletHistoryView.addGestureRecognizer(viewWalletHistoryGesture)
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            self.refreshControl.tintColor = UIColor.black
-           
-            self.refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
-            scrollViewOutlet.isScrollEnabled = true
-            scrollViewOutlet.alwaysBounceVertical = true
-            scrollViewOutlet.addSubview(refreshControl)
-        }
+        self.refreshControl.tintColor = UIColor.black
         
-        @objc func refresh(sender:AnyObject) {
-            // Code to refresh table view
-            print("Yes")
-            refreshControl.endRefreshing()
+        self.refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
+        scrollViewOutlet.isScrollEnabled = true
+        scrollViewOutlet.alwaysBounceVertical = true
+        scrollViewOutlet.addSubview(refreshControl)
+        
+        
+        if preferenceHelper.getIsWalletNeedToUpdate() {
             getCustomerWallets()
         }
+    }
+    
+    @objc func refresh(sender:AnyObject) {
+        refreshControl.endRefreshing()
+        getCustomerWallets()
+    }
     
     @IBAction func btnRegistrationFunc(_ sender: Any) {
         let nextVC = ControllerID.completeRegistrationVC.instance
@@ -150,21 +176,45 @@ class HomeVC: BaseVC {
         } else {
             btnRegistration.isHidden = true
         }
- 
+        
     }
     
     
-   
+    
     @IBAction func btnBarCodeFunc(_ sender: UIButton) {
-        //        let viewController = BarcodeScannerViewController()
-        //        viewController.codeDelegate = self
-        //        viewController.errorDelegate = self
-        //        viewController.dismissalDelegate = self
-        //        self.presentWithFullScreen(viewController)
+        var style = LBXScanViewStyle()
+        style.centerUpOffset = 44
+        style.photoframeAngleStyle = LBXScanViewPhotoframeAngleStyle.On
+        style.photoframeLineW = 6
+        style.photoframeAngleW = 24
+        style.photoframeAngleH = 24
+        style.isNeedShowRetangle = true
+        
+        style.anmiationStyle = LBXScanViewAnimationStyle.NetGrid
+        style.animationImage = UIImage(named: "qrcode_scan_part_net")
+        let nextVC = ControllerID.barCodeScanner.instance
+        (nextVC as! BarCodeScanViewController).scanStyle = style
+        self.pushWithFullScreen(nextVC)
     }
     
     @IBAction func btnNotificationFunc(_ sender: UIButton) {
         let nextVC = ControllerID.notificationListVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    
+    @objc private func createWalletFunc(_ sender: UIGestureRecognizer) {
+        let nextVC = ControllerID.createWallet.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    @objc private func transactionHistory(_ sender: UIGestureRecognizer) {
+        let nextVC = ControllerID.transactionHistoryVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    @objc private func walletHistory(_ sender: UIGestureRecognizer) {
+        let nextVC = ControllerID.walletHistoryVC.instance
         self.pushWithFullScreen(nextVC)
     }
     
@@ -185,17 +235,26 @@ class HomeVC: BaseVC {
     }
     
     @objc private func mobileTopUpFunc(_ sender: UIGestureRecognizer) {
-        let nextVC = ControllerID.mobileTopUpVC.instance
+        //        let nextVC = ControllerID.mobileTopUpVC.instance
+        //        self.pushWithFullScreen(nextVC)
+        
+        let nextVC = ControllerID.loyaltyPointsVC.instance
         self.pushWithFullScreen(nextVC)
     }
     
     @objc private func billPaymentsFunc(_ sender: UIGestureRecognizer) {
-        let nextVC = ControllerID.billPaymentVC.instance
+        //        let nextVC = ControllerID.billPaymentVC.instance
+        //        self.pushWithFullScreen(nextVC)
+        
+        let nextVC = ControllerID.loyaltyPointsVC.instance
         self.pushWithFullScreen(nextVC)
     }
     
     @objc private func prepaidCardFunc(_ sender: UIGestureRecognizer) {
-        let nextVC = ControllerID.prepardCardVC.instance
+        //        let nextVC = ControllerID.prepardCardVC.instance
+        //        self.pushWithFullScreen(nextVC)
+        
+        let nextVC = ControllerID.loyaltyPointsVC.instance
         self.pushWithFullScreen(nextVC)
     }
     
@@ -270,6 +329,16 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             return cell
         }
         
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 1 {
+            
+        }else {
+            let nextVC = ControllerID.loyaltyPointsVC.instance
+            self.pushWithFullScreen(nextVC)
+        }
     }
     
     

@@ -58,13 +58,15 @@ class QuickPayVC: BaseVC {
     }
     
     @objc func viewWalletFunc(_ sender: UITapGestureRecognizer) {
-        self.isBottomSheetVisible = true
-        self.viewSheet.isHidden = false
+        let nextVC = ControllerID.walletOption.instance
+        self.pushWithFullScreen(nextVC)
     }
     
     @objc func viewBankFunc(_ sender: UITapGestureRecognizer) {
-        let nextVC = ControllerID.beneficiaryListVC.instance
-        (nextVC as! BeneficiaryListVC).isFromBankTransfer = true
+//        let nextVC = ControllerID.beneficiaryListVC.instance
+//        (nextVC as! BeneficiaryListVC).isFromBankTransfer = true
+//        self.pushWithFullScreen(nextVC)
+        let nextVC = ControllerID.loyaltyPointsVC.instance
         self.pushWithFullScreen(nextVC)
     }
     

@@ -11,86 +11,114 @@ import UIKit
 class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankDetailAlertProtocol
                        , AlertViewWithTextProtocol {
   
-
+    var lockWallet:Bool = false
     let moneyRepo:MoneyTransferRepository = MoneyTransferRepository()
     let repo:Repository = Repository()
     
     @IBOutlet weak var toolTitle: UILabel!
     @IBOutlet weak var pageTitle: UILabel!
-    @IBOutlet weak var bankTitlelbl: UILabel!
-    @IBOutlet weak var bankAccountlbl: UILabel!
+   // @IBOutlet weak var bankTitlelbl: UILabel!
+   // @IBOutlet weak var bankAccountlbl: UILabel!
     
     var cardsList:[CardDetails] = Array()
     
     @IBOutlet weak var viewWallet: UIView!
     @IBOutlet weak var btnLoad: UIButton!
     @IBOutlet weak var cardTableView: UITableView!
-    @IBOutlet weak var viewBankAccount: UIView!
+   // @IBOutlet weak var viewBankAccount: UIView!
     
     @IBOutlet weak var walletNameLbl:UILabel!
     @IBOutlet weak var walletBalancelbl:UILabel!
-    @IBOutlet weak var payThroughCard:UILabel!
+   // @IBOutlet weak var payThroughCard:UILabel!
+    
+    
+    @IBOutlet weak var payThroughWalletBtn: UIButton!
+    @IBOutlet weak var payThroughCardBtn: UIButton!
+    @IBOutlet weak var payThroughBankBtn: UIButton!
+    @IBOutlet weak var transferNowBtn: UIButton!
+    
+    @IBOutlet private var optionBtns:[UIButton]! {
+        didSet {
+            optionBtns.forEach { (button) in
+                button.setImage(#imageLiteral(resourceName: "radioUnchecked"), for: .normal)
+                button.setImage(#imageLiteral(resourceName: "radioChecked"), for: .selected)
+            }
+        }
+    }
     
     
     var receiptNumber:String = ""
     var isTableViewVisiable = false
-
+    var selectedTag = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+    
+        payThroughWalletBtn.isSelected = true
         toolTitle.text = "payment".localized
         pageTitle.text = "how_would_you_like".localized
-        payThroughCard.text = "pay_thorough_card".localized
+        payThroughCardBtn.setTitle("pay_thorough_card".localized, for: .normal)
+        payThroughBankBtn.setTitle("pay_thorough_bank".localized, for: .normal)
+        payThroughWalletBtn.setTitle("pay_thorough_wallet".localized, for: .normal)
+        transferNowBtn.setTitle("transfer_now".localized, for: .normal)
         btnLoad.setTitle("load_cards".localized, for: .normal)
-        bankTitlelbl.text = "process_payment".localized
-        bankAccountlbl.text = "bank_account_details".localized
-        
+       
+        transferNowBtn.layer.cornerRadius = 8
         cardTableView.delegate = self
         cardTableView.dataSource = self
         
         viewWallet.layer.cornerRadius = 8
         btnLoad.layer.cornerRadius = 8
         cardTableView.layer.cornerRadius = 8
-        viewBankAccount.layer.cornerRadius = 8
+      
         getWalletDetails()
-        let viewBankAccountGesture = UITapGestureRecognizer(target: self, action: #selector(viewBankAccountFunc(_:)))
-        viewBankAccount.addGestureRecognizer(viewBankAccountGesture)
-        
-        let viewWalletGesture = UITapGestureRecognizer(target: self, action: #selector(payThroughWallet(_:)))
-        viewWallet.addGestureRecognizer(viewWalletGesture)
-        
-        let viewPaythroughCard = UITapGestureRecognizer(target: self, action: #selector(payThorughCard(_:)))
-        payThroughCard.addGestureRecognizer(viewPaythroughCard)
-        
+
     }
     
-    @objc
-    private func viewBankAccountFunc(_ sender: UIGestureRecognizer) {
-        TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.BANK_DEPOSIT
-        TotiPaySend.shared.cardNumber = ""
-        TotiPaySend.shared.expireDate = ""
-        TotiPaySend.shared.securityNumber = ""
-        getPin()
+    
+    @IBAction private func paymentAction(_ sender: UIButton){
+        uncheck()
+        sender.checkboxAnimation {
+            print(sender.titleLabel?.text ?? "")
+            print(sender.isSelected)
+        }
+        
+        selectedTag = sender.tag
     }
     
-    @objc
-    func payThroughWallet(_ sender:UIGestureRecognizer) {
-        TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.WALLET
-        TotiPaySend.shared.cardNumber = ""
-        TotiPaySend.shared.expireDate = ""
-        TotiPaySend.shared.securityNumber = ""
-        getPin()
+    func uncheck(){
+        optionBtns.forEach { (button) in
+            button.isSelected = false
+        }
+    }
+
+    
+    @IBAction func transferNowBtnClick(_ sender: Any) {
+        if selectedTag == payThroughWalletBtn.tag {
+            if !lockWallet  {
+                TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.WALLET
+                TotiPaySend.shared.cardNumber = ""
+                TotiPaySend.shared.expireDate = ""
+                TotiPaySend.shared.securityNumber = ""
+                getPin()
+            } else {
+                showError(message: "Sending Currency is not registered with wallet")
+            }
+        } else if selectedTag == payThroughCardBtn.tag {
+            let nextVC = ControllerID.cardDetailVC.instance
+            (nextVC as! CardDetailVC).delegate = self
+            self.pushWithFullScreen(nextVC)
+        } else if selectedTag == payThroughBankBtn.tag {
+            TotiPaySend.shared.paymentTypeId = PaymentTypes.shared.BANK_DEPOSIT
+            TotiPaySend.shared.cardNumber = ""
+            TotiPaySend.shared.expireDate = ""
+            TotiPaySend.shared.securityNumber = ""
+            getPin()
+        } else {
+            
+        }
     }
     
-    @objc
-    func payThorughCard(_ sender : UIGestureRecognizer) {
-        let nextVC = ControllerID.cardDetailVC.instance
-        (nextVC as! CardDetailVC).delegate = self
-        self.pushWithFullScreen(nextVC)
-    }
 
     
     @IBAction func btnLoadFunc(_ sender: UIButton) {
@@ -133,8 +161,7 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
         getPin()
     }
     
-    
-    
+
     func loadWallet() {
         if preferenceHelper.getISKYCApproved() {
             if Network.isConnectedToNetwork() {
@@ -145,14 +172,17 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
                     if let error = error {
                         self.showError(message: error)
                     } else if response!.responseCode == 101 {
+                        preferenceHelper.isWalletNeedToUpdate(isNeed: true)
                         self.receiptNumber = response!.transactionNo!
                         if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.CREDIT_CARD {
                             AlertView.instance.delegate = self
                             AlertView.instance.showAlert(title: "in_process".localized , message: "in_process_msg_card".localized , hide: true)
             
                         } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.BANK_DEPOSIT {
-                            BankDetailAlert.instance.delegate = self
-                            BankDetailAlert.instance.showAlert(referenceNumber: response!.transactionNo!)
+                            let nextVc = ControllerID.bankDepositDetail.instance
+                            (nextVc as! DepositBankDetailsVC).receiptNumber = response!.transactionNo!
+                            //(nextVc as! ReceiptVC).comeFromHome = false
+                            self.pushWithFullScreen(nextVc)
                         } else if TotiPaySend.shared.paymentTypeId == PaymentTypes.shared.WALLET {
                             self.goToReceipt(number: response!.transactionNo!)
                         }
@@ -162,13 +192,12 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
                 })
             }
         } else {
-            self.showError(message: "Kyc not approved")
+            showError(message: "plz_complete_kyc".localized)
         }
     }
     
     
     override func handleAction(action: Bool) {
-  
         goToReceipt(number: receiptNumber)
     }
     
@@ -191,7 +220,7 @@ class PaymentOptionVC: BaseVC  , PinVerifiedProtocol , CardSumitProtocol , BankD
             self.showProgress()
             let request = GetCardDetailsRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageID = preferenceHelper.getLanguage()
+            request.languageID = preferenceHelper.getApiLangugae()
             repo.loadCustomerCards(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_CARD_DETAILS), completion: {(response , error) in
                 self.hideProgress()
                 if let error = error {
@@ -242,7 +271,7 @@ extension PaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
         if Network.isConnectedToNetwork() {
             let request = WalletBalanceRequest()
             request.customerNo = preferenceHelper.getCustomerNo()
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             request.walletCurrency = TotiPaySend.shared.payInCurrency
             
             showProgress()
@@ -253,6 +282,8 @@ extension PaymentOptionVC: UITableViewDelegate, UITableViewDataSource {
                 } else if response!.responseCode == 101 {
                     self.walletNameLbl.text = "Wallet \(TotiPaySend.shared.payInCurrency)"
                     self.walletBalancelbl.text = response!.walletBalance
+                } else if response!.responseCode == 525 {
+                    self.lockWallet = true
                 } else {
                     self.showError(message: response!.description)
                 }

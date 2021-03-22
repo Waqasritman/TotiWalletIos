@@ -23,7 +23,13 @@ class SoapActionHelper {
       let ACTION_GET_SOURCE_OF_INCOME = "TPay/ITotiPay/GetSourceOfIncomeList";
       let ACTION_GET_LOGIN = "TPay/ITotiPay/Login";
       let ACTION_GET_BANK_NETWORK_LIST = "TPay/ITotiPay/GetBankNetworkList";
+      let ACTION_APP_SETTINGS = "TPay/ITotiPay/AppSetting";
       let ACTION_ADD_BENEFICIARY = "TPay/ITotiPay/BeneficiaryRegistration";
+      let ACTION_CREATE_WALLET = "TPay/ITotiPay/CreateWallet";
+    //GetCCYForWallet
+      let ACTION_BANK_DEPOSIT_DETAILS  = "TPay/ITotiPay/GetTotiPayAccDetails"
+      let ACTION_ADD_CCY_WALLET = "TPay/ITotiPay/GetCCYForWallet";
+      let ACTION_PAY_OUT_CURRENCY = "TPay/ITotiPay/APIGetPayOutCurrencyList";
       let ACTION_CUSTOMER_REGISTRATION = "TPay/ITotiPay/CustomerRegistration";
       let ACTION_AUTHENTICATION = "TPay/ITotiPay/Authentication";
       let ACTION_GET_REC_CURRENCY = "TPay/ITotiPay/GetSendRecCurrency";

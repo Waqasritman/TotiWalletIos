@@ -519,6 +519,18 @@ class Arrow: UIView {
 
 extension UIView {
     
+    
+    
+    func setCardView(radius:Int){
+        layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        layer.shadowOpacity = 0.50
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 2
+        layer.cornerRadius = CGFloat(radius)
+    }
+    
+    
+    
     func dropShadow() {
         //layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor

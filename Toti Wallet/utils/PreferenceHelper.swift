@@ -73,6 +73,11 @@ class PreferenceHelper :NSObject{
     }
     
     
+    func getResidenseCountry() -> String {
+        return (ph.value(forKey: "residenceCountry") as? String) ?? "GBR"
+    }
+    
+    
     func getPhoneForKYC() -> String {
         return (ph.value(forKey: "phone_number") as? String) ?? ""
     }
@@ -186,14 +191,16 @@ class PreferenceHelper :NSObject{
     }
     
     func removeLoginDetails() {
-        ph.set("", forKey: "number")
-        ph.set("", forKey: "country_code")
-        ph.set("", forKey: "url")
         ph.set("", forKey: KEY_EMAIL);
         ph.synchronize()
     }
     
-    
+    func removeLoginNumberDetails() {
+        ph.set("", forKey: "number")
+        ph.set("", forKey: "country_code")
+        ph.set("", forKey: "url")
+        ph.synchronize()
+    }
    
     
     
@@ -203,6 +210,30 @@ class PreferenceHelper :NSObject{
         ph.synchronize();
     }
     
+    
+    func setCountryData(ip:String , countryName:String) {
+        ph.set(ip, forKey: "countryIP")
+        ph.set(countryName, forKey: "countryName")
+        ph.synchronize()
+    }
+    
+    
+    func getCountryIP() -> String {
+        return (ph.value(forKey: "countryIP") as? String) ?? ""
+    }
+    
+    
+    func getCountryName() -> String {
+        return (ph.value(forKey: "countryName") as? String) ?? ""
+    }
+    
+    func isDataNeedTohide(value:Bool) {
+        ph.set(value, forKey: "isDataNeedTohide")
+        ph.synchronize()
+    }
+    func getHideStatus() -> Bool {
+        return (ph.value(forKey: "isDataNeedTohide") as? Bool) ?? true
+    }
     
     func isWalletNeedToUpdate(isNeed:Bool) {
         ph.set(isNeed, forKey: "is_wallet_need_update")

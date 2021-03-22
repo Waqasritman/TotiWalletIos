@@ -75,6 +75,7 @@ class BeneficiaryList: XMLMappable {
     var emailId:String = ""
     var customerRelation:String = ""
     var idtype_Description:String = ""
+    var imageURL:String = ""
     var nodeName: String!
     
     func mapping(map: XMLMap) {
@@ -82,6 +83,7 @@ class BeneficiaryList: XMLMappable {
         customerNo <- map["CustomerNo"]
         beneficiaryNo <- map["BeneficiaryNo"]
         firstName <- map["FirstName"]
+        imageURL <- map["ImageURL"]
         middleName <- map["MiddleName"]
         lastName <- map["LastName"]
         address <- map["Address"]

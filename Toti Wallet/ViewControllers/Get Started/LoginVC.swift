@@ -128,10 +128,20 @@ class LoginVC: BaseVC  , CountryListProtocol{
         if isByPhoneNumber {
             txtPhoneNumber.text = preferenceHelper.getNumber()
             lblCode.text = preferenceHelper.getCountryCode()
+            countryCode = preferenceHelper.getCountryCode()
             btnFlag.sd_setImage(with: URL(string:  preferenceHelper.getURL()), placeholderImage: UIImage(named: "flag"))
+            if preferenceHelper.getNumber().isEmpty {
+                lblCode.text = "+44"
+            }
+            
+            if !preferenceHelper.getNumber().isEmpty {
+                checkBoxOutlet.isSelected = true
+            }
         } else if !preferenceHelper.getEmail().isEmpty{
             txtEmail.text = preferenceHelper.getEmail()
-            
+            if !preferenceHelper.getEmail().isEmpty {
+                checkBoxOutlet.isSelected = true
+            }
         }
     }
     
@@ -154,6 +164,9 @@ class LoginVC: BaseVC  , CountryListProtocol{
             print(sender.isSelected)
         }
         if !sender.isSelected {
+            if flagURL.isEmpty {
+                flagURL = preferenceHelper.getURL()
+            }
             saveUserDetails()
         } else  {
             preferenceHelper.removeLoginDetails()
@@ -183,6 +196,20 @@ class LoginVC: BaseVC  , CountryListProtocol{
                 }
                 
                 
+                if checkBoxOutlet.isSelected {
+                    if flagURL.isEmpty {
+                        flagURL = preferenceHelper.getURL()
+                    }
+                    saveUserDetails()
+                } else {
+                    if isByPhoneNumber {
+                        preferenceHelper.removeLoginNumberDetails()
+                    } else {
+                        preferenceHelper.removeLoginDetails()
+                    }
+                }
+                
+                
                 authRepository.loginRequest(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_LOGIN),completion: { (response, error) in
                     
                     if let error = error {
@@ -204,7 +231,8 @@ class LoginVC: BaseVC  , CountryListProtocol{
     
     //MARK - functions
     func getCode() -> String {
-        return viewVerificationCode.getVerificationCode()
+        let string = viewVerificationCode.getVerificationCode()
+        return string.trim()
     }
     
     
@@ -253,12 +281,14 @@ class LoginVC: BaseVC  , CountryListProtocol{
             if let error = error {
                 print(error)
                 self.toHome()
+                preferenceHelper.userImage(imageData: "")
             } else if response!.ResponseCode == 101 {
                 print(response!.Description)
                 preferenceHelper.userImage(imageData: response!.ImageData)
                 self.toHome()
             } else {
                 print(response!.Description)
+                preferenceHelper.userImage(imageData: "")
                 self.toHome()
             }
         })

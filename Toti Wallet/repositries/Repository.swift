@@ -8,8 +8,159 @@
 
 import Alamofire
 class Repository {
+    func getBankDetails(request:URLRequest ,completion: @escaping (BankDepositDetailsResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<BankDepositDetailsResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = BankDepositDetailsResponse()
+                            response.description = "something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
     
     
+    func createWallet(request:URLRequest ,completion: @escaping (CreateWalletResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<CreateWalletResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = CreateWalletResponse()
+                            response.description = "something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
+    
+    
+    func getCCYWallets(request:URLRequest ,completion: @escaping (GetCCYWalletResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<GetCCYWalletResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = GetCCYWalletResponse()
+                            response.description = "something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
+    
+    func getAppSettings(request:URLRequest ,completion: @escaping (AppSettingResponse?, String?) -> () ) {
+        Alamofire.request(request)
+            .responseXMLObject{(response: DataResponse<AppSettingResponse>) in
+                
+                switch response.result {
+                case .success( _):
+                    if let data = response.value {
+                        if data.responseCode == 101 {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        } else {
+                            do {
+                                DispatchQueue.main.async {
+                                    completion(data , nil)
+                                }
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let response = AppSettingResponse()
+                            response.description = "something went wrong"
+                            response.responseCode = 500
+                            completion(response, nil)
+                        }
+                    }
+
+                case .failure(let error):
+                    completion(nil , error.localizedDescription)
+                }
+
+            }
+    }
     
     
     func loadVirtualCard(request:URLRequest ,completion: @escaping (LoadPrepaidCardResponse?, String?) -> () ) {

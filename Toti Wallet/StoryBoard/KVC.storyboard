@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -719,7 +719,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHE-x4-M2n">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCo-fZ-0s2">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCo-fZ-0s2">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MoA-J1-uJa"/>
@@ -728,8 +728,7 @@
                                         <inset key="imageEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <state key="normal" image="backIcon"/>
                                         <connections>
-                                            <action selector="btnBackClick:" destination="bYd-I8-EDq" eventType="touchUpInside" id="exY-U5-luB"/>
-                                            <action selector="btnBackFunc:" destination="bYd-I8-EDq" eventType="touchUpInside" id="zUI-Ms-P2I"/>
+                                            <action selector="btnBackClick:" destination="bYd-I8-EDq" eventType="touchUpInside" id="JLX-9T-EaB"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0p-68-BSy">
@@ -752,8 +751,7 @@ documents will be approved</string>
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnFinishClick:" destination="bYd-I8-EDq" eventType="touchUpInside" id="aJL-Tv-sI5"/>
-                                            <action selector="uploadPicture:" destination="bYd-I8-EDq" eventType="touchUpInside" id="JEH-8q-PRu"/>
+                                            <action selector="btnFinishClick:" destination="bYd-I8-EDq" eventType="touchUpInside" id="EBA-cJ-2Mr"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kyc_completed" translatesAutoresizingMaskIntoConstraints="NO" id="sem-Q9-vap">
@@ -790,11 +788,8 @@ documents will be approved</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Cards" image="cardUnselected" selectedImage="myCardSelected" id="nZv-aw-BVx"/>
                     <connections>
-                        <outlet property="btnNext" destination="N1A-NC-mEG" id="jVn-yf-Osc"/>
-                        <outlet property="finishBtn" destination="N1A-NC-mEG" id="0c8-Lx-yKJ"/>
-                        <outlet property="imgOutlet" destination="sem-Q9-vap" id="I8S-0L-nAn"/>
-                        <outlet property="lblTitle" destination="P0p-68-BSy" id="UkQ-L4-yLM"/>
-                        <outlet property="pageTitle" destination="P0p-68-BSy" id="BGk-FV-pWX"/>
+                        <outlet property="finishBtn" destination="N1A-NC-mEG" id="9Xn-Xs-LGm"/>
+                        <outlet property="pageTitle" destination="P0p-68-BSy" id="Be3-5L-lsq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tXc-15-98g" userLabel="First Responder" sceneMemberID="firstResponder"/>

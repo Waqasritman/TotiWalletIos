@@ -170,7 +170,7 @@ class ReceiptVC: BaseVC {
             showProgress()
             let request = GetTransactionReceiptRequest()
             request.transactionNumber = tranactionNumber
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             repo.getReceipt(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_TRANSACTION_RECEIPT), completion: {(response , error ) in
                 self.hideProgress()
                 if let error = error {

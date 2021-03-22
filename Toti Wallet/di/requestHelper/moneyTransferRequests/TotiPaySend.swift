@@ -10,6 +10,7 @@ import Foundation
 class TotiPaySend {
     static let shared = TotiPaySend()
     
+    
     var sendingAmounttomatch:Double = 0.0
     var languageId:String = "1"
     
@@ -25,7 +26,8 @@ class TotiPaySend {
     var cardNumber = ""
     var expireDate = ""
     var securityNumber = ""
-    
+    var ipAddress:String = preferenceHelper.getCountryIP()
+    var ipCountryName:String = preferenceHelper.getCountryName()
     
     public func getXML() -> String {
         let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
@@ -47,6 +49,8 @@ class TotiPaySend {
             "<tpay:SourceofIncome>" + "\(String(describing: sourceOfIncome!))" + "</tpay:SourceofIncome>" +
             "<tpay:PurposeOfTransfer>" + "\(String(describing: purposeOfTransfer!))" + "</tpay:PurposeOfTransfer>" +
             "<tpay:Payment_TypeID>" + "\(String(describing: paymentTypeId!))" + "</tpay:Payment_TypeID>" +
+            "<tpay:IpAddress>" +  ipAddress + "</tpay:IpAddress>" +
+            "<tpay:IpCountryName>" +  ipCountryName + "</tpay:IpCountryName>" +
             "<tpay:Card_Number>" + cardNumber + "</tpay:Card_Number>" +
             "<tpay:ExpiryDate>" + expireDate + "</tpay:ExpiryDate>" +
             "<tpay:SecurityCode>" + securityNumber + "</tpay:SecurityCode>" +

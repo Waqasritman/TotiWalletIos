@@ -27,7 +27,7 @@ class VerifyOTPRequest {
              "<tpay:LanguageID>" + languageID + "</tpay:LanguageID>" +
              "</tpay:Credentials>" +
              "<tpay:Email_Address>" + email + "</tpay:Email_Address>" +
-             "<tpay:Mobile_Number>" + mobileNumber + "</tpay:Mobile_Number>" +
+            "<tpay:Mobile_Number>" + mobileNumber.removeWhitespace() + "</tpay:Mobile_Number>" +
              "<tpay:OTP>" + OTP + "</tpay:OTP>" +
              "</tpay:Req>" +
              "</tpay:VerifyOTP>" +

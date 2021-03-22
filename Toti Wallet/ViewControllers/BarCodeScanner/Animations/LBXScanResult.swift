@@ -42,6 +42,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
     init( videoPreView:UIView,objType:[AVMetadataObject.ObjectType] = [(AVMetadataObject.ObjectType.qr as NSString) as AVMetadataObject.ObjectType],isCaptureImg:Bool,cropRect:CGRect=CGRect.zero,success:@escaping ( ([LBXScanResult]) -> Void) )
        {
         do{
+           
             input = try AVCaptureDeviceInput(device: device!)
         }
         catch let error as NSError {

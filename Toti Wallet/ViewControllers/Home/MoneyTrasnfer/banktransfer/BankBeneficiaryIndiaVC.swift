@@ -113,7 +113,7 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol , UITextFieldDelegate
                 let request = GetBankNetworkListRequest()
                 request.countryCode = "ind"
                 request.branchIFSC = hdfcCodeField.text!
-                request.languageId = preferenceHelper.getLanguage()
+                request.languageId = preferenceHelper.getApiLangugae()
                 
                 addBeneRepo.getBankNetworkList(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_BANK_NETWORK_LIST), completion: {(response , error) in
                     self.hideProgress()
@@ -164,7 +164,7 @@ class BankBeneficiaryIndiaVC: BaseVC , BankNetworkProtocol , UITextFieldDelegate
                 BeneficiaryAddRequest.shared.customerNo = preferenceHelper.getCustomerNo()
                 BeneficiaryAddRequest.shared.Telephone = "1234567890"
                 BeneficiaryAddRequest.shared.PaymentMode = "bank"
-                BeneficiaryAddRequest.shared.languageId = preferenceHelper.getLanguage()
+                BeneficiaryAddRequest.shared.languageId = preferenceHelper.getApiLangugae()
                 BeneficiaryAddRequest.shared.AccountNumber = accountNoField.text!
                 
                 print(BeneficiaryAddRequest.shared.getXML())

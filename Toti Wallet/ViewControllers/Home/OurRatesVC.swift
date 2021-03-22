@@ -9,7 +9,7 @@
 import UIKit
 
 class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
- 
+    
     var isSendingSelect = false
     let calRequest:CalTransferRequest = CalTransferRequest()
     let moneyTransferRepo:MoneyTransferRepository = MoneyTransferRepository()
@@ -35,9 +35,6 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         } else if calRequest.payoutCurrency.isEmpty {
             self.showError(message: "plz_select_receiving_currency".localized)
             return false
-        }else if txtFirst.text!.isEmpty {
-            self.showError(message: "please_enter_amount".localized)
-            return false
         }
         return true
     }
@@ -45,16 +42,17 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         txtFirst.delegate = self
+        txtSecond.delegate = self
         btnConvert.layer.cornerRadius = 8
         btnConvert.layer.borderWidth = 1
         btnConvert.layer.borderColor = #colorLiteral(red: 0.5759999752, green: 0.1140000001, blue: 0.3330000043, alpha: 1)
         btnTransferNow.layer.cornerRadius = 8
         
         sendingView.layer.cornerRadius = 8
-        sendingView.layer.cornerRadius = 8
+        receivingView.layer.cornerRadius = 8
         txtFirst.layer.cornerRadius = 8
         txtSecond.layer.cornerRadius = 8
-     
+        
         
         txtFirst.setLeftPaddingPoints(10)
         txtSecond.setLeftPaddingPoints(10)
@@ -63,7 +61,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         toolTitle.text = "best_rate".localized
         btnConvert.setTitle("convert_string".localized, for: .normal)
         btnTransferNow.setTitle("transfer_now".localized, for: .normal)
-            
+        
         
         let sendingGes = UITapGestureRecognizer.init(target: self, action: #selector(btnSendingCurrency(_:)))
         sendingView.addGestureRecognizer(sendingGes)
@@ -74,30 +72,35 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
         
         sendingIcon.makeImageCircle()
         receivingIcon.makeImageCircle()
-
+        
     }
     
     @objc func btnSendingCurrency(_ sender:UITapGestureRecognizer) {
         isSendingSelect = true
-        if Network.isConnectedToNetwork() {
-            let walletCurrencyRequest = GetWalletCurrencyListRequest()
-            walletCurrencyRequest.languageId = preferenceHelper.getLanguage()
-            showProgress()
-            moneyTransferRepo.getWalletCurrency(request: HTTPConnection.openConnection(stringParams: walletCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_WALLET_CURRENCY), completion: {(response , error ) in
-                if let error = error {
-                    self.hideProgress()
-                    self.showError(message: error)
-                } else if response!.responseCode == 101  {
-                    self.onCurrencyList(currencyList: response!.walletCurrencyList)
-                } else {
-                    self.hideProgress()
-                    self.showError(message: response!.description)
-                }
-            })
-            
-        } else {
-            self.noInternet()
-        }
+        let nextVC = ControllerID.selectCountryVC.instance
+        (nextVC as! SelectCountryVC).countryProtocol = self
+        (nextVC as! SelectCountryVC).isShowCurrency = true
+        (nextVC as! SelectCountryVC).countryType = CountryParser.SEND
+        self.pushWithFullScreen(nextVC)
+        //        if Network.isConnectedToNetwork() {
+        //            let walletCurrencyRequest = GetWalletCurrencyListRequest()
+        //            walletCurrencyRequest.languageId = preferenceHelper.getApiLangugae()
+        //            showProgress()
+        //            moneyTransferRepo.getWalletCurrency(request: HTTPConnection.openConnection(stringParams: walletCurrencyRequest.getXML(), action: SoapActionHelper.shared.ACTION_GET_WALLET_CURRENCY), completion: {(response , error ) in
+        //                if let error = error {
+        //                    self.hideProgress()
+        //                    self.showError(message: error)
+        //                } else if response!.responseCode == 101  {
+        //                    self.onCurrencyList(currencyList: response!.walletCurrencyList)
+        //                } else {
+        //                    self.hideProgress()
+        //                    self.showError(message: response!.description)
+        //                }
+        //            })
+        //
+        //        } else {
+        //            self.noInternet()
+        //        }
     }
     
     
@@ -115,7 +118,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     @IBAction func btnConvertRates(_ sender:Any) {
         getRates()
     }
-
+    
     @IBAction func btnBackFunc(_ sender: UIButton) {
         if let tabbar = tabBarController as? CustomTabBarController {
             tabbar.selectedIndex = 0
@@ -127,11 +130,29 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     }
     
     
+    @IBAction func btnTransferNow(_ sender:Any) {
+        let nextVC = ControllerID.quickPayVC.instance
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    
     func getRates() {
         if isValidate() {
             if Network.isConnectedToNetwork() {
                 self.showProgress()
-                calRequest.transferAmount = txtFirst.text!
+                
+                if txtFirst.text!.isEmpty && txtSecond.text!.isEmpty {
+                    self.showError(message: "please_enter_amount".localized)
+                    return
+                } else if !txtFirst.text!.isEmpty {
+                    calRequest.transferCurrency = firstDropDown.text!
+                    calRequest.transferAmount = txtFirst.text!
+                } else if !txtSecond.text!.isEmpty {
+                    calRequest.transferCurrency = secondDropDown.text!
+                    calRequest.transferAmount = txtSecond.text!
+                }
+                
+                
                 calRequest.paymentMode = "bank"
                 print(calRequest.getXML())
                 moneyTransferRepo.getRates(request: HTTPConnection.openConnection(stringParams: calRequest.getXML(), action: SoapActionHelper.shared.ACTION_CAL_TRANSFER), completion: {(response , error) in
@@ -140,7 +161,7 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
                         self.showError(message: error)
                     } else if response!.responseCode == 101 {
                         self.showRates(response: response!)
-                      //  self.showSuccess(message: response!.description!)
+                        //  self.showSuccess(message: response!.description!)
                     } else {
                         self.showError(message: response!.description!)
                     }
@@ -149,17 +170,26 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
                 self.noInternet()
             }
         }
-       
+        
     }
     
     
     func onSelectCountry(country: WRCountryList) {
-        self.secondDropDown.text =  country.currencyShortName
-        self.secondDropDown.textColor = .black
-        calRequest.payoutCurrency = country.currencyShortName
-        receivingIcon.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
-       // countryFlag.makeImageCircle()
+        if isSendingSelect {
+            self.firstDropDown.text = country.currencyShortName
+            calRequest.payInCurrency = country.currencyShortName
+          //  calRequest.transferCurrency = country.currencyShortName
+            sendingIcon.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
+        } else {
+            self.secondDropDown.text =  country.currencyShortName
+            self.secondDropDown.textColor = .black
+            calRequest.payoutCurrency = country.currencyShortName
+            receivingIcon.sd_setImage(with: URL(string: country.url), placeholderImage: UIImage(named: "flag"))
+        }
+        
+        // countryFlag.makeImageCircle()
         txtSecond.text = ""
+        txtFirst.text = ""
     }
     
     
@@ -195,18 +225,33 @@ class OurRatesVC: BaseVC , CountryListProtocol , CurrencyListProtocol {
     
     
     func showRates(response:CalTransferResponse) {
-        txtSecond.text = String(format: "%.02f", response.payoutAmount)
+        if(calRequest.payInCurrency.elementsEqual(calRequest.payoutCurrency)) {
+            if !txtFirst.text!.isEmpty {
+                txtSecond.text = String(format: "%.02f", response.payoutAmount)
+            } else if !txtSecond.text!.isEmpty {
+                txtFirst.text = String(format: "%.02f", response.payInAmount)
+            }
+        } else if calRequest.payInCurrency.elementsEqual(calRequest.transferCurrency) {
+            txtSecond.text = String(format: "%.02f", response.payoutAmount)
+        } else if calRequest.payoutCurrency.elementsEqual(calRequest.transferCurrency) {
+            txtFirst.text = String(format: "%.02f", response.payInAmount)
+        }
+       
     }
-
+    
 }
 extension OurRatesVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+ 
+        if textField.tag == 1 {
+            txtSecond.placeholder = "0.00"
+            txtSecond.text = ""
+        } else if textField.tag == 2 {
+            txtFirst.placeholder = "0.00"
+            txtFirst.text = ""
+        }
         
-       // if string.count > 0 { // if it was not delete character
-           // hideViews()
-            txtSecond.text = "0.00"
-        //}
-        
+     
         return true
     }
     

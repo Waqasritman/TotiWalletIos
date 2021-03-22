@@ -17,7 +17,8 @@ class LoadWalletRequest {
     var walletCurrency:String = ""
     var languageId:String = "1"
     var paymentType:Int = 0
-    
+    var ipAddress:String = preferenceHelper.getCountryIP()
+    var ipCountryName:String = preferenceHelper.getCountryName()
     
     public func getXML() -> String {
         let stringParams : String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tpay=\"TPay\">"
@@ -38,6 +39,8 @@ class LoadWalletRequest {
             "<tpay:Security_Code>" + securityNumber + "</tpay:Security_Code>" +
             "<tpay:Wallet_Currency>" + walletCurrency + "</tpay:Wallet_Currency>" +
             "<tpay:Payment_Type>" +  String(describing: paymentType) + "</tpay:Payment_Type>" +
+            "<tpay:IpAddress>" +  ipAddress + "</tpay:IpAddress>" +
+            "<tpay:IpCountryName>" +  ipCountryName + "</tpay:IpCountryName>" +
             "</tpay:Req>" +
             "</tpay:LoadWallet>" +
             "</soapenv:Body>" +

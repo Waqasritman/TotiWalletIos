@@ -138,8 +138,10 @@ class ProfileAddressDetailVC: BaseVC , CountryListProtocol {
                 } else {
                     if response!.responseCode == 101 {
                         self.hideProgress()
+                        preferenceHelper.userImage(imageData: "")
+                        preferenceHelper.setDocumentUploaded(value: false)
                         preferenceHelper.isWalletNeedToUpdate(isNeed: true);
-                       preferenceHelper.setCustomerNo(customerNo: customerNo)
+                        preferenceHelper.setCustomerNo(customerNo: customerNo)
                         preferenceHelper.filCustomerData(userRequest: response!)
                         self.toHome()
                     }
@@ -169,10 +171,13 @@ class ProfileAddressDetailVC: BaseVC , CountryListProtocol {
     func onSelectCountry(country: WRCountryList) {
         if isCountrySeleted {
             btnCountryName.setTitle(country.countryName, for: .normal)
+            btnCountryName.setTitleColor(.black, for: .normal)
             countryName = country.countryShortName
-            RegisterUserRequest.shared.country = "GBR"
+           // RegisterUserRequest.shared.country = "GBR"
+            RegisterUserRequest.shared.country = country.countryShortName
         } else {
             btnNationality.setTitle(country.countryName, for: .normal)
+            btnNationality.setTitleColor(.black, for: .normal)
             RegisterUserRequest.shared.nationality = country.countryShortName
             nationality = country.countryShortName
         }

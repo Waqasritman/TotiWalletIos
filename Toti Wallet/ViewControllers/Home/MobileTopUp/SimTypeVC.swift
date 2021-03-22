@@ -73,8 +73,6 @@ extension SimTypeVC: UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = list[indexPath.row].billerName
         cell.lblDetail.isHidden = true
         
-        cell.imageOutlet.sd_setImage(with: URL(string:"https://183.87.134.37/IconsImages/Mobile Recharge.png"), placeholderImage: UIImage(named: "flag"))
-        
         return cell
     }
     

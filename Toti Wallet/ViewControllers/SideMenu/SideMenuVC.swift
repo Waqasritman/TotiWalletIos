@@ -120,7 +120,9 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             self.pushWithFullScreen(nextVC)
         }
         else if indexPath.row == 5 {
-            let nextVC = ControllerID.billPaymentVC.instance
+//            let nextVC = ControllerID.billPaymentVC.instance
+//            self.pushWithFullScreen(nextVC)
+            let nextVC = ControllerID.loyaltyPointsVC.instance
             self.pushWithFullScreen(nextVC)
         }
         else if indexPath.row == 6 {
@@ -149,7 +151,7 @@ extension SideMenuVC: UITableViewDataSource, UITableViewDelegate  {
             let nextVC = ControllerID.editProfileVC.instance
             self.pushWithFullScreen(nextVC)
         } else {
-            self.showError(message: "KYC error")
+            self.showError(message: "plz_complete_kyc".localized)
         }
        
     }

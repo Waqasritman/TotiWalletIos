@@ -8,8 +8,10 @@
 
 import UIKit
 
-class RequestMoneyVC: BaseVC  , CountryListProtocol {
+class RequestMoneyVC: BaseVC  , CountryListProtocol , CurrencyListProtocol {
+   
     
+    let repo : Repository = Repository()
     let moneyRepo:MoneyTransferRepository = MoneyTransferRepository()
     @IBOutlet weak var txtPhoneNumber: UITextField!
     @IBOutlet weak var viewCode: UIView!
@@ -26,6 +28,12 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     @IBOutlet weak var amountlbl: UILabel!
     @IBOutlet weak var descriptionlbl: UILabel!
     
+    @IBOutlet weak var requestCurrencylbl: UILabel!
+    @IBOutlet weak var requestCurrencyView: UIView!
+    @IBOutlet weak var rquestCurrencyImage: UIImageView!
+    @IBOutlet weak var requestCurrencyLBL: UILabel!
+    
+    let request = RequestMoney()
     override func isValidate() -> Bool {
         
         if codeLbl.text!.isEmpty {
@@ -34,8 +42,27 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
         } else if txtPhoneNumber.text!.isEmpty {
             self.showError(message: "enter_mobile_no_error".localized)
             return false
-        } else if txtAmount.text!.isEmpty {
+        }  else if !verifyNumber(number: codeLbl.text! + txtPhoneNumber.text!) {
+            showError(message: "invalid_number".localized)
+            return false
+        }  else if txtAmount.text!.isEmpty {
             self.showError(message: "please_enter_amount".localized)
+            return false
+        } else if request.requestCurrency.isEmpty {
+            self.showError(message: "plz_select_requesting_cur".localized)
+            return false
+        }
+        return true
+    }
+    
+    
+    
+    func isNumberValidate() -> Bool {
+        if codeLbl.text!.isEmpty {
+            self.showError(message: "plz_select_country_code".localized)
+            return false
+        } else if txtPhoneNumber.text!.isEmpty {
+            self.showError(message: "enter_mobile_no_error".localized)
             return false
         } else if !verifyNumber(number: codeLbl.text! + txtPhoneNumber.text!) {
             showError(message: "invalid_number".localized)
@@ -44,10 +71,12 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
         return true
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestCurrencyView.layer.cornerRadius = 8
         
+        rquestCurrencyImage.makeImageCircle()
+        requestCurrencylbl.text = "request_currency".localized
         toolTitlelbl.text = "wallet_transfer".localized
         pageTitlelbl.text = "request_money_from_wallet".localized
         mobileLbl.text = "mobile_number".localized
@@ -79,12 +108,13 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     }
     
     
-    @IBAction func btnRequestFunc(_ sender: UIButton) {
+    
+    @IBAction func requestMoneyTouch(_ sender: Any) {
         if preferenceHelper.getISKYCApproved() {
             if isValidate() {
                 if Network.isConnectedToNetwork() {
                     self.showProgress()
-                    let request = RequestMoney()
+                    
                     request.amount = Double(txtAmount.text!)!
                     request.customerNo = preferenceHelper.getCustomerNo()
                     request.description = txtDescription.text!
@@ -103,7 +133,29 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
             }
         }
         
+        
     }
+    
+    @IBAction func btnRequest(_ sender:Any) {
+        
+    }
+    
+    
+    
+    @IBAction func btnRequestFunc(_ sender: UIButton) {
+      
+    }
+    
+    
+    
+    @IBAction func btnOnRequestCurrency(_ sender: Any) {
+        if isNumberValidate() {
+            getCustomerWallets()
+        }
+    }
+
+    
+    
     
     @IBAction func btnCrossFunc(_ sender: UIButton) {
         AlertView.instance.delegate = self
@@ -115,9 +167,55 @@ class RequestMoneyVC: BaseVC  , CountryListProtocol {
     }
     
     
-    func onSelectCountry(country: WRCountryList) {
-        codeLbl.text = country.countryCode
+    
+    
+    
+    func getCustomerWallets() {
+        if Network.isConnectedToNetwork() {
+            let request = GetCCYForWalletRequest()
+            request.customerNo = String().removePlus(number: codeLbl.text!+txtPhoneNumber.text!)
+            request.actionType = CCYWalletActionType.RECEIVE
+            request.languageID = preferenceHelper.getApiLangugae()
+            self.showProgress()
+            repo.getCCYWallets(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_ADD_CCY_WALLET), completion: {(response , error) in
+                self.hideProgress()
+                if let error = error {
+                    self.showError(message: error)
+                } else if response!.responseCode == 101 {
+                    self.showCurrency(list: response!.walletCurrencyList)
+                } else if response!.description != nil {
+                    self.showError(message: response!.description)
+                } else {
+                    self.showError(message: "something went wrong")
+                }
+            })
+        }
     }
     
-   
+    
+    
+    func showCurrency(list:[RecCurrency]) {
+        let nextVC = ControllerID.selectCurrencyVC.instance
+        (nextVC as! SelectCurrencyVC).filteredList = list
+        (nextVC as! SelectCurrencyVC).currencyProtocol = self
+        self.pushWithFullScreen(nextVC)
+    }
+    
+    
+    func onSelectCountry(country: WRCountryList) {
+        codeLbl.text = country.countryCode
+        flagIcon.sd_setImage(with: URL(string: country.url))
+    }
+    
+    
+    func onSelectCurrency(currency: RecCurrency) {
+        requestCurrencyLBL.text = currency.currencyShortName
+        rquestCurrencyImage.sd_setImage(with: URL(string: currency.image_URL))
+        request.requestCurrency = currency.currencyShortName
+    }
+    
+    func onCurrencyList(currencyList: [RecCurrency]) {
+       
+    }
+    
 }

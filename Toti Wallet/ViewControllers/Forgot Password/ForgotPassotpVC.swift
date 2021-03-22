@@ -33,7 +33,7 @@ class ForgotPassotpVC: BaseVC {
     var timerTest: Timer? = nil
 
     override func isValidate() -> Bool {
-        if viewVerificationCode.getVerificationCode().count < 4 {
+        if viewVerificationCode.getVerificationCode().trim().count < 4 {
             showError(message: "askfordigit".localized)
             return false
         }
@@ -127,6 +127,7 @@ class ForgotPassotpVC: BaseVC {
                         self.showError(message: error)
                     } else {
                         let nextVC = ControllerID.forgotPassGetPinVC.instance
+                        (nextVC as! ForgotPassGetPinVC).isByNumber = self.isByNumber
                         self.pushWithFullScreen(nextVC)
                     }
                 })

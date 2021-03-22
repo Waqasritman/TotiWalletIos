@@ -101,8 +101,9 @@ class CardDetailVC: BaseVC  , UITextFieldDelegate{
     
     @IBAction func btnSubmitFunc(_ sender: UIButton) {
         if isValidate() {
-            delegate.onAddCardDetails(cardNumber: txtNumber.text!, cardExpire: txtValid.text!, cardCVV: txtCvv.text!)
             self.btnBackFunc(self)
+            delegate.onAddCardDetails(cardNumber: txtNumber.text!, cardExpire: txtValid.text!, cardCVV: txtCvv.text!)
+            
         }
        
     }

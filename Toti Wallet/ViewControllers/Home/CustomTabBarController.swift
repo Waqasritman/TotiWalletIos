@@ -36,6 +36,6 @@ class CustomTabBarController: UITabBarController, MyTabBarDelegate {
     }
     
     func Tesst() {
-            self.selectedIndex = 2
+       self.selectedIndex = 2
     }
 }

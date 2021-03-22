@@ -27,7 +27,7 @@ class WrCountryVC: BaseVC {
         if Network.isConnectedToNetwork() {
             showProgress()
             let request = GetWRCountryListRequest()
-            request.languageId = preferenceHelper.getLanguage()
+            request.languageId = preferenceHelper.getApiLangugae()
             
             repo.getWRCountries(request: HTTPConnection.openConnection(stringParams: request.getXML(), action: SoapActionHelper.shared.ACTION_GET_WR_COUNTRY), completion: {(response ,error) in
                 self.hideProgress()

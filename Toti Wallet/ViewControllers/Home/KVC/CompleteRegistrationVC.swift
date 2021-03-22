@@ -203,7 +203,7 @@ class CompleteRegistrationVC: BaseVC , CountryListProtocol , IdTypeProtocol {
                 editCustomerRequest.customer.phoneNumber = preferenceHelper.getPhoneForKYC()
             }
             editCustomerRequest.customerNo = preferenceHelper.getCustomerNo()
-            editCustomerRequest.languageId = preferenceHelper.getLanguage()
+            editCustomerRequest.languageId = preferenceHelper.getApiLangugae()
             editCustomerRequest.idNumber = txtNumber.text!
             editCustomerRequest.customer.dob = dateOfBirth
             print(editCustomerRequest.getXML())

@@ -48,7 +48,7 @@ class EditCustomerProfileRequest {
             "<tpay:SourceOfFund>" + "2" + "</tpay:SourceOfFund>" +
             "<tpay:EmailID>" + customer.email + "</tpay:EmailID>" +
             "<tpay:IDtype_Description>" + "1" + "</tpay:IDtype_Description>" +
-            "<tpay:ResidenceCountry>" + "GBR" + "</tpay:ResidenceCountry>" +
+            "<tpay:ResidenceCountry>" + residenceCountry + "</tpay:ResidenceCountry>" +
             "<tpay:SourceOfFund_Desc>" + "123" + "</tpay:SourceOfFund_Desc>" +
             "</tpay:Req>" +
             "</tpay:EditCustomerProfile>" +
